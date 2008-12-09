@@ -1,0 +1,5 @@
+homeSuccess:
+  customize:
+    myDiaryList:
+      parts:    [homeTopSampleBox]
+      target:   [after]
