@@ -26,6 +26,7 @@ class diaryActions extends sfActions
   */
   public function executeList($request)
   {
+    $this->pager = DiaryPeer::retrieveDiaryPager($request->getParameter('page'), 20);
   }
 
  /**
@@ -35,6 +36,8 @@ class diaryActions extends sfActions
   */
   public function executeShow($request)
   {
+    $this->diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
+    $this->forward404Unless($this->diary);
   }
 
  /**
@@ -44,6 +47,21 @@ class diaryActions extends sfActions
   */
   public function executeEdit($request)
   {
+    $this->diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
+    $this->form = new DiaryForm($this->diary);
+
+    if ($request->isMethod('post'))
+    {
+      $params = $request->getParameter('diary');
+      $params['member_id'] = $this->getUser()->getMemberId();
+      $this->form->bind($params);
+
+      if ($this->form->isValid())
+      {
+        $diary = $this->form->save();
+        $this->redirect('diary/show?id='.$diary->getId());
+      }
+    }
   }
 
  /**
@@ -53,6 +71,11 @@ class diaryActions extends sfActions
   */
   public function executeDelete($request)
   {
+    $diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
+    $this->forward404Unless($diary);
+    $this->redirectUnless($diary->getMemberId() === $this->getUser()->getMemberId(), '@homepage');
+
+    $diary->delete();
     $this->redirect('diary/list');
   }
 }
