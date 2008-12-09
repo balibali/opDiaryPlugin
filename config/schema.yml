@@ -1,0 +1,9 @@
+propel:
+  _attributes: { package: plugins.opDiaryPlugin.lib.model }
+  diary:
+    id: ~
+    member_id: { type: integer, required: true, foreignTable: member, foreignReference: id, OnDelete: cascade }
+    title: { type: longvarchar, required: true }
+    body: { type: longvarchar, required: true }
+    created_at: ~
+    updated_at: ~
