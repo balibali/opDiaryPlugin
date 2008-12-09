@@ -1,0 +1,256 @@
+@charset "UTF-8";
+
+/*----------------------------------------------
+ * clearfix, overflow: hidden
+ *--------------------------------------------*/
+.diaryDetailBox .partsHeading,
+.diaryDetailBox dl,
+.formTable .partsHeading,
+.formTable div.checkList ul,
+{
+  zoom: 1;
+  overflow: visible;
+}
+.diaryDetailBox .partsHeading:after,
+.diaryDetailBox dl:after,
+.formTable .partsHeading:after,
+.formTable div.checkList ul:after,
+{
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+#Top
+{
+  overflow: hidden;
+}
+dd div, dt, ul, ol, td, th, p,
+h1, h2, h3, h4, h5, h6, .partsHeading,
+fieldset, label
+{
+  overflow: hidden;
+}
+dd div div
+{
+  overflow: visible;
+}
+pre
+{
+  overflow: auto;
+}
+
+/*----------------------------------------------
+ * パーツ内上下の部分（1件～20件を表示など）
+ *--------------------------------------------*/
+div.block,
+div.partsInfo,
+div.pagerAbsolute,
+div.pagerRelative,
+div.pagerRelativeMulti,
+div.operation
+{
+  border-top: 1px solid #CCCCCC;
+}
+div.partsInfo
+{
+  padding: 10px 40px;
+}
+div.pagerAbsolute
+{
+  padding: 4px;
+  text-align: center;
+}
+div.pagerAbsolute p
+{
+  display: inline;
+}
+div.pagerRelative
+{
+  padding: 4px;
+  text-align: right;
+}
+div.pagerRelativeMulti
+{
+  padding: 4px;
+}
+div.pagerRelative p,
+div.pagerRelativeMulti div.pager p
+{
+  display: inline;
+  margin-left: 10px;
+}
+div.pagerRelative p:first-child,
+div.pagerRelativeMulti div.pager p:first-child,
+div.pagerRelative p.first-child,
+div.pagerRelativeMulti div.pager p.first-child
+{
+  margin-left: 0;
+}
+div.pagerRelativeMulti div.text
+{
+  float: left;
+  width: 55%;
+}
+div.pagerRelativeMulti div.pager
+{
+  float: right;
+  width: 45%;
+  margin-top: 0.5em;
+  text-align: right;
+}
+div.operation
+{
+  padding: 4px;
+}
+div.operation ul.moreInfo
+{
+  text-align: center;
+}
+div.operation ul.moreInfo li
+{
+  display: inline;
+  background-position: 0 50%;
+}
+
+/*==============================================================================
+ * 8. diaryDetailBox（日記詳細ボックス）
+ *----------------------------------------------------------------------------*/
+.diaryDetailBox h3
+{
+  float: left;
+  width: 66%;
+}
+.diaryDetailBox .partsHeading p.public
+{
+  float: right;
+  width: 33%;
+  margin: 0;
+  text-align: right;
+}
+.diaryDetailBox dl
+{
+  border-top: 1px solid #CCCCCC;
+}
+.diaryDetailBox dt
+{
+  float: left;
+  width: 70px;
+  padding-top: 5px;
+  text-align: center;
+}
+.diaryDetailBox dd
+{
+  zoom: 1;
+  min-height: 4.5em;
+  margin-left: 70px;
+  border-left: 1px solid #CCCCCC;
+}
+* html .diaryDetailBox dd
+{
+  height: 4.5em;
+}
+.diaryDetailBox dd div
+{
+  border-top: 1px solid #CCCCCC;
+}
+.diaryDetailBox dd div p
+{
+  padding: 4px 3px;
+}
+.diaryDetailBox dd div.title
+{
+  border-top: none;
+}
+.diaryDetailBox dd div.body
+{
+  padding: 4px 3px;
+}
+.diaryDetailBox dd ul.photo
+{
+  padding: 4px 5px;
+}
+.diaryDetailBox dd ul.photo li
+{
+  display: inline;
+  margin-left: 6px;
+}
+.diaryDetailBox div.category ul
+{
+  padding: 4px;
+  text-align: right;
+}
+.diaryDetailBox div.category ul li
+{
+  display: inline;
+  font-size: 80%;
+}
+
+/*==============================================================================
+ * 23. searchResultList（検索結果リスト）
+ *----------------------------------------------------------------------------*/
+.searchResultList .partsInfo
+{
+  background: #EEEEEE;
+}
+.searchResultList .ditem
+{
+  margin: 8px 34px;
+}
+.searchResultList td.photo
+{
+  width: 90px;
+  padding: 0;
+  border-left: none;
+  text-align: center;
+}
+.searchResultList th, .searchResultList td
+{
+  padding: 5px;
+}
+.searchResultList th
+{
+  width: 75px;
+}
+#Body .searchResultList th:first-child,
+#Body .searchResultList th.first-child
+{
+  border-left-width: 1px;
+}
+.searchResultList tr.operation th
+{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.searchResultList tr.operation td
+{
+  padding: 0;
+}
+.searchResultList tr.operation span.text
+{
+  float: left;
+  display: block;
+  width: 160px;
+  padding: 5px;
+  border-right: 1px solid #CCCCCC;
+}
+.searchResultList tr.operation span.moreInfo
+{
+  zoom: 1;
+  display: block;
+  margin-left: 161px;
+  padding: 4px 0 3px;
+  text-align: center;
+}
+.searchResultList div.operation
+{
+  text-align: center;
+}
+.searchResultList tr.operation span.moreInfo img,
+.searchResultList div.operation form,
+.searchResultList div.operation fieldset
+{
+  display: inline;
+  vertical-align: top;
+}

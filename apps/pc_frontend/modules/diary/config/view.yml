@@ -1,0 +1,2 @@
+all:
+  stylesheets: [/plugins/opDiaryPlugin/css/diary]
