@@ -1,5 +1,8 @@
 homeSuccess:
   customize:
+    friendDiaryList:
+      parts:    [homeTopSampleBox]
+      target:   [after]
     myDiaryList:
       parts:    [homeTopSampleBox]
       target:   [after]

@@ -13,4 +13,9 @@ class diaryComponents extends sfComponents
   {
     $this->diaryList = DiaryPeer::retrieveByMemberId($this->getUser()->getMemberId(), 5);
   }
+
+  public function executeFriendDiaryList()
+  {
+    $this->diaryList = DiaryPeer::getFriendDiaryList($this->getUser()->getMemberId(), 5);
+  }
 }
