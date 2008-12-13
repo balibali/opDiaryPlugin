@@ -6,3 +6,8 @@ homeSuccess:
     myDiaryList:
       parts:    [homeTopSampleBox]
       target:   [after]
+profileSuccess:
+  customize:
+    memberDiaryList:
+      parts:    [profile]
+      target:   [after]

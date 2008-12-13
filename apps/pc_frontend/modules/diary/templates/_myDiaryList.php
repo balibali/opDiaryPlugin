@@ -8,6 +8,7 @@
 <li><?php echo format_date($diary->getCreatedAt()) ?> <?php echo link_to($diary->getTitle(), '@diary_by_id?id='.$diary->getId()) ?></li>
 <?php endforeach; ?>
 </ul>
+<p><?php echo link_to('もっと見る', 'diary/listMember') ?></p>
 <p><?php echo link_to('日記を書く', 'diary/edit') ?></p>
 </div></div>
 </div></div>

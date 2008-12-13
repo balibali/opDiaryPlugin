@@ -26,7 +26,37 @@ class diaryActions extends sfActions
   */
   public function executeList($request)
   {
-    $this->pager = DiaryPeer::retrieveDiaryPager($request->getParameter('page'), 20);
+    $this->pager = DiaryPeer::getDiaryPager($request->getParameter('page'), 20);
+  }
+
+ /**
+  * Executes listMember action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeListMember($request)
+  {
+    $memberId = $request->getParameter('id', $this->getUser()->getMemberId());
+    $this->member = MemberPeer::retrieveByPk($memberId);
+    $this->forward404unless($this->member);
+
+    $this->pager = DiaryPeer::getMemberDiaryPager($memberId, $request->getParameter('page'), 20);
+
+    if ($memberId !== $this->getUser()->getMemberId())
+    {
+      sfConfig::set('sf_navi_type', 'friend');
+      sfConfig::set('sf_navi_id', $memberId);
+    }
+  }
+
+ /**
+  * Executes listFriend action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeListFriend($request)
+  {
+    $this->pager = DiaryPeer::getFriendDiaryPager($this->getUser()->getMemberId(), $request->getParameter('page'), 20);
   }
 
  /**
@@ -37,7 +67,12 @@ class diaryActions extends sfActions
   public function executeShow($request)
   {
     $this->diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
-    $this->forward404Unless($this->diary);
+    $this->forward404unless($this->diary);
+    if ($this->diary->getMemberId() !== $this->getUser()->getMemberId())
+    {
+      sfConfig::set('sf_navi_type', 'friend');
+      sfConfig::set('sf_navi_id', $this->diary->getMemberId());
+    }
   }
 
  /**
@@ -48,6 +83,10 @@ class diaryActions extends sfActions
   public function executeEdit($request)
   {
     $this->diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
+    if ($this->diary)
+    {
+      $this->forward404Unless($this->diary->getMemberId() === $this->getUser()->getMemberId());
+    }
     $this->form = new DiaryForm($this->diary);
 
     if ($request->isMethod('post'))
@@ -73,7 +112,7 @@ class diaryActions extends sfActions
   {
     $diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
     $this->forward404Unless($diary);
-    $this->redirectUnless($diary->getMemberId() === $this->getUser()->getMemberId(), '@homepage');
+    $this->forward404Unless($diary->getMemberId() === $this->getUser()->getMemberId());
 
     $diary->delete();
     $this->redirect('diary/list');

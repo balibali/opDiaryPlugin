@@ -2,7 +2,20 @@
 
 class DiaryPeer extends BaseDiaryPeer
 {
-  public static function retrieveByMemberId($memberId, $limit = 5)
+  public static function getDiaryPager($page = 1, $size = 20)
+  {
+    $c = new Criteria();
+    $c->addDescendingOrderByColumn(self::CREATED_AT);
+
+    $pager = new sfPropelPager('Diary', $size);
+    $pager->setCriteria($c);
+    $pager->setPage($page);
+    $pager->init();
+
+    return $pager;
+  }
+
+  public static function getMemberDiaryList($memberId, $limit = 5)
   {
     $c = new Criteria();
     $c->add(self::MEMBER_ID, $memberId);
@@ -11,9 +24,10 @@ class DiaryPeer extends BaseDiaryPeer
     return self::doSelect($c);
   }
 
-  public static function retrieveDiaryPager($page = 1, $size = 20)
+  public static function getMemberDiaryPager($memberId, $page = 1, $size = 20)
   {
     $c = new Criteria();
+    $c->add(self::MEMBER_ID, $memberId);
     $c->addDescendingOrderByColumn(self::CREATED_AT);
 
     $pager = new sfPropelPager('Diary', $size);
@@ -33,5 +47,21 @@ class DiaryPeer extends BaseDiaryPeer
     $c->addDescendingOrderByColumn(self::CREATED_AT);
     $c->setLimit($limit);
     return self::doSelect($c);
+  }
+
+  public static function getFriendDiaryPager($memberId, $page = 1, $size = 20)
+  {
+    $friendIds = MemberRelationshipPeer::getFriendMemberIds($memberId, 5);
+
+    $c = new Criteria();
+    $c->add(self::MEMBER_ID, $friendIds, Criteria::IN);
+    $c->addDescendingOrderByColumn(self::CREATED_AT);
+
+    $pager = new sfPropelPager('Diary', $size);
+    $pager->setCriteria($c);
+    $pager->setPage($page);
+    $pager->init();
+
+    return $pager;
   }
 }
