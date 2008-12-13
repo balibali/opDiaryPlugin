@@ -14,7 +14,7 @@
 </tr><tr>
 <th>本文</th><td><?php echo $diary->getBody() ?></td>
 </tr><tr class="operation">
-<th>作成日時</th><td><span class="text"><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></span> <span class="moreInfo"><?php echo link_to('詳細を見る', 'diary/show?id='.$diary->getId()) ?></span></td>
+<th>作成日時</th><td><span class="text"><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></span> <span class="moreInfo"><?php echo link_to('詳細を見る', '@diary_by_id?id='.$diary->getId()) ?></span></td>
 </tr></tbody></table></div></div>
 <?php endforeach; ?>
 </div>
