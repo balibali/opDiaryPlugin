@@ -1,23 +1,15 @@
 <?php use_helper('Pagination', 'Date'); ?>
 
-<div class="dparts searchResultList"><div class="parts">
+<div class="dparts recentList"><div class="parts">
 <div class="partsHeading"><h3><?php echo $member->getName() ?>さんの日記</h3></div>
 <?php if ($pager->getNbResults()): ?>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/list?page=%d'); ?></p></div>
-<div class="block">
 <?php foreach ($pager->getResults() as $diary): ?>
-<div class="ditem"><div class="item"><table><tbody><tr>
-<td rowspan="4" class="photo"></td>
-<th>ニックネーム</th><td><?php echo $diary->getMember()->getName() ?></td>
-</tr><tr>
-<th>タイトル</th><td><?php echo $diary->getTitle() ?></td>
-</tr><tr>
-<th>本文</th><td><?php echo $diary->getBody() ?></td>
-</tr><tr class="operation">
-<th>作成日時</th><td><span class="text"><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></span> <span class="moreInfo"><?php echo link_to('詳細を見る', '@diary_by_id?id='.$diary->getId()) ?></span></td>
-</tr></tbody></table></div></div>
+<dl>
+<dt><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></dt>
+<dd><?php echo link_to($diary->getTitle(), '@diary_by_id?id='.$diary->getId()) ?></dd>
+</dl>
 <?php endforeach; ?>
-</div>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/list?page=%d'); ?></p></div>
 <?php else: ?>
 <div class="body">

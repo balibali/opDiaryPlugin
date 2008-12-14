@@ -25,5 +25,3 @@
 </div>
 <?php endif; ?>
 </div></div>
-
-<?php echo link_to('日記を作成する', 'diary/edit') ?>

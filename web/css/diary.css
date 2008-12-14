@@ -5,6 +5,7 @@
  *--------------------------------------------*/
 .diaryDetailBox .partsHeading,
 .diaryDetailBox dl,
+.recentList dl,
 .formTable .partsHeading,
 .formTable div.checkList ul,
 {
@@ -13,6 +14,7 @@
 }
 .diaryDetailBox .partsHeading:after,
 .diaryDetailBox dl:after,
+.recentList dl:after,
 .formTable .partsHeading:after,
 .formTable div.checkList ul:after,
 {
@@ -253,4 +255,30 @@ div.operation ul.moreInfo li
 {
   display: inline;
   vertical-align: top;
+}
+
+/*==============================================================================
+ * 25. recentList（最新書き込みリスト）
+ *----------------------------------------------------------------------------*/
+.recentList dl
+{
+  border-top: 1px solid #CCCCCC;
+}
+.recentList dt
+{
+  float: left;
+  width: 170px;
+  padding: 5px;
+  text-align: center;
+}
+.recentList dd
+{
+  zoom: 1;
+  margin-left: 180px;
+  padding: 5px;
+  border-left: 1px solid #CCCCCC;
+}
+* html #Body .recentList dd
+{
+  height: 1.2em;
 }

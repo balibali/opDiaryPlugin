@@ -16,4 +16,9 @@
 </dl>
 </div></div>
 
-<?php echo link_to('この日記を削除する', 'diary/delete?id='.$diary->getId()) ?>
+<?php if ($diary->getMember()->getId() === $sf_user->getMemberId()): ?>
+<ul>
+<li><?php echo link_to('この日記を編集する', 'diary/edit?id='.$diary->getId()) ?></li>
+<li><?php echo link_to('この日記を削除する', 'diary/delete?id='.$diary->getId()) ?></li>
+</ul>
+<?php endif; ?>
