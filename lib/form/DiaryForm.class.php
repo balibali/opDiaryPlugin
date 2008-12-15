@@ -16,5 +16,30 @@ class DiaryForm extends BaseDiaryForm
 
     unset($this['created_at']);
     unset($this['updated_at']);
+
+    $this->mergeForm(new DiaryImageForm());
+  }
+
+  public function save($con = null)
+  {
+    $diary = parent::save();
+
+    $imageKeys = array('file1', 'file2', 'file3');
+    foreach ($imageKeys as $imageKey)
+    {
+      if ($this->getValue($imageKey))
+      {
+        $file = new File();
+        $file->setFromValidatedFile($this->getValue($imageKey));
+        $file->setName('d_'.$diary->getId().'_'.$file->getName());
+
+        $image = new DiaryImage();
+        $image->setDiary($diary);
+        $image->setFile($file);
+        $image->save();
+      }
+    }
+
+    return $diary;
   }
 }

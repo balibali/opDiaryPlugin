@@ -10,6 +10,13 @@
 <p class="heading"><?php echo $diary->getTitle(); ?></p>
 </div>
 <div class="body">
+<?php if ($images = $diary->getDiaryImages()): ?>
+<ul class="photo">
+<?php foreach ($images as $image): ?>
+<li><?php echo image_tag_sf_image($image->getFile(), array('size' => '120x120')) ?></li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>
 <?php echo nl2br($diary->getBody()) ?>
 </div>
 </dd>

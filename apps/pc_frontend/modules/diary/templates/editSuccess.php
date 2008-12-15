@@ -11,5 +11,6 @@ else
   $options['url'] = 'diary/edit?id='.$diary->getId();
 }
 $options['button'] = '確定';
+$options['isMultipart'] = true;
 include_box('formDiary', $title, '', $options);
 ?>

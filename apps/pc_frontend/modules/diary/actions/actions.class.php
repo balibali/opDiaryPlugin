@@ -93,7 +93,7 @@ class diaryActions extends sfActions
     {
       $params = $request->getParameter('diary');
       $params['member_id'] = $this->getUser()->getMemberId();
-      $this->form->bind($params);
+      $this->form->bind($params, $request->getFiles('diary'));
 
       if ($this->form->isValid())
       {

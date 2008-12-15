@@ -7,3 +7,7 @@ propel:
     body: { type: longvarchar, required: true }
     created_at: ~
     updated_at: ~
+  diary_image:
+    id: ~
+    diary_id: { type: integer, required: true, foreignTable: diary, foreignReference: id, OnDelete: cascade }
+    file_id: { type: integer, required: true, foreignTable: file, foreignReference: id, OnDelete: cascade }
