@@ -24,7 +24,7 @@ class DiaryForm extends BaseDiaryForm
   {
     $diary = parent::save();
 
-    $imageKeys = array('file1', 'file2', 'file3');
+    $imageKeys = array('photo_1', 'photo_2', 'photo_3');
     foreach ($imageKeys as $imageKey)
     {
       if ($this->getValue($imageKey))

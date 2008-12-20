@@ -2,15 +2,15 @@
 $options = array('form' => array($form));
 if ($form->isNew())
 {
-  $title = '日記を作成する';
+  $title = __('Post a diary');
   $options['url'] = 'diary/edit';
 }
 else
 {
-  $title = '日記を編集する';
+  $title = __('Edit the diary');
   $options['url'] = 'diary/edit?id='.$diary->getId();
 }
-$options['button'] = '確定';
+$options['button'] = __('Save');
 $options['isMultipart'] = true;
 include_box('formDiary', $title, '', $options);
 ?>

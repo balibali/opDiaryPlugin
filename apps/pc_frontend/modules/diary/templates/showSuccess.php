@@ -1,8 +1,8 @@
 <?php use_helper('Date') ?>
 
 <div class="dparts diaryDetailBox"><div class="parts">
-<div class="partsHeading"><h3><?php echo $diary->getMember()->getName() ?>さんの日記</h3>
-<p class="public">（全員に公開）</p></div>
+<div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $diary->getMember()->getName())) ?></h3>
+<p class="public">(<?php echo __('Public') ?>)</p></div>
 <dl>
 <dt><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></dt>
 <dd>
@@ -25,7 +25,7 @@
 
 <?php if ($diary->getMember()->getId() === $sf_user->getMemberId()): ?>
 <ul>
-<li><?php echo link_to('この日記を編集する', 'diary/edit?id='.$diary->getId()) ?></li>
-<li><?php echo link_to('この日記を削除する', 'diary/delete?id='.$diary->getId()) ?></li>
+<li><?php echo link_to(__('Edit this diary'), 'diary/edit?id='.$diary->getId()) ?></li>
+<li><?php echo link_to(__('Delete this diary'), 'diary/delete?id='.$diary->getId()) ?></li>
 </ul>
 <?php endif; ?>

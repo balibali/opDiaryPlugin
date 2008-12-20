@@ -12,14 +12,14 @@ class DiaryImageForm extends BaseDiaryImageForm
   public function configure()
   {
     $this->setWidgets(array(
-      'file1' => new sfWidgetFormInputFile(),
-      'file2' => new sfWidgetFormInputFile(),
-      'file3' => new sfWidgetFormInputFile(),
+      'photo_1' => new sfWidgetFormInputFile(),
+      'photo_2' => new sfWidgetFormInputFile(),
+      'photo_3' => new sfWidgetFormInputFile(),
     ));
     $this->setValidators(array(
-      'file1' => new opValidatorImageFile(array('required' => false)),
-      'file2' => new opValidatorImageFile(array('required' => false)),
-      'file3' => new opValidatorImageFile(array('required' => false)),
+      'photo_1' => new opValidatorImageFile(array('required' => false)),
+      'photo_2' => new opValidatorImageFile(array('required' => false)),
+      'photo_3' => new opValidatorImageFile(array('required' => false)),
     ));
   }
 }
