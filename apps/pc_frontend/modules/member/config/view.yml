@@ -1,13 +1,19 @@
 homeSuccess:
   customize:
     friendDiaryList:
+      template: [diary, friendDiaryList]
+      is_component: true
       parts:    [homeTopSampleBox]
       target:   [after]
     myDiaryList:
+      template: [diary, myDiaryList]
+      is_component: true
       parts:    [homeTopSampleBox]
       target:   [after]
 profileSuccess:
   customize:
     memberDiaryList:
+      template: [diary, memberDiaryList]
+      is_component: true
       parts:    [profile]
       target:   [after]

@@ -1,5 +1,6 @@
 <?php use_helper('Date') ?>
 
+<?php if (count($diaryList)): ?>
 <div class="dparts"><div class="parts">
 <div class="partsHeading"><h3>マイフレンド最新日記</h3></div>
 <div class="box"><div class="body">
@@ -11,3 +12,4 @@
 <?php echo link_to('もっと見る', 'diary/listFriend') ?>
 </div></div>
 </div></div>
+<?php endif; ?>
