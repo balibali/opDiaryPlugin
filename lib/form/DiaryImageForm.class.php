@@ -16,12 +16,10 @@ class DiaryImageForm extends BaseDiaryImageForm
       'file2' => new sfWidgetFormInputFile(),
       'file3' => new sfWidgetFormInputFile(),
     ));
-
-    $options = array('required' => false, 'mime_types' => 'web_images');
     $this->setValidators(array(
-      'file1' => new sfValidatorFile($options),
-      'file2' => new sfValidatorFile($options),
-      'file3' => new sfValidatorFile($options),
+      'file1' => new opValidatorImageFile(array('required' => false)),
+      'file2' => new opValidatorImageFile(array('required' => false)),
+      'file3' => new opValidatorImageFile(array('required' => false)),
     ));
   }
 }
