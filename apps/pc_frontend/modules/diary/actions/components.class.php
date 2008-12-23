@@ -7,21 +7,6 @@
  * @subpackage diary
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  */
-class diaryComponents extends sfComponents
+class diaryComponents extends opDiaryPluginDiaryComponents
 {
-  public function executeMyDiaryList()
-  {
-    $this->diaryList = DiaryPeer::getMemberDiaryList($this->getUser()->getMemberId(), 5);
-  }
-
-  public function executeFriendDiaryList()
-  {
-    $this->diaryList = DiaryPeer::getFriendDiaryList($this->getUser()->getMemberId(), 5);
-  }
-
-  public function executeMemberDiaryList($request)
-  {
-    $this->memberId = $request->getParameter('id', $this->getUser()->getMemberId());
-    $this->diaryList = DiaryPeer::getMemberDiaryList($this->memberId, 5);
-  }
 }

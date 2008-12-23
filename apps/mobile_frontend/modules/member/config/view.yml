@@ -1,0 +1,19 @@
+homeSuccess:
+  customize:
+    friendDiaryList:
+      template: [diary, friendDiaryList]
+      is_component: true
+      parts:    [profileEdit]
+      target:   [before]
+    myDiaryList:
+      template: [diary, myDiaryList]
+      is_component: true
+      parts:    [profileEdit]
+      target:   [before]
+profileSuccess:
+  customize:
+    memberDiaryList:
+      template: [diary, memberDiaryList]
+      is_component: true
+      parts:    [communityList]
+      target:   [after]
