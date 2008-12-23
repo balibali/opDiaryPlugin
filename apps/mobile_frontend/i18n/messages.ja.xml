@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>Title</source>
+        <target>ﾀｲﾄﾙ</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Body</source>
+        <target>本文</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Created at</source>
+        <target>作成日時</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Public</source>
+        <target>全体に公開</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Post a diary</source>
+        <target>日記を書く</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Edit the diary</source>
+        <target>日記を編集する</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Edit this diary</source>
+        <target>この日記を編集する</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Delete this diary</source>
+        <target>この日記を削除する</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>Recently Posted Diaries</source>
+        <target>最新日記</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>Recently Posted Diaries of Friends</source>
+        <target>ﾏｲﾌﾚﾝﾄﾞ最新日記</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>Diaries of Friends</source>
+        <target>ﾏｲﾌﾚﾝﾄﾞの日記</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>Diaries of %1%</source>
+        <target>%1%さんの日記</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>Diary of %1%</source>
+        <target>%1%さんの日記</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>There are no diaries</source>
+        <target>日記がありません</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <source>View this diary</source>
+        <target>詳細を見る</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>More</source>
+        <target>もっと見る</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>Save</source>
+        <target>確定</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>Nickname</source>
+        <target>ﾆｯｸﾈｰﾑ</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <source>Photo 1</source>
+        <target>写真1</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>Photo 2</source>
+        <target>写真2</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>Photo 3</source>
+        <target>写真3</target>
+      </trans-unit>
+      <trans-unit id="22">
+        <source>Required.</source>
+        <target>必須項目です｡</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
