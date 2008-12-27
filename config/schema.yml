@@ -2,12 +2,23 @@ propel:
   _attributes: { package: plugins.opDiaryPlugin.lib.model }
   diary:
     id: ~
-    member_id: { type: integer, required: true, foreignTable: member, foreignReference: id, OnDelete: cascade }
+    member_id: { type: integer, required: true, foreignTable: member, foreignReference: id, onDelete: cascade }
     title: { type: longvarchar, required: true }
     body: { type: longvarchar, required: true }
     created_at: ~
     updated_at: ~
   diary_image:
     id: ~
-    diary_id: { type: integer, required: true, foreignTable: diary, foreignReference: id, OnDelete: cascade }
-    file_id: { type: integer, required: true, foreignTable: file, foreignReference: id, OnDelete: cascade }
+    diary_id: { type: integer, required: true, foreignTable: diary, foreignReference: id, onDelete: cascade }
+    file_id: { type: integer, required: true, foreignTable: file, foreignReference: id, onDelete: cascade }
+  diary_comment:
+    id: ~
+    diary_id: { type: integer, required: true, foreignTable: diary, foreignReference: id, onDelete: cascade }
+    member_id: { type: integer, required: true, foreignTable: member, foreignReference: id, onDelete: cascade }
+    number: { type: integer, required: true }
+    body: { type: longvarchar, required: true }
+    created_at: ~
+  diary_comment_image:
+    id: ~
+    diary_comment_id: { type: integer, required: true, foreignTable: diary_comment, foreignReference: id, onDelete: cascade }
+    file_id: { type: integer, required: true, foreignTable: file, foreignReference: id, onDelete: cascade }

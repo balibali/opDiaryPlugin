@@ -73,6 +73,35 @@ class opDiaryPluginDiaryActions extends sfActions
       sfConfig::set('sf_navi_type', 'friend');
       sfConfig::set('sf_navi_id', $this->diary->getMemberId());
     }
+    $this->form = new DiaryCommentForm();
+  }
+
+ /**
+  * Executes postComment action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executePostComment($request)
+  {
+    $this->forward404Unless($request->isMethod('post'));
+
+    $this->diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
+    $this->forward404Unless($this->diary);
+
+    $comment = new DiaryComment();
+    $comment->setDiary($this->diary);
+    $comment->setMemberId($this->getUser()->getMemberId());
+    $this->form = new DiaryCommentForm($comment);
+
+    $this->form->bind($request->getParameter('diary_comment'));
+
+    if ($this->form->isValid())
+    {
+      $this->form->save();
+      $this->redirect('diary/show?id='.$this->diary->getId());
+    }
+
+    $this->setTemplate('show');
   }
 
  /**

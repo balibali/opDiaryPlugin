@@ -10,7 +10,8 @@
 <p class="heading"><?php echo $diary->getTitle(); ?></p>
 </div>
 <div class="body">
-<?php if ($images = $diary->getDiaryImages()): ?>
+<?php $images = $diary->getDiaryImages() ?>
+<?php if (count($images)): ?>
 <ul class="photo">
 <?php foreach ($images as $image): ?>
 <li><?php echo image_tag_sf_image($image->getFile(), array('size' => '120x120')) ?></li>
@@ -23,9 +24,31 @@
 </dl>
 </div></div>
 
+<div class="parts">
 <?php if ($diary->getMember()->getId() === $sf_user->getMemberId()): ?>
 <ul>
 <li><?php echo link_to(__('Edit this diary'), 'diary/edit?id='.$diary->getId()) ?></li>
 <li><?php echo link_to(__('Delete this diary'), 'diary/delete?id='.$diary->getId()) ?></li>
 </ul>
 <?php endif; ?>
+</div>
+
+<div class="dparts"><div class="parts">
+<div class="partsHeading"><h3><?php echo __('Comments') ?></h3></div>
+<?php foreach ($diary->getDiaryComments() as $comment): ?>
+<dl>
+<dt><?php echo format_datetime($comment->getCreatedAt(), 'f') ?></dt>
+<dd><p><?php echo $comment->getMember()->getName() ?></p></dd>
+<dd><p><?php echo nl2br($comment->getBody()) ?></p></dd>
+</dl>
+<?php endforeach; ?>
+</div></div>
+
+<?php
+$options = array('form' => array($form));
+$title = __('Post a diary comment');
+$options['url'] = 'diary/postComment?id='.$diary->getId();
+$options['button'] = __('Save');
+$options['isMultipart'] = true;
+include_box('formDiaryComment', $title, '', $options);
+?>
