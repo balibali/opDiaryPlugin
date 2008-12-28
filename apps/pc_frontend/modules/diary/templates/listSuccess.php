@@ -1,4 +1,4 @@
-<?php use_helper('Pagination', 'Date'); ?>
+<?php use_helper('Date'); ?>
 
 <div class="dparts searchResultList"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Recently Posted Diaries') ?></h3></div>

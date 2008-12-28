@@ -1,5 +1,5 @@
 <?php include_page_title(__('Diaries of Friends')) ?>
-<?php use_helper('Pagination', 'Date'); ?>
+<?php use_helper('Date'); ?>
 
 <?php if ($pager->getNbResults()): ?>
 

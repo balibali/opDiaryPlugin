@@ -1,5 +1,5 @@
 <?php include_page_title(__('Recently Posted Diaries')) ?>
-<?php use_helper('Pagination', 'Date'); ?>
+<?php use_helper('Date'); ?>
 
 <?php if ($pager->getNbResults()): ?>
 

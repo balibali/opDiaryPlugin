@@ -1,5 +1,5 @@
 <?php include_page_title(__('Diaries of %1%', array('%1%' => $member->getName()))) ?>
-<?php use_helper('Pagination', 'Date'); ?>
+<?php use_helper('Date'); ?>
 
 <?php if ($pager->getNbResults()): ?>
 

@@ -1,4 +1,4 @@
-<?php use_helper('Pagination', 'Date'); ?>
+<?php use_helper('Date'); ?>
 
 <div class="dparts recentList"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Diaries of %1%', array('%1%' => $member->getName())) ?></h3></div>
