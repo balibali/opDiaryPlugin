@@ -9,6 +9,28 @@
  */
 class opDiaryPluginDiaryActions extends sfActions
 {
+  public function postExecute()
+  {
+    if (isset($this->member))
+    {
+      $this->setNavigation($this->member->getId());
+    }
+
+    if (isset($this->diary))
+    {
+      $this->setNavigation($this->diary->getMemberId());
+    }
+  }
+
+  protected function setNavigation($memberId)
+  {
+    if ($memberId !== $this->getUser()->getMemberId())
+    {
+      sfConfig::set('sf_navi_type', 'friend');
+      sfConfig::set('sf_navi_id', $memberId);
+    }
+  }
+
  /**
   * Executes index action
   *
@@ -39,14 +61,7 @@ class opDiaryPluginDiaryActions extends sfActions
     $memberId = $request->getParameter('id', $this->getUser()->getMemberId());
     $this->member = MemberPeer::retrieveByPk($memberId);
     $this->forward404unless($this->member);
-
     $this->pager = DiaryPeer::getMemberDiaryPager($memberId, $request->getParameter('page'), 20);
-
-    if ($memberId !== $this->getUser()->getMemberId())
-    {
-      sfConfig::set('sf_navi_type', 'friend');
-      sfConfig::set('sf_navi_id', $memberId);
-    }
   }
 
  /**
@@ -68,40 +83,7 @@ class opDiaryPluginDiaryActions extends sfActions
   {
     $this->diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
     $this->forward404unless($this->diary);
-    if ($this->diary->getMemberId() !== $this->getUser()->getMemberId())
-    {
-      sfConfig::set('sf_navi_type', 'friend');
-      sfConfig::set('sf_navi_id', $this->diary->getMemberId());
-    }
     $this->form = new DiaryCommentForm();
-  }
-
- /**
-  * Executes postComment action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executePostComment($request)
-  {
-    $this->forward404Unless($request->isMethod('post'));
-
-    $this->diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
-    $this->forward404Unless($this->diary);
-
-    $comment = new DiaryComment();
-    $comment->setDiary($this->diary);
-    $comment->setMemberId($this->getUser()->getMemberId());
-    $this->form = new DiaryCommentForm($comment);
-
-    $this->form->bind($request->getParameter('diary_comment'));
-
-    if ($this->form->isValid())
-    {
-      $this->form->save();
-      $this->redirect('diary/show?id='.$this->diary->getId());
-    }
-
-    $this->setTemplate('show');
   }
 
  /**
@@ -127,6 +109,7 @@ class opDiaryPluginDiaryActions extends sfActions
       if ($this->form->isValid())
       {
         $diary = $this->form->save();
+
         $this->redirect('diary/show?id='.$diary->getId());
       }
     }
@@ -142,9 +125,37 @@ class opDiaryPluginDiaryActions extends sfActions
     $diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
     $this->forward404Unless($diary);
     $this->forward404Unless($diary->getMemberId() === $this->getUser()->getMemberId());
-
     $diary->delete();
+
     $this->redirect('diary/list');
+  }
+
+ /**
+  * Executes postComment action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executePostComment($request)
+  {
+    $this->forward404Unless($request->isMethod('post'));
+
+    $this->diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
+    $this->forward404Unless($this->diary);
+
+    $comment = new DiaryComment();
+    $comment->setDiary($this->diary);
+    $comment->setMemberId($this->getUser()->getMemberId());
+    $this->form = new DiaryCommentForm($comment);
+    $this->form->bind($request->getParameter('diary_comment'));
+
+    if ($this->form->isValid())
+    {
+      $this->form->save();
+
+      $this->redirect('diary/show?id='.$this->diary->getId());
+    }
+
+    $this->setTemplate('show');
   }
 
  /**
@@ -159,8 +170,8 @@ class opDiaryPluginDiaryActions extends sfActions
     $this->forward404Unless(
          $diaryComment->getDiary()->getMemberId() === $this->getUser()->getMemberId()
       || $diaryComment->getMemberId() === $this->getUser()->getMemberId());
-
     $diaryComment->delete();
+
     $this->redirect('diary/show?id='.$diaryComment->getDiaryId());
   }
 }
