@@ -7,7 +7,7 @@
 <div class="block">
 <?php foreach ($pager->getResults() as $diary): ?>
 <div class="ditem"><div class="item"><table><tbody><tr>
-<td rowspan="4" class="photo"><?php echo image_tag_sf_image($diary->getMember()->getImage(), array('size' => '76x76')) ?></td>
+<td rowspan="4" class="photo"><?php echo image_tag_sf_image($diary->getMember()->getImageFilename(), array('size' => '76x76')) ?></td>
 <th><?php echo __('Nickname') ?></th><td><?php echo $diary->getMember()->getName() ?></td>
 </tr><tr>
 <th><?php echo __('Title') ?></th><td><?php echo $diary->getTitle() ?></td>
