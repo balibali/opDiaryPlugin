@@ -43,7 +43,7 @@
 <dd><p><?php echo $comment->getMember()->getName() ?></p></dd>
 <dd><p><?php echo nl2br($comment->getBody()) ?></p></dd>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
-<dd><p><?php echo link_to('Delete this comment', 'diary/deleteComment?id='.$comment->getId()) ?></p></dd>
+<dd><p><?php echo link_to(__('Delete this comment'), 'diary/deleteComment?id='.$comment->getId()) ?></p></dd>
 <?php endif; ?>
 </dl>
 <?php endforeach; ?>
