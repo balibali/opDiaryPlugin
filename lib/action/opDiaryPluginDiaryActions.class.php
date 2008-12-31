@@ -146,4 +146,21 @@ class opDiaryPluginDiaryActions extends sfActions
     $diary->delete();
     $this->redirect('diary/list');
   }
+
+ /**
+  * Executes deleteComment action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeDeleteComment($request)
+  {
+    $diaryComment = DiaryCommentPeer::retrieveByPk($request->getParameter('id'));
+    $this->forward404Unless($diaryComment);
+    $this->forward404Unless(
+         $diaryComment->getDiary()->getMemberId() === $this->getUser()->getMemberId()
+      || $diaryComment->getMemberId() === $this->getUser()->getMemberId());
+
+    $diaryComment->delete();
+    $this->redirect('diary/show?id='.$diaryComment->getDiaryId());
+  }
 }

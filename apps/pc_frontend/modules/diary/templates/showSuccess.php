@@ -25,7 +25,7 @@
 </div></div>
 
 <div class="parts">
-<?php if ($diary->getMember()->getId() === $sf_user->getMemberId()): ?>
+<?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
 <ul>
 <li><?php echo link_to(__('Edit this diary'), 'diary/edit?id='.$diary->getId()) ?></li>
 <li><?php echo link_to(__('Delete this diary'), 'diary/delete?id='.$diary->getId()) ?></li>
@@ -33,16 +33,22 @@
 <?php endif; ?>
 </div>
 
+<?php $comments = $diary->getDiaryComments() ?>
+<?php if (count($comments)): ?>
 <div class="dparts"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Comments') ?></h3></div>
-<?php foreach ($diary->getDiaryComments() as $comment): ?>
+<?php foreach ($comments as $comment): ?>
 <dl>
 <dt><?php echo format_datetime($comment->getCreatedAt(), 'f') ?></dt>
 <dd><p><?php echo $comment->getMember()->getName() ?></p></dd>
 <dd><p><?php echo nl2br($comment->getBody()) ?></p></dd>
+<?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
+<dd><p><?php echo link_to('Delete this comment', 'diary/deleteComment?id='.$comment->getId()) ?></p></dd>
+<?php endif; ?>
 </dl>
 <?php endforeach; ?>
 </div></div>
+<?php endif; ?>
 
 <?php
 $options = array('form' => array($form));
