@@ -11,12 +11,11 @@ class opDiaryPluginDiaryActions extends sfActions
 {
   public function postExecute()
   {
-    if (isset($this->member))
+    if ($this->member instanceof Member)
     {
       $this->setNavigation($this->member->getId());
     }
-
-    if (isset($this->diary))
+    elseif ($this->diary instanceof Diary)
     {
       $this->setNavigation($this->diary->getMemberId());
     }
