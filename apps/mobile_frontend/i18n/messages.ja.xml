@@ -34,6 +34,10 @@
         <source>Post a diary comment</source>
         <target>ｺﾒﾝﾄを書く</target>
       </trans-unit>
+      <trans-unit id="28">
+        <source>My Friends</source>
+        <target>ﾏｲﾌﾚﾝﾄﾞまで公開</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

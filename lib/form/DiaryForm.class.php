@@ -17,6 +17,14 @@ class DiaryForm extends BaseDiaryForm
     unset($this['created_at']);
     unset($this['updated_at']);
 
+    $this->widgetSchema['public_flag'] = new sfWidgetFormChoice(array(
+      'choices'  => DiaryPeer::getPublicFlags(),
+      'expanded' => true,
+    ));
+    $this->validatorSchema['public_flag'] = new sfValidatorChoice(array(
+      'choices' => array_keys(DiaryPeer::getPublicFlags()),
+    ));
+
     $this->mergeForm(new DiaryImageForm());
   }
 

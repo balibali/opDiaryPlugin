@@ -5,6 +5,7 @@ propel:
     member_id: { type: integer, required: true, foreignTable: member, foreignReference: id, onDelete: cascade }
     title: { type: longvarchar, required: true }
     body: { type: longvarchar, required: true }
+    public_flag: { type: tinyint, required: true, default: 1 }
     created_at: ~
     updated_at: ~
   diary_image:

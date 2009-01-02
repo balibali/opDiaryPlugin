@@ -12,7 +12,7 @@
 View Image<br>
 <?php endforeach; ?>
 
-(<?php echo __('Public') ?>)<br>
+(<?php echo $diary->getPublicFlagLabel() ?>)<br>
 
 <?php $comments = $diary->getDiaryComments() ?>
 <?php if (count($comments)): ?>

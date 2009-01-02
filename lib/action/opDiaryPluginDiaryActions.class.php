@@ -60,7 +60,7 @@ class opDiaryPluginDiaryActions extends sfActions
     $memberId = $request->getParameter('id', $this->getUser()->getMemberId());
     $this->member = MemberPeer::retrieveByPk($memberId);
     $this->forward404unless($this->member);
-    $this->pager = DiaryPeer::getMemberDiaryPager($memberId, $request->getParameter('page'), 20);
+    $this->pager = DiaryPeer::getMemberDiaryPager($memberId, $request->getParameter('page'), 20, $this->getUser()->getMemberId());
   }
 
  /**

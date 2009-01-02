@@ -2,7 +2,7 @@
 
 <div class="dparts diaryDetailBox"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $diary->getMember()->getName())) ?></h3>
-<p class="public">(<?php echo __('Public') ?>)</p></div>
+<p class="public">(<?php echo $diary->getPublicFlagLabel() ?>)</p></div>
 <dl>
 <dt><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></dt>
 <dd>

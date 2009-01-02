@@ -2,66 +2,150 @@
 
 class DiaryPeer extends BaseDiaryPeer
 {
-  public static function getDiaryPager($page = 1, $size = 20)
+  const PUBLIC_FLAG_OPEN    = 4;
+  const PUBLIC_FLAG_SNS     = 1;
+  const PUBLIC_FLAG_FRIEND  = 2;
+  const PUBLIC_FLAG_PRIVATE = 3;
+
+  protected static $publicFlags = array(
+    self::PUBLIC_FLAG_OPEN    => 'All Users on the Web',
+    self::PUBLIC_FLAG_SNS     => 'All Members',
+    self::PUBLIC_FLAG_FRIEND  => 'My Friends',
+    self::PUBLIC_FLAG_PRIVATE => 'Private',
+  );
+
+  public static function getPublicFlags()
   {
-    $c = new Criteria();
-    $c->addDescendingOrderByColumn(self::CREATED_AT);
+    if (!sfConfig::get('app_op_diary_plugin_is_open', false))
+    {
+      unset(self::$publicFlags[self::PUBLIC_FLAG_OPEN]);
+    }
 
-    $pager = new sfPropelPager('Diary', $size);
-    $pager->setCriteria($c);
-    $pager->setPage($page);
-    $pager->init();
-
-    return $pager;
+    return array_map(array(sfContext::getInstance()->getI18N(), '__'), self::$publicFlags);
   }
 
-  public static function getMemberDiaryList($memberId, $limit = 5)
+  public static function getDiaryPager($page = 1, $size = 20, $publicFlag = self::PUBLIC_FLAG_SNS)
   {
-    $c = new Criteria();
+    $c = self::getOrderdCriteria();
+    self::addPublicFlagCriteria($c, $publicFlag);
+
+    return self::getPager($c, $page, $size);
+  }
+
+  public static function getMemberDiaryList($memberId, $limit = 5, $myMemberId = null, $publicFlag = null)
+  {
+    $c = self::getOrderdCriteria();
     $c->add(self::MEMBER_ID, $memberId);
-    $c->addDescendingOrderByColumn(self::CREATED_AT);
+    self::addPublicFlagCriteria($c, self::getPublicFlagByMemberId($memberId, $myMemberId, $publicFlag));
     $c->setLimit($limit);
+
     return self::doSelect($c);
   }
 
-  public static function getMemberDiaryPager($memberId, $page = 1, $size = 20)
+  public static function getMemberDiaryPager($memberId, $page = 1, $size = 20, $myMemberId = null, $publicFlag = null)
   {
-    $c = new Criteria();
+    $c = self::getOrderdCriteria();
     $c->add(self::MEMBER_ID, $memberId);
-    $c->addDescendingOrderByColumn(self::CREATED_AT);
+    self::addPublicFlagCriteria($c, self::getPublicFlagByMemberId($memberId, $myMemberId, $publicFlag));
 
-    $pager = new sfPropelPager('Diary', $size);
-    $pager->setCriteria($c);
-    $pager->setPage($page);
-    $pager->init();
-
-    return $pager;
+    return self::getPager($c, $page, $size);
   }
 
   public static function getFriendDiaryList($memberId, $limit = 5)
   {
-    $friendIds = MemberRelationshipPeer::getFriendMemberIds($memberId, 5);
-
-    $c = new Criteria();
-    $c->add(self::MEMBER_ID, $friendIds, Criteria::IN);
-    $c->addDescendingOrderByColumn(self::CREATED_AT);
+    $c = self::getOrderdCriteria();
+    self::addFriendCriteria($c, $memberId);
     $c->setLimit($limit);
+
     return self::doSelect($c);
   }
 
   public static function getFriendDiaryPager($memberId, $page = 1, $size = 20)
   {
-    $friendIds = MemberRelationshipPeer::getFriendMemberIds($memberId, 5);
+    $c = self::getOrderdCriteria();
+    self::addFriendCriteria($c, $memberId);
 
-    $c = new Criteria();
-    $c->add(self::MEMBER_ID, $friendIds, Criteria::IN);
-    $c->addDescendingOrderByColumn(self::CREATED_AT);
+    return self::getPager($c, $page, $size);
+  }
 
+  protected static function getPager(Criteria $c, $page, $size)
+  {
     $pager = new sfPropelPager('Diary', $size);
     $pager->setCriteria($c);
     $pager->setPage($page);
     $pager->init();
 
     return $pager;
+  }
+
+  protected static function getOrderdCriteria()
+  {
+    $c = new Criteria();
+    $c->addDescendingOrderByColumn(self::CREATED_AT);
+    
+    return $c;
+  }
+
+  protected static function addFriendCriteria(Criteria $c, $memberId)
+  {
+    $friendIds = MemberRelationshipPeer::getFriendMemberIds($memberId, 5);
+
+    $c->add(self::MEMBER_ID, $friendIds, Criteria::IN);
+    self::addPublicFlagCriteria($c, self::PUBLIC_FLAG_FRIEND);
+
+    return $c;
+  }
+
+  protected static function addPublicFlagCriteria(Criteria $c, $flag)
+  {
+    $flags = array();
+    switch ($flag)
+    {
+      case self::PUBLIC_FLAG_FRIEND:
+        $flags[] = self::PUBLIC_FLAG_FRIEND;
+      case self::PUBLIC_FLAG_SNS:
+        $flags[] = self::PUBLIC_FLAG_SNS;
+      case self::PUBLIC_FLAG_OPEN:
+        $flags[] = self::PUBLIC_FLAG_OPEN;
+        break;
+
+      case self::PUBLIC_FLAG_PRIVATE:
+      default:
+        return $c;
+    }
+
+    if (1 === count($flags))
+    {
+      $c->add(self::PUBLIC_FLAG, array_shift($flags));
+    }
+    else
+    {
+      $c->add(self::PUBLIC_FLAG, $flags, Criteria::IN);
+    }
+
+    return $c;
+  }
+
+  protected static function getPublicFlagByMemberId($memberId, $myMemberId, $forceFlag = null)
+  {
+    if ($forceFlag)
+    {
+      return $forceFlag;
+    }
+
+    if ($memberId == $myMemberId)
+    {
+      return self::PUBLIC_FLAG_PRIVATE;
+    }
+
+    $relation = MemberRelationshipPeer::retrieveByFromAndTo($myMemberId, $memberId);
+    if ($relation && $relation->isFriend())
+    {
+      return self::PUBLIC_FLAG_FRIEND;
+    }
+    else
+    {
+      return self::PUBLIC_FLAG_SNS;
+    }
   }
 }
