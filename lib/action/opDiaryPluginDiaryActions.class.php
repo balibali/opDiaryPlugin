@@ -71,7 +71,9 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
     $this->diary->delete();
 
-    $this->redirect('diary/list');
+    $this->getUser()->setFlash('notice', 'The diary was deleted successfully.');
+
+    $this->redirect('@diary_list_member?id='.$this->getUser()->getMemberId());
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)

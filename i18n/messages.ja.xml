@@ -118,6 +118,10 @@
         <source>Private</source>
         <target>公開しない</target>
       </trans-unit>
+      <trans-unit id="30">
+        <source>The diary was deleted successfully.</source>
+        <target>日記を削除しました。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
