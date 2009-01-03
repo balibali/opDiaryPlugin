@@ -24,7 +24,7 @@ View Image<br>
 <hr>
 ▼<?php echo format_datetime($comment->getCreatedAt(), 'f') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
-[<?php echo link_to(__('Delete'), 'diary/deleteComment?id='.$comment->getId()) ?>]
+[<?php echo link_to(__('Delete'), 'diary_comment_delete', $comment) ?>]
 <?php endif; ?><br>
 <?php echo link_to($comment->getMember()->getName(), 'member/show?id='.$comment->getMemberId()) ?><br>
 <?php echo nl2br($comment->getBody()) ?><br>
@@ -35,7 +35,7 @@ View Image<br>
 <?php
 $options = array('form' => array($form));
 $title = __('Post a diary comment');
-$options['url'] = 'diary/postComment?id='.$diary->getId();
+$options['url'] = '@diary_comment_create?id='.$diary->getId();
 $options['button'] = __('Save');
 $options['isMultipart'] = true;
 include_box('formDiaryComment', $title, '', $options);

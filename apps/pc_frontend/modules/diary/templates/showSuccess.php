@@ -43,7 +43,7 @@
 <dd><p><?php echo $comment->getMember()->getName() ?></p></dd>
 <dd><p><?php echo nl2br($comment->getBody()) ?></p></dd>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
-<dd><p><?php echo link_to(__('Delete this comment'), 'diary/deleteComment?id='.$comment->getId()) ?></p></dd>
+<dd><p><?php echo link_to(__('Delete this comment'), 'diary_comment_delete', $comment) ?></p></dd>
 <?php endif; ?>
 </dl>
 <?php endforeach; ?>
@@ -53,7 +53,7 @@
 <?php
 $options = array('form' => array($form));
 $title = __('Post a diary comment');
-$options['url'] = 'diary/postComment?id='.$diary->getId();
+$options['url'] = '@diary_comment_create?id='.$diary->getId();
 $options['button'] = __('Save');
 $options['isMultipart'] = true;
 include_box('formDiaryComment', $title, '', $options);

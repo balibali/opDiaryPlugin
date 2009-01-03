@@ -89,19 +89,19 @@ class opDiaryPluginRouting
         array('model' => 'Diary', 'type' => 'object')
       )
     );
-    $routing->prependRoute('diary_post_comment',
+    $routing->prependRoute('diary_comment_create',
       new sfPropelRoute(
-        '/diary/postComment/:id',
-        array('module' => 'diary', 'action' => 'postComment'),
+        '/diary/:id/comment/create',
+        array('module' => 'diaryComment', 'action' => 'create'),
         array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'Diary', 'type' => 'object')
       )
     );
     // TODO: remove GET method
-    $routing->prependRoute('diary_delete_comment',
+    $routing->prependRoute('diary_comment_delete',
       new sfPropelRoute(
-        '/diary/deleteComment/:id',
-        array('module' => 'diary', 'action' => 'deleteComment'),
+        '/diary/comment/delete/:id',
+        array('module' => 'diaryComment', 'action' => 'delete'),
         array('id' => '\d+', 'sf_method' => array('get', 'post')),
         array('model' => 'DiaryComment', 'type' => 'object')
       )

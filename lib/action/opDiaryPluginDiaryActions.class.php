@@ -101,38 +101,6 @@ class opDiaryPluginDiaryActions extends sfActions
     $this->redirect('diary/list');
   }
 
-  public function executePostComment(sfWebRequest $request)
-  {
-    $this->forward404Unless($this->isViewable());
-
-    $comment = new DiaryComment();
-    $comment->setDiary($this->diary);
-    $comment->setMemberId($this->getUser()->getMemberId());
-    $this->form = new DiaryCommentForm($comment);
-    $this->form->bind($request->getParameter('diary_comment'));
-
-    if ($this->form->isValid())
-    {
-      $this->form->save();
-
-      $this->redirect($this->generateUrl('diary_show', $this->diary));
-    }
-
-    $this->setTemplate('show');
-  }
-
-  public function executeDeleteComment(sfWebRequest $request)
-  {
-    $diaryComment = DiaryCommentPeer::retrieveByPk($request->getParameter('id'));
-    $this->forward404Unless($diaryComment);
-    $this->forward404Unless(
-        $diaryComment->getDiary()->getMemberId() === $this->getUser()->getMemberId()
-        || $diaryComment->getMemberId() === $this->getUser()->getMemberId());
-    $diaryComment->delete();
-
-    $this->redirect($this->generateUrl('diary_show', $diaryComment->getDiary()));
-  }
-
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     $form->bind(
