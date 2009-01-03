@@ -6,11 +6,11 @@
 <?php if (count($diaryList)): ?>
 <ul>
 <?php foreach ($diaryList as $diary): ?>
-<li><?php echo format_date($diary->getCreatedAt()) ?> <?php echo link_to($diary->getTitle(), '@diary_by_id?id='.$diary->getId()) ?></li>
+<li><?php echo format_date($diary->getCreatedAt()) ?> <?php echo link_to($diary->getTitle(), 'diary_show', $diary) ?></li>
 <?php endforeach; ?>
 </ul>
-<p><?php echo link_to(__('More'), 'diary/listMember') ?></p>
+<p><?php echo link_to(__('More'), 'diary/listMember?id='.$sf_user->getMemberId()) ?></p>
 <?php endif; ?>
-<p><?php echo link_to(__('Post a diary'), 'diary/edit') ?></p>
+<p><?php echo link_to(__('Post a diary'), 'diary_new') ?></p>
 </div></div>
 </div></div>

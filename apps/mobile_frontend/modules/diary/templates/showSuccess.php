@@ -3,7 +3,7 @@
 
 ▼<?php echo format_datetime($diary->getCreatedAt(), 'f') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
-[<?php echo link_to(__('Edit'), 'diary/edit?id='.$diary->getId()) ?>][<?php echo link_to(__('Delete'), 'diary/delete?id='.$diary->getId()) ?>]
+[<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary/delete?id='.$diary->getId()) ?>]
 <?php endif; ?><br>
 
 <?php echo nl2br($diary->getBody()) ?><br>

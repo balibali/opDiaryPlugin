@@ -11,7 +11,7 @@ $list = array();
 foreach ($pager->getResults() as $diary)
 {
   $list[] = format_datetime($diary->getCreatedAt(), 'f').'<br>'
-           .link_to($diary->getTitle(), '@diary_by_id?id='.$diary->getId());
+           .link_to($diary->getTitle(), 'diary_show', $diary);
 }
 $options = array(
   'border' => true,
@@ -27,5 +27,5 @@ include_list_box('diaryList', $list, $options);
 <?php endif; ?>
 
 <?php if ($sf_user->getMemberId() === $member->getId()): ?>
-<?php echo link_to(__('Post a diary'), 'diary/edit') ?>
+<?php echo link_to(__('Post a diary'), 'diary_new') ?>
 <?php endif; ?>

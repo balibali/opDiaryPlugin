@@ -6,7 +6,7 @@
 <div class="box"><div class="body">
 <ul>
 <?php foreach ($diaryList as $diary): ?>
-<li><?php echo format_date($diary->getCreatedAt()) ?> <?php echo link_to($diary->getTitle(), '@diary_by_id?id='.$diary->getId()) ?></li>
+<li><?php echo format_date($diary->getCreatedAt()) ?> <?php echo link_to($diary->getTitle(), 'diary_show', $diary) ?></li>
 <?php endforeach; ?>
 </ul>
 <?php echo link_to(__('More'), 'diary/listFriend') ?>

@@ -14,7 +14,7 @@
 </tr><tr>
 <th><?php echo __('Body') ?></th><td><?php echo $diary->getBody() ?></td>
 </tr><tr class="operation">
-<th><?php echo __('Created at') ?></th><td><span class="text"><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), '@diary_by_id?id='.$diary->getId()) ?></span></td>
+<th><?php echo __('Created at') ?></th><td><span class="text"><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), 'diary_show', $diary) ?></span></td>
 </tr></tbody></table></div></div>
 <?php endforeach; ?>
 </div>

@@ -11,7 +11,7 @@ $list = array();
 foreach ($pager->getResults() as $diary)
 {
   $list[] = format_datetime($diary->getCreatedAt(), 'f').'<br>'
-           .link_to($diary->getTitle(), '@diary_by_id?id='.$diary->getId())
+           .link_to($diary->getTitle(), 'diary_show', $diary)
            .'('.$diary->getMember()->getName().')';
 }
 $options = array(

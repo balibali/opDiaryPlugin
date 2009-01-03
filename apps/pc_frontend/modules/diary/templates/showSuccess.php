@@ -27,8 +27,8 @@
 <div class="parts">
 <?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
 <ul>
-<li><?php echo link_to(__('Edit this diary'), 'diary/edit?id='.$diary->getId()) ?></li>
-<li><?php echo link_to(__('Delete this diary'), 'diary/delete?id='.$diary->getId()) ?></li>
+<li><?php echo link_to(__('Edit this diary'), 'diary_edit', $diary) ?></li>
+<li><form action="<?php echo url_for('diary_delete', $diary) ?>" method="post"><input type="submit" value="<?php echo __('Delete this diary') ?>" /></form></li>
 </ul>
 <?php endif; ?>
 </div>

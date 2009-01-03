@@ -5,7 +5,7 @@
 $list = array();
 foreach ($diaryList as $diary)
 {
-  $list[] = format_date($diary->getCreatedAt()).' '.link_to($diary->getTitle(), '@diary_by_id?id='.$diary->getId());
+  $list[] = format_date($diary->getCreatedAt()).' '.link_to($diary->getTitle(), 'diary_show', $diary);
 }
 $moreInfo = array();
 $moreInfo[] = link_to(__('More'), 'diary/listMember?id='.$memberId);
