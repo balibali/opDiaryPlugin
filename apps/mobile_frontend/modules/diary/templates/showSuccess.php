@@ -28,6 +28,9 @@ View Image<br>
 <?php endif; ?><br>
 <?php echo link_to($comment->getMember()->getName(), 'member/show?id='.$comment->getMemberId()) ?><br>
 <?php echo nl2br($comment->getBody()) ?><br>
+<?php foreach ($comment->getDiaryCommentImages() as $image): ?>
+View Image<br>
+<?php endforeach; ?>
 <?php endforeach; ?>
 <?php endif; ?>
 

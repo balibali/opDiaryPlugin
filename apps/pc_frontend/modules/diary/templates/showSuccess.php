@@ -41,6 +41,16 @@
 <dl>
 <dt><?php echo format_datetime($comment->getCreatedAt(), 'f') ?></dt>
 <dd><p><?php echo $comment->getMember()->getName() ?></p></dd>
+<?php $images = $comment->getDiaryCommentImages() ?>
+<?php if (count($images)): ?>
+<dd>
+<ul class="photo">
+<?php foreach ($images as $image): ?>
+<li><?php echo image_tag_sf_image($image->getFile(), array('size' => '120x120')) ?></li>
+<?php endforeach; ?>
+</ul>
+</dd>
+<?php endif; ?>
 <dd><p><?php echo nl2br($comment->getBody()) ?></p></dd>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
 <dd><p><?php echo link_to(__('Delete this comment'), 'diary_comment_delete', $comment) ?></p></dd>
