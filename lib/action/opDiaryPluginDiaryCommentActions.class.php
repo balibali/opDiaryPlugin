@@ -7,36 +7,8 @@
  * @subpackage diary
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  */
-class opDiaryPluginDiaryCommentActions extends sfActions
+class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
 {
-  public function preExecute()
-  {
-    if (is_callable(array($this->getRoute(), 'getObject')))
-    {
-      $object = $this->getRoute()->getObject();
-      if ($object instanceof Diary)
-      {
-        $this->diary = $object;
-        $this->setNavigation($this->diary->getMemberId());
-      }
-      elseif ($object instanceof DiaryComment)
-      {
-        $this->diaryComment = $object;
-        $this->diary = $this->diaryComment->getDiary();
-        $this->setNavigation($this->diary->getMemberId());
-      }
-    }
-  }
-
-  protected function setNavigation($memberId)
-  {
-    if ($memberId !== $this->getUser()->getMemberId())
-    {
-      sfConfig::set('sf_navi_type', 'friend');
-      sfConfig::set('sf_navi_id', $memberId);
-    }
-  }
-
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($this->isViewable());
@@ -70,20 +42,5 @@ class opDiaryPluginDiaryCommentActions extends sfActions
     $this->diaryComment->delete();
 
     $this->redirect($this->generateUrl('diary_show', $this->diary));
-  }
-
-  protected function isAuthor()
-  {
-    if ($this->diary->getMemberId() === $this->getUser()->getMemberId())
-    {
-      return true;
-    }
-
-    return false;
-  }
-
-  protected function isViewable()
-  {
-    return DiaryPeer::isViewable($this->diary, $this->getUser()->getMemberId());
   }
 }
