@@ -48,10 +48,7 @@ class opDiaryPluginDiaryActions extends sfActions
 
   public function executeListMember(sfWebRequest $request)
   {
-    $memberId = $request->getParameter('id', $this->getUser()->getMemberId());
-    $this->member = MemberPeer::retrieveByPk($memberId);
-    $this->forward404unless($this->member);
-    $this->pager = DiaryPeer::getMemberDiaryPager($memberId, $request->getParameter('page'), 20, $this->getUser()->getMemberId());
+    $this->pager = DiaryPeer::getMemberDiaryPager($this->member->getId(), $request->getParameter('page'), 20, $this->getUser()->getMemberId());
   }
 
   public function executeListFriend(sfWebRequest $request)
