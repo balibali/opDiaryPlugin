@@ -61,6 +61,8 @@ class opDiaryPluginDiaryActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
+    $this->forward404Unless($this->isViewable());
+
     $this->form = new DiaryCommentForm();
   }
 
@@ -78,13 +80,15 @@ class opDiaryPluginDiaryActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->forward404Unless($this->diary->getMemberId() === $this->getUser()->getMemberId());
+    $this->forward404Unless($this->isAuthor());
+
     $this->form = new DiaryForm($this->diary);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
-    $this->forward404Unless($this->diary->getMemberId() === $this->getUser()->getMemberId());
+    $this->forward404Unless($this->isAuthor());
+
     $this->form = new DiaryForm($this->diary);
     $this->processForm($request, $this->form);
     $this->setTemplate('edit');
@@ -106,16 +110,17 @@ class opDiaryPluginDiaryActions extends sfActions
 
   public function executeDelete(sfWebRequest $request)
   {
-    $diary = DiaryPeer::retrieveByPk($request->getParameter('id'));
-    $this->forward404Unless($diary);
-    $this->forward404Unless($diary->getMemberId() === $this->getUser()->getMemberId());
-    $diary->delete();
+    $this->forward404Unless($this->isAuthor());
+
+    $this->diary->delete();
 
     $this->redirect('diary/list');
   }
 
   public function executePostComment(sfWebRequest $request)
   {
+    $this->forward404Unless($this->isViewable());
+
     $comment = new DiaryComment();
     $comment->setDiary($this->diary);
     $comment->setMemberId($this->getUser()->getMemberId());
@@ -142,5 +147,20 @@ class opDiaryPluginDiaryActions extends sfActions
     $diaryComment->delete();
 
     $this->redirect($this->generateUrl('diary_show', $diaryComment->getDiary()));
+  }
+
+  protected function isAuthor()
+  {
+    if ($this->diary->getMemberId() === $this->getUser()->getMemberId())
+    {
+      return true;
+    }
+
+    return false;
+  }
+
+  protected function isViewable()
+  {
+    return DiaryPeer::isViewable($this->diary, $this->getUser()->getMemberId());
   }
 }

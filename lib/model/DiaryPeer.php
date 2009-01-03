@@ -98,22 +98,12 @@ class DiaryPeer extends BaseDiaryPeer
 
   protected static function addPublicFlagCriteria(Criteria $c, $flag)
   {
-    $flags = array();
-    switch ($flag)
+    if ($flag === self::PUBLIC_FLAG_PRIVATE)
     {
-      case self::PUBLIC_FLAG_FRIEND:
-        $flags[] = self::PUBLIC_FLAG_FRIEND;
-      case self::PUBLIC_FLAG_SNS:
-        $flags[] = self::PUBLIC_FLAG_SNS;
-      case self::PUBLIC_FLAG_OPEN:
-        $flags[] = self::PUBLIC_FLAG_OPEN;
-        break;
-
-      case self::PUBLIC_FLAG_PRIVATE:
-      default:
-        return $c;
+      return $c;
     }
 
+    $flags = self::getViewablePublicFlags($flag);
     if (1 === count($flags))
     {
       $c->add(self::PUBLIC_FLAG, array_shift($flags));
@@ -147,5 +137,31 @@ class DiaryPeer extends BaseDiaryPeer
     {
       return self::PUBLIC_FLAG_SNS;
     }
+  }
+
+  protected static function getViewablePublicFlags($flag)
+  {
+    $flags = array();
+    switch ($flag)
+    {
+      case self::PUBLIC_FLAG_PRIVATE:
+        $flags[] = self::PUBLIC_FLAG_PRIVATE;
+      case self::PUBLIC_FLAG_FRIEND:
+        $flags[] = self::PUBLIC_FLAG_FRIEND;
+      case self::PUBLIC_FLAG_SNS:
+        $flags[] = self::PUBLIC_FLAG_SNS;
+      case self::PUBLIC_FLAG_OPEN:
+        $flags[] = self::PUBLIC_FLAG_OPEN;
+        break;
+    }
+
+    return $flags;
+  }
+
+  public static function isViewable(Diary $diary, $myMemberId)
+  {
+    $flags = self::getViewablePublicFlags(self::getPublicFlagByMemberId($diary->getMemberId(), $myMemberId));
+
+    return in_array($diary->getPublicFlag(), $flags);
   }
 }
