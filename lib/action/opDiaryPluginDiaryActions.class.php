@@ -71,6 +71,7 @@ class opDiaryPluginDiaryActions extends sfActions
   public function executeCreate(sfWebRequest $request)
   {
     $this->form = new DiaryForm();
+    $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
     $this->processForm($request, $this->form);
     $this->setTemplate('new');
   }
@@ -89,20 +90,6 @@ class opDiaryPluginDiaryActions extends sfActions
     $this->form = new DiaryForm($this->diary);
     $this->processForm($request, $this->form);
     $this->setTemplate('edit');
-  }
-
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $params = $request->getParameter('diary');
-    $params['member_id'] = $this->getUser()->getMemberId();
-    $this->form->bind($params, $request->getFiles('diary'));
-
-    if ($this->form->isValid())
-    {
-      $diary = $this->form->save();
-
-      $this->redirect($this->generateUrl('diary_show', $diary));
-    }
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -144,6 +131,21 @@ class opDiaryPluginDiaryActions extends sfActions
     $diaryComment->delete();
 
     $this->redirect($this->generateUrl('diary_show', $diaryComment->getDiary()));
+  }
+
+  protected function processForm(sfWebRequest $request, sfForm $form)
+  {
+    $form->bind(
+      $request->getParameter($form->getName()),
+      $request->getFiles($form->getName())
+    );
+
+    if ($form->isValid())
+    {
+      $diary = $form->save();
+
+      $this->redirect($this->generateUrl('diary_show', $diary));
+    }
   }
 
   protected function isAuthor()
