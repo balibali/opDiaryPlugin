@@ -1,0 +1,5 @@
+all:
+  diary_is_upload_images:   true
+  diary_max_image_file_num: 3
+  diary_comment_is_upload_images:   true
+  diary_comment_max_image_file_num: 3

@@ -18,11 +18,15 @@ class DiaryCommentForm extends BaseDiaryCommentForm
     unset($this['created_at']);
     unset($this['updated_at']);
 
-    for ($i = 1; $i <= 3; $i++)
+    if (sfConfig::get('app_diary_comment_is_upload_images', true))
     {
-      $key = 'photo_'.$i;
-      $this->setWidget($key, new sfWidgetFormInputFile());
-      $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
+      $max = (int)sfConfig::get('app_diary_comment_max_image_file_num', 3);
+      for ($i = 1; $i <= $max; $i++)
+      {
+        $key = 'photo_'.$i;
+        $this->setWidget($key, new sfWidgetFormInputFile());
+        $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
+      }
     }
   }
 
@@ -30,19 +34,23 @@ class DiaryCommentForm extends BaseDiaryCommentForm
   {
     $comment = parent::save();
 
-    for ($i = 1; $i <= 3; $i++)
+    if (sfConfig::get('app_diary_comment_is_upload_images', true))
     {
-      $key = 'photo_'.$i;
-      if ($this->getValue($key))
+      $max = (int)sfConfig::get('app_diary_comment_max_image_file_num', 3);
+      for ($i = 1; $i <= $max; $i++)
       {
-        $file = new File();
-        $file->setFromValidatedFile($this->getValue($key));
-        $file->setName('dc_'.$comment->getId().'_'.$file->getName());
+        $key = 'photo_'.$i;
+        if ($this->getValue($key))
+        {
+          $file = new File();
+          $file->setFromValidatedFile($this->getValue($key));
+          $file->setName('dc_'.$comment->getId().'_'.$file->getName());
 
-        $image = new DiaryCommentImage();
-        $image->setDiaryComment($comment);
-        $image->setFile($file);
-        $image->save();
+          $image = new DiaryCommentImage();
+          $image->setDiaryComment($comment);
+          $image->setFile($file);
+          $image->save();
+        }
       }
     }
 

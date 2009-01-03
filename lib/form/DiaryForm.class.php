@@ -25,26 +25,39 @@ class DiaryForm extends BaseDiaryForm
       'choices' => array_keys(DiaryPeer::getPublicFlags()),
     ));
 
-    $this->mergeForm(new DiaryImageForm());
+    if (sfConfig::get('app_diary_is_upload_images', true))
+    {
+      $max = (int)sfConfig::get('app_diary_max_image_file_num', 3);
+      for ($i = 1; $i <= $max; $i++)
+      {
+        $key = 'photo_'.$i;
+        $this->setWidget($key, new sfWidgetFormInputFile());
+        $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
+      }
+    }
   }
 
   public function save($con = null)
   {
     $diary = parent::save();
 
-    $imageKeys = array('photo_1', 'photo_2', 'photo_3');
-    foreach ($imageKeys as $imageKey)
+    if (sfConfig::get('app_diary_is_upload_images', true))
     {
-      if ($this->getValue($imageKey))
+      $max = (int)sfConfig::get('app_diary_max_image_file_num', 3);
+      for ($i = 1; $i <= $max; $i++)
       {
-        $file = new File();
-        $file->setFromValidatedFile($this->getValue($imageKey));
-        $file->setName('d_'.$diary->getId().'_'.$file->getName());
+        $key = 'photo_'.$i;
+        if ($this->getValue($key))
+        {
+          $file = new File();
+          $file->setFromValidatedFile($this->getValue($key));
+          $file->setName('d_'.$diary->getId().'_'.$file->getName());
 
-        $image = new DiaryImage();
-        $image->setDiary($diary);
-        $image->setFile($file);
-        $image->save();
+          $image = new DiaryImage();
+          $image->setDiary($diary);
+          $image->setFile($file);
+          $image->save();
+        }
       }
     }
 
