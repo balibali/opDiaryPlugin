@@ -1,0 +1,10 @@
+HomeWidget:
+  diay_friend_list:
+    type: "contents"
+    name: "diaryFriendList"
+    sort_order: 101
+
+  diary_my_list:
+    type: "contents"
+    name: "diaryMyList"
+    sort_order: 102

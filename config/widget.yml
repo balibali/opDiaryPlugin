@@ -1,0 +1,13 @@
+diaryFriendList:
+  caption:
+    ja_JP: "マイフレンド最新日記"
+  description:
+    ja_JP: "マイフレンドの書いた日記を新着順に表示します。"
+  component: [diary, friendDiaryList]
+
+diaryMyList:
+  caption:
+    ja_JP: "最新日記"
+  description:
+    ja_JP: "自分の書いた日記を新着順に表示します。"
+  component: [diary, myDiaryList]
