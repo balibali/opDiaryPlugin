@@ -1,5 +1,5 @@
 <?php include_page_title(__('Recently Posted Diaries')) ?>
-<?php use_helper('Date'); ?>
+<?php use_helper('opDiary'); ?>
 
 <?php if ($pager->getNbResults()): ?>
 
@@ -10,9 +10,11 @@
 $list = array();
 foreach ($pager->getResults() as $diary)
 {
-  $list[] = format_datetime($diary->getCreatedAt(), 'f').'<br>'
-           .link_to($diary->getTitle(), 'diary_show', $diary)
-           .'('.$diary->getMember()->getName().')';
+  $list[] = sprintf("%s<br>%s (%s)",
+              op_diary_format_date($diary->getCreatedAt(), 'XDateTime'),
+              link_to($diary->getTitle(), 'diary_show', $diary),
+              $diary->getMember()->getName()
+            );
 }
 $options = array(
   'border' => true,

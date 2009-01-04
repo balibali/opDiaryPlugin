@@ -1,5 +1,5 @@
 <?php include_page_title(__('Diaries of %1%', array('%1%' => $member->getName()))) ?>
-<?php use_helper('Date'); ?>
+<?php use_helper('opDiary'); ?>
 
 <?php if ($pager->getNbResults()): ?>
 
@@ -10,8 +10,10 @@
 $list = array();
 foreach ($pager->getResults() as $diary)
 {
-  $list[] = format_datetime($diary->getCreatedAt(), 'f').'<br>'
-           .link_to($diary->getTitle(), 'diary_show', $diary);
+  $list[] = sprintf("%s<br>%s",
+              op_diary_format_date($diary->getCreatedAt(), 'XDateTime'),
+              link_to($diary->getTitle(), 'diary_show', $diary)
+            );
 }
 $options = array(
   'border' => true,

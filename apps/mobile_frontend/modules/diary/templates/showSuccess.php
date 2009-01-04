@@ -1,7 +1,7 @@
 <?php include_page_title(__('Diary of %1%', array('%1%' => $member->getName())), $diary->getTitle()) ?>
-<?php use_helper('Date') ?>
+<?php use_helper('opDiary') ?>
 
-▼<?php echo format_datetime($diary->getCreatedAt(), 'f') ?>
+▼<?php echo op_diary_format_date($diary->getCreatedAt(), 'XDateTime') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
 [<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary_delete_confirm', $diary) ?>]
 <?php endif; ?><br>
@@ -22,7 +22,7 @@
 </center>
 <?php foreach ($comments as $comment): ?>
 <hr>
-▼<?php echo format_datetime($comment->getCreatedAt(), 'f') ?>
+▼[<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_diary_format_date($comment->getCreatedAt(), 'XDateTime') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
 [<?php echo link_to(__('Delete'), 'diary_comment_delete_confirm', $comment) ?>]
 <?php endif; ?><br>

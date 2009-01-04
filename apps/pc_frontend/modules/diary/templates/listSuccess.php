@@ -1,4 +1,4 @@
-<?php use_helper('Date'); ?>
+<?php use_helper('opDiary'); ?>
 
 <div class="dparts searchResultList"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Recently Posted Diaries') ?></h3></div>
@@ -14,7 +14,7 @@
 </tr><tr>
 <th><?php echo __('Body') ?></th><td><?php echo $diary->getBody() ?></td>
 </tr><tr class="operation">
-<th><?php echo __('Created at') ?></th><td><span class="text"><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), 'diary_show', $diary) ?></span></td>
+<th><?php echo __('Created at') ?></th><td><span class="text"><?php echo op_diary_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), 'diary_show', $diary) ?></span></td>
 </tr></tbody></table></div></div>
 <?php endforeach; ?>
 </div>

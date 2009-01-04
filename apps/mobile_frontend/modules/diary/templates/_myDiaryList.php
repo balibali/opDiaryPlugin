@@ -1,10 +1,13 @@
-<?php use_helper('Date') ?>
+<?php use_helper('opDiary') ?>
 
 <?php
 $list = array();
 foreach ($diaryList as $diary)
 {
-  $list[] = format_date($diary->getCreatedAt()).' '.link_to($diary->getTitle(), 'diary_show', $diary);
+  $list[] = sprintf('[%s] %s',
+              op_diary_format_date($diary->getCreatedAt(), 'XShortDate'),
+              link_to($diary->getTitle(), 'diary_show', $diary)
+            );
 }
 $moreInfo = array();
 if (count($diaryList))

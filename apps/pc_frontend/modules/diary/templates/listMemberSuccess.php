@@ -1,4 +1,4 @@
-<?php use_helper('Date'); ?>
+<?php use_helper('opDiary'); ?>
 
 <?php decorate_with('layoutB') ?>
 <?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member))) ?>
@@ -9,7 +9,7 @@
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId()); ?></p></div>
 <?php foreach ($pager->getResults() as $diary): ?>
 <dl>
-<dt><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></dt>
+<dt><?php echo op_diary_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></dt>
 <dd><?php echo link_to($diary->getTitle(), 'diary_show', $diary) ?></dd>
 </dl>
 <?php endforeach; ?>

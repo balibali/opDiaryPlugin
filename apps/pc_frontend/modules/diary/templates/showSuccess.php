@@ -1,4 +1,4 @@
-<?php use_helper('Date', 'Text') ?>
+<?php use_helper('opDiary', 'Text') ?>
 
 <?php decorate_with('layoutB') ?>
 <?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member))) ?>
@@ -8,7 +8,7 @@
 <div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $member->getName())) ?></h3>
 <p class="public">(<?php echo $diary->getPublicFlagLabel() ?>)</p></div>
 <dl>
-<dt><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></dt>
+<dt><?php echo nl2br(op_diary_format_date($diary->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>
 <div class="title">
 <p class="heading"><?php echo $diary->getTitle(); ?></p>
@@ -45,7 +45,7 @@
 <div class="partsHeading"><h3><?php echo __('Comments') ?></h3></div>
 <?php foreach ($comments as $comment): ?>
 <dl>
-<dt><?php echo format_datetime($comment->getCreatedAt(), 'f') ?></dt>
+<dt><?php echo nl2br(op_diary_format_date($comment->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>
 <div class="title">
 <p class="heading"><strong><?php echo $comment->getNumber() ?></strong>:
