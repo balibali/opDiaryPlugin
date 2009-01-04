@@ -19,7 +19,7 @@ class opDiaryPluginDiaryComponents extends sfComponents
     $this->diaryList = DiaryPeer::getFriendDiaryList($this->getUser()->getMemberId(), 5);
   }
 
-  public function executeMemberDiaryList($request)
+  public function executeMemberDiaryList(sfWebRequest $request)
   {
     $this->memberId = $request->getParameter('id', $this->getUser()->getMemberId());
     $this->diaryList = DiaryPeer::getMemberDiaryList($this->memberId, 5, $this->getUser()->getMemberId());
