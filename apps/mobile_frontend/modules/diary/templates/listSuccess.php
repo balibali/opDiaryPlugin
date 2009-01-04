@@ -12,7 +12,7 @@ foreach ($pager->getResults() as $diary)
 {
   $list[] = sprintf("%s<br>%s (%s)",
               op_diary_format_date($diary->getCreatedAt(), 'XDateTime'),
-              link_to($diary->getTitle(), 'diary_show', $diary),
+              link_to($diary->getTitleAndCount(false), 'diary_show', $diary),
               $diary->getMember()->getName()
             );
 }

@@ -10,7 +10,7 @@
 <td rowspan="4" class="photo"><a href="<?php echo url_for('diary_show', $diary) ?>"><?php echo image_tag_sf_image($diary->getMember()->getImageFilename(), array('size' => '76x76')) ?></a></td>
 <th><?php echo __('Nickname') ?></th><td><?php echo $diary->getMember()->getName() ?></td>
 </tr><tr>
-<th><?php echo __('Title') ?></th><td><?php echo $diary->getTitle() ?></td>
+<th><?php echo __('Title') ?></th><td><?php echo $diary->getTitleAndCount() ?></td>
 </tr><tr>
 <th><?php echo __('Body') ?></th><td><?php echo $diary->getBody() ?></td>
 </tr><tr class="operation">

@@ -10,7 +10,7 @@
 <?php foreach ($pager->getResults() as $diary): ?>
 <dl>
 <dt><?php echo op_diary_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></dt>
-<dd><?php echo link_to($diary->getTitle(), 'diary_show', $diary) ?></dd>
+<dd><?php echo link_to($diary->getTitleAndCount(), 'diary_show', $diary) ?></dd>
 </dl>
 <?php endforeach; ?>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId()); ?></p></div>

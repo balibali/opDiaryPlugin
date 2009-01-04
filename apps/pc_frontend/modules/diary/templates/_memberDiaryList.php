@@ -6,7 +6,7 @@
 <div class="box"><div class="body">
 <ul>
 <?php foreach ($diaryList as $diary): ?>
-<li><?php echo op_diary_format_date($diary->getCreatedAt(), 'XShortDateJa') ?> <?php echo link_to($diary->getTitle(), 'diary_show', $diary) ?></li>
+<li><?php echo op_diary_format_date($diary->getCreatedAt(), 'XShortDateJa') ?> <?php echo link_to($diary->getTitleAndCount(), 'diary_show', $diary) ?></li>
 <?php endforeach; ?>
 </ul>
 <p><?php echo link_to(__('More'), 'diary/listMember?id='.$memberId) ?></p>
