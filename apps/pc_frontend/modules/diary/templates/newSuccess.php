@@ -1,3 +1,6 @@
+<?php decorate_with('layoutB') ?>
+<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member))) ?>
+
 <?php
 $options = array('form' => array($form));
 $title = __('Post a diary');

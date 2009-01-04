@@ -1,7 +1,11 @@
 <?php use_helper('Date') ?>
 
+<?php decorate_with('layoutB') ?>
+<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member))) ?>
+
+<?php /* {{{ diaryDetailBox */ ?>
 <div class="dparts diaryDetailBox"><div class="parts">
-<div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $diary->getMember()->getName())) ?></h3>
+<div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $member->getName())) ?></h3>
 <p class="public">(<?php echo $diary->getPublicFlagLabel() ?>)</p></div>
 <dl>
 <dt><?php echo format_datetime($diary->getCreatedAt(), 'f') ?></dt>
@@ -14,7 +18,7 @@
 <?php if (count($images)): ?>
 <ul class="photo">
 <?php foreach ($images as $image): ?>
-<li><?php echo image_tag_sf_image($image->getFile(), array('size' => '120x120')) ?></li>
+<li><a href="<?php echo sf_image_path($image->getFile()) ?>" target="_blank"><?php echo image_tag_sf_image($image->getFile(), array('size' => '120x120')) ?></a></li>
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
@@ -22,42 +26,51 @@
 </div>
 </dd>
 </dl>
-</div></div>
-
-<div class="parts">
 <?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
-<ul>
-<li><?php echo link_to(__('Edit this diary'), 'diary_edit', $diary) ?></li>
-<li><form action="<?php echo url_for('diary_delete', $diary) ?>" method="post"><input type="submit" value="<?php echo __('Delete this diary') ?>" /></form></li>
+<div class="operation">
+<form action="<?php echo url_for('diary_edit', $diary) ?>">
+<ul class="moreInfo button">
+<li><input type="submit" class="input_submit" value="<?php echo __('Edit this diary') ?>" /></li>
 </ul>
-<?php endif; ?>
+</form>
 </div>
+<?php endif; ?>
+</div></div>
+<?php /* }}} */ ?>
 
 <?php $comments = $diary->getDiaryComments() ?>
 <?php if (count($comments)): ?>
-<div class="dparts"><div class="parts">
+<?php /* {{{ commentList */ ?>
+<div class="dparts commentList"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Comments') ?></h3></div>
 <?php foreach ($comments as $comment): ?>
 <dl>
 <dt><?php echo format_datetime($comment->getCreatedAt(), 'f') ?></dt>
-<dd><p><?php echo $comment->getMember()->getName() ?></p></dd>
+<dd>
+<div class="title">
+<p class="heading"><strong><?php echo $comment->getNumber() ?></strong>:
+<?php if ($_member = $comment->getMember()): ?> <?php echo link_to($_member->getName(), 'member/profile?id='.$_member->getId()) ?><?php endif; ?>
+<?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
+ <?php echo link_to(__('Delete this comment'), 'diary_comment_delete', $comment) ?>
+<?php endif; ?>
+</p>
+</div>
+<div class="body">
 <?php $images = $comment->getDiaryCommentImages() ?>
 <?php if (count($images)): ?>
-<dd>
 <ul class="photo">
 <?php foreach ($images as $image): ?>
-<li><?php echo image_tag_sf_image($image->getFile(), array('size' => '120x120')) ?></li>
+<li><a href="<?php echo sf_image_path($image->getFile()) ?>" target="_blank"><?php echo image_tag_sf_image($image->getFile(), array('size' => '120x120')) ?></a></li>
 <?php endforeach; ?>
 </ul>
+<?php endif; ?>
+<p class="text"><?php echo nl2br($comment->getBody()) ?></p>
+</div>
 </dd>
-<?php endif; ?>
-<dd><p><?php echo nl2br($comment->getBody()) ?></p></dd>
-<?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
-<dd><p><?php echo link_to(__('Delete this comment'), 'diary_comment_delete', $comment) ?></p></dd>
-<?php endif; ?>
 </dl>
 <?php endforeach; ?>
 </div></div>
+<?php /* }}} */ ?>
 <?php endif; ?>
 
 <?php

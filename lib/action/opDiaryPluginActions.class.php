@@ -17,28 +17,37 @@ class opDiaryPluginActions extends sfActions
       if ($object instanceof Diary)
       {
         $this->diary = $object;
-        $this->setNavigation($this->diary->getMemberId());
+        $this->member = $this->diary->getMember();
       }
       elseif ($object instanceof DiaryComment)
       {
         $this->diaryComment = $object;
         $this->diary = $this->diaryComment->getDiary();
-        $this->setNavigation($this->diary->getMemberId());
+        $this->member = $this->diary->getMember();
       }
       elseif ($object instanceof Member)
       {
         $this->member = $object;
-        $this->setNavigation($this->member->getId());
       }
     }
   }
 
-  protected function setNavigation($memberId)
+  public function postExecute()
   {
-    if ($memberId !== $this->getUser()->getMemberId())
+    if (empty($this->member))
+    {
+      $this->member = $this->getUser()->getMember();
+    }
+
+    $this->setNavigation($this->member);
+  }
+
+  protected function setNavigation(Member $member)
+  {
+    if ($member->getId() !== $this->getUser()->getMemberId())
     {
       sfConfig::set('sf_navi_type', 'friend');
-      sfConfig::set('sf_navi_id', $memberId);
+      sfConfig::set('sf_navi_id', $member->getId());
     }
   }
 

@@ -1,5 +1,8 @@
 <?php use_helper('Date'); ?>
 
+<?php decorate_with('layoutB') ?>
+<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member))) ?>
+
 <div class="dparts recentList"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Diaries of %1%', array('%1%' => $member->getName())) ?></h3></div>
 <?php if ($pager->getNbResults()): ?>

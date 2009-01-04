@@ -9,4 +9,7 @@
  */
 class diaryComponents extends opDiaryPluginDiaryComponents
 {
+  public function executeSidemenu()
+  {
+  }
 }

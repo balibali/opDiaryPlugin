@@ -1,4 +1,4 @@
-<?php include_page_title(__('Diary of %1%', array('%1%' => $diary->getMember()->getName())), $diary->getTitle()) ?>
+<?php include_page_title(__('Diary of %1%', array('%1%' => $member->getName())), $diary->getTitle()) ?>
 <?php use_helper('Date') ?>
 
 ▼<?php echo format_datetime($diary->getCreatedAt(), 'f') ?>
