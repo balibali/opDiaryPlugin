@@ -15,7 +15,7 @@ include_box('formDiary', $title, '', $options);
 <h3><?php echo __('Delete this diary') ?></h3>
 </div>
 <div class="block">
-<form action="<?php echo url_for('@diary_delete?id='.$diary->getId()) ?>" method="post">
+<form action="<?php echo url_for('diary_delete_confirm', $diary) ?>">
 <div class="operation">
 <ul class="moreInfo button">
 <li>

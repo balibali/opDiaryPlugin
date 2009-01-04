@@ -80,12 +80,19 @@ class opDiaryPluginRouting
         array('model' => 'Diary', 'type' => 'object')
       )
     );
-    // TODO: remove GET method
+    $routing->prependRoute('diary_delete_confirm',
+      new sfPropelRoute(
+        '/diary/deleteConfirm/:id',
+        array('module' => 'diary', 'action' => 'deleteConfirm'),
+        array('id' => '\d+'),
+        array('model' => 'Diary', 'type' => 'object')
+      )
+    );
     $routing->prependRoute('diary_delete',
       new sfPropelRoute(
         '/diary/delete/:id',
         array('module' => 'diary', 'action' => 'delete'),
-        array('id' => '\d+', 'sf_method' => array('get', 'post')),
+        array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'Diary', 'type' => 'object')
       )
     );
@@ -97,12 +104,19 @@ class opDiaryPluginRouting
         array('model' => 'Diary', 'type' => 'object')
       )
     );
-    // TODO: remove GET method
+    $routing->prependRoute('diary_comment_delete_confirm',
+      new sfPropelRoute(
+        '/diary/comment/deleteConfirm/:id',
+        array('module' => 'diaryComment', 'action' => 'deleteConfirm'),
+        array('id' => '\d+'),
+        array('model' => 'DiaryComment', 'type' => 'object')
+      )
+    );
     $routing->prependRoute('diary_comment_delete',
       new sfPropelRoute(
         '/diary/comment/delete/:id',
         array('module' => 'diaryComment', 'action' => 'delete'),
-        array('id' => '\d+', 'sf_method' => array('get', 'post')),
+        array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'DiaryComment', 'type' => 'object')
       )
     );

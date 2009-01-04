@@ -32,6 +32,14 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
     $this->setTemplate('diary/show');
   }
 
+  public function executeDeleteConfirm(sfWebRequest $request)
+  {
+    $this->forward404Unless(
+         $this->isAuthor()
+      || $this->diaryComment->getMemberId() === $this->getUser()->getMemberId()
+    );
+  }
+
   public function executeDelete(sfWebRequest $request)
   {
     $this->forward404Unless(
@@ -40,6 +48,8 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
     );
 
     $this->diaryComment->delete();
+
+    $this->getUser()->setFlash('notice', 'The comment was deleted successfully.');
 
     $this->redirect($this->generateUrl('diary_show', $this->diary));
   }

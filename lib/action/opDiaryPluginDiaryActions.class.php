@@ -65,6 +65,11 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
     $this->setTemplate('edit');
   }
 
+  public function executeDeleteConfirm(sfWebRequest $request)
+  {
+    $this->forward404Unless($this->isAuthor());
+  }
+
   public function executeDelete(sfWebRequest $request)
   {
     $this->forward404Unless($this->isAuthor());

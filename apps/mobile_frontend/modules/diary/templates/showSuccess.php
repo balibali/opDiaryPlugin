@@ -3,7 +3,7 @@
 
 ▼<?php echo format_datetime($diary->getCreatedAt(), 'f') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
-[<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary/delete?id='.$diary->getId()) ?>]
+[<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary_delete_confirm', $diary) ?>]
 <?php endif; ?><br>
 
 <?php echo nl2br($diary->getBody()) ?><br>
@@ -24,7 +24,7 @@
 <hr>
 ▼<?php echo format_datetime($comment->getCreatedAt(), 'f') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
-[<?php echo link_to(__('Delete'), 'diary_comment_delete', $comment) ?>]
+[<?php echo link_to(__('Delete'), 'diary_comment_delete_confirm', $comment) ?>]
 <?php endif; ?><br>
 <?php echo link_to($comment->getMember()->getName(), 'member/show?id='.$comment->getMemberId()) ?><br>
 <?php echo nl2br($comment->getBody()) ?><br>

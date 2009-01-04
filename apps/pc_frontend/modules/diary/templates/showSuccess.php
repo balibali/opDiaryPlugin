@@ -51,7 +51,7 @@
 <p class="heading"><strong><?php echo $comment->getNumber() ?></strong>:
 <?php if ($_member = $comment->getMember()): ?> <?php echo link_to($_member->getName(), 'member/profile?id='.$_member->getId()) ?><?php endif; ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
- <?php echo link_to(__('Delete this comment'), 'diary_comment_delete', $comment) ?>
+ <?php echo link_to(__('Delete'), 'diary_comment_delete_confirm', $comment) ?>
 <?php endif; ?>
 </p>
 </div>
