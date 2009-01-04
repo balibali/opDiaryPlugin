@@ -1,4 +1,4 @@
-<?php use_helper('Date') ?>
+<?php use_helper('Date', 'Text') ?>
 
 <?php decorate_with('layoutB') ?>
 <?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member))) ?>
@@ -22,7 +22,7 @@
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
-<?php echo nl2br($diary->getBody()) ?>
+<?php echo auto_link_text(nl2br($diary->getBody()), 'urls', array('target' => '_blank'), true, 57) ?>
 </div>
 </dd>
 </dl>
@@ -64,7 +64,9 @@
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
-<p class="text"><?php echo nl2br($comment->getBody()) ?></p>
+<p class="text">
+<?php echo auto_link_text(nl2br($comment->getBody()), 'urls', array('target' => '_blank'), true, 57) ?>
+</p>
 </div>
 </dd>
 </dl>
