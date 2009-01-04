@@ -9,7 +9,7 @@
 <?php echo nl2br($diary->getBody()) ?><br>
 
 <?php foreach ($diary->getDiaryImages() as $image): ?>
-View Image<br>
+<?php echo link_to(__('View Image'), sf_image_path($image->getFile(), array('size' => '240x320', 'f' => 'jpg'))) ?><br>
 <?php endforeach; ?>
 
 (<?php echo $diary->getPublicFlagLabel() ?>)<br>
@@ -29,7 +29,7 @@ View Image<br>
 <?php echo link_to($comment->getMember()->getName(), 'member/show?id='.$comment->getMemberId()) ?><br>
 <?php echo nl2br($comment->getBody()) ?><br>
 <?php foreach ($comment->getDiaryCommentImages() as $image): ?>
-View Image<br>
+<?php echo link_to(__('View Image'), sf_image_path($image->getFile(), array('size' => '240x320', 'f' => 'jpg'))) ?><br>
 <?php endforeach; ?>
 <?php endforeach; ?>
 <?php endif; ?>
