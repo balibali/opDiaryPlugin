@@ -29,7 +29,7 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
       $this->redirect($this->generateUrl('diary_show', $this->diary));
     }
 
-    $this->setTemplate('diary/show');
+    $this->setTemplate('../../diary/templates/show');
   }
 
   public function executeDeleteConfirm(sfWebRequest $request)
