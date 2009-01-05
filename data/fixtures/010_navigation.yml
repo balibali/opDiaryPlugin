@@ -2,6 +2,7 @@ Navi:
   secure_global_navi_diary:
     type: "secure_global"
     uri: "diary/index"
+    sort_order: 21;
 
 NaviI18n:
   secure_global_navi_diary_i18n:
