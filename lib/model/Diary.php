@@ -16,4 +16,12 @@ class Diary extends BaseDiary
     $publicFlags = DiaryPeer::getPublicFlags();
     return $publicFlags[$this->getPublicFlag()];
   }
+
+  public function getDiaryCommentsCriteria()
+  {
+    $criteria = new Criteria();
+    $criteria->add(DiaryCommentPeer::DIARY_ID, $this->getId());
+
+    return $criteria;
+  }
 }

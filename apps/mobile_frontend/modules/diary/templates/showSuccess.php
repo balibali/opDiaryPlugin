@@ -14,12 +14,15 @@
 
 (<?php echo $diary->getPublicFlagLabel() ?>)<br>
 
-<?php $comments = $diary->getDiaryComments() ?>
-<?php if (count($comments)): ?>
+<?php /*
+<?php if ($pager->getNbResults()): ?>
 <hr>
 <center>
 <?php echo __('Comments') ?><br>
+<?php echo pager_total($pager); ?><br>
 </center>
+
+<?php $comments = $pager->getResults(); ?>
 <?php foreach ($comments as $comment): ?>
 <hr>
 ▼[<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_diary_format_date($comment->getCreatedAt(), 'XDateTime') ?>
@@ -32,7 +35,12 @@
 <?php echo link_to(__('View Image'), sf_image_path($image->getFile(), array('size' => '240x320', 'f' => 'jpg'))) ?><br>
 <?php endforeach; ?>
 <?php endforeach; ?>
+
+<?php echo pager_navigation($pager, '@diary_show?page=%d&id='.$diary->getId(), false) ?>
 <?php endif; ?>
+*/ ?>
+
+<?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>
 
 <hr>
 <?php
