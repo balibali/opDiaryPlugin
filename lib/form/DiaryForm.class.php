@@ -11,6 +11,7 @@ class DiaryForm extends BaseDiaryForm
 {
   public function configure()
   {
+    unset($this['id']);
     unset($this['member_id']);
     unset($this['created_at']);
     unset($this['updated_at']);
