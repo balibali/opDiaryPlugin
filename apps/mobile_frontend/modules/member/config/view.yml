@@ -5,6 +5,11 @@ homeSuccess:
       is_component: true
       parts:    [information]
       target:   [bottom]
+    homeLinks:
+      template: [diary, homeLinks]
+      is_component: false
+      parts:    [invite]
+      target:   [before]
     friendDiaryList:
       template: [diary, friendDiaryList]
       is_component: true

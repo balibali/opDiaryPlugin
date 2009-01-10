@@ -38,6 +38,10 @@
         <source>My Friends</source>
         <target>ﾏｲﾌﾚﾝﾄﾞまで公開</target>
       </trans-unit>
+      <trans-unit id="31">
+        <source>[1]1 diary has new comments!|(1,Inf]%1% diaries have new comments!</source>
+        <target>%1%件の日記に新着ｺﾒﾝﾄがあります!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
