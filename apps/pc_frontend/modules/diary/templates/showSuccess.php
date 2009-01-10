@@ -7,6 +7,18 @@
 <div class="dparts diaryDetailBox"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $member->getName())) ?></h3>
 <p class="public">(<?php echo $diary->getPublicFlagLabel() ?>)</p></div>
+
+<?php if ($diary->getPrevious() || $diary->getNext()): ?>
+<div class="block prevNextLinkLine">
+<?php if ($diary->getPrevious()): ?>
+<p class="prev"><?php echo link_to(__('Previous Diary'), 'diary_show', $diary->getPrevious()) ?></p>
+<?php endif; ?>
+<?php if ($diary->getNext()): ?>
+<p class="next"><?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext()) ?></p>
+<?php endif; ?>
+</div>
+<?php endif; ?>
+
 <dl>
 <dt><?php echo nl2br(op_diary_format_date($diary->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>

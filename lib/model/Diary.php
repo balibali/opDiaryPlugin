@@ -10,6 +10,8 @@
 
 class Diary extends BaseDiary
 {
+  protected $previous, $next;
+
   public function getTitleAndCount($space = true)
   {
     return sprintf('%s%s(%d)',
@@ -31,5 +33,35 @@ class Diary extends BaseDiary
     $criteria->add(DiaryCommentPeer::DIARY_ID, $this->getId());
 
     return $criteria;
+  }
+
+  public function getPrevious()
+  {
+    if (is_null($this->previous))
+    {
+      $criteria = new Criteria();
+      $criteria->add(DiaryPeer::MEMBER_ID, $this->getMemberId());
+      $criteria->add(DiaryPeer::ID, $this->getId(), Criteria::LESS_THAN);
+      $criteria->addDescendingOrderByColumn(DiaryPeer::ID);
+
+      $this->previous = DiaryPeer::doSelectOne($criteria);
+    }
+
+    return $this->previous;
+  }
+
+  public function getNext()
+  {
+    if (is_null($this->next))
+    {
+      $criteria = new Criteria();
+      $criteria->add(DiaryPeer::MEMBER_ID, $this->getMemberId());
+      $criteria->add(DiaryPeer::ID, $this->getId(), Criteria::GREATER_THAN);
+      $criteria->addAscendingOrderByColumn(DiaryPeer::ID);
+
+      $this->next = DiaryPeer::doSelectOne($criteria);
+    }
+
+    return $this->next;
   }
 }

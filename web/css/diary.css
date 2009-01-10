@@ -5,20 +5,22 @@
  *--------------------------------------------*/
 .diaryDetailBox .partsHeading,
 .diaryDetailBox dl,
+.prevNextLinkLine,
 .commentList dl,
 .recentList dl,
 .formTable .partsHeading,
-.formTable div.checkList ul,
+.formTable div.checkList ul
 {
   zoom: 1;
   overflow: visible;
 }
 .diaryDetailBox .partsHeading:after,
 .diaryDetailBox dl:after,
+.prevNextLinkLine:after,
 .commentList dl:after,
 .recentList dl:after,
 .formTable .partsHeading:after,
-.formTable div.checkList ul:after,
+.formTable div.checkList ul:after
 {
   content: ".";
   display: block;
@@ -189,6 +191,26 @@ div.operation ul.moreInfo li
 {
   display: inline;
   font-size: 80%;
+}
+
+/*==============================================================================
+ * 19. prevNextLinkLine
+ *----------------------------------------------------------------------------*/
+.prevNextLinkLine p.prev
+{
+  float: left;
+  width: 50%;
+  text-align: left;
+}
+.prevNextLinkLine p.next
+{
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+.block.prevNextLinkLine
+{
+  padding: 4px 10px;
 }
 
 /*==============================================================================

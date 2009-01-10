@@ -162,6 +162,14 @@
         <source>My Diaries</source>
         <target>自分の日記</target>
       </trans-unit>
+      <trans-unit id="41">
+        <source>Previous Diary</source>
+        <target>前の日記</target>
+      </trans-unit>
+      <trans-unit id="42">
+        <source>Next Diary</source>
+        <target>次の日記</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

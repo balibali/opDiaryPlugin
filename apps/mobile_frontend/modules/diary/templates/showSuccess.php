@@ -14,6 +14,14 @@
 
 (<?php echo $diary->getPublicFlagLabel() ?>)<br>
 
+<?php if ($diary->getPrevious() || $diary->getNext()): ?>
+<hr>
+<center>
+<?php if ($diary->getPrevious()): ?> <?php echo link_to(__('Previous Diary'), 'diary_show', $diary->getPrevious()) ?><?php endif; ?>
+<?php if ($diary->getNext()): ?> <?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext()) ?><?php endif; ?>
+</center>
+<?php endif; ?>
+
 <?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>
 
 <hr>
