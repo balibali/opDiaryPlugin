@@ -1,5 +1,10 @@
 homeSuccess:
   customize:
+    noticeUnreadDiaryComment:
+      template: [diary, noticeUnreadDiaryComment]
+      is_component: true
+      parts:    [information]
+      target:   [bottom]
     friendDiaryList:
       template: [diary, friendDiaryList]
       is_component: true

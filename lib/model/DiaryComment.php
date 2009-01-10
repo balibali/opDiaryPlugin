@@ -18,5 +18,10 @@ class DiaryComment extends BaseDiaryComment
     }
 
     parent::save($con);
+
+    if ($this->getMemberId() !== $this->getDiary()->getMemberId())
+    {
+      DiaryCommentUnreadPeer::register($this->getDiary());
+    }
   }
 }

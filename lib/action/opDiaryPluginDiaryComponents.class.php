@@ -32,4 +32,13 @@ class opDiaryPluginDiaryComponents extends sfComponents
     $this->memberId = $request->getParameter('id', $this->getUser()->getMemberId());
     $this->diaryList = DiaryPeer::getMemberDiaryList($this->memberId, 5, $this->getUser()->getMemberId());
   }
+
+  public function executeNoticeUnreadDiaryComment(sfWebRequest $request)
+  {
+    $memberId = $this->getUser()->getMemberId();
+    if ($this->count = DiaryCommentUnreadPeer::countUnreadDiary($memberId))
+    {
+      $this->diary = DiaryCommentUnreadPeer::getOneDiaryByMemberId($memberId);
+    }
+  }
 }

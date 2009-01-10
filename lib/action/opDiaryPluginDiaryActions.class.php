@@ -41,6 +41,11 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
   {
     $this->forward404Unless($this->isViewable());
 
+    if ($this->isAuthor())
+    {
+      DiaryCommentUnreadPeer::unregister($this->diary);
+    }
+
     $this->form = new DiaryCommentForm();
   }
 
