@@ -1,7 +1,8 @@
 <?php include_page_title(__('Diary of %1%', array('%1%' => $member->getName())), $diary->getTitle()) ?>
 <?php use_helper('opDiary') ?>
 
-▼<?php echo op_diary_format_date($diary->getCreatedAt(), 'XDateTime') ?>
+<?php echo op_diary_within_page_link() ?>
+<?php echo op_diary_format_date($diary->getCreatedAt(), 'XDateTime') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
 [<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary_delete_confirm', $diary) ?>]
 <?php endif; ?><br>
@@ -25,6 +26,7 @@
 <?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>
 
 <hr>
+<?php echo op_diary_within_page_link('') ?>
 <?php
 $options = array('form' => array($form));
 $title = __('Post a diary comment');

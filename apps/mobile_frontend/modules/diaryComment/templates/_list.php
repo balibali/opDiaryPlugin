@@ -9,7 +9,8 @@
 
 <?php foreach ($pager->getResults() as $comment): ?>
 <hr>
-▼[<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_diary_format_date($comment->getCreatedAt(), 'XDateTime') ?>
+<?php echo op_diary_within_page_link() ?>
+[<?php printf('%03d', $comment->getNumber()) ?>]<?php echo op_diary_format_date($comment->getCreatedAt(), 'XDateTime') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId() || $comment->getMemberId() === $sf_user->getMemberId()): ?>
 [<?php echo link_to(__('Delete'), 'diary_comment_delete_confirm', $comment) ?>]
 <?php endif; ?><br>
