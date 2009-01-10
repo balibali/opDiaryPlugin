@@ -36,6 +36,10 @@ class opDiaryPluginRouting
         array('id' => '\d+'),
         array('model' => 'Member', 'type' => 'object')
       ),
+      'diary_list_mine' => new sfRoute(
+        '/diary/listMember',
+        array('module' => 'diary', 'action' => 'listMember')
+      ),
       'diary_list_friend' => new sfRoute(
         '/diary/listFriend',
         array('module' => 'diary', 'action' => 'listFriend')

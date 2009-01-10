@@ -38,15 +38,15 @@ class opDiaryPluginActions extends sfActions
         $this->member = $object;
       }
     }
-  }
 
-  public function postExecute()
-  {
     if (empty($this->member))
     {
       $this->member = $this->getUser()->getMember();
     }
+  }
 
+  public function postExecute()
+  {
     $this->setNavigation($this->member);
   }
 
