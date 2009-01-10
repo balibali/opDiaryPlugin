@@ -12,7 +12,7 @@ foreach ($diaryList as $diary)
 $moreInfo = array();
 if (count($diaryList))
 {
-  $moreInfo[] = link_to(__('More'), 'diary/listMember?id='.$sf_user->getMemberId());
+  $moreInfo[] = link_to(__('More'), 'diary_list_mine');
 }
 $moreInfo[] = link_to(__('Post a diary'), 'diary_new');
 $options = array(
