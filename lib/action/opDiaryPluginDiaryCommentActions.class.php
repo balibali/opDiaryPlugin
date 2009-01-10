@@ -46,6 +46,8 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
          $this->isAuthor()
       || $this->diaryComment->getMemberId() === $this->getUser()->getMemberId()
     );
+
+    $this->form = new sfForm();
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -54,6 +56,7 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
          $this->isAuthor()
       || $this->diaryComment->getMemberId() === $this->getUser()->getMemberId()
     );
+    $request->checkCSRFProtection();
 
     $this->diaryComment->delete();
 

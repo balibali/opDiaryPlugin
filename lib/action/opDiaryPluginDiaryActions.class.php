@@ -76,11 +76,14 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
   public function executeDeleteConfirm(sfWebRequest $request)
   {
     $this->forward404Unless($this->isAuthor());
+
+    $this->form = new sfForm();
   }
 
   public function executeDelete(sfWebRequest $request)
   {
     $this->forward404Unless($this->isAuthor());
+    $request->checkCSRFProtection();
 
     $this->diary->delete();
 

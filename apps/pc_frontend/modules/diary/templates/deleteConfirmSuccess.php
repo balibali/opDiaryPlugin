@@ -8,6 +8,7 @@
 <div class="operation">
 <ul class="moreInfo button">
 <li>
+<?php echo $form[$form->getCSRFFieldName()] ?>
 <input class="input_submit" type="submit" value="<?php echo __('Delete') ?>" />
 </li>
 </ul>
