@@ -34,61 +34,61 @@ class DiaryPeer extends BaseDiaryPeer
 
   public static function getDiaryList($limit = 5, $publicFlag = self::PUBLIC_FLAG_SNS)
   {
-    $c = self::getOrderdCriteria();
-    self::addPublicFlagCriteria($c, $publicFlag);
-    $c->setLimit($limit);
+    $criteria = self::getOrderdCriteria();
+    self::addPublicFlagCriteria($criteria, $publicFlag);
+    $criteria->setLimit($limit);
 
-    return self::doSelect($c);
+    return self::doSelect($criteria);
   }
 
   public static function getDiaryPager($page = 1, $size = 20, $publicFlag = self::PUBLIC_FLAG_SNS)
   {
-    $c = self::getOrderdCriteria();
-    self::addPublicFlagCriteria($c, $publicFlag);
+    $criteria = self::getOrderdCriteria();
+    self::addPublicFlagCriteria($criteria, $publicFlag);
 
-    return self::getPager($c, $page, $size);
+    return self::getPager($criteria, $page, $size);
   }
 
   public static function getMemberDiaryList($memberId, $limit = 5, $myMemberId = null, $publicFlag = null)
   {
-    $c = self::getOrderdCriteria();
-    $c->add(self::MEMBER_ID, $memberId);
-    self::addPublicFlagCriteria($c, self::getPublicFlagByMemberId($memberId, $myMemberId, $publicFlag));
-    $c->setLimit($limit);
+    $criteria = self::getOrderdCriteria();
+    $criteria->add(self::MEMBER_ID, $memberId);
+    self::addPublicFlagCriteria($criteria, self::getPublicFlagByMemberId($memberId, $myMemberId, $publicFlag));
+    $criteria->setLimit($limit);
 
-    return self::doSelect($c);
+    return self::doSelect($criteria);
   }
 
   public static function getMemberDiaryPager($memberId, $page = 1, $size = 20, $myMemberId = null, $publicFlag = null)
   {
-    $c = self::getOrderdCriteria();
-    $c->add(self::MEMBER_ID, $memberId);
-    self::addPublicFlagCriteria($c, self::getPublicFlagByMemberId($memberId, $myMemberId, $publicFlag));
+    $criteria = self::getOrderdCriteria();
+    $criteria->add(self::MEMBER_ID, $memberId);
+    self::addPublicFlagCriteria($criteria, self::getPublicFlagByMemberId($memberId, $myMemberId, $publicFlag));
 
-    return self::getPager($c, $page, $size);
+    return self::getPager($criteria, $page, $size);
   }
 
   public static function getFriendDiaryList($memberId, $limit = 5)
   {
-    $c = self::getOrderdCriteria();
-    self::addFriendCriteria($c, $memberId);
-    $c->setLimit($limit);
+    $criteria = self::getOrderdCriteria();
+    self::addFriendCriteria($criteria, $memberId);
+    $criteria->setLimit($limit);
 
-    return self::doSelect($c);
+    return self::doSelect($criteria);
   }
 
   public static function getFriendDiaryPager($memberId, $page = 1, $size = 20)
   {
-    $c = self::getOrderdCriteria();
-    self::addFriendCriteria($c, $memberId);
+    $criteria = self::getOrderdCriteria();
+    self::addFriendCriteria($criteria, $memberId);
 
-    return self::getPager($c, $page, $size);
+    return self::getPager($criteria, $page, $size);
   }
 
-  protected static function getPager(Criteria $c, $page, $size)
+  protected static function getPager(Criteria $criteria, $page, $size)
   {
     $pager = new sfPropelPager('Diary', $size);
-    $pager->setCriteria($c);
+    $pager->setCriteria($criteria);
     $pager->setPage($page);
     $pager->init();
 
@@ -97,40 +97,40 @@ class DiaryPeer extends BaseDiaryPeer
 
   protected static function getOrderdCriteria()
   {
-    $c = new Criteria();
-    $c->addDescendingOrderByColumn(self::CREATED_AT);
+    $criteria = new Criteria();
+    $criteria->addDescendingOrderByColumn(self::CREATED_AT);
     
-    return $c;
+    return $criteria;
   }
 
-  protected static function addFriendCriteria(Criteria $c, $memberId)
+  protected static function addFriendCriteria(Criteria $criteria, $memberId)
   {
     $friendIds = MemberRelationshipPeer::getFriendMemberIds($memberId, 5);
 
-    $c->add(self::MEMBER_ID, $friendIds, Criteria::IN);
-    self::addPublicFlagCriteria($c, self::PUBLIC_FLAG_FRIEND);
+    $criteria->add(self::MEMBER_ID, $friendIds, Criteria::IN);
+    self::addPublicFlagCriteria($criteria, self::PUBLIC_FLAG_FRIEND);
 
-    return $c;
+    return $criteria;
   }
 
-  protected static function addPublicFlagCriteria(Criteria $c, $flag)
+  protected static function addPublicFlagCriteria(Criteria $criteria, $flag)
   {
     if ($flag === self::PUBLIC_FLAG_PRIVATE)
     {
-      return $c;
+      return $criteria;
     }
 
     $flags = self::getViewablePublicFlags($flag);
     if (1 === count($flags))
     {
-      $c->add(self::PUBLIC_FLAG, array_shift($flags));
+      $criteria->add(self::PUBLIC_FLAG, array_shift($flags));
     }
     else
     {
-      $c->add(self::PUBLIC_FLAG, $flags, Criteria::IN);
+      $criteria->add(self::PUBLIC_FLAG, $flags, Criteria::IN);
     }
 
-    return $c;
+    return $criteria;
   }
 
   protected static function getPublicFlagByMemberId($memberId, $myMemberId, $forceFlag = null)
