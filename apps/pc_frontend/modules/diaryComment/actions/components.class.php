@@ -17,4 +17,24 @@
  */
 class diaryCommentComponents extends opDiaryPluginDiaryCommentComponents
 {
+  public function executeList(sfWebRequest $request)
+  {
+    $this->sizes = array(20, 100);
+
+    $this->size = (int)$request->getParameter('size');
+    if (!in_array($this->size, $this->sizes))
+    {
+      $this->size = $this->sizes[0];
+    }
+
+    parent::executeList($request);
+  }
+
+  protected function getPager(sfWebRequest $request)
+  {
+    $pager = parent::getPager($request);
+    $pager->setMaxPerPage($this->size);
+
+    return $pager;
+  }
 }

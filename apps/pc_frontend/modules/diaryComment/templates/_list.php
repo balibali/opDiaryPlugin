@@ -4,13 +4,25 @@
 <?php /* {{{ commentList */ ?>
 <div class="dparts commentList"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Comments') ?></h3></div>
-<?php if ($pager->haveToPaginate()): ?>
+
+<?php if (min($sf_data->getRaw('sizes')) < $pager->getNbResults()): ?>
 <div class="pagerRelative">
-<?php if ($pager->hasEarlierPage()): ?><p class="prev"><?php echo link_to('前を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getEarlierPage()) ?></p><?php endif; ?>
-<p class="number"><?php echo __('%1%番～%2%番を表示', array('%1%' => $pager->getFirstItem()->getNumber(), '%2%' => $pager->getLastItem()->getNumber())) ?></p>
-<?php if ($pager->hasLaterPage()): ?><p class="next"><?php echo link_to('次を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getLaterPage()) ?></p><?php endif; ?>
+<?php foreach ($sizes as $n): ?>
+  <?php if ($n !== $size): ?>
+    <?php echo link_to(__('%1%件ずつ表示', array('%1%' => $n)), '@diary_show?id='.$diary->getId().'&size='.$n) ?>
+  <?php endif; ?>
+<?php endforeach; ?>
 </div>
 <?php endif; ?>
+
+<?php if ($pager->haveToPaginate()): ?>
+<div class="pagerRelative">
+<?php if ($pager->hasEarlierPage()): ?><p class="prev"><?php echo link_to('前を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getEarlierPage().'&size='.$size) ?></p><?php endif; ?>
+<p class="number"><?php echo __('%1%番～%2%番を表示', array('%1%' => $pager->getFirstItem()->getNumber(), '%2%' => $pager->getLastItem()->getNumber())) ?></p>
+<?php if ($pager->hasLaterPage()): ?><p class="next"><?php echo link_to('次を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getLaterPage().'&size='.$size) ?></p><?php endif; ?>
+</div>
+<?php endif; ?>
+
 <?php foreach ($pager->getResults() as $comment): ?>
 <dl>
 <dt><?php echo nl2br(op_diary_format_date($comment->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
