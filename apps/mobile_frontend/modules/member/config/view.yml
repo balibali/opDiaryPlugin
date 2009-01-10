@@ -15,8 +15,8 @@ homeSuccess:
       is_component: true
       parts:    [profileEdit]
       target:   [before]
-    myDiaryList:
-      template: [diary, myDiaryList]
+    diaryList:
+      template: [diary, diaryList]
       is_component: true
       parts:    [profileEdit]
       target:   [before]

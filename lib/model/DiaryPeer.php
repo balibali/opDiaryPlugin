@@ -32,6 +32,15 @@ class DiaryPeer extends BaseDiaryPeer
     return array_map(array(sfContext::getInstance()->getI18N(), '__'), self::$publicFlags);
   }
 
+  public static function getDiaryList($limit = 5, $publicFlag = self::PUBLIC_FLAG_SNS)
+  {
+    $c = self::getOrderdCriteria();
+    self::addPublicFlagCriteria($c, $publicFlag);
+    $c->setLimit($limit);
+
+    return self::doSelect($c);
+  }
+
   public static function getDiaryPager($page = 1, $size = 20, $publicFlag = self::PUBLIC_FLAG_SNS)
   {
     $c = self::getOrderdCriteria();

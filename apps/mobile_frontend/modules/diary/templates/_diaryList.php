@@ -1,5 +1,6 @@
 <?php use_helper('opDiary') ?>
 
+<?php if (count($diaryList)): ?>
 <?php
 $list = array();
 foreach ($diaryList as $diary)
@@ -9,16 +10,11 @@ foreach ($diaryList as $diary)
               link_to($diary->getTitleAndCount(false), 'diary_show', $diary)
             );
 }
-$moreInfo = array();
-if (count($diaryList))
-{
-  $moreInfo[] = link_to(__('More'), 'diary/listMember?id='.$sf_user->getMemberId());
-}
-$moreInfo[] = link_to(__('Post a diary'), 'diary_new');
 $options = array(
-  'title'  => __('My Diaries'),
+  'title'  => __('Recently Posted Diaries of All'),
   'border' => true,
-  'moreInfo' => $moreInfo,
+  'moreInfo' => array(link_to(__('More'), 'diary/list')),
 );
-include_list_box('myDiaryList', $list, $options);
+include_list_box('diaryList', $list, $options);
 ?>
+<?php endif; ?>

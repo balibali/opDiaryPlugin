@@ -154,6 +154,14 @@
         <source>Profile of %1%</source>
         <target>%1%さんのページ</target>
       </trans-unit>
+      <trans-unit id="39">
+        <source>Recently Posted Diaries of All</source>
+        <target>全体の最新日記</target>
+      </trans-unit>
+      <trans-unit id="40">
+        <source>My Diaries</source>
+        <target>自分の日記</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
