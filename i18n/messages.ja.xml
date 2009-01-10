@@ -122,6 +122,34 @@
         <source>The diary was deleted successfully.</source>
         <target>日記を削除しました。</target>
       </trans-unit>
+      <trans-unit id="31">
+        <source>[1]1 diary has new comments!|(1,Inf]%1% diaries have new comments!</source>
+        <target>%1%件の日記に新着コメントがあります！</target>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>View %1% per page</source>
+        <target>%1%件ずつ表示</target>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>View Latest</source>
+        <target>最新を表示</target>
+      </trans-unit>
+      <trans-unit id="34">
+        <source>View Oldest First</source>
+        <target>最初から表示</target>
+      </trans-unit>
+      <trans-unit id="35">
+        <source>Older</source>
+        <target>前を表示</target>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>Newer</source>
+        <target>次を表示</target>
+      </trans-unit>
+      <trans-unit id="37">
+        <source>No. %1% - %2%</source>
+        <target>%1%番～%2%番を表示</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

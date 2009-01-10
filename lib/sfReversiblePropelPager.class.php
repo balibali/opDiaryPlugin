@@ -40,22 +40,22 @@ class sfReversiblePropelPager extends sfPropelPager
     return $this->results;
   }
 
-  public function getEarlierPage()
+  public function getOlderPage()
   {
     return (Criteria::ASC === $this->sqlOrder) ? $this->getPreviousPage() : $this->getNextPage();
   }
 
-  public function getLaterPage()
+  public function getNewerPage()
   {
     return (Criteria::ASC === $this->sqlOrder) ? $this->getNextPage() : $this->getPreviousPage();
   }
 
-  public function hasEarlierPage()
+  public function hasOlderPage()
   {
     return (Criteria::ASC === $this->sqlOrder) ? $this->hasPreviousPage() : $this->hasNextPage();
   }
 
-  public function hasLaterPage()
+  public function hasNewerPage()
   {
     return (Criteria::ASC === $this->sqlOrder) ? $this->hasNextPage() : $this->hasPreviousPage();
   }

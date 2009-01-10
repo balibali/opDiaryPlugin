@@ -4,7 +4,7 @@
 <hr>
 <center>
 <?php echo __('Comments') ?><br>
-<?php echo __('%1%番～%2%番を表示', array('%1%' => $pager->getFirstItem()->getNumber(), '%2%' => $pager->getLastItem()->getNumber())) ?><br>
+<?php echo __('No. %1% - %2%', array('%1%' => $pager->getFirstItem()->getNumber(), '%2%' => $pager->getLastItem()->getNumber())) ?><br>
 </center>
 
 <?php foreach ($pager->getResults() as $comment): ?>
@@ -23,13 +23,13 @@
 <?php if ($pager->haveToPaginate()): ?>
 <hr>
 <center>
-<?php if ($pager->hasEarlierPage()): ?><?php echo link_to('前を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getEarlierPage().'&order='.$order) ?><?php endif; ?>
-<?php if ($pager->hasLaterPage()): ?> <?php echo link_to('次を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getLaterPage().'&order='.$order) ?><?php endif; ?>
+<?php if ($pager->hasOlderPage()): ?><?php echo link_to(__('Older'), '@diary_show?id='.$diary->getId().'&page='.$pager->getOlderPage().'&order='.$order) ?><?php endif; ?>
+<?php if ($pager->hasNewerPage()): ?> <?php echo link_to(__('Newer'), '@diary_show?id='.$diary->getId().'&page='.$pager->getNewerPage().'&order='.$order) ?><?php endif; ?>
 <br>
 <?php if (Criteria::ASC === $order): ?>
-  <?php echo link_to(__('最新を表示'), '@diary_show?id='.$diary->getId()) ?>
+  <?php echo link_to(__('View Latest'), '@diary_show?id='.$diary->getId()) ?>
 <?php else: ?>
-  <?php echo link_to(__('最初から表示'), '@diary_show?id='.$diary->getId().'&order='.Criteria::ASC) ?>
+  <?php echo link_to(__('View Oldest First'), '@diary_show?id='.$diary->getId().'&order='.Criteria::ASC) ?>
 <?php endif; ?>
 </center>
 <?php endif; ?>
