@@ -4,6 +4,20 @@ diaryFriendList:
   description:
     ja_JP: "マイフレンドの書いた日記を新着順に表示します。"
   component: [diary, friendDiaryList]
+  config:
+    max:
+      Name:      "max"
+      Caption:   "最大表示件数"
+      FormType:  "select"
+      ValueType:  "int"
+      IsRequired: true
+      Default:    5
+      Choices:
+        1: 1
+        3: 3
+        5: 5
+        7: 7
+        10: 10
 
 diaryMyList:
   caption:
@@ -11,3 +25,17 @@ diaryMyList:
   description:
     ja_JP: "自分の書いた日記を新着順に表示します。"
   component: [diary, myDiaryList]
+  config:
+    max:
+      Name:      "max"
+      Caption:   "最大表示件数"
+      FormType:  "select"
+      ValueType:  "int"
+      IsRequired: true
+      Default:    5
+      Choices:
+        1: 1
+        3: 3
+        5: 5
+        7: 7
+        10: 10

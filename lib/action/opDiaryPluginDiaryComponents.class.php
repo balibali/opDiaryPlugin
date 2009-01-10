@@ -19,12 +19,14 @@ class opDiaryPluginDiaryComponents extends sfComponents
 {
   public function executeMyDiaryList()
   {
-    $this->diaryList = DiaryPeer::getMemberDiaryList($this->getUser()->getMemberId(), 5, $this->getUser()->getMemberId());
+    $max = $this->widget->getConfig('max');
+    $this->diaryList = DiaryPeer::getMemberDiaryList($this->getUser()->getMemberId(), $max, $this->getUser()->getMemberId());
   }
 
   public function executeFriendDiaryList()
   {
-    $this->diaryList = DiaryPeer::getFriendDiaryList($this->getUser()->getMemberId(), 5);
+    $max = $this->widget->getConfig('max');
+    $this->diaryList = DiaryPeer::getFriendDiaryList($this->getUser()->getMemberId(), $max);
   }
 
   public function executeMemberDiaryList(sfWebRequest $request)
