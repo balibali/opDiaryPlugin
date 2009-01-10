@@ -42,6 +42,10 @@
         <source>[1]1 diary has new comments!|(1,Inf]%1% diaries have new comments!</source>
         <target>%1%件の日記に新着ｺﾒﾝﾄがあります!</target>
       </trans-unit>
+      <trans-unit id="38">
+        <source>Profile of %1%</source>
+        <target>%1%さんのﾍﾟｰｼﾞ</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

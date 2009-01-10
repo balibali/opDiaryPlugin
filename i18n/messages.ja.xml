@@ -150,6 +150,10 @@
         <source>No. %1% - %2%</source>
         <target>%1%番～%2%番を表示</target>
       </trans-unit>
+      <trans-unit id="38">
+        <source>Profile of %1%</source>
+        <target>%1%さんのページ</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -25,3 +25,9 @@ $options['button'] = __('Save');
 $options['isMultipart'] = true;
 include_box('formDiaryComment', $title, '', $options);
 ?>
+
+<hr>
+<?php echo link_to(__('Diaries of %1%', array('%1%' => $member->getName())), 'diary_list_member', $member) ?><br>
+<?php if ($diary->getMemberId() !== $sf_user->getMemberId()): ?>
+<?php echo link_to(__('Profile of %1%', array('%1%' => $member->getName())), 'member/profile?id='.$member->getId()) ?><br>
+<?php endif; ?>
