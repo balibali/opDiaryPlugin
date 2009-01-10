@@ -101,15 +101,15 @@ class sfReversiblePropelPager extends sfPropelPager
 
   public function setSqlOrder($order)
   {
-    $this->sqlOrder = $this->normalizeOrder($order);
+    $this->sqlOrder = self::normalizeOrder($order);
   }
 
   public function setListOrder($order)
   {
-    $this->listOrder = $this->normalizeOrder($order);
+    $this->listOrder = self::normalizeOrder($order);
   }
 
-  protected function normalizeOrder($order)
+  public static function normalizeOrder($order)
   {
     if (Criteria::ASC === $order)
     {

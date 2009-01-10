@@ -17,11 +17,10 @@
  */
 class diaryCommentComponents extends opDiaryPluginDiaryCommentComponents
 {
-  protected function getPager(sfWebRequest $request)
+  public function executeList(sfWebRequest $request)
   {
-    $pager = parent::getPager($request);
-    $pager->setMaxPerPage(5);
+    $this->size = 5;
 
-    return $pager;
+    parent::executeList($request);
   }
 }

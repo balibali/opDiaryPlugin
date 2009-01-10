@@ -29,12 +29,4 @@ class diaryCommentComponents extends opDiaryPluginDiaryCommentComponents
 
     parent::executeList($request);
   }
-
-  protected function getPager(sfWebRequest $request)
-  {
-    $pager = parent::getPager($request);
-    $pager->setMaxPerPage($this->size);
-
-    return $pager;
-  }
 }

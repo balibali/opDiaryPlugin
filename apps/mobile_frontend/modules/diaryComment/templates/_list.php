@@ -23,8 +23,14 @@
 <?php if ($pager->haveToPaginate()): ?>
 <hr>
 <center>
-<?php if ($pager->hasEarlierPage()): ?><?php echo link_to('前を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getEarlierPage()) ?><?php endif; ?>
-<?php if ($pager->hasLaterPage()): ?> <?php echo link_to('次を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getLaterPage()) ?><?php endif; ?>
+<?php if ($pager->hasEarlierPage()): ?><?php echo link_to('前を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getEarlierPage().'&order='.$order) ?><?php endif; ?>
+<?php if ($pager->hasLaterPage()): ?> <?php echo link_to('次を表示', '@diary_show?id='.$diary->getId().'&page='.$pager->getLaterPage().'&order='.$order) ?><?php endif; ?>
+<br>
+<?php if (Criteria::ASC === $order): ?>
+  <?php echo link_to(__('最新を表示'), '@diary_show?id='.$diary->getId()) ?>
+<?php else: ?>
+  <?php echo link_to(__('最初から表示'), '@diary_show?id='.$diary->getId().'&order='.Criteria::ASC) ?>
+<?php endif; ?>
 </center>
 <?php endif; ?>
 <?php endif; ?>
