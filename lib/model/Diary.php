@@ -83,4 +83,9 @@ class Diary extends BaseDiary
 
     return $result;
   }
+
+  public function hasDiaryImages()
+  {
+    return (bool)self::countDiaryImages();
+  }
 }
