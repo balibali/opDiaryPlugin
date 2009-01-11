@@ -43,6 +43,7 @@ class DiaryForm extends BaseDiaryForm
       }
 
       $options = array(
+        'file_src'     => '',
         'is_image'     => true,
         'with_delete'  => true,
         'delete_label' => 'remove the current photo',
@@ -56,7 +57,6 @@ class DiaryForm extends BaseDiaryForm
         if (!$this->isNew() && !empty($images[$i]))
         {
           $options['edit_mode'] = true;
-          $options['file_src'] = '';
           $options['template'] = get_partial('diary/formEditImage', array('image' => $images[$i]));
           $this->setValidator($key.'_delete', new sfValidatorBoolean(array('required' => false)));
         }
