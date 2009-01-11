@@ -10,4 +10,10 @@
 
 class DiaryImage extends BaseDiaryImage
 {
+  public function delete(PropelPDO $con = null)
+  {
+    $this->getFile()->delete();
+
+    parent::delete($con);
+  }
 }

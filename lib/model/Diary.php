@@ -64,4 +64,23 @@ class Diary extends BaseDiary
 
     return $this->next;
   }
+
+  public function getDiaryImages($criteria = null, PropelPDO $con = null)
+  {
+    if (is_null($criteria))
+    {
+      $criteria = new Criteria();
+      $criteria->addAscendingOrderByColumn(DiaryImagePeer::NUMBER);
+    }
+
+    $images = parent::getDiaryImages($criteria, $con);
+
+    $result = array();
+    foreach ($images as $image)
+    {
+      $result[$image->getNumber()] = $image;
+    }
+
+    return $result;
+  }
 }

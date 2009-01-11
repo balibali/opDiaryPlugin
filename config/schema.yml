@@ -12,6 +12,9 @@ propel:
     id: ~
     diary_id: { type: integer, required: true, foreignTable: diary, foreignReference: id, onDelete: cascade }
     file_id: { type: integer, required: true, foreignTable: file, foreignReference: id, onDelete: cascade }
+    number: { type: integer, required: true }
+    _uniques:
+      diary_id_number: [diary_id, number]
   diary_comment:
     id: ~
     diary_id: { type: integer, required: true, foreignTable: diary, foreignReference: id, onDelete: cascade }

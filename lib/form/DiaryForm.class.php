@@ -36,11 +36,36 @@ class DiaryForm extends BaseDiaryForm
 
     if (sfConfig::get('app_diary_is_upload_images', true))
     {
+      if (!$this->isNew())
+      {
+        sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
+        $images = $this->getObject()->getDiaryImages();
+      }
+
+      $options = array(
+        'is_image'     => true,
+        'with_delete'  => true,
+        'delete_label' => 'remove the current photo',
+      );
+
       $max = (int)sfConfig::get('app_diary_max_image_file_num', 3);
       for ($i = 1; $i <= $max; $i++)
       {
         $key = 'photo_'.$i;
-        $this->setWidget($key, new sfWidgetFormInputFile());
+
+        if (!$this->isNew() && !empty($images[$i]))
+        {
+          $options['edit_mode'] = true;
+          $options['file_src'] = '';
+          $options['template'] = get_partial('diary/formEditImage', array('image' => $images[$i]));
+          $this->setValidator($key.'_delete', new sfValidatorBoolean(array('required' => false)));
+        }
+        else
+        {
+          $options['edit_mode'] = false;
+        }
+
+        $this->setWidget($key, new sfWidgetFormInputFileEditable($options));
         $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
       }
     }
@@ -50,14 +75,30 @@ class DiaryForm extends BaseDiaryForm
   {
     $diary = parent::save();
 
+    if (!$this->isNew())
+    {
+      $images = $this->getObject()->getDiaryImages();
+    }
+
     if (sfConfig::get('app_diary_is_upload_images', true))
     {
       $max = (int)sfConfig::get('app_diary_max_image_file_num', 3);
       for ($i = 1; $i <= $max; $i++)
       {
         $key = 'photo_'.$i;
+
+        if ($this->getValue($key.'_delete'))
+        {
+          $images[$i]->delete();
+        }
+
         if ($this->getValue($key))
         {
+          if ($images[$i] && !$images[$i]->isDeleted())
+          {
+            $images[$i]->delete();
+          }
+
           $file = new File();
           $file->setFromValidatedFile($this->getValue($key));
           $file->setName('d_'.$diary->getId().'_'.$file->getName());
@@ -65,6 +106,7 @@ class DiaryForm extends BaseDiaryForm
           $image = new DiaryImage();
           $image->setDiary($diary);
           $image->setFile($file);
+          $image->setNumber($i);
           $image->save();
         }
       }
