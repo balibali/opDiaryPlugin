@@ -26,7 +26,7 @@
 <p class="heading"><?php echo $diary->getTitle(); ?></p>
 </div>
 <div class="body">
-<?php $images = $diary->getDiaryImages() ?>
+<?php $images = $diary->getDiaryImagesJoinFile() ?>
 <?php if (count($images)): ?>
 <ul class="photo">
 <?php foreach ($images as $image): ?>

@@ -27,6 +27,5 @@ propel:
     diary_comment_id: { type: integer, required: true, foreignTable: diary_comment, foreignReference: id, onDelete: cascade }
     file_id: { type: integer, required: true, foreignTable: file, foreignReference: id, onDelete: cascade }
   diary_comment_unread:
-    id: ~
-    diary_id: { type: integer, required: true, foreignTable: diary, foreignReference: id, onDelete: cascade, index: unique }
+    diary_id: { type: integer, required: true, primaryKey: true, foreignTable: diary, foreignReference: id, onDelete: cascade }
     member_id: { type: integer, required: true, foreignTable: member, foreignReference: id, onDelete: cascade }

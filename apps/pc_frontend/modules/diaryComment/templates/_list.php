@@ -43,7 +43,7 @@
 </p>
 </div>
 <div class="body">
-<?php $images = $comment->getDiaryCommentImages() ?>
+<?php $images = $comment->getDiaryCommentImagesJoinFile() ?>
 <?php if (count($images)): ?>
 <ul class="photo">
 <?php foreach ($images as $image): ?>

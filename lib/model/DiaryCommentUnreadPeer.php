@@ -2,17 +2,9 @@
 
 class DiaryCommentUnreadPeer extends BaseDiaryCommentUnreadPeer
 {
-  public static function retrieveByDiary(Diary $diary)
-  {
-    $criteria = new Criteria();
-    $criteria->add(self::DIARY_ID, $diary->getId());
-
-    return self::doSelectOne($criteria);
-  }
-
   public static function register(Diary $diary)
   {
-    if (self::retrieveByDiary($diary))
+    if (self::retrieveByPK($diary->getId()))
     {
       return true;
     }
@@ -26,7 +18,7 @@ class DiaryCommentUnreadPeer extends BaseDiaryCommentUnreadPeer
 
   public static function unregister(Diary $diary)
   {
-    if ($object = self::retrieveByDiary($diary))
+    if ($object = self::retrieveByPK($diary->getId()))
     {
       $object->delete();
     }
@@ -40,12 +32,12 @@ class DiaryCommentUnreadPeer extends BaseDiaryCommentUnreadPeer
     return self::doCount($criteria);
   }
 
-  public static function getOneDiaryByMemberId($memberId)
+  public static function getOneDiaryIdByMemberId($memberId)
   {
     $criteria = new Criteria();
     $criteria->add(self::MEMBER_ID, $memberId);
     $one = self::doSelectOne($criteria);
 
-    return $one->getDiary();
+    return $one->getDiaryId();
   }
 }

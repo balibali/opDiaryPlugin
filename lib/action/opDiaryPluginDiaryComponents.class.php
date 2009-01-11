@@ -46,7 +46,7 @@ class opDiaryPluginDiaryComponents extends sfComponents
     $memberId = $this->getUser()->getMemberId();
     if ($this->count = DiaryCommentUnreadPeer::countUnreadDiary($memberId))
     {
-      $this->diary = DiaryCommentUnreadPeer::getOneDiaryByMemberId($memberId);
+      $this->diaryId = DiaryCommentUnreadPeer::getOneDiaryIdByMemberId($memberId);
     }
   }
 }
