@@ -5,8 +5,9 @@
 $list = array();
 foreach ($diaryList as $diary)
 {
-  $list[] = sprintf('[%s] %s',
+  $list[] = sprintf("[%s] %s<br>%s",
               op_diary_format_date($diary->getCreatedAt(), 'XShortDate'),
+              $diary->getMember()->getName(),
               link_to($diary->getTitleAndCount(false), 'diary_show', $diary)
             );
 }
