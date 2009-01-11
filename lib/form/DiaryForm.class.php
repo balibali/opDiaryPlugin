@@ -94,7 +94,7 @@ class DiaryForm extends BaseDiaryForm
 
         if ($this->getValue($key))
         {
-          if ($images[$i] && !$images[$i]->isDeleted())
+          if (!empty($images[$i]) && !$images[$i]->isDeleted())
           {
             $images[$i]->delete();
           }
