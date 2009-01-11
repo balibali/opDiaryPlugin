@@ -10,10 +10,21 @@
 
 class DiaryImage extends BaseDiaryImage
 {
+  public function save(PropelPDO $con = null)
+  {
+    $result = parent::save($con);
+
+    $this->getDiary()->updateHasImages();
+
+    return $result;
+  }
+
   public function delete(PropelPDO $con = null)
   {
     $this->getFile()->delete();
 
     parent::delete($con);
+
+    $this->getDiary()->updateHasImages();
   }
 }

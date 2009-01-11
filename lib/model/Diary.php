@@ -84,8 +84,20 @@ class Diary extends BaseDiary
     return $result;
   }
 
-  public function hasDiaryImages()
+  public function hasImages()
   {
-    return (bool)self::countDiaryImages();
+    return (bool)$this->getHasImages();
+  }
+
+  public function updateHasImages()
+  {
+    $this->clearDiaryImages();
+    $hasImages = (bool)$this->countDiaryImages();
+
+    if ($hasImages != $this->getHasImages())
+    {
+      $this->setHasImages($hasImages);
+      $this->save();
+    }
   }
 }

@@ -23,6 +23,7 @@ class DiaryForm extends BaseDiaryForm
     unset($this['member_id']);
     unset($this['created_at']);
     unset($this['updated_at']);
+    unset($this['has_images']);
 
     $this->widgetSchema['title'] = new sfWidgetFormInput();
 
