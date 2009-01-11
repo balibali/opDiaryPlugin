@@ -124,7 +124,7 @@
       </trans-unit>
       <trans-unit id="31">
         <source>[1]1 diary has new comments!|(1,Inf]%1% diaries have new comments!</source>
-        <target>%1%件の日記に新着コメントがあります！</target>
+        <target>[1,Inf]%1%件の日記に新着コメントがあります！</target>
       </trans-unit>
       <trans-unit id="32">
         <source>View %1% per page</source>
