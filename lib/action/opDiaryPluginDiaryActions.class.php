@@ -29,7 +29,16 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeListMember(sfWebRequest $request)
   {
-    $this->pager = DiaryPeer::getMemberDiaryPager($this->member->getId(), $request->getParameter('page'), 20, $this->getUser()->getMemberId());
+    $this->year  = (int)$request->getParameter('year');
+    $this->month = (int)$request->getParameter('month');
+    $this->day   = (int)$request->getParameter('day');
+
+    if ($this->year && $this->month)
+    {
+      $this->forward404Unless(checkdate($this->month, ($this->day) ? $this->day : 1, $this->year), 'Invalid date format');
+    }
+
+    $this->pager = DiaryPeer::getMemberDiaryPager($this->member->getId(), $request->getParameter('page'), 20, $this->getUser()->getMemberId(), $this->year, $this->month, $this->day);
   }
 
   public function executeListFriend(sfWebRequest $request)

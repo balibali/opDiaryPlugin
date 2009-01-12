@@ -1,10 +1,10 @@
 <?php use_helper('opDiary'); ?>
 
 <?php decorate_with('layoutB') ?>
-<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member))) ?>
+<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member, 'year' => $year, 'month' => $month))) ?>
 
 <div class="dparts recentList"><div class="parts">
-<div class="partsHeading"><h3><?php echo __('Diaries of %1%', array('%1%' => $member->getName())) ?></h3></div>
+<div class="partsHeading"><h3><?php echo __('Diaries of %1%', array('%1%' => $member->getName())) ?><?php if ($year && $month): ?> (<?php echo op_diary_format_date(sprintf('%04d-%02d-%02d', $year, $month, ($day) ? $day : 1), ($day) ? 'D' : 'XCalendarMonth') ?>)<?php endif; ?></h3></div>
 <?php if ($pager->getNbResults()): ?>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId()); ?></p></div>
 <?php foreach ($pager->getResults() as $diary): ?>

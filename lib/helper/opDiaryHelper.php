@@ -45,7 +45,7 @@ function op_diary_format_date($date, $format = 'd', $culture = null, $charset = 
       switch ($culture)
       {
         case 'ja_JP':
-          $format = "yyyy/MM/dd HH:mm";
+          $format = 'yyyy/MM/dd HH:mm';
           break;
         default:
           $format = 'f';
@@ -56,7 +56,7 @@ function op_diary_format_date($date, $format = 'd', $culture = null, $charset = 
       switch ($culture)
       {
         case 'ja_JP':
-          $format = "yyyy年MM月dd日 HH:mm";
+          $format = 'yyyy年MM月dd日 HH:mm';
           break;
         default:
           $format = 'f';
@@ -71,6 +71,17 @@ function op_diary_format_date($date, $format = 'd', $culture = null, $charset = 
           break;
         default:
           $format = 'f';
+          break;
+      }
+      break;
+    case 'XCalendarMonth':
+      switch ($culture)
+      {
+        case 'ja_JP':
+          $format = 'yyyy年M月';
+          break;
+        default:
+          $format = 'MMMM yyyy';
           break;
       }
       break;

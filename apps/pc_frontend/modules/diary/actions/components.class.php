@@ -19,5 +19,16 @@ class diaryComponents extends opDiaryPluginDiaryComponents
 {
   public function executeSidemenu()
   {
+    // Calendar
+    if (!($this->year && $this->month))
+    {
+      $this->year = (int)date('Y');
+      $this->month = (int)date('m');;
+    }
+
+    $this->calendar = new Calendar_Month_Weekdays($this->year, $this->month, 0);
+    $this->calendar->build();
+
+    $this->calendarDiaryDays = DiaryPeer::getMemberDiaryDays($this->member->getId(), $this->getUser()->getMemberId(), $this->year, $this->month);
   }
 }

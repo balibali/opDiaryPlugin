@@ -36,6 +36,18 @@ class opDiaryPluginRouting
         array('id' => '\d+'),
         array('model' => 'Member', 'type' => 'object')
       ),
+      'diary_list_member_year_month' => new sfPropelRoute(
+        '/diary/listMember/:id/:year/:month',
+        array('module' => 'diary', 'action' => 'listMember'),
+        array('id' => '\d+', 'year' => '[12][0-9]{3}', 'month' => '(0?[1-9])|(1[0-2])'),
+        array('model' => 'Member', 'type' => 'object')
+      ),
+      'diary_list_member_year_month_day' => new sfPropelRoute(
+        '/diary/listMember/:id/:year/:month/:day',
+        array('module' => 'diary', 'action' => 'listMember'),
+        array('id' => '\d+', 'year' => '[12][0-9]{3}', 'month' => '(0?[1-9])|(1[0-2])', 'day' => '(0?[1-9])|([12][0-9])|(3[01])'),
+        array('model' => 'Member', 'type' => 'object')
+      ),
       'diary_list_mine' => new sfRoute(
         '/diary/listMember',
         array('module' => 'diary', 'action' => 'listMember')

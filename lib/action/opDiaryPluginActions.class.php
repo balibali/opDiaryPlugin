@@ -48,6 +48,11 @@ class opDiaryPluginActions extends sfActions
   public function postExecute()
   {
     $this->setNavigation($this->member);
+
+    if ($this->pager instanceof sfPager)
+    {
+      $this->pager->init();
+    }
   }
 
   protected function setNavigation(Member $member)
