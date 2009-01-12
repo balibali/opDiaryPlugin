@@ -10,6 +10,8 @@
 
 class DiaryImage extends BaseDiaryImage
 {
+  protected $deleteFile = true;
+
   public function save(PropelPDO $con = null)
   {
     $result = parent::save($con);
@@ -21,10 +23,18 @@ class DiaryImage extends BaseDiaryImage
 
   public function delete(PropelPDO $con = null)
   {
-    $this->getFile()->delete();
+    if ($this->deleteFile)
+    {
+      $this->getFile()->delete();
+    }
 
     parent::delete($con);
 
     $this->getDiary()->updateHasImages();
+  }
+
+  public function setDeleteFile($value)
+  {
+    $this->deleteFile = $value;
   }
 }
