@@ -28,7 +28,10 @@ class DiaryImage extends BaseDiaryImage
       $this->getFile()->delete();
     }
 
-    parent::delete($con);
+    if (!$this->isDeleted())
+    {
+      parent::delete($con);
+    }
 
     $this->getDiary()->updateHasImages();
   }
