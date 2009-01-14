@@ -18,7 +18,7 @@ Navi:
   mobile_home_side_navi_diary_list:
     type: "mobile_home_side"
     uri: "@diary_list"
-    sort_order: 25
+    sort_order: 16
 
 NaviI18n:
   secure_global_navi_diary_i18n_en:
