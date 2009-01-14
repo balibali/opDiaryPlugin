@@ -11,6 +11,14 @@ Navi:
     type: "friend"
     uri: "diary/listMember"
     sort_order: 15
+  mobile_home_side_navi_diary_new:
+    type: "mobile_home_side"
+    uri: "@diary_new"
+    sort_order: 15
+  mobile_home_side_navi_diary_list:
+    type: "mobile_home_side"
+    uri: "@diary_list"
+    sort_order: 25
 
 NaviI18n:
   secure_global_navi_diary_i18n_en:
@@ -36,4 +44,20 @@ NaviI18n:
   friend_navi_diary_i18n_ja:
     id: friend_navi_diary
     caption: "日記"
+    culture: "ja_JP"
+  mobile_home_side_navi_diary_new_i18n_en:
+    id: mobile_home_side_navi_diary_new
+    caption: "Post a diary"
+    culture: "en"
+  mobile_home_side_navi_diary_new_i18n_ja:
+    id: mobile_home_side_navi_diary_new
+    caption: "日記を書く"
+    culture: "ja_JP"
+  mobile_home_side_navi_diary_list_i18n_en:
+    id: mobile_home_side_navi_diary_list
+    caption: "Recently Posted Diaries"
+    culture: "en"
+  mobile_home_side_navi_diary_list_i18n_ja:
+    id: mobile_home_side_navi_diary_list
+    caption: "最新日記"
     culture: "ja_JP"
