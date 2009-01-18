@@ -32,7 +32,7 @@ class DiaryCommentForm extends BaseDiaryCommentForm
       for ($i = 1; $i <= $max; $i++)
       {
         $key = 'photo_'.$i;
-        $this->setWidget($key, new sfWidgetFormInputFile());
+        $this->setWidget($key, new sfWidgetFormInputFile(array(), array('size' => 40)));
         $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
       }
     }

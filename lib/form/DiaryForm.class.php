@@ -66,7 +66,7 @@ class DiaryForm extends BaseDiaryForm
           $options['edit_mode'] = false;
         }
 
-        $this->setWidget($key, new sfWidgetFormInputFileEditable($options));
+        $this->setWidget($key, new sfWidgetFormInputFileEditable($options, array('size' => 40)));
         $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
       }
     }

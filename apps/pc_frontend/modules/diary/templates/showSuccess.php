@@ -53,10 +53,15 @@
 <?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>
 
 <?php
-$options = array('form' => array($form));
+$form->getWidget('body')->setAttribute('rows', 8);
+$form->getWidget('body')->setAttribute('cols', 40);
+
 $title = __('Post a diary comment');
-$options['url'] = '@diary_comment_create?id='.$diary->getId();
-$options['button'] = __('Save');
-$options['isMultipart'] = true;
+$options = array(
+  'form' => $form,
+  'url' => '@diary_comment_create?id='.$diary->getId(),
+  'button' => __('Save'),
+  'isMultipart' => true,
+);
 include_box('formDiaryComment', $title, '', $options);
 ?>
