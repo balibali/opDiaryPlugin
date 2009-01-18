@@ -1,15 +1,22 @@
 <?php use_helper('opDiary') ?>
 
 <?php if (count($diaryList)): ?>
-<div class="dparts"><div class="parts">
+<div class="dparts homeRecentList"><div class="parts">
 <div class="partsHeading"><h3><?php echo __('Recently Posted Diaries') ?></h3></div>
-<div class="box"><div class="body">
-<ul>
+<div class="block">
+
+<ul class="articleList">
 <?php foreach ($diaryList as $diary): ?>
-<li><?php echo op_diary_format_date($diary->getCreatedAt(), 'XShortDateJa') ?> <?php echo link_to($diary->getTitleAndCount(), 'diary_show', $diary) ?><?php if ($diary->hasImages()) : ?> <?php echo image_tag('icon_camera.gif', array('alt' => 'photo')) ?><?php endif; ?></li>
+<li><span class="date"><?php echo op_diary_format_date($diary->getCreatedAt(), 'XShortDateJa') ?></span><?php echo link_to($diary->getTitleAndCount(), 'diary_show', $diary) ?><?php if ($diary->hasImages()) : ?> <?php echo image_tag('icon_camera.gif', array('alt' => 'photo')) ?><?php endif; ?></li>
 <?php endforeach; ?>
 </ul>
-<p><?php echo link_to(__('More'), 'diary/listMember?id='.$memberId) ?></p>
-</div></div>
+
+<div class="moreInfo">
+<ul class="moreInfo">
+<li><?php echo link_to(__('More'), 'diary/listMember?id='.$memberId) ?></li>
+</ul>
+</div>
+
+</div>
 </div></div>
 <?php endif; ?>
