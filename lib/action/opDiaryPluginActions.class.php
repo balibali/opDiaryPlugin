@@ -59,8 +59,8 @@ class opDiaryPluginActions extends sfActions
   {
     if ($member->getId() !== $this->getUser()->getMemberId())
     {
-      sfConfig::set('sf_navi_type', 'friend');
-      sfConfig::set('sf_navi_id', $member->getId());
+      sfConfig::set('sf_nav_type', 'friend');
+      sfConfig::set('sf_nav_id', $member->getId());
     }
   }
 
