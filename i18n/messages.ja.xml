@@ -170,6 +170,22 @@
         <source>Next Diary</source>
         <target>次の日記</target>
       </trans-unit>
+      <trans-unit id="43">
+        <source>Delete the comment</source>
+        <target>コメント削除</target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>Do you really delete this comment?</source>
+        <target>本当にこのコメントを削除しますか？</target>
+      </trans-unit>
+      <trans-unit id="45">
+        <source>Go back to the diary page</source>
+        <target>日記のページへ戻る</target>
+      </trans-unit>
+      <trans-unit id="46">
+        <source>The comment was deleted successfully.</source>
+        <target>コメントを削除しました。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
