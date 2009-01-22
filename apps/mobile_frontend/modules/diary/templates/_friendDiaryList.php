@@ -18,6 +18,6 @@ $options = array(
   'border' => true,
   'moreInfo' => $moreInfo,
 );
-include_list_box('friendDiaryList', $list, $options);
+op_include_list('friendDiaryList', $list, $options);
 ?>
 <?php endif; ?>

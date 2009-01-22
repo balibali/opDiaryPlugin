@@ -1,4 +1,4 @@
-<?php include_page_title(__('Diaries of %1%', array('%1%' => $member->getName()))) ?>
+<?php op_mobile_page_title(__('Diaries of %1%', array('%1%' => $member->getName()))) ?>
 <?php use_helper('opDiary'); ?>
 
 <?php if ($pager->getNbResults()): ?>
@@ -18,7 +18,7 @@ foreach ($pager->getResults() as $diary)
 $options = array(
   'border' => true,
 );
-include_list_box('diaryList', $list, $options);
+op_include_list('diaryList', $list, $options);
 ?>
 <?php echo pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId(), false) ?>
 

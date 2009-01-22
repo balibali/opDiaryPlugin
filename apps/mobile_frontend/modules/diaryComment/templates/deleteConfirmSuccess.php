@@ -1,5 +1,5 @@
 <?php
-include_page_title(__('Delete the comment'));
+op_mobile_page_title(__('Delete the comment'));
 ?>
 
 <?php echo __('Do you really delete this comment?') ?><br>

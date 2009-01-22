@@ -16,6 +16,6 @@ $options = array(
   'border' => true,
   'moreInfo' => array(link_to(__('More'), 'diary/list')),
 );
-include_list_box('diaryList', $list, $options);
+op_include_list('diaryList', $list, $options);
 ?>
 <?php endif; ?>

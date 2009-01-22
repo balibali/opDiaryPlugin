@@ -1,5 +1,5 @@
 <?php
-include_page_title(__('Delete the diary'));
+op_mobile_page_title(__('Delete the diary'));
 ?>
 
 <?php echo __('Do you really delete this diary?') ?><br>

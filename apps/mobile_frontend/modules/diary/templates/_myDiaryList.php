@@ -20,5 +20,5 @@ $options = array(
   'border' => true,
   'moreInfo' => $moreInfo,
 );
-include_list_box('myDiaryList', $list, $options);
+op_include_list('myDiaryList', $list, $options);
 ?>

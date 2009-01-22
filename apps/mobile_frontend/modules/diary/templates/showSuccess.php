@@ -1,4 +1,4 @@
-<?php include_page_title(__('Diary of %1%', array('%1%' => $member->getName())), $diary->getTitle()) ?>
+<?php op_mobile_page_title(__('Diary of %1%', array('%1%' => $member->getName())), $diary->getTitle()) ?>
 <?php use_helper('opDiary') ?>
 
 <?php echo op_diary_within_page_link() ?>
@@ -28,12 +28,11 @@
 <hr>
 <?php echo op_diary_within_page_link('') ?>
 <?php
-$options = array('form' => array($form));
-$title = __('Post a diary comment');
+$options['title'] = __('Post a diary comment');
 $options['url'] = '@diary_comment_create?id='.$diary->getId();
 $options['button'] = __('Save');
 $options['isMultipart'] = true;
-include_box('formDiaryComment', $title, '', $options);
+op_include_form('formDiaryComment', $form, $options);
 ?>
 
 <hr>
