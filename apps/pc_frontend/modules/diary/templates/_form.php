@@ -19,5 +19,5 @@ else
   $options['url'] = 'diary/update?id='.$diary->getId();
 }
 
-op_include_parts('form', 'diaryForm', $form, $options);
+op_include_form('diaryForm', $form, $options);
 ?>
