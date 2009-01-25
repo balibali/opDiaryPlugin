@@ -3,9 +3,20 @@
 <?php decorate_with('layoutB') ?>
 <?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member, 'year' => $year, 'month' => $month))) ?>
 
-<div class="dparts recentList"><div class="parts">
-<div class="partsHeading"><h3><?php echo __('Diaries of %1%', array('%1%' => $member->getName())) ?><?php if ($year && $month): ?> (<?php echo op_diary_format_date(sprintf('%04d-%02d-%02d', $year, $month, ($day) ? $day : 1), ($day) ? 'D' : 'XCalendarMonth') ?>)<?php endif; ?></h3></div>
+<?php if ($sf_user->getMemberId() === $member->getId()): ?>
+<?php op_include_box('newDiaryLink', link_to(__('Post a diary'), 'diary_new'), array('title' => __('Post a diary'))) ?>
+<?php endif; ?>
+
+<?php
+$title = __('Diaries of %1%', array('%1%' => $member->getName()));
+if ($year && $month)
+{
+  $title .= ' ('.op_diary_format_date(sprintf('%04d-%02d-%02d', $year, $month, ($day) ? $day : 1), ($day) ? 'D' : 'XCalendarMonth').')';
+}
+?>
 <?php if ($pager->getNbResults()): ?>
+<div class="dparts recentList"><div class="parts">
+<div class="partsHeading"><h3><?php echo $title ?></h3></div>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId()); ?></p></div>
 <?php foreach ($pager->getResults() as $diary): ?>
 <dl>
@@ -14,13 +25,7 @@
 </dl>
 <?php endforeach; ?>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId()); ?></p></div>
-<?php else: ?>
-<div class="body">
-<?php echo __('There are no diaries') ?>
-</div>
-<?php endif; ?>
 </div></div>
-
-<?php if ($sf_user->getMemberId() === $member->getId()): ?>
-<?php echo link_to(__('Post a diary'), 'diary_new') ?>
+<?php else: ?>
+<?php op_include_box('diaryList', __('There are no diaries'), array('title' => $title)) ?>
 <?php endif; ?>

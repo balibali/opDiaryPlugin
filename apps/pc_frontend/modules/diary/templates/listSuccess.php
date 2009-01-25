@@ -1,8 +1,9 @@
 <?php use_helper('opDiary'); ?>
 
-<div class="dparts searchResultList"><div class="parts">
-<div class="partsHeading"><h3><?php echo __('Recently Posted Diaries') ?></h3></div>
+<?php $title = __('Recently Posted Diaries') ?>
 <?php if ($pager->getNbResults()): ?>
+<div class="dparts searchResultList"><div class="parts">
+<div class="partsHeading"><h3><?php echo $title ?></h3></div>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/list?page=%d'); ?></p></div>
 <div class="block">
 <?php foreach ($pager->getResults() as $diary): ?>
@@ -19,9 +20,7 @@
 <?php endforeach; ?>
 </div>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/list?page=%d'); ?></p></div>
-<?php else: ?>
-<div class="body">
-<?php echo __('There are no diaries') ?>
-</div>
-<?php endif; ?>
 </div></div>
+<?php else: ?>
+<?php op_include_box('diaryList', __('There are no diaries'), array('title' => $title)) ?>
+<?php endif; ?>
