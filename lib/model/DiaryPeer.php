@@ -172,7 +172,7 @@ class DiaryPeer extends BaseDiaryPeer
     $criteria->addAnd(self::CREATED_AT, $end, Criteria::LESS_THAN);
   }
 
-  protected static function getPublicFlagByMemberId($memberId, $myMemberId, $forceFlag = null)
+  public static function getPublicFlagByMemberId($memberId, $myMemberId, $forceFlag = null)
   {
     if ($forceFlag)
     {
@@ -195,7 +195,7 @@ class DiaryPeer extends BaseDiaryPeer
     }
   }
 
-  protected static function getViewablePublicFlags($flag)
+  public static function getViewablePublicFlags($flag)
   {
     $flags = array();
     switch ($flag)
@@ -212,12 +212,5 @@ class DiaryPeer extends BaseDiaryPeer
     }
 
     return $flags;
-  }
-
-  public static function isViewable(Diary $diary, $myMemberId)
-  {
-    $flags = self::getViewablePublicFlags(self::getPublicFlagByMemberId($diary->getMemberId(), $myMemberId));
-
-    return in_array($diary->getPublicFlag(), $flags);
   }
 }

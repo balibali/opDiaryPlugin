@@ -19,7 +19,7 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
 {
   public function executeCreate(sfWebRequest $request)
   {
-    $this->forward404Unless($this->isViewable());
+    $this->forward404Unless($this->isDiaryViewable());
 
     $this->form = new DiaryCommentForm();
     $this->form->getObject()->setDiary($this->diary);
@@ -42,20 +42,14 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
 
   public function executeDeleteConfirm(sfWebRequest $request)
   {
-    $this->forward404Unless(
-         $this->isAuthor()
-      || $this->diaryComment->getMemberId() === $this->getUser()->getMemberId()
-    );
+    $this->forward404Unless($this->isDiaryCommentDeletable());
 
     $this->form = new sfForm();
   }
 
   public function executeDelete(sfWebRequest $request)
   {
-    $this->forward404Unless(
-         $this->isAuthor()
-      || $this->diaryComment->getMemberId() === $this->getUser()->getMemberId()
-    );
+    $this->forward404Unless($this->isDiaryCommentDeletable());
     $request->checkCSRFProtection();
 
     $this->diaryComment->delete();
@@ -63,5 +57,10 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
     $this->getUser()->setFlash('notice', 'The comment was deleted successfully.');
 
     $this->redirect($this->generateUrl('diary_show', $this->diary));
+  }
+
+  protected function isDiaryCommentDeletable()
+  {
+    return $this->diaryComment->isDeletable($this->getUser()->getMemberId());
   }
 }

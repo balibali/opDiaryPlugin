@@ -100,4 +100,16 @@ class Diary extends BaseDiary
       $this->save();
     }
   }
+
+  public function isAuthor($memberId)
+  {
+    return ($this->getMemberId() === $memberId);
+  }
+
+  public function isViewable($memberId)
+  {
+    $flags = DiaryPeer::getViewablePublicFlags(DiaryPeer::getPublicFlagByMemberId($this->getMemberId(), $memberId));
+
+    return in_array($this->getPublicFlag(), $flags);
+  }
 }

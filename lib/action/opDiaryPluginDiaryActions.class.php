@@ -48,9 +48,9 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->forward404Unless($this->isViewable());
+    $this->forward404Unless($this->isDiaryViewable());
 
-    if ($this->isAuthor())
+    if ($this->isDiaryAuthor())
     {
       DiaryCommentUnreadPeer::unregister($this->diary);
     }
@@ -73,14 +73,14 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->forward404Unless($this->isAuthor());
+    $this->forward404Unless($this->isDiaryAuthor());
 
     $this->form = new DiaryForm($this->diary);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
-    $this->forward404Unless($this->isAuthor());
+    $this->forward404Unless($this->isDiaryAuthor());
 
     $this->form = new DiaryForm($this->diary);
     $this->processForm($request, $this->form);
@@ -89,14 +89,14 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeDeleteConfirm(sfWebRequest $request)
   {
-    $this->forward404Unless($this->isAuthor());
+    $this->forward404Unless($this->isDiaryAuthor());
 
     $this->form = new sfForm();
   }
 
   public function executeDelete(sfWebRequest $request)
   {
-    $this->forward404Unless($this->isAuthor());
+    $this->forward404Unless($this->isDiaryAuthor());
     $request->checkCSRFProtection();
 
     $this->diary->delete();

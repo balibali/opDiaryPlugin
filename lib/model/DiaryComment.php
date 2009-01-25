@@ -24,4 +24,9 @@ class DiaryComment extends BaseDiaryComment
       DiaryCommentUnreadPeer::register($this->getDiary());
     }
   }
+
+  public function isDeletable($memberId)
+  {
+    return ($this->getMemberId() === $memberId || $this->getDiary()->isAuthor($memberId));
+  }
 }

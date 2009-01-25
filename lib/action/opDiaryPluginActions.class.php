@@ -64,18 +64,13 @@ class opDiaryPluginActions extends sfActions
     }
   }
 
-  protected function isAuthor()
+  protected function isDiaryAuthor()
   {
-    if ($this->diary->getMemberId() === $this->getUser()->getMemberId())
-    {
-      return true;
-    }
-
-    return false;
+    return $this->diary->isAuthor($this->getUser()->getMemberId());
   }
 
-  protected function isViewable()
+  protected function isDiaryViewable()
   {
-    return DiaryPeer::isViewable($this->diary, $this->getUser()->getMemberId());
+    return $this->diary->isViewable($this->getUser()->getMemberId());
   }
 }
