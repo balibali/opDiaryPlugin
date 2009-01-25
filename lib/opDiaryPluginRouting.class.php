@@ -67,7 +67,7 @@ class opDiaryPluginRouting
         '/diary/new',
         array('module' => 'diary', 'action' => 'new')
       ),
-      'diary_create' => new sfRoute(
+      'diary_create' => new sfRequestRoute(
         '/diary/create',
         array('module' => 'diary', 'action' => 'create'),
         array('sf_method' => array('post'))
