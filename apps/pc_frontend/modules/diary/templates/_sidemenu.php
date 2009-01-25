@@ -1,6 +1,11 @@
 <?php use_helper('opDiary') ?>
 
-<div class="parts item calendar">
+<div class="parts memberImageBox">
+<p><?php echo link_to(image_tag_sf_image($member->getImageFileName(), array('size' => '120x120')), 'member/profile?id='.$member->getId()) ?></p>
+<p class="text"><?php echo $member->getName() ?></p>
+</div>
+
+<div class="parts calendar">
 <div class="partsHeading"><h3>
 <?php if ($_m = $calendar->prevMonth('array')): ?>
   <?php echo link_to('&lt;&lt;', '@diary_list_member_year_month?id='.$member->getId().'&year='.$_m['year'].'&month='.$_m['month']) ?>
@@ -50,3 +55,14 @@ while ($day = $calendar->fetch())
 ?>
 </tbody></table>
 </div>
+
+<?php if (count($recentDiaryList)): ?>
+<div class="parts pageNav">
+<div class="partsHeading"><h3><?php echo __('Recently Posted Diaries') ?></h3></div>
+<ul>
+<?php foreach ($recentDiaryList as $_diary): ?>
+<li><?php echo link_to($_diary->getTitleAndCount(), 'diary_show', $_diary) ?></li>
+<?php endforeach; ?>
+</ul>
+</div>
+<?php endif; ?>

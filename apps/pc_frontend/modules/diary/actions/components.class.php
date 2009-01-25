@@ -30,5 +30,8 @@ class diaryComponents extends opDiaryPluginDiaryComponents
     $this->calendar->build();
 
     $this->calendarDiaryDays = DiaryPeer::getMemberDiaryDays($this->member->getId(), $this->getUser()->getMemberId(), $this->year, $this->month);
+
+    // Recent Diary List
+    $this->recentDiaryList = DiaryPeer::getMemberDiaryList($this->member->getId(), 5, $this->getUser()->getMemberId());
   }
 }
