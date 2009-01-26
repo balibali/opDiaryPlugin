@@ -10,7 +10,7 @@
 <?php if ($_m = $calendar->prevMonth('array')): ?>
   <?php echo link_to('&lt;&lt;', '@diary_list_member_year_month?id='.$member->getId().'&year='.$_m['year'].'&month='.$_m['month']) ?>
 <?php endif; ?>
-  <?php $_m = $calendar->thisMonth('array'); echo op_diary_format_date(sprintf('%04d-%02d-01', $_m['year'], $_m['month']), 'XCalendarMonth') ?>
+  <?php $_m = $calendar->thisMonth('array'); echo op_format_date(sprintf('%04d-%02d-01', $_m['year'], $_m['month']), 'XCalendarMonth') ?>
 <?php if ($_m = $calendar->nextMonth('array')): ?>
   <?php echo link_to('&gt;&gt;', '@diary_list_member_year_month?id='.$member->getId().'&year='.$_m['year'].'&month='.$_m['month']) ?>
 <?php endif; ?>

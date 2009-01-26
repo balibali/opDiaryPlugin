@@ -20,7 +20,7 @@
 <?php endif; ?>
 
 <dl>
-<dt><?php echo nl2br(op_diary_format_date($diary->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
+<dt><?php echo nl2br(op_format_date($diary->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>
 <div class="title">
 <p class="heading"><?php echo $diary->getTitle(); ?></p>

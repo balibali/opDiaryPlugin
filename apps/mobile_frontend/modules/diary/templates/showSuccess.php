@@ -2,7 +2,7 @@
 <?php use_helper('opDiary') ?>
 
 <?php echo op_diary_within_page_link() ?>
-<?php echo op_diary_format_date($diary->getCreatedAt(), 'XDateTime') ?>
+<?php echo op_format_date($diary->getCreatedAt(), 'XDateTime') ?>
 <?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
 [<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary_delete_confirm', $diary) ?>]
 <?php endif; ?><br>

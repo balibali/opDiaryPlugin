@@ -32,7 +32,7 @@
 
 <?php foreach ($pager->getResults() as $comment): ?>
 <dl>
-<dt><?php echo nl2br(op_diary_format_date($comment->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
+<dt><?php echo nl2br(op_format_date($comment->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
 <dd>
 <div class="title">
 <p class="heading"><strong><?php echo $comment->getNumber() ?></strong>:

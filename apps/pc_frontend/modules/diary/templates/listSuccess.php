@@ -15,7 +15,7 @@
 </tr><tr>
 <th><?php echo __('Body') ?></th><td><?php echo $diary->getBody() ?></td>
 </tr><tr class="operation">
-<th><?php echo __('Created at') ?></th><td><span class="text"><?php echo op_diary_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), 'diary_show', $diary) ?></span></td>
+<th><?php echo __('Created at') ?></th><td><span class="text"><?php echo op_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), 'diary_show', $diary) ?></span></td>
 </tr></tbody></table></div></div>
 <?php endforeach; ?>
 </div>

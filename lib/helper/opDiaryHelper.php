@@ -8,14 +8,6 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-use_helper('opUtil');
-use_helper('Date');
-
-function op_diary_format_date($date, $format = 'd', $culture = null, $charset = null)
-{
-  return op_format_date($date, $format, $culture, $charset);
-}
-
 function op_diary_within_page_link($marker = '▼')
 {
   static $n = 0;
