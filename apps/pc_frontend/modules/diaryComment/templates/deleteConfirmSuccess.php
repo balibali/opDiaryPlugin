@@ -17,4 +17,4 @@
 </div>
 </div></div>
 
-<?php echo link_to(__('Go back to the diary page'), 'diary_show', $diary) ?>
+<?php op_include_line('backLink', link_to_function(__('Back to previous page'), 'history.back()')) ?>
