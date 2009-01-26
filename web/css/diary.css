@@ -13,19 +13,18 @@
 .commentList dl,
 .recentList dl,
 .formTable .partsHeading,
-.formTable div.checkList ul
-{
+.formTable div.checkList ul {
   zoom: 1;
   overflow: visible;
 }
+
 .diaryDetailBox .partsHeading:after,
 .diaryDetailBox dl:after,
 .prevNextLinkLine:after,
 .commentList dl:after,
 .recentList dl:after,
 .formTable .partsHeading:after,
-.formTable div.checkList ul:after
-{
+.formTable div.checkList ul:after {
   content: ".";
   display: block;
   clear: both;
@@ -36,160 +35,80 @@
 /*==============================================================================
  * 8. diaryDetailBox
  *----------------------------------------------------------------------------*/
-.diaryDetailBox h3
-{
+.diaryDetailBox h3 {
   float: left;
   width: 66%;
 }
-.diaryDetailBox .partsHeading p.public
-{
+
+.diaryDetailBox .partsHeading p.public {
   float: right;
   width: 33%;
   margin: 0;
   text-align: right;
 }
-.diaryDetailBox dl
-{
-  border-top: 1px solid #CCCCCC;
+
+.diaryDetailBox dl {
+  border: 1px solid #CCCCCC;
 }
-.diaryDetailBox dt
-{
+
+.diaryDetailBox dt {
   float: left;
   width: 70px;
   padding-top: 5px;
   text-align: center;
 }
-.diaryDetailBox dd
-{
+
+.diaryDetailBox dd {
   zoom: 1;
   min-height: 4.5em;
   margin-left: 70px;
   border-left: 1px solid #CCCCCC;
 }
-* html .diaryDetailBox dd
-{
+
+* html .diaryDetailBox dd {
   height: 4.5em;
 }
-.diaryDetailBox dd div
-{
+
+.diaryDetailBox dd div {
   border-top: 1px solid #CCCCCC;
 }
-.diaryDetailBox dd div p
-{
+
+.diaryDetailBox dd div p {
   padding: 4px 3px;
 }
-.diaryDetailBox dd div.title
-{
+
+.diaryDetailBox dd div.title {
   border-top: none;
 }
-.diaryDetailBox dd div.body
-{
+
+.diaryDetailBox dd div.body {
   padding: 4px 3px;
 }
-.diaryDetailBox dd ul.photo
-{
+
+.diaryDetailBox dd ul.photo {
   padding: 4px 5px;
 }
-.diaryDetailBox dd ul.photo li
-{
+
+.diaryDetailBox dd ul.photo li {
   display: inline;
   margin-left: 6px;
-}
-.diaryDetailBox div.category ul
-{
-  padding: 4px;
-  text-align: right;
-}
-.diaryDetailBox div.category ul li
-{
-  display: inline;
-  font-size: 80%;
 }
 
 /*==============================================================================
  * 19. prevNextLinkLine
  *----------------------------------------------------------------------------*/
-.prevNextLinkLine p.prev
-{
+.prevNextLinkLine p.prev {
   float: left;
   width: 50%;
   text-align: left;
 }
-.prevNextLinkLine p.next
-{
+
+.prevNextLinkLine p.next {
   float: right;
   width: 50%;
   text-align: right;
 }
-.block.prevNextLinkLine
-{
-  padding: 4px 10px;
-}
 
-/*==============================================================================
- * 23. searchResultList
- *----------------------------------------------------------------------------*/
-.searchResultList .partsInfo
-{
-  background: #EEEEEE;
-}
-.searchResultList .ditem
-{
-  margin: 8px 34px;
-}
-.searchResultList td.photo
-{
-  width: 90px;
-  padding: 0;
-  border-left: none;
-  text-align: center;
-}
-.searchResultList th, .searchResultList td
-{
-  padding: 5px;
-}
-.searchResultList th
-{
-  width: 75px;
-}
-#Body .searchResultList th:first-child,
-#Body .searchResultList th.first-child
-{
-  border-left-width: 1px;
-}
-.searchResultList tr.operation th
-{
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.searchResultList tr.operation td
-{
-  padding: 0;
-}
-.searchResultList tr.operation span.text
-{
-  float: left;
-  display: block;
-  width: 160px;
-  padding: 5px;
-  border-right: 1px solid #CCCCCC;
-}
-.searchResultList tr.operation span.moreInfo
-{
-  zoom: 1;
-  display: block;
-  margin-left: 161px;
-  padding: 4px 0 3px;
-  text-align: center;
-}
-.searchResultList div.operation
-{
-  text-align: center;
-}
-.searchResultList tr.operation span.moreInfo img,
-.searchResultList div.operation form,
-.searchResultList div.operation fieldset
-{
-  display: inline;
-  vertical-align: top;
+.block.prevNextLinkLine {
+  padding: 4px 10px;
 }
