@@ -34,7 +34,7 @@
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
-<?php echo auto_link_text(nl2br($diary->getBody()), 'urls', array('target' => '_blank'), true, 57) ?>
+<?php echo op_url_cmd(nl2br($diary->getBody())) ?>
 </div>
 </dd>
 </dl>

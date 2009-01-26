@@ -52,7 +52,7 @@
 </ul>
 <?php endif; ?>
 <p class="text">
-<?php echo auto_link_text(nl2br($comment->getBody()), 'urls', array('target' => '_blank'), true, 57) ?>
+<?php echo op_url_cmd(nl2br($comment->getBody())) ?>
 </p>
 </div>
 </dd>
