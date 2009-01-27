@@ -61,7 +61,7 @@ while ($day = $calendar->fetch())
 <div class="partsHeading"><h3><?php echo __('Recently Posted Diaries') ?></h3></div>
 <ul>
 <?php foreach ($recentDiaryList as $_diary): ?>
-<li><?php echo link_to($_diary->getTitleAndCount(), 'diary_show', $_diary) ?></li>
+<li><?php echo link_to(op_diary_get_title_and_count($_diary), 'diary_show', $_diary) ?></li>
 <?php endforeach; ?>
 </ul>
 </div>

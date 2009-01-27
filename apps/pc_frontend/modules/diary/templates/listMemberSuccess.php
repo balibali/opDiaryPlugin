@@ -21,7 +21,7 @@ if ($year && $month)
 <?php foreach ($pager->getResults() as $diary): ?>
 <dl>
 <dt><?php echo op_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></dt>
-<dd><?php echo link_to($diary->getTitleAndCount(), 'diary_show', $diary) ?><?php if ($diary->hasImages()) : ?> <?php echo image_tag('icon_camera.gif', array('alt' => 'photo')) ?><?php endif; ?></dd>
+<dd><?php echo link_to(op_diary_get_title_and_count($diary), 'diary_show', $diary) ?><?php if ($diary->hasImages()) : ?> <?php echo image_tag('icon_camera.gif', array('alt' => 'photo')) ?><?php endif; ?></dd>
 </dl>
 <?php endforeach; ?>
 <div class="pagerRelative"><p class="number"><?php echo pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId()); ?></p></div>
