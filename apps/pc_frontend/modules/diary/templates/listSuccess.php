@@ -13,7 +13,7 @@
 </tr><tr>
 <th><?php echo __('Title') ?></th><td><?php echo $diary->getTitleAndCount() ?><?php if ($diary->hasImages()) : ?> <?php echo image_tag('icon_camera.gif', array('alt' => 'photo')) ?><?php endif; ?></td>
 </tr><tr>
-<th><?php echo __('Body') ?></th><td><?php echo $diary->getBody() ?></td>
+<th><?php echo __('Body') ?></th><td><?php echo op_diary_truncate($diary->getBody(), 36, '', 3) ?></td>
 </tr><tr class="operation">
 <th><?php echo __('Created at') ?></th><td><span class="text"><?php echo op_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), 'diary_show', $diary) ?></span></td>
 </tr></tbody></table></div></div>
