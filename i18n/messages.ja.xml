@@ -186,6 +186,14 @@
         <source>The comment was deleted successfully.</source>
         <target>コメントを削除しました。</target>
       </trans-unit>
+      <trans-unit id="47">
+        <source>Delete the diary</source>
+        <target>日記を削除する</target>
+      </trans-unit>
+      <trans-unit id="48">
+        <source>Do you really delete this diary?</source>
+        <target>本当にこの日記を削除しますか？</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
