@@ -19,6 +19,8 @@ class diaryComponents extends opDiaryPluginDiaryComponents
 {
   public function executeSidemenu()
   {
+    include_once('Calendar/Month/Weekdays.php');
+
     // Calendar
     if (!($this->year && $this->month))
     {
