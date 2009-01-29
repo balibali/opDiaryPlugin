@@ -11,12 +11,12 @@ $options = array(
 if ($form->isNew())
 {
   $options['title'] = __('Post a diary');
-  $options['url'] = 'diary/create';
+  $options['url'] = url_for('diary/create');
 }
 else
 {
   $options['title'] = __('Edit the diary');
-  $options['url'] = 'diary/update?id='.$diary->getId();
+  $options['url'] = url_for('diary/update', $diary->getId());
 }
 
 op_include_form('diaryForm', $form, $options);

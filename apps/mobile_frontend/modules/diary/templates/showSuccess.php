@@ -29,7 +29,7 @@
 <?php echo op_diary_within_page_link('') ?>
 <?php
 $options['title'] = __('Post a diary comment');
-$options['url'] = '@diary_comment_create?id='.$diary->getId();
+$options['url'] = url_for('diary_comment_create', $diary);
 $options['button'] = __('Save');
 $options['isMultipart'] = true;
 op_include_form('formDiaryComment', $form, $options);
