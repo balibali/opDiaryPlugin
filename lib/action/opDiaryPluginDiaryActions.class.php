@@ -117,7 +117,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
     {
       $diary = $form->save();
 
-      $this->redirect($this->generateUrl('diary_show', $diary));
+      $this->redirect('@diary_show?id='.$diary->getId());
     }
   }
 }
