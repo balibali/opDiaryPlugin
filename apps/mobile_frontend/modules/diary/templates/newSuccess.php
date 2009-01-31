@@ -3,7 +3,7 @@ op_mobile_page_title(__('Post a diary'));
 ?>
 
 <?php
-$options['url'] = url_for('diary/create');
+$options['url'] = url_for('diary_create');
 $options['button'] = __('Save');
 op_include_form('formDiary', $form, $options);
 ?>
