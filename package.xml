@@ -13,32 +13,32 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2009-02-05</date>
- <time>08:16:24</time>
+ <date>2009-02-08</date>
+ <time>15:00:16</time>
  <version>
-  <release>0.8.0</release>
-  <api>0.8.0</api>
+  <release>0.8.1</release>
+  <api>0.8.1</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license>Apache</license>
- <notes>The first beta release of the opDiaryPlugin.</notes>
+ <notes>Fixed some bugs.</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="2bcec9045b32de9d9121c27fe72d4a6e" name="apps/mobile_frontend/config/app.yml" role="data" />
-   <file baseinstalldir="/" md5sum="05f92b9e26114017d1aefd47f0360a5b" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="7de160bb8b9e65ee36a554871b5f323f" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/mobile_frontend/modules/diary/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f38308dad6aba1edebb1de78c5a44223" name="apps/mobile_frontend/modules/diary/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/diary/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="d84ab38a3e4eeadcbdae1f268c04a3f4" name="apps/mobile_frontend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="f57c9c23e59454e3fdd11e8f01dd0479" name="apps/mobile_frontend/modules/diary/templates/editSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="52b033f11e63b4861c9af7c43dd844a3" name="apps/mobile_frontend/modules/diary/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="92187fc3d2b1d28c50b508961cae3d95" name="apps/mobile_frontend/modules/diary/templates/listFriendSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="63f4fdec500a49a15b6b92de710dbfa5" name="apps/mobile_frontend/modules/diary/templates/listMemberSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="d10eb690af35ed2299ed46c0993c3886" name="apps/mobile_frontend/modules/diary/templates/listSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="c263dcf4ffb32b44569bcc50e01d8ebc" name="apps/mobile_frontend/modules/diary/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ed6bde48f1320c2ca9cdd4a14380e511" name="apps/mobile_frontend/modules/diary/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="3a3b8d59fd52c3149b2aac68afc61b3f" name="apps/mobile_frontend/modules/diary/templates/newSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="6ec067a3480d96680519a01661a44208" name="apps/mobile_frontend/modules/diary/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="1f0f5df232968cffdfe18d168ba6a8a2" name="apps/mobile_frontend/modules/diary/templates/_diaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="65a646958ae4e48a6f210e645bd44bbd" name="apps/mobile_frontend/modules/diary/templates/_friendDiaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="950ba6c5ef951a088ad635fba0c9149e" name="apps/mobile_frontend/modules/diary/templates/_memberDiaryList.php" role="data" />
@@ -52,22 +52,22 @@
    <file baseinstalldir="/" md5sum="41745d3c312e7ad131e331010a5aebc5" name="apps/mobile_frontend/modules/member/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="681117589e093a8a5a3fdfb44a08c2d0" name="apps/pc_frontend/config/app.yml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/pc_frontend/modules/diary/actions/actions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="aa37b648ac58bdd7002decffd0a61e74" name="apps/pc_frontend/modules/diary/actions/components.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="2ed0aac6fa67dc4f47ee9a8ec993e234" name="apps/pc_frontend/modules/diary/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/diary/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="b854ac284198fb6cd48badcec20a6671" name="apps/pc_frontend/modules/diary/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab703d30fcdb267152536a33a594ee85" name="apps/pc_frontend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="b0e9e2127e73853bd312f284ac279bde" name="apps/pc_frontend/modules/diary/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="db2ab8c4688e00eff6865afeeb10d1d4" name="apps/pc_frontend/modules/diary/templates/listFriendSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="50cbabdaf95854c8c1020038c559d491" name="apps/pc_frontend/modules/diary/templates/listMemberSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="87d78a3104221263e720c8fd7c7416a9" name="apps/pc_frontend/modules/diary/templates/listSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="6ad14737ca3c9667f2d15b73f484a748" name="apps/pc_frontend/modules/diary/templates/listSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="a5e548d3ff8807b5ea3459b26879644c" name="apps/pc_frontend/modules/diary/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="ef056e5cc6178dc497809475210ae353" name="apps/pc_frontend/modules/diary/templates/showSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="53df958d357610427cbb95c6a0006823" name="apps/pc_frontend/modules/diary/templates/_diaryList.php" role="data" />
-   <file baseinstalldir="/" md5sum="13f09ec31646b0bb4c19a0e6a4e8a1fd" name="apps/pc_frontend/modules/diary/templates/_form.php" role="data" />
+   <file baseinstalldir="/" md5sum="fc394c9a8c6513f3ad0b1222652b3e17" name="apps/pc_frontend/modules/diary/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="97ad5cc3b79b3e2d1194aaefc6a82c49" name="apps/pc_frontend/modules/diary/templates/_diaryList.php" role="data" />
+   <file baseinstalldir="/" md5sum="b102ea1f7a86793e9d38cfc1f7943d0e" name="apps/pc_frontend/modules/diary/templates/_form.php" role="data" />
    <file baseinstalldir="/" md5sum="64346e0fd2fa85c752869e0574af8f43" name="apps/pc_frontend/modules/diary/templates/_formEditImage.php" role="data" />
-   <file baseinstalldir="/" md5sum="386f5f6b7d3407a96905d6a3bc2682ab" name="apps/pc_frontend/modules/diary/templates/_friendDiaryList.php" role="data" />
+   <file baseinstalldir="/" md5sum="33d8303c178bbdb4172a7e0ede036322" name="apps/pc_frontend/modules/diary/templates/_friendDiaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="73e4ff7720ddffc70d4f00e1c30a0689" name="apps/pc_frontend/modules/diary/templates/_memberDiaryList.php" role="data" />
-   <file baseinstalldir="/" md5sum="79df39f72d484da6cc23eb66d52e539b" name="apps/pc_frontend/modules/diary/templates/_myDiaryList.php" role="data" />
+   <file baseinstalldir="/" md5sum="92df8cf6b903b50334656ee5d710df25" name="apps/pc_frontend/modules/diary/templates/_myDiaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="8e28f8c7524d1907269c470584d18f35" name="apps/pc_frontend/modules/diary/templates/_noticeUnreadDiaryComment.php" role="data" />
    <file baseinstalldir="/" md5sum="d4dc5e13a356d736c6db553b259da68b" name="apps/pc_frontend/modules/diary/templates/_sidemenu.php" role="data" />
    <file baseinstalldir="/" md5sum="215388c81a68b7a8fc324dcb65bd9323" name="apps/pc_frontend/modules/diaryComment/actions/actions.class.php" role="data" />
@@ -76,7 +76,7 @@
    <file baseinstalldir="/" md5sum="b854ac284198fb6cd48badcec20a6671" name="apps/pc_frontend/modules/diaryComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="2ea2d5698c2632332a3cb87e76d50abe" name="apps/pc_frontend/modules/diaryComment/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="bc7bb0711cb79355b6d31634b094b4d0" name="apps/pc_frontend/modules/diaryComment/templates/_list.php" role="data" />
-   <file baseinstalldir="/" md5sum="4319a1e5d8abd8801ec4ae85b9d62622" name="apps/pc_frontend/modules/member/config/view.yml" role="data" />
+   <file baseinstalldir="/" md5sum="12003e29c5c228018e75fcf715232342" name="apps/pc_frontend/modules/member/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="96e1cfb0af8c6cb403b007467ad39240" name="config/config.php" role="data" />
    <file baseinstalldir="/" md5sum="4280e0317f71f0b5856dc204abe9f677" name="config/gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="9eeeedaedc43cddee1c75f050a820f83" name="config/schema.yml" role="data" />
@@ -87,8 +87,8 @@
    <file baseinstalldir="/" md5sum="09030f95621189e597f9930be9bef812" name="lib/opDiaryPluginRouting.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b6a267067895f6bd95be443db667ebc9" name="lib/sfReversiblePropelPager.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6d1aa8178ed071d868918a54511f2814" name="lib/action/opDiaryPluginActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="18f9de5076db4dedf0a1722237277b4b" name="lib/action/opDiaryPluginDiaryActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="e2f7a12c97c01df45d15dc6159c16f01" name="lib/action/opDiaryPluginDiaryCommentActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="5816877e5e712d5c82b6e7a1aa400d83" name="lib/action/opDiaryPluginDiaryActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="2ebf298618df8d1f54ca4b1a6de8d96f" name="lib/action/opDiaryPluginDiaryCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="7fa9a05bcac4a3bfd58710bbeda8e111" name="lib/action/opDiaryPluginDiaryCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8cfa9c92910a56ce03b3a94d620d8d65" name="lib/action/opDiaryPluginDiaryComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0cb64a97d7ccb4b3f0bac64282c59d4f" name="lib/filter/DiaryCommentFormFilter.class.php" role="data" />
@@ -111,8 +111,8 @@
    <file baseinstalldir="/" md5sum="8935e5faf1748921beaf7d6f662978a2" name="lib/form/base/BaseDiaryCommentUnreadForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="4fb441c677f0e16efdcce745613e135a" name="lib/form/base/BaseDiaryForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="13dcda4096372f82adbf0beacfe5aa68" name="lib/form/base/BaseDiaryImageForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="d067049946eadb25d0e09ee4d0c98373" name="lib/helper/opDiaryHelper.php" role="data" />
-   <file baseinstalldir="/" md5sum="4b17f64d8008710422d827fcb40bc89e" name="lib/model/Diary.php" role="data" />
+   <file baseinstalldir="/" md5sum="abb46623d2bf4b6cb7369318a6c64c7c" name="lib/helper/opDiaryHelper.php" role="data" />
+   <file baseinstalldir="/" md5sum="6c40c5d476c137df712c02f271e41e13" name="lib/model/Diary.php" role="data" />
    <file baseinstalldir="/" md5sum="491104dbebaf31f41daf1610d875cad2" name="lib/model/DiaryComment.php" role="data" />
    <file baseinstalldir="/" md5sum="e1ed02ed0ae036b20f8e631bb2a90c08" name="lib/model/DiaryCommentImage.php" role="data" />
    <file baseinstalldir="/" md5sum="55c513bd86af60e995c9c8c53fbf7d33" name="lib/model/DiaryCommentImagePeer.php" role="data" />
@@ -121,7 +121,7 @@
    <file baseinstalldir="/" md5sum="002878ad6c3f3aabe94ec7b007229db2" name="lib/model/DiaryCommentUnreadPeer.php" role="data" />
    <file baseinstalldir="/" md5sum="6dc39d23fd1e5827dd20e1d4f690587a" name="lib/model/DiaryImage.php" role="data" />
    <file baseinstalldir="/" md5sum="40abea58b35f72e88948f2de9065efed" name="lib/model/DiaryImagePeer.php" role="data" />
-   <file baseinstalldir="/" md5sum="4a11ab79070d83a0ac77ff2add3559fd" name="lib/model/DiaryPeer.php" role="data" />
+   <file baseinstalldir="/" md5sum="bb93a25a46af47e9baed8830234a29da" name="lib/model/DiaryPeer.php" role="data" />
    <file baseinstalldir="/" md5sum="44ccf28fe8701b95b8322abe3556c7fd" name="lib/model/map/DiaryCommentImageMapBuilder.php" role="data" />
    <file baseinstalldir="/" md5sum="57b2ac6c83323c47e1dd5172646a2012" name="lib/model/map/DiaryCommentMapBuilder.php" role="data" />
    <file baseinstalldir="/" md5sum="4d1fe4afdd18d4c21a97c95db6039ddd" name="lib/model/map/DiaryCommentUnreadMapBuilder.php" role="data" />
@@ -170,6 +170,19 @@
    <date>2009-02-05</date>
    <license>Apache</license>
    <notes>The first beta release of the opDiaryPlugin.</notes>
+  </release>
+  <release>
+   <version>
+    <release>0.8.1</release>
+    <api>0.8.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-02-08</date>
+   <license>Apache</license>
+   <notes>Fixed some bugs.</notes>
   </release>
  </changelog>
 </package>
