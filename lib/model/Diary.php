@@ -26,7 +26,7 @@ class Diary extends BaseDiary
     return $criteria;
   }
 
-  public function getPrevious()
+  public function getPrevious($myMemberId = null)
   {
     if (is_null($this->previous))
     {
@@ -35,13 +35,17 @@ class Diary extends BaseDiary
       $criteria->add(DiaryPeer::ID, $this->getId(), Criteria::LESS_THAN);
       $criteria->addDescendingOrderByColumn(DiaryPeer::ID);
 
+      DiaryPeer::addPublicFlagCriteria($criteria,
+          DiaryPeer::getPublicFlagByMemberId($this->getMemberId(), $myMemberId)
+      );
+
       $this->previous = DiaryPeer::doSelectOne($criteria);
     }
 
     return $this->previous;
   }
 
-  public function getNext()
+  public function getNext($myMemberId = null)
   {
     if (is_null($this->next))
     {
@@ -49,6 +53,10 @@ class Diary extends BaseDiary
       $criteria->add(DiaryPeer::MEMBER_ID, $this->getMemberId());
       $criteria->add(DiaryPeer::ID, $this->getId(), Criteria::GREATER_THAN);
       $criteria->addAscendingOrderByColumn(DiaryPeer::ID);
+
+      DiaryPeer::addPublicFlagCriteria($criteria,
+          DiaryPeer::getPublicFlagByMemberId($this->getMemberId(), $myMemberId)
+      );
 
       $this->next = DiaryPeer::doSelectOne($criteria);
     }

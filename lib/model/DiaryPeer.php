@@ -137,7 +137,7 @@ class DiaryPeer extends BaseDiaryPeer
     self::addPublicFlagCriteria($criteria, self::PUBLIC_FLAG_FRIEND);
   }
 
-  protected static function addPublicFlagCriteria(Criteria $criteria, $flag)
+  public static function addPublicFlagCriteria(Criteria $criteria, $flag)
   {
     if ($flag === self::PUBLIC_FLAG_PRIVATE)
     {

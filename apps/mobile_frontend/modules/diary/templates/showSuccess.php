@@ -15,11 +15,11 @@
 
 (<?php echo $diary->getPublicFlagLabel() ?>)<br>
 
-<?php if ($diary->getPrevious() || $diary->getNext()): ?>
+<?php if ($diary->getPrevious($sf_user->getMemberId()) || $diary->getNext($sf_user->getMemberId())): ?>
 <hr>
 <center>
-<?php if ($diary->getPrevious()): ?> <?php echo link_to(__('Previous Diary'), 'diary_show', $diary->getPrevious()) ?><?php endif; ?>
-<?php if ($diary->getNext()): ?> <?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext()) ?><?php endif; ?>
+<?php if ($diary->getPrevious($sf_user->getMemberId())): ?> <?php echo link_to(__('Previous Diary'), 'diary_show', $diary->getPrevious($sf_user->getMemberId())) ?><?php endif; ?>
+<?php if ($diary->getNext($sf_user->getMemberId())): ?> <?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext($sf_user->getMemberId())) ?><?php endif; ?>
 </center>
 <?php endif; ?>
 

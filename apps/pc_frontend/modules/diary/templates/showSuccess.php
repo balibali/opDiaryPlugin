@@ -8,13 +8,13 @@
 <div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $member->getName())) ?></h3>
 <p class="public">(<?php echo $diary->getPublicFlagLabel() ?>)</p></div>
 
-<?php if ($diary->getPrevious() || $diary->getNext()): ?>
+<?php if ($diary->getPrevious($sf_user->getMemberId()) || $diary->getNext($sf_user->getMemberId())): ?>
 <div class="block prevNextLinkLine">
-<?php if ($diary->getPrevious()): ?>
-<p class="prev"><?php echo link_to(__('Previous Diary'), 'diary_show', $diary->getPrevious()) ?></p>
+<?php if ($diary->getPrevious($sf_user->getMemberId())): ?>
+<p class="prev"><?php echo link_to(__('Previous Diary'), 'diary_show', $diary->getPrevious($sf_user->getMemberId())) ?></p>
 <?php endif; ?>
-<?php if ($diary->getNext()): ?>
-<p class="next"><?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext()) ?></p>
+<?php if ($diary->getNext($sf_user->getMemberId())): ?>
+<p class="next"><?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext($sf_user->getMemberId())) ?></p>
 <?php endif; ?>
 </div>
 <?php endif; ?>
