@@ -4,7 +4,7 @@ homeSuccess:
       template: [diary, noticeUnreadDiaryComment]
       is_component: true
       parts   : [information]
-      target  : [bottom]
+      target  : [bodyBottom]
 profileSuccess:
   customize:
     memberDiaryList:
