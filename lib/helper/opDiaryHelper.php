@@ -8,25 +8,6 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-function op_diary_within_page_link($marker = '▼')
-{
-  static $n = 0;
-
-  $options = array();
-  if ($n)
-  {
-    $options['name'] = sprintf('a%d', $n);
-  }
-  if ($marker)
-  {
-    $options['href'] = sprintf('#a%d', $n+1);
-  }
-
-  $n++;
-
-  return content_tag('a', $marker, $options);
-}
-
 function op_diary_get_title_and_count($diary, $space = true, $width = 36)
 {
   return sprintf('%s%s(%d)',
