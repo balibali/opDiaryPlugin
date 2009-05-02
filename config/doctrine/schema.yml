@@ -1,0 +1,73 @@
+options:
+  charset: utf8
+ 
+Diary:
+  actAs: [Timestampable]
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    member_id: { type: integer(4), notnull: true }
+    title: { type: string, notnull: true }
+    body: { type: string, notnull: true }
+    public_flag: { type: integer(1), notnull: true, default: 1 }
+    has_images: { type: boolean, notnull: true, default: false }
+  relations:
+    Member:
+      foreignAlias: Diaries
+      onDelete: cascade
+
+DiaryImage:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    diary_id: { type: integer(4), notnull: true }
+    file_id: { type: integer(4), notnull: true }
+    number: { type: integer(4), notnull: true }
+  relations:
+    Diary:
+      foreignAlias: DiaryImages
+      onDelete: cascade
+    File:
+      foreignAlias: DiaryImages
+      onDelete: cascade
+  indexes:
+    diary_id_number:
+      fields: [diary_id, number]
+      type: unique
+
+DiaryComment:
+  actAs: [Timestampable]
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    diary_id: { type: integer(4), notnull: true }
+    member_id: { type: integer(4), notnull: true }
+    number: { type: integer(4), notnull: true }
+    body: { type: string, notnull: true }
+  relations:
+    Diary:
+      foreignAlias: DiaryComments
+    Member:
+      foreignAlias: DiaryComments
+      onDelete: cascade
+
+DiaryCommentImage:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    diary_comment_id: { type: integer(4), notnull: true }
+    file_id: { type: integer(4), notnull: true }
+  relations:
+    DiaryComment:
+      foreignAlias: DiaryCommentImages
+      onDelete: cascade
+    File:
+      foreignAlias: DiaryCommentImages
+      onDelete: cascade
+
+DiaryCommentUnread:
+  columns:
+    diary_id: { type: integer(4), notnull: true, primary: true }
+    member_id: { type: integer(4), notnull: true }
+  relations:
+    Diary:
+      foreignType: one
+      onDelete: cascade
+    Member:
+      onDelete: cascade
