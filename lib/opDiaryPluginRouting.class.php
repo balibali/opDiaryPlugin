@@ -30,19 +30,19 @@ class opDiaryPluginRouting
         '/diary/list',
         array('module' => 'diary', 'action' => 'list')
       ),
-      'diary_list_member' => new sfPropelRoute(
+      'diary_list_member' => new sfDoctrineRoute(
         '/diary/listMember/:id',
         array('module' => 'diary', 'action' => 'listMember'),
         array('id' => '\d+'),
         array('model' => 'Member', 'type' => 'object')
       ),
-      'diary_list_member_year_month' => new sfPropelRoute(
+      'diary_list_member_year_month' => new sfDoctrineRoute(
         '/diary/listMember/:id/:year/:month',
         array('module' => 'diary', 'action' => 'listMember'),
         array('id' => '\d+', 'year' => '[12][0-9]{3}', 'month' => '(0?[1-9])|(1[0-2])'),
         array('model' => 'Member', 'type' => 'object')
       ),
-      'diary_list_member_year_month_day' => new sfPropelRoute(
+      'diary_list_member_year_month_day' => new sfDoctrineRoute(
         '/diary/listMember/:id/:year/:month/:day',
         array('module' => 'diary', 'action' => 'listMember'),
         array('id' => '\d+', 'year' => '[12][0-9]{3}', 'month' => '(0?[1-9])|(1[0-2])', 'day' => '(0?[1-9])|([12][0-9])|(3[01])'),
@@ -56,7 +56,7 @@ class opDiaryPluginRouting
         '/diary/listFriend',
         array('module' => 'diary', 'action' => 'listFriend')
       ),
-      'diary_show' => new sfPropelRoute(
+      'diary_show' => new sfDoctrineRoute(
         '/diary/:id',
         array('module' => 'diary', 'action' => 'show'),
         array('id' => '\d+'),
@@ -72,44 +72,44 @@ class opDiaryPluginRouting
         array('module' => 'diary', 'action' => 'create'),
         array('sf_method' => array('post'))
       ),
-      'diary_edit' => new sfPropelRoute(
+      'diary_edit' => new sfDoctrineRoute(
         '/diary/edit/:id',
         array('module' => 'diary', 'action' => 'edit'),
         array('id' => '\d+'),
         array('model' => 'Diary', 'type' => 'object')
       ),
-      'diary_update' => new sfPropelRoute(
+      'diary_update' => new sfDoctrineRoute(
         '/diary/update/:id',
         array('module' => 'diary', 'action' => 'update'),
         array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'Diary', 'type' => 'object')
       ),
-      'diary_delete_confirm' => new sfPropelRoute(
+      'diary_delete_confirm' => new sfDoctrineRoute(
         '/diary/deleteConfirm/:id',
         array('module' => 'diary', 'action' => 'deleteConfirm'),
         array('id' => '\d+'),
         array('model' => 'Diary', 'type' => 'object')
       ),
-      'diary_delete' => new sfPropelRoute(
+      'diary_delete' => new sfDoctrineRoute(
         '/diary/delete/:id',
         array('module' => 'diary', 'action' => 'delete'),
         array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'Diary', 'type' => 'object')
       ),
 
-      'diary_comment_create' => new sfPropelRoute(
+      'diary_comment_create' => new sfDoctrineRoute(
         '/diary/:id/comment/create',
         array('module' => 'diaryComment', 'action' => 'create'),
         array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'Diary', 'type' => 'object')
       ),
-      'diary_comment_delete_confirm' => new sfPropelRoute(
+      'diary_comment_delete_confirm' => new sfDoctrineRoute(
         '/diary/comment/deleteConfirm/:id',
         array('module' => 'diaryComment', 'action' => 'deleteConfirm'),
         array('id' => '\d+'),
         array('model' => 'DiaryComment', 'type' => 'object')
       ),
-      'diary_comment_delete' => new sfPropelRoute(
+      'diary_comment_delete' => new sfDoctrineRoute(
         '/diary/comment/delete/:id',
         array('module' => 'diaryComment', 'action' => 'delete'),
         array('id' => '\d+', 'sf_method' => array('post')),
