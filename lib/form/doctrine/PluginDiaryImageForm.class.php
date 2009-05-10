@@ -9,12 +9,12 @@
  */
 
 /**
- * DiaryImage form.
+ * PluginDiaryImage form.
  *
- * @package    OpenPNE
+ * @package    opDiaryPlugin
  * @subpackage form
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  */
-class DiaryImageForm extends BaseDiaryImageForm
+abstract class PluginDiaryImageForm extends BaseDiaryImageForm
 {
 }

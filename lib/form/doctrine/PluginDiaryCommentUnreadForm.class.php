@@ -1,16 +1,20 @@
 <?php
 
 /**
- * DiaryCommentUnread form.
+ * This file is part of the OpenPNE package.
+ * (c) OpenPNE Project (http://www.openpne.jp/)
  *
- * @package    ##PROJECT_NAME##
- * @subpackage form
- * @author     ##AUTHOR_NAME##
- * @version    SVN: $Id: sfPropelFormTemplate.php 10377 2008-07-21 07:10:32Z dwhittle $
+ * For the full copyright and license information, please view the LICENSE
+ * file and the NOTICE file that were distributed with this source code.
  */
-class DiaryCommentUnreadForm extends BaseDiaryCommentUnreadForm
+
+/**
+ * PluginDiaryCommentUnread form.
+ *
+ * @package    opDiaryPlugin
+ * @subpackage form
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiaryCommentUnreadForm extends BaseDiaryCommentUnreadForm
 {
-  public function configure()
-  {
-  }
 }

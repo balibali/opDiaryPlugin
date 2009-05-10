@@ -9,16 +9,18 @@
  */
 
 /**
- * DiaryComment form.
+ * PluginDiaryComment form.
  *
- * @package    OpenPNE
+ * @package    opDiaryPlugin
  * @subpackage form
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  */
-class DiaryCommentForm extends BaseDiaryCommentForm
+abstract class PluginDiaryCommentForm extends BaseDiaryCommentForm
 {
-  public function configure()
+  public function setup()
   {
+    parent::setup();
+
     unset($this['id']);
     unset($this['diary_id']);
     unset($this['member_id']);

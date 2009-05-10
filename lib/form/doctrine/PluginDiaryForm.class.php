@@ -9,16 +9,18 @@
  */
 
 /**
- * Diary form.
+ * PluginDiary form.
  *
- * @package    OpenPNE
+ * @package    opDiaryPlugin
  * @subpackage form
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  */
-class DiaryForm extends BaseDiaryForm
+abstract class PluginDiaryForm extends BaseDiaryForm
 {
-  public function configure()
+  public function setup()
   {
+    parent::setup();
+
     unset($this['id']);
     unset($this['member_id']);
     unset($this['created_at']);
@@ -28,11 +30,11 @@ class DiaryForm extends BaseDiaryForm
     $this->widgetSchema['title'] = new sfWidgetFormInput();
 
     $this->widgetSchema['public_flag'] = new sfWidgetFormChoice(array(
-      'choices'  => DiaryPeer::getPublicFlags(),
+      'choices'  => Doctrine::getTable('Diary')->getPublicFlags(),
       'expanded' => true,
     ));
     $this->validatorSchema['public_flag'] = new sfValidatorChoice(array(
-      'choices' => array_keys(DiaryPeer::getPublicFlags()),
+      'choices' => array_keys(Doctrine::getTable('Diary')->getPublicFlags()),
     ));
 
     if (sfConfig::get('app_diary_is_upload_images', true))
