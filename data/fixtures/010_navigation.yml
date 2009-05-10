@@ -3,61 +3,44 @@ Navigation:
     type: "secure_global"
     uri: "diary/index"
     sort_order: 25
+    Translation:
+      en:
+        caption: "Diary"
+      ja_JP:
+        caption: "日記"
   default_navigation_diary:
     type: "default"
     uri: "diary/listMember"
     sort_order: 15
+    Translation:
+      en:
+        caption: "Diary"
+      ja_JP:
+        caption: "日記"
   friend_navigation_diary:
     type: "friend"
     uri: "diary/listMember"
     sort_order: 15
+    Translation:
+      en:
+        caption: "Diary"
+      ja_JP:
+        caption: "日記"
   mobile_home_side_navigation_diary_new:
     type: "mobile_home_side"
     uri: "@diary_new"
     sort_order: 15
+    Translation:
+      en:
+        caption: "Post a Diary"
+      ja_JP:
+        caption: "日記を書く"
   mobile_home_side_navigation_diary_list:
     type: "mobile_home_side"
     uri: "@diary_list"
     sort_order: 16
-
-NavigationI18n:
-  secure_global_navigation_diary_i18n_en:
-    id: secure_global_navigation_diary
-    caption: "Diary"
-    culture: "en"
-  secure_global_navigation_diary_i18n_ja:
-    id: secure_global_navigation_diary
-    caption: "日記"
-    culture: "ja_JP"
-  default_navigation_diary_i18n_en:
-    id: default_navigation_diary
-    caption: "Diary"
-    culture: "en"
-  default_navigation_diary_i18n_ja:
-    id: default_navigation_diary
-    caption: "日記"
-    culture: "ja_JP"
-  friend_navigation_diary_i18n_en:
-    id: friend_navigation_diary
-    caption: "Diary"
-    culture: "en"
-  friend_navigation_diary_i18n_ja:
-    id: friend_navigation_diary
-    caption: "日記"
-    culture: "ja_JP"
-  mobile_home_side_navigation_diary_new_i18n_en:
-    id: mobile_home_side_navigation_diary_new
-    caption: "Post a diary"
-    culture: "en"
-  mobile_home_side_navigation_diary_new_i18n_ja:
-    id: mobile_home_side_navigation_diary_new
-    caption: "日記を書く"
-    culture: "ja_JP"
-  mobile_home_side_navigation_diary_list_i18n_en:
-    id: mobile_home_side_navigation_diary_list
-    caption: "Recently Posted Diaries"
-    culture: "en"
-  mobile_home_side_navigation_diary_list_i18n_ja:
-    id: mobile_home_side_navigation_diary_list
-    caption: "最新日記"
-    culture: "ja_JP"
+    Translation:
+      en:
+        caption: "Recently Posted Diaries"
+      ja_JP:
+        caption: "最新日記"
