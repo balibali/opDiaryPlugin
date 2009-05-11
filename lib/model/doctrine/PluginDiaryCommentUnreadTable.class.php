@@ -1,10 +1,24 @@
 <?php
 
-class DiaryCommentUnreadPeer extends BaseDiaryCommentUnreadPeer
+/**
+ * This file is part of the OpenPNE package.
+ * (c) OpenPNE Project (http://www.openpne.jp/)
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file and the NOTICE file that were distributed with this source code.
+ */
+
+/**
+ * PluginDiaryCommentUnreadTable
+ *
+ * @package    opDiaryPlugin
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiaryCommentUnreadTable extends Doctrine_Table
 {
-  public static function register(Diary $diary)
+  public function register(Diary $diary)
   {
-    if (self::retrieveByPK($diary->getId()))
+    if ($this->find($diary->getId()))
     {
       return true;
     }
@@ -16,28 +30,27 @@ class DiaryCommentUnreadPeer extends BaseDiaryCommentUnreadPeer
     return $object->save();
   }
 
-  public static function unregister(Diary $diary)
+  public function unregister(Diary $diary)
   {
-    if ($object = self::retrieveByPK($diary->getId()))
+    if ($object = $this->find($diary->getId()))
     {
       $object->delete();
     }
   }
 
-  public static function countUnreadDiary($memberId)
+  public function countUnreadDiary($memberId)
   {
-    $criteria = new Criteria();
-    $criteria->add(self::MEMBER_ID, $memberId);
-
-    return self::doCount($criteria);
+    return $this->createQuery()
+      ->select('COUNT(member_id)')
+      ->where('member_id = ?', $memberId)
+      ->execute(array(), Doctrine::HYDRATE_SINGLE_SCALAR);
   }
 
-  public static function getOneDiaryIdByMemberId($memberId)
+  public function getOneDiaryIdByMemberId($memberId)
   {
-    $criteria = new Criteria();
-    $criteria->add(self::MEMBER_ID, $memberId);
-    $one = self::doSelectOne($criteria);
-
-    return $one->getDiaryId();
+    return $this->createQuery()
+      ->select('diary_id')
+      ->where('member_id = ?', $memberId)
+      ->execute(array(), Doctrine::HYDRATE_SINGLE_SCALAR);
   }
 }

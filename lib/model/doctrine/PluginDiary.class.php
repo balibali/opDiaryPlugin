@@ -8,38 +8,28 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class Diary extends BaseDiary
+/**
+ * PluginDiary
+ *
+ * @package    opDiaryPlugin
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiary extends BaseDiary
 {
   protected $previous, $next;
 
   public function getPublicFlagLabel()
   {
-    $publicFlags = DiaryPeer::getPublicFlags();
+    $publicFlags = $this->getTable()->getPublicFlags();
+
     return $publicFlags[$this->getPublicFlag()];
-  }
-
-  public function getDiaryCommentsCriteria()
-  {
-    $criteria = new Criteria();
-    $criteria->add(DiaryCommentPeer::DIARY_ID, $this->getId());
-
-    return $criteria;
   }
 
   public function getPrevious($myMemberId = null)
   {
     if (is_null($this->previous))
     {
-      $criteria = new Criteria();
-      $criteria->add(DiaryPeer::MEMBER_ID, $this->getMemberId());
-      $criteria->add(DiaryPeer::ID, $this->getId(), Criteria::LESS_THAN);
-      $criteria->addDescendingOrderByColumn(DiaryPeer::ID);
-
-      DiaryPeer::addPublicFlagCriteria($criteria,
-          DiaryPeer::getPublicFlagByMemberId($this->getMemberId(), $myMemberId)
-      );
-
-      $this->previous = DiaryPeer::doSelectOne($criteria);
+      $this->previous = $this->getTable()->getPreviousDiary($this, $myMemberId);
     }
 
     return $this->previous;
@@ -49,31 +39,16 @@ class Diary extends BaseDiary
   {
     if (is_null($this->next))
     {
-      $criteria = new Criteria();
-      $criteria->add(DiaryPeer::MEMBER_ID, $this->getMemberId());
-      $criteria->add(DiaryPeer::ID, $this->getId(), Criteria::GREATER_THAN);
-      $criteria->addAscendingOrderByColumn(DiaryPeer::ID);
-
-      DiaryPeer::addPublicFlagCriteria($criteria,
-          DiaryPeer::getPublicFlagByMemberId($this->getMemberId(), $myMemberId)
-      );
-
-      $this->next = DiaryPeer::doSelectOne($criteria);
+      $this->next = $this->getTable()->getNextDiary($this, $myMemberId);
     }
 
     return $this->next;
   }
 
-  public function getDiaryImages($criteria = null, PropelPDO $con = null)
+  public function getDiaryImages()
   {
-    if (is_null($criteria))
-    {
-      $criteria = new Criteria();
-      $criteria->addAscendingOrderByColumn(DiaryImagePeer::NUMBER);
-    }
-
-    $images = parent::getDiaryImages($criteria, $con);
-
+    $images = Doctrine::getTable('DiaryImage')->findByDiaryId($this->getId());
+    
     $result = array();
     foreach ($images as $image)
     {
@@ -107,8 +82,17 @@ class Diary extends BaseDiary
 
   public function isViewable($memberId)
   {
-    $flags = DiaryPeer::getViewablePublicFlags(DiaryPeer::getPublicFlagByMemberId($this->getMemberId(), $memberId));
+    $flags = $this->getTable()->getViewablePublicFlags($this->getTable()->getPublicFlagByMemberId($this->getMemberId(), $memberId));
 
     return in_array($this->getPublicFlag(), $flags);
+  }
+
+  public function getDiaryImagesJoinFile()
+  {
+    $q = Doctrine::getTable('DiaryImage')->createQuery()
+      ->leftJoin('File')
+      ->where('diary_id = ?', $this->getId());
+
+    return $q->execute();
   }
 }

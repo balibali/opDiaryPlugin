@@ -8,20 +8,26 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class DiaryImage extends BaseDiaryImage
+/**
+ * PluginDiaryImage
+ *
+ * @package    opDiaryPlugin
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiaryImage extends BaseDiaryImage
 {
   protected $deleteFile = true;
 
-  public function save(PropelPDO $con = null)
+  public function save(Doctrine_Connection $conn = null)
   {
-    $result = parent::save($con);
+    $result = parent::save($conn);
 
     $this->getDiary()->updateHasImages();
 
     return $result;
   }
 
-  public function delete(PropelPDO $con = null)
+  public function delete(Doctrine_Connection $conn = null)
   {
     if ($this->deleteFile)
     {
@@ -30,7 +36,7 @@ class DiaryImage extends BaseDiaryImage
 
     if (!$this->isDeleted())
     {
-      parent::delete($con);
+      parent::delete($conn);
     }
 
     $this->getDiary()->updateHasImages();

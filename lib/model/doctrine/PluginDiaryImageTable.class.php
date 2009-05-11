@@ -8,6 +8,12 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class DiaryImagePeer extends BaseDiaryImagePeer
+/**
+ * PluginDiaryImageTable
+ *
+ * @package    opDiaryPlugin
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiaryImageTable extends Doctrine_Table
 {
 }

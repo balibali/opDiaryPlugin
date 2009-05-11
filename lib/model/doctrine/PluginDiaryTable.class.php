@@ -8,7 +8,13 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class DiaryPeer extends BaseDiaryPeer
+/**
+ * PluginDiaryTable
+ *
+ * @package    opDiaryPlugin
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiaryTable extends Doctrine_Table
 {
   const PUBLIC_FLAG_OPEN    = 4;
   const PUBLIC_FLAG_SNS     = 1;
@@ -22,7 +28,7 @@ class DiaryPeer extends BaseDiaryPeer
     self::PUBLIC_FLAG_PRIVATE => 'Private',
   );
 
-  public static function getPublicFlags()
+  public function getPublicFlags()
   {
     if (!sfConfig::get('app_op_diary_plugin_is_open', false))
     {
@@ -32,112 +38,109 @@ class DiaryPeer extends BaseDiaryPeer
     return array_map(array(sfContext::getInstance()->getI18N(), '__'), self::$publicFlags);
   }
 
-  public static function getDiaryList($limit = 5, $publicFlag = self::PUBLIC_FLAG_SNS)
+  public function getDiaryList($limit = 5, $publicFlag = self::PUBLIC_FLAG_SNS)
   {
-    $criteria = self::getOrderdCriteria();
-    self::addPublicFlagCriteria($criteria, $publicFlag);
-    $criteria->setLimit($limit);
+    $q = $this->getOrderdQuery();
+    $this->addPublicFlagQuery($q, $publicFlag);
+    $q->limit($limit);
 
-    return self::doSelect($criteria);
+    return $q->execute();
   }
 
-  public static function getDiaryPager($page = 1, $size = 20, $publicFlag = self::PUBLIC_FLAG_SNS)
+  public function getDiaryPager($page = 1, $size = 20, $publicFlag = self::PUBLIC_FLAG_SNS)
   {
-    $criteria = self::getOrderdCriteria();
-    self::addPublicFlagCriteria($criteria, $publicFlag);
+    $q = $this->getOrderdQuery();
+    $this->addPublicFlagQuery($q, $publicFlag);
 
-    return self::getPager($criteria, $page, $size);
+    return $this->getPager($q, $page, $size);
   }
 
-  public static function getMemberDiaryList($memberId, $limit = 5, $myMemberId = null)
+  public function getMemberDiaryList($memberId, $limit = 5, $myMemberId = null)
   {
-    $criteria = self::getOrderdCriteria();
-    self::addMemberCriteria($criteria, $memberId, $myMemberId);
-    $criteria->setLimit($limit);
+    $q = $this->getOrderdQuery();
+    $this->addMemberQuery($q, $memberId, $myMemberId);
+    $q->limit($limit);
 
-    return self::doSelect($criteria);
+    return $q->execute();
   }
 
-  public static function getMemberDiaryPager($memberId, $page = 1, $size = 20, $myMemberId = null, $year = null, $month = null, $day = null)
+  public function getMemberDiaryPager($memberId, $page = 1, $size = 20, $myMemberId = null, $year = null, $month = null, $day = null)
   {
-    $criteria = self::getOrderdCriteria();
-    self::addMemberCriteria($criteria, $memberId, $myMemberId);
+    $q = $this->getOrderdQuery();
+    $this->addMemberQuery($q, $memberId, $myMemberId);
 
     if ($year && $month)
     {
-      self::addDateCriteria($criteria, $year, $month, $day);
+      $this->addDateQuery($q, $year, $month, $day);
     }
 
-    return self::getPager($criteria, $page, $size);
+    return $this->getPager($q, $page, $size);
   }
 
-  public static function getMemberDiaryDays($memberId, $myMemberId, $year, $month)
+  public function getMemberDiaryDays($memberId, $myMemberId, $year, $month)
   {
     $days = array();
 
-    $criteria = new Criteria();
-    self::addMemberCriteria($criteria, $memberId, $myMemberId);
-    self::addDateCriteria($criteria, $year, $month);
-    $criteria->clearSelectColumns()->addSelectColumn(self::CREATED_AT);
+    $q = $this->createQuery()->select('created_at');
+    $this->addMemberQuery($q, $memberId, $myMemberId);
+    $this->addDateQuery($q, $year, $month);
 
-    $stmt = self::doSelectStmt($criteria);
-    while ($row = $stmt->fetch(PDO::FETCH_NUM))
+    $result = $q->execute();
+    foreach ($result as $row)
     {
-      $day = date('j', strtotime($row[0]));
+      $day = date('j', strtotime($row['created_at']));
       $days[$day] = true;
     }
+
     return $days;
   }
 
-  public static function getFriendDiaryList($memberId, $limit = 5)
+  public function getFriendDiaryList($memberId, $limit = 5)
   {
-    $criteria = self::getOrderdCriteria();
-    self::addFriendCriteria($criteria, $memberId);
-    $criteria->setLimit($limit);
+    $q = $this->getOrderdQuery();
+    $this->addFriendQuery($q, $memberId);
+    $q->limit($limit);
 
-    return self::doSelect($criteria);
+    return $q->execute();
   }
 
-  public static function getFriendDiaryPager($memberId, $page = 1, $size = 20)
+  public function getFriendDiaryPager($memberId, $page = 1, $size = 20)
   {
-    $criteria = self::getOrderdCriteria();
-    self::addFriendCriteria($criteria, $memberId);
+    $q = $this->getOrderdQuery();
+    $this->addFriendQuery($q, $memberId);
 
-    return self::getPager($criteria, $page, $size);
+    return $this->getPager($q, $page, $size);
   }
 
-  protected static function getPager(Criteria $criteria, $page, $size)
+  protected function getPager(Doctrine_Query $q, $page, $size)
   {
-    $pager = new sfPropelPager('Diary', $size);
-    $pager->setCriteria($criteria);
+    $pager = new sfDoctrinePager('Diary', $size);
+    $pager->setQuery($q);
     $pager->setPage($page);
 
     return $pager;
   }
 
-  protected static function getOrderdCriteria()
+  protected function getOrderdQuery()
   {
-    $criteria = new Criteria();
-    $criteria->addDescendingOrderByColumn(self::CREATED_AT);
-
-    return $criteria;
+    return $this->createQuery()->orderBy('created_at DESC');
   }
 
-  protected static function addMemberCriteria(Criteria $criteria, $memberId, $myMemberId)
+  protected function addMemberQuery(Doctrine_Query $q, $memberId, $myMemberId)
   {
-    $criteria->add(self::MEMBER_ID, $memberId);
-    self::addPublicFlagCriteria($criteria, self::getPublicFlagByMemberId($memberId, $myMemberId));
+    $q->andWhere('member_id = ?', $memberId);
+    $this->addPublicFlagQuery($q, self::getPublicFlagByMemberId($memberId, $myMemberId));
   }
 
-  protected static function addFriendCriteria(Criteria $criteria, $memberId)
+  protected function addFriendQuery(Doctrine_Query $q, $memberId)
   {
-    $friendIds = MemberRelationshipPeer::getFriendMemberIds($memberId, 5);
+    $friendIds = Doctrine::getTable('MemberRelationship')->getFriendMemberIds($memberId, 5);
 
-    $criteria->add(self::MEMBER_ID, $friendIds, Criteria::IN);
-    self::addPublicFlagCriteria($criteria, self::PUBLIC_FLAG_FRIEND);
+    $q->andWhereIn('member_id', $friendIds);
+    $this->addPublicFlagQuery($q, self::PUBLIC_FLAG_FRIEND);
   }
 
-  public static function addPublicFlagCriteria(Criteria $criteria, $flag)
+  public function addPublicFlagQuery(Doctrine_Query $q, $flag)
   {
     if ($flag === self::PUBLIC_FLAG_PRIVATE)
     {
@@ -147,32 +150,32 @@ class DiaryPeer extends BaseDiaryPeer
     $flags = self::getViewablePublicFlags($flag);
     if (1 === count($flags))
     {
-      $criteria->add(self::PUBLIC_FLAG, array_shift($flags));
+      $q->andWhere('public_flag = ?', array_shift($flags));
     }
     else
     {
-      $criteria->add(self::PUBLIC_FLAG, $flags, Criteria::IN);
+      $q->andWhereIn('public_flag', $flags);
     }
   }
 
-  protected static function addDateCriteria(Criteria $criteria, $year, $month, $day = null)
+  protected function addDateQuery(Doctrine_Query $q, $year, $month, $day = null)
   {
     if ($day)
     {
-      $begin = mktime(0, 0, 0, $month, $day, $year);
-      $end   = mktime(0, 0, 0, $month, $day+1, $year);
+      $begin = sprintf('%4d-%02d-%02d 00:00:00', $year, $month, $day);
+      $end   = sprintf('%4d-%02d-%02d 00:00:00', $year, $month, $day+1);
     }
     else
     {
-      $begin = mktime(0, 0, 0, $month, 1, $year);
-      $end   = mktime(0, 0, 0, $month+1, 1, $year);
+      $begin = sprintf('%4d-%02d-01 00:00:00', $year, $month);
+      $end   = sprintf('%4d-%02d-01 00:00:00', $year, $month+1);
     }
 
-    $criteria->add(self::CREATED_AT, $begin, Criteria::GREATER_EQUAL);
-    $criteria->addAnd(self::CREATED_AT, $end, Criteria::LESS_THAN);
+    $q->andWhere('created_at >= ?', $begin);
+    $q->andWhere('created_at < ?', $end);
   }
 
-  public static function getPublicFlagByMemberId($memberId, $myMemberId, $forceFlag = null)
+  public function getPublicFlagByMemberId($memberId, $myMemberId, $forceFlag = null)
   {
     if ($forceFlag)
     {
@@ -184,7 +187,7 @@ class DiaryPeer extends BaseDiaryPeer
       return self::PUBLIC_FLAG_PRIVATE;
     }
 
-    $relation = MemberRelationshipPeer::retrieveByFromAndTo($myMemberId, $memberId);
+    $relation = Doctrine::getTable('MemberRelationship')->retrieveByFromAndTo($myMemberId, $memberId);
     if ($relation && $relation->isFriend())
     {
       return self::PUBLIC_FLAG_FRIEND;
@@ -195,7 +198,7 @@ class DiaryPeer extends BaseDiaryPeer
     }
   }
 
-  public static function getViewablePublicFlags($flag)
+  public function getViewablePublicFlags($flag)
   {
     $flags = array();
     switch ($flag)
@@ -212,5 +215,27 @@ class DiaryPeer extends BaseDiaryPeer
     }
 
     return $flags;
+  }
+
+  public function getPreviousDiary(Diary $diary, $myMemberId)
+  {
+    $q = $this->createQuery()
+      ->andWhere('member_id = ?', $diary->getMemberId())
+      ->andWhere('id < ?', $diary->getId())
+      ->orderBy('id DESC');
+    $this->addPublicFlagQuery($q, $this->getPublicFlagByMemberId($diary->getMemberId(), $myMemberId));
+
+    return $q->fetchOne();
+  }
+
+  public function getNextDiary(Diary $diary, $myMemberId)
+  {
+    $q = $this->createQuery()
+      ->andWhere('member_id = ?', $diary->getMemberId())
+      ->andWhere('id > ?', $diary->getId())
+      ->orderBy('id ASC');
+    $this->addPublicFlagQuery($q, $this->getPublicFlagByMemberId($diary->getMemberId(), $myMemberId));
+
+    return $q->fetchOne();
   }
 }

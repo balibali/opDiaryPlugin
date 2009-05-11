@@ -8,19 +8,19 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class DiaryCommentPeer extends BaseDiaryCommentPeer
+/**
+ * PluginDiaryCommentTable
+ *
+ * @package    opDiaryPlugin
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiaryCommentTable extends Doctrine_Table
 {
-  public static function getMaxNumber($diaryId)
+  public function getMaxNumber($diaryId)
   {
-    $criteria = new Criteria();
-    $criteria->clearSelectColumns()->addSelectColumn(self::NUMBER);
-    $criteria->add(self::DIARY_ID, $diaryId);
-    $criteria->addDescendingOrderByColumn(self::NUMBER);
-    $criteria->setLimit(1);
-
-    $stmt = self::doSelectStmt($criteria);
-    $row = $stmt->fetch(PDO::FETCH_NUM);
-
-    return (int)$row[0];
+    return (int)$this->createQuery()
+      ->select('MAX(number)')
+      ->where('diary_id = ?', $diaryId)
+      ->execute(array(), Doctrine::HYDRATE_SINGLE_SCALAR);
   }
 }

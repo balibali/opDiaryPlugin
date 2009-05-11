@@ -8,6 +8,12 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class DiaryCommentImage extends BaseDiaryCommentImage
+/**
+ * PluginDiaryCommentImage
+ *
+ * @package    opDiaryPlugin
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiaryCommentImage extends BaseDiaryCommentImage
 {
 }

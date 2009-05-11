@@ -8,25 +8,40 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class DiaryComment extends BaseDiaryComment
+/**
+ * PluginDiaryComment
+ *
+ * @package    opDiaryPlugin
+ * @author     Rimpei Ogawa <ogawa@tejimaya.com>
+ */
+abstract class PluginDiaryComment extends BaseDiaryComment
 {
-  public function save(PropelPDO $con = null)
+  public function save(Doctrine_Connection $conn = null)
   {
     if ($this->isNew() && !$this->getNumber())
     {
-      $this->setNumber(DiaryCommentPeer::getMaxNumber($this->getDiaryId()) + 1);
+      $this->setNumber($this->getTable()->getMaxNumber($this->getDiaryId()) + 1);
     }
 
-    parent::save($con);
+    parent::save($conn);
 
     if ($this->getMemberId() !== $this->getDiary()->getMemberId())
     {
-      DiaryCommentUnreadPeer::register($this->getDiary());
+      Doctrine::getTable('DiaryCommentUnread')->register($this->getDiary());
     }
   }
 
   public function isDeletable($memberId)
   {
     return ($this->getMemberId() === $memberId || $this->getDiary()->isAuthor($memberId));
+  }
+
+  public function getDiaryCommentImagesJoinFile()
+  {
+    $q = Doctrine::getTable('DiaryCommentImage')->createQuery()
+      ->leftJoin('File')
+      ->where('diary_comment_id = ?', $this->getId());
+
+    return $q->execute();
   }
 }
