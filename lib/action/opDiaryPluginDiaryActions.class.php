@@ -24,7 +24,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeList(sfWebRequest $request)
   {
-    $this->pager = DiaryPeer::getDiaryPager($request->getParameter('page'), 20);
+    $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request->getParameter('page'), 20);
   }
 
   public function executeListMember(sfWebRequest $request)
@@ -38,12 +38,12 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
       $this->forward404Unless(checkdate($this->month, ($this->day) ? $this->day : 1, $this->year), 'Invalid date format');
     }
 
-    $this->pager = DiaryPeer::getMemberDiaryPager($this->member->getId(), $request->getParameter('page'), 20, $this->getUser()->getMemberId(), $this->year, $this->month, $this->day);
+    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->getId(), $request->getParameter('page'), 20, $this->getUser()->getMemberId(), $this->year, $this->month, $this->day);
   }
 
   public function executeListFriend(sfWebRequest $request)
   {
-    $this->pager = DiaryPeer::getFriendDiaryPager($this->getUser()->getMemberId(), $request->getParameter('page'), 20);
+    $this->pager = Doctrine::getTable('Diary')->getFriendDiaryPager($this->getUser()->getMemberId(), $request->getParameter('page'), 20);
   }
 
   public function executeShow(sfWebRequest $request)
@@ -52,7 +52,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
     if ($this->isDiaryAuthor())
     {
-      DiaryCommentUnreadPeer::unregister($this->diary);
+      Doctrine::getTable('DiaryCommentUnread')->unregister($this->diary);
     }
 
     $this->form = new DiaryCommentForm();

@@ -19,7 +19,7 @@ class opDiaryPluginDiaryCommentComponents extends sfComponents
 {
   public function executeList(sfWebRequest $request)
   {
-    $this->order = sfReversiblePropelPager::normalizeOrder($request->getParameter('order', Criteria::DESC));
+    $this->order = sfReversibleDoctrinePager::normalizeOrder($request->getParameter('order', sfReversibleDoctrinePager::DESC));
 
     $this->pager = $this->getPager($request);
     $this->pager->init();
@@ -27,12 +27,15 @@ class opDiaryPluginDiaryCommentComponents extends sfComponents
 
   protected function getPager(sfWebRequest $request)
   {
-    $pager = new sfReversiblePropelPager('DiaryComment');
-    $pager->setCriteria($this->diary->getDiaryCommentsCriteria());
+    $q = Doctrine::getTable('DiaryComment')->createQuery()
+      ->where('diary_id = ?', $this->diary->getId());
+
+    $pager = new sfReversibleDoctrinePager('DiaryComment');
+    $pager->setQuery($q);
     $pager->setPage($request->getParameter('page', 1));
-    $pager->setSqlOrderColumn(DiaryCommentPeer::ID);
+    $pager->setSqlOrderColumn('id');
     $pager->setSqlOrder($this->order);
-    $pager->setListOrder(Criteria::ASC);
+    $pager->setListOrder(sfReversibleDoctrinePager::ASC);
     if ($this->size)
     {
       $pager->setMaxPerPage($this->size);

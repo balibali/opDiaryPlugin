@@ -1,7 +1,7 @@
 <?php use_helper('opDiary', 'Text') ?>
 
 <?php decorate_with('layoutB') ?>
-<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member, 'year' => $diary->getCreatedAt('Y'), 'month' => $diary->getCreatedAt('n')))) ?>
+<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member, 'year' => date('Y', strtotime($diary->getCreatedAt())), 'month' => date('n', strtotime($diary->getCreatedAt()))))) ?>
 
 <?php /* {{{ diaryDetailBox */ ?>
 <div class="dparts diaryDetailBox"><div class="parts">

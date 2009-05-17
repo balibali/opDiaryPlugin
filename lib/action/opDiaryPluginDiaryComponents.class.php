@@ -20,33 +20,33 @@ class opDiaryPluginDiaryComponents extends sfComponents
   public function executeDiaryList()
   {
     $max = ($this->gadget) ? $this->gadget->getConfig('max') : 5;
-    $this->diaryList = DiaryPeer::getDiaryList($max);
+    $this->diaryList = Doctrine::getTable('Diary')->getDiaryList($max);
   }
 
   public function executeMyDiaryList()
   {
     $max = ($this->gadget) ? $this->gadget->getConfig('max') : 5;
-    $this->diaryList = DiaryPeer::getMemberDiaryList($this->getUser()->getMemberId(), $max, $this->getUser()->getMemberId());
+    $this->diaryList = Doctrine::getTable('Diary')->getMemberDiaryList($this->getUser()->getMemberId(), $max, $this->getUser()->getMemberId());
   }
 
   public function executeFriendDiaryList()
   {
     $max = ($this->gadget) ? $this->gadget->getConfig('max') : 5;
-    $this->diaryList = DiaryPeer::getFriendDiaryList($this->getUser()->getMemberId(), $max);
+    $this->diaryList = Doctrine::getTable('Diary')->getFriendDiaryList($this->getUser()->getMemberId(), $max);
   }
 
   public function executeMemberDiaryList(sfWebRequest $request)
   {
     $this->memberId = $request->getParameter('id', $this->getUser()->getMemberId());
-    $this->diaryList = DiaryPeer::getMemberDiaryList($this->memberId, 5, $this->getUser()->getMemberId());
+    $this->diaryList = Doctrine::getTable('Diary')->getMemberDiaryList($this->memberId, 5, $this->getUser()->getMemberId());
   }
 
   public function executeNoticeUnreadDiaryComment(sfWebRequest $request)
   {
     $memberId = $this->getUser()->getMemberId();
-    if ($this->count = DiaryCommentUnreadPeer::countUnreadDiary($memberId))
+    if ($this->count = Doctrine::getTable('DiaryCommentUnread')->countUnreadDiary($memberId))
     {
-      $this->diaryId = DiaryCommentUnreadPeer::getOneDiaryIdByMemberId($memberId);
+      $this->diaryId = Doctrine::getTable('DiaryCommentUnread')->getOneDiaryIdByMemberId($memberId);
     }
   }
 }
