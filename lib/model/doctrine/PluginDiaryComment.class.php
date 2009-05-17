@@ -16,15 +16,16 @@
  */
 abstract class PluginDiaryComment extends BaseDiaryComment
 {
-  public function save(Doctrine_Connection $conn = null)
+  public function preSave(Doctrine_Event $event)
   {
     if ($this->isNew() && !$this->getNumber())
     {
       $this->setNumber($this->getTable()->getMaxNumber($this->getDiaryId()) + 1);
     }
+  }
 
-    parent::save($conn);
-
+  public function postSave(Doctrine_Event $event)
+  {
     if ($this->getMemberId() !== $this->getDiary()->getMemberId())
     {
       Doctrine::getTable('DiaryCommentUnread')->register($this->getDiary());
