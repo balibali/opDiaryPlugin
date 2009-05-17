@@ -17,4 +17,38 @@
  */
 abstract class PluginDiaryCommentImageForm extends BaseDiaryCommentImageForm
 {
+  public function setup()
+  {
+    parent::setup();
+
+    unset($this['diary_comment_id']);
+    unset($this['file_id']);
+
+    $key = 'photo';
+
+    $options = array(
+        'file_src'     => '',
+        'is_image'     => true,
+        'label'        => false,
+        'edit_mode'    => false,
+        );
+
+    $this->setWidget($key, new sfWidgetFormInputFileEditable($options, array('size' => 40)));
+    $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
+  }
+
+  public function updateObject($values = null)
+  {
+    if ($values['photo'] instanceof sfValidatedFile)
+    {
+      $file = new File();
+      $file->setFromValidatedFile($values['photo']);
+
+      $this->getObject()->setFile($file);
+    }
+    else
+    {
+      $this->getObject()->setFile(null);
+    }
+  }
 }

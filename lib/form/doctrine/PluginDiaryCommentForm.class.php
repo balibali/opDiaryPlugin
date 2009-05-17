@@ -34,36 +34,29 @@ abstract class PluginDiaryCommentForm extends BaseDiaryCommentForm
       for ($i = 1; $i <= $max; $i++)
       {
         $key = 'photo_'.$i;
-        $this->setWidget($key, new sfWidgetFormInputFile(array(), array('size' => 40)));
-        $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
+
+        $image = new DiaryCommentImage();
+        $image->setDiaryComment($this->getObject());
+
+        $imageForm = new DiaryCommentImageForm($image);
+        $imageForm->getWidgetSchema()->setFormFormatterName('list');
+        $this->embedForm($key, $imageForm, '<ul id="diary_comment_'.$key.'">%content%</ul>');
       }
     }
   }
 
-  public function save($con = null)
+  public function updateObject($values = null)
   {
-    $comment = parent::save();
+    $object = parent::updateObject($values);
 
-    if (sfConfig::get('app_diary_comment_is_upload_images', true))
+    foreach ($this->embeddedForms as $key => $form)
     {
-      $max = (int)sfConfig::get('app_diary_comment_max_image_file_num', 3);
-      for ($i = 1; $i <= $max; $i++)
+      if (!($form->getObject() && $form->getObject()->getFile()))
       {
-        $key = 'photo_'.$i;
-        if ($this->getValue($key))
-        {
-          $file = new File();
-          $file->setFromValidatedFile($this->getValue($key));
-          $file->setName('dc_'.$comment->getId().'_'.$file->getName());
-
-          $image = new DiaryCommentImage();
-          $image->setDiaryComment($comment);
-          $image->setFile($file);
-          $image->save();
-        }
+        unset($this->embeddedForms[$key]);
       }
     }
 
-    return $comment;
+    return $object;
   }
 }

@@ -39,7 +39,7 @@ abstract class PluginDiaryComment extends BaseDiaryComment
   public function getDiaryCommentImagesJoinFile()
   {
     $q = Doctrine::getTable('DiaryCommentImage')->createQuery()
-      ->leftJoin('File')
+      ->leftJoin('DiaryCommentImage.File')
       ->where('diary_comment_id = ?', $this->getId());
 
     return $q->execute();

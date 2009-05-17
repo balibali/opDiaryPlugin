@@ -65,8 +65,8 @@ abstract class PluginDiary extends BaseDiary
 
   public function updateHasImages()
   {
-    $this->clearDiaryImages();
-    $hasImages = (bool)$this->countDiaryImages();
+    $this->clearRelated();
+    $hasImages = (bool)$this->getDiaryImages();
 
     if ($hasImages != $this->getHasImages())
     {
@@ -90,7 +90,7 @@ abstract class PluginDiary extends BaseDiary
   public function getDiaryImagesJoinFile()
   {
     $q = Doctrine::getTable('DiaryImage')->createQuery()
-      ->leftJoin('File')
+      ->leftJoin('DiaryImage.File')
       ->where('diary_id = ?', $this->getId());
 
     return $q->execute();

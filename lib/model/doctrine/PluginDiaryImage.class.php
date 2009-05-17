@@ -16,34 +16,18 @@
  */
 abstract class PluginDiaryImage extends BaseDiaryImage
 {
-  protected $deleteFile = true;
-
   public function save(Doctrine_Connection $conn = null)
   {
-    $result = parent::save($conn);
+    $this->setFileNamePrefix();
 
-    $this->getDiary()->updateHasImages();
-
-    return $result;
+    return parent::save($conn);
   }
 
-  public function delete(Doctrine_Connection $conn = null)
+  protected function setFileNamePrefix()
   {
-    if ($this->deleteFile)
-    {
-      $this->getFile()->delete();
-    }
+    $prefix = 'd_'.$this->getDiary()->getId().'_'.$this->getNumber().'_';
 
-    if (!$this->isDeleted())
-    {
-      parent::delete($conn);
-    }
-
-    $this->getDiary()->updateHasImages();
-  }
-
-  public function setDeleteFile($value)
-  {
-    $this->deleteFile = $value;
+    $file = $this->getFile();
+    $file->setName($prefix.$file->getName());
   }
 }

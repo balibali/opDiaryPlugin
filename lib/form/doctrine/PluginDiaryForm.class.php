@@ -39,82 +39,54 @@ abstract class PluginDiaryForm extends BaseDiaryForm
 
     if (sfConfig::get('app_diary_is_upload_images', true))
     {
+      $images = array();
       if (!$this->isNew())
       {
-        sfContext::getInstance()->getConfiguration()->loadHelpers('Partial');
         $images = $this->getObject()->getDiaryImages();
       }
-
-      $options = array(
-        'file_src'     => '',
-        'is_image'     => true,
-        'with_delete'  => true,
-        'delete_label' => 'remove the current photo',
-      );
 
       $max = (int)sfConfig::get('app_diary_max_image_file_num', 3);
       for ($i = 1; $i <= $max; $i++)
       {
         $key = 'photo_'.$i;
 
-        if (!$this->isNew() && !empty($images[$i]))
+        if (isset($images[$i]))
         {
-          $options['edit_mode'] = true;
-          $options['template'] = get_partial('diary/formEditImage', array('image' => $images[$i]));
-          $this->setValidator($key.'_delete', new sfValidatorBoolean(array('required' => false)));
+          $image = $images[$i];
         }
         else
         {
-          $options['edit_mode'] = false;
+          $image = new DiaryImage();
+          $image->setDiary($this->getObject());
+          $image->setNumber($i);
         }
 
-        $this->setWidget($key, new sfWidgetFormInputFileEditable($options, array('size' => 40)));
-        $this->setValidator($key, new opValidatorImageFile(array('required' => false)));
+        $imageForm = new DiaryImageForm($image);
+        $imageForm->getWidgetSchema()->setFormFormatterName('list');
+        $this->embedForm($key, $imageForm, '<ul id="diary_'.$key.'">%content%</ul>');
       }
     }
   }
 
-  public function save($con = null)
+  public function updateObject($values = null)
   {
-    $diary = parent::save();
+    $object = parent::updateObject($values);
 
-    if (!$this->isNew())
+    foreach ($this->embeddedForms as $key => $form)
     {
-      $images = $this->getObject()->getDiaryImages();
-    }
-
-    if (sfConfig::get('app_diary_is_upload_images', true))
-    {
-      $max = (int)sfConfig::get('app_diary_max_image_file_num', 3);
-      for ($i = 1; $i <= $max; $i++)
+      if (!($form->getObject() && $form->getObject()->getFile()))
       {
-        $key = 'photo_'.$i;
-
-        if ($this->getValue($key.'_delete'))
-        {
-          $images[$i]->delete();
-        }
-
-        if ($this->getValue($key))
-        {
-          if (!empty($images[$i]) && !$images[$i]->isDeleted())
-          {
-            $images[$i]->delete();
-          }
-
-          $file = new File();
-          $file->setFromValidatedFile($this->getValue($key));
-          $file->setName('d_'.$diary->getId().'_'.$file->getName());
-
-          $image = new DiaryImage();
-          $image->setDiary($diary);
-          $image->setFile($file);
-          $image->setNumber($i);
-          $image->save();
-        }
+        unset($this->embeddedForms[$key]);
       }
     }
 
-    return $diary;
+    return $object;
+  }
+
+  protected function doSave($con = null)
+  {
+    parent::doSave($con);
+
+    $this->getObject()->updateHasImages();
   }
 }
