@@ -24,7 +24,7 @@ abstract class PluginDiaryCommentUnreadTable extends Doctrine_Table
     }
 
     $object = new DiaryCommentUnread();
-    $object->setDiary($diary);
+    $object->setDiaryId($diary->getId());
     $object->setMemberId($diary->getMemberId());
 
     return $object->save();
