@@ -16,7 +16,7 @@
  */
 abstract class PluginDiaryComment extends BaseDiaryComment
 {
-  public function preSave(Doctrine_Event $event)
+  public function preSave($event)
   {
     if ($this->isNew() && !$this->getNumber())
     {
@@ -24,7 +24,7 @@ abstract class PluginDiaryComment extends BaseDiaryComment
     }
   }
 
-  public function postSave(Doctrine_Event $event)
+  public function postSave($event)
   {
     if ($this->getMemberId() !== $this->getDiary()->getMemberId())
     {
