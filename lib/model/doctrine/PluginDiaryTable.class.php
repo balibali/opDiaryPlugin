@@ -135,6 +135,12 @@ abstract class PluginDiaryTable extends Doctrine_Table
   protected function addFriendQuery(Doctrine_Query $q, $memberId)
   {
     $friendIds = Doctrine::getTable('MemberRelationship')->getFriendMemberIds($memberId, 5);
+    if (!$friendIds)
+    {
+      $q->andWhere('1 = 0');
+
+      return;
+    }
 
     $q->andWhereIn('member_id', $friendIds);
     $this->addPublicFlagQuery($q, self::PUBLIC_FLAG_FRIEND);
