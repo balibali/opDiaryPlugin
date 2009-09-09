@@ -7,7 +7,7 @@
 [<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary_delete_confirm', $diary) ?>]
 <?php endif; ?><br>
 
-<?php echo nl2br($diary->getBody()) ?><br>
+<?php echo op_decoration(nl2br($diary->getBody())) ?><br>
 
 <?php foreach ($diary->getDiaryImages() as $image): ?>
 <?php echo link_to(__('View Image'), sf_image_path($image->getFile(), array('size' => '240x320', 'f' => 'jpg'))) ?><br>

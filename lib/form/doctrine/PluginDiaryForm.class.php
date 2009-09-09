@@ -28,6 +28,7 @@ abstract class PluginDiaryForm extends BaseDiaryForm
     unset($this['has_images']);
 
     $this->widgetSchema['title'] = new sfWidgetFormInput();
+    $this->widgetSchema['body']  = new opWidgetFormRichTextareaOpenPNE();
 
     $this->widgetSchema['public_flag'] = new sfWidgetFormChoice(array(
       'choices'  => Doctrine::getTable('Diary')->getPublicFlags(),

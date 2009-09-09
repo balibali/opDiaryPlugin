@@ -34,7 +34,7 @@
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
-<?php echo op_url_cmd(nl2br($diary->getBody())) ?>
+<?php echo op_decoration(op_url_cmd(nl2br($diary->getBody()))) ?>
 </div>
 </dd>
 </dl>
