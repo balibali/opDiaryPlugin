@@ -20,7 +20,7 @@ $options = array(
 );
 op_include_list('diaryList', $list, $options);
 ?>
-<?php echo pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId(), false) ?>
+<?php echo op_include_pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId(), array('is_total' => false)) ?>
 
 <?php else: ?>
 
