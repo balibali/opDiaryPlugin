@@ -1,0 +1,23 @@
+Diary:
+  diary1:
+    id: 1
+    Member: member1
+    title: "Sample Title"
+    body: "Sample Body"
+    created_at: "2009-01-01 10:00:00"
+    updated_at: "2009-01-01 10:00:00"
+  diary2:
+    id: 2
+    Member: member2
+    title: "Sample Title"
+    body: "Sample Body"
+    created_at: "2009-02-01 10:00:00"
+    updated_at: "2009-02-01 10:00:00"
+<?php for ($i = 1; $i <= 20; $i++): ?>
+  diary_for_<?php echo $i ?>:
+    Member: member3
+    title: "Auto tititi"
+    body: "Auto bobobo"
+    created_at: "2009-03-<?php printf('%02d', $i) ?> 10:00:00"
+    updated_at: "2009-03-<?php printf('%02d', $i) ?> 10:00:00"
+<?php endfor; ?>

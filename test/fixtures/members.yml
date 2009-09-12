@@ -1,0 +1,47 @@
+Member:
+  member1:
+    id: 1
+    name: "Abe"
+    is_active: true
+  member2:
+    id: 2
+    name: "Bob"
+    is_active: true
+  member3:
+    id: 3
+    name: "Cris"
+    is_active: true
+  member4:
+    id: 4
+    name: "Dan"
+    is_active: true
+  member5:
+    id: 5
+    name: "Ebio"
+    is_active: true
+
+MemberConfig:
+<?php for ($i = 1; $i <= 5; $i++): ?>
+  member<?php echo $i ?>_pc_address:
+    name: "pc_address"
+    value: "sns<?php echo $i ?>@example.com"
+    Member: member<?php echo $i . "\n" ?>
+  member<?php echo $i ?>_mobile_address:
+    name: "mobile_address"
+    value: "sns<?php echo $i ?>@example.com"
+    Member: member<?php echo $i . "\n" ?>
+  member<?php echo $i ?>_password:
+    name: "password"
+    value: "<?php echo md5('password') ?>"
+    Member: member<?php echo $i . "\n" ?>
+<?php endfor; ?>
+
+MemberRelationship:
+  member_relationship_1_to_2:
+    Member: member1
+    MemberRelatedByMemberIdFrom: member2
+    is_friend: true
+  member_relationship_2_to_1:
+    Member: member2
+    MemberRelatedByMemberIdFrom: member1
+    is_friend: true
