@@ -4,7 +4,7 @@
 <?php if ($pager->getNbResults()): ?>
 <div class="dparts searchResultList"><div class="parts">
 <div class="partsHeading"><h3><?php echo $title ?></h3></div>
-<div class="pagerRelative"><p class="number"><?php echo op_include_pager_navigation($pager, 'diary/list?page=%d'); ?></p></div>
+<?php echo op_include_pager_navigation($pager, 'diary/list?page=%d'); ?>
 <div class="block">
 <?php foreach ($pager->getResults() as $diary): ?>
 <div class="ditem"><div class="item"><table><tbody><tr>
@@ -19,7 +19,7 @@
 </tr></tbody></table></div></div>
 <?php endforeach; ?>
 </div>
-<div class="pagerRelative"><p class="number"><?php echo op_include_pager_navigation($pager, 'diary/list?page=%d'); ?></p></div>
+<?php echo op_include_pager_navigation($pager, 'diary/list?page=%d'); ?>
 </div></div>
 <?php else: ?>
 <?php op_include_box('diaryList', __('There are no diaries'), array('title' => $title)) ?>
