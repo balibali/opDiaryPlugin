@@ -45,3 +45,11 @@ MemberRelationship:
     Member: member2
     MemberRelatedByMemberIdFrom: member1
     is_friend: true
+  member_relationship_1_to_3:
+    Member: member1
+    MemberRelatedByMemberIdFrom: member3
+    is_friend: true
+  member_relationship_3_to_1:
+    Member: member3
+    MemberRelatedByMemberIdFrom: member1
+    is_friend: true
