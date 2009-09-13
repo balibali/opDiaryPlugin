@@ -278,4 +278,9 @@ $test->info('Pager Test: diary/listMember')
     ->isParameter('day', 1)
     ->isParameter('page', 1)
   ->end()
+
+  ->get('/diary/listMember/4/2009/6')
+  ->with('response')->begin()
+    ->checkElement('.pagerRelative', false)
+  ->end()
 ;
