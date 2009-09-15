@@ -9,11 +9,22 @@
 </form>
 </div>
 
-<?php $title = (!isset($keyword)) ? __('Recently Posted Diaries') : __('Search Results') ?>
+<?php
+if (!isset($keyword))
+{
+  $title = __('Recently Posted Diaries');
+  $pagerLink = 'diary/list?page=%d';
+}
+else
+{
+  $title = __('Search Results');
+  $pagerLink = 'diary/search?keyword='.$keyword.'&page=%d';
+}
+?>
 <?php if ($pager->getNbResults()): ?>
 <div class="dparts searchResultList"><div class="parts">
 <div class="partsHeading"><h3><?php echo $title ?></h3></div>
-<?php echo op_include_pager_navigation($pager, 'diary/list?page=%d'); ?>
+<?php echo op_include_pager_navigation($pager, $pagerLink); ?>
 <div class="block">
 <?php foreach ($pager->getResults() as $diary): ?>
 <div class="ditem"><div class="item"><table><tbody><tr>
@@ -28,7 +39,7 @@
 </tr></tbody></table></div></div>
 <?php endforeach; ?>
 </div>
-<?php echo op_include_pager_navigation($pager, 'diary/list?page=%d'); ?>
+<?php echo op_include_pager_navigation($pager, $pagerLink); ?>
 </div></div>
 <?php else: ?>
 <?php op_include_box('diaryList', (!isset($keyword)) ? __('There are no diaries.') : __('Your search "%1%" did not match any diaries.', array('%1%' => $keyword)), array('title' => $title)) ?>

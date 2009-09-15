@@ -1,4 +1,15 @@
-<?php $title = (!isset($keyword)) ? __('Recently Posted Diaries') : __('Search Results') ?>
+<?php
+if (!isset($keyword))
+{
+  $title = __('Recently Posted Diaries');
+  $pagerLink = 'diary/list?page=%d';
+}
+else
+{
+  $title = __('Search Results');
+  $pagerLink = 'diary/search?keyword='.mb_convert_encoding($keyword, 'SJIS-win', 'UTF-8').'&page=%d';
+}
+?>
 <?php op_mobile_page_title($title) ?>
 <?php use_helper('opDiary'); ?>
 
@@ -22,7 +33,7 @@ $options = array(
 );
 op_include_list('diaryList', $list, $options);
 ?>
-<?php echo op_include_pager_navigation($pager, 'diary/list?page=%d', array('is_total' => false)) ?>
+<?php echo op_include_pager_navigation($pager, $pagerLink, array('is_total' => false)) ?>
 
 <?php else: ?>
 
