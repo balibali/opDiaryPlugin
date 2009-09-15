@@ -55,6 +55,18 @@ abstract class PluginDiaryTable extends Doctrine_Table
     return $this->getPager($q, $page, $size);
   }
 
+  /**
+   * Search keywords for diaries in the title and body
+   */
+  public function getDiarySearchPager($keywords, $page = 1, $size = 20, $publicFlag = self::PUBLIC_FLAG_SNS)
+  {
+    $q = $this->getOrderdQuery();
+    $this->addPublicFlagQuery($q, $publicFlag);
+    $this->addSearchKeywordQuery($q, $keywords);
+
+    return $this->getPager($q, $page, $size);
+  }
+
   public function getMemberDiaryList($memberId, $limit = 5, $myMemberId = null)
   {
     $q = $this->getOrderdQuery();
@@ -243,5 +255,13 @@ abstract class PluginDiaryTable extends Doctrine_Table
     $this->addPublicFlagQuery($q, $this->getPublicFlagByMemberId($diary->getMemberId(), $myMemberId));
 
     return $q->fetchOne();
+  }
+
+  protected function addSearchKeywordQuery(Doctrine_Query $q, $keywords)
+  {
+    foreach ($keywords as $keyword)
+    {
+      $q->andWhere('title LIKE ? OR body LIKE ?', array('%'.$keyword.'%', '%'.$keyword.'%'));
+    }
   }
 }

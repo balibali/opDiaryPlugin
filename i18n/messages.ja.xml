@@ -55,8 +55,8 @@
         <target>%1%さんの日記</target>
       </trans-unit>
       <trans-unit id="14">
-        <source>There are no diaries</source>
-        <target>日記がありません</target>
+        <source>There are no diaries.</source>
+        <target>日記がありません。</target>
       </trans-unit>
       <trans-unit id="15">
         <source>View this diary</source>
@@ -193,6 +193,18 @@
       <trans-unit id="48">
         <source>Do you really delete this diary?</source>
         <target>本当にこの日記を削除しますか？</target>
+      </trans-unit>
+      <trans-unit id="49">
+        <source>Diary Search</source>
+        <target>日記検索</target>
+      </trans-unit>
+      <trans-unit id="50">
+        <source>Search Results</source>
+        <target>検索結果</target>
+      </trans-unit>
+      <trans-unit id="51">
+        <source>Your search "%1%" did not match any diaries.</source>
+        <target>「%1%」に一致する日記は見つかりませんでした。</target>
       </trans-unit>
     </body>
   </file>

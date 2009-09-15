@@ -27,6 +27,37 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
     $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request->getParameter('page'), 20);
   }
 
+  public function executeSearch(sfWebRequest $request)
+  {
+    $this->keyword = $request->getParameter('keyword');
+
+    $keywords = $this->parseKeyword($this->keyword);
+    $this->forwardUnless($keywords, 'diary', 'list');
+
+    $this->pager = Doctrine::getTable('Diary')->getDiarySearchPager($keywords, $request->getParameter('page'), 20);
+    $this->setTemplate('list');
+  }
+
+  protected function parseKeyword($keyword)
+  {
+    $keywords = array();
+
+    // replace double-byte space with single-byte space
+    $keyword = str_replace('　', ' ', $keyword);
+
+    $parts = explode(' ', $keyword);
+    foreach ($parts as $part)
+    {
+      $part = trim($part);
+      if ('' !== $part)
+      {
+        $keywords[] = $part;
+      }
+    }
+
+    return $keywords;
+  }
+
   public function executeListMember(sfWebRequest $request)
   {
     $this->year  = (int)$request->getParameter('year');

@@ -1,4 +1,5 @@
-<?php op_mobile_page_title(__('Recently Posted Diaries')) ?>
+<?php $title = (!isset($keyword)) ? __('Recently Posted Diaries') : __('Search Results') ?>
+<?php op_mobile_page_title($title) ?>
 <?php use_helper('opDiary'); ?>
 
 <?php if ($pager->getNbResults()): ?>
@@ -25,6 +26,19 @@ op_include_list('diaryList', $list, $options);
 
 <?php else: ?>
 
-<?php echo __('There are no diaries') ?>
+<?php echo (!isset($keyword)) ? __('There are no diaries.') : __('Your search "%1%" did not match any diaries.', array('%1%' => $keyword)) ?>
 
 <?php endif; ?>
+
+<?php slot('diarySearchForm') ?>
+<form action="<?php echo url_for('@diary_search') ?>">
+<input type="text" name="keyword" value="<?php echo $keyword ?>">
+<input type="submit" value="<?php echo __('Search') ?>">
+</form>
+<?php end_slot() ?>
+<?php
+$options = array(
+  'title' => __('Diary Search'),
+);
+op_include_box('diarySearchForm', get_slot('diarySearchForm'), $options)
+?>

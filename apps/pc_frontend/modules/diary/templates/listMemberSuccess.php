@@ -27,5 +27,5 @@ if ($year && $month)
 <?php echo op_include_pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId().(($year && $month) ? '&year='.$year.'&month='.$month.(($day) ? '&day='.$day : '') : '')); ?>
 </div></div>
 <?php else: ?>
-<?php op_include_box('diaryList', __('There are no diaries'), array('title' => $title)) ?>
+<?php op_include_box('diaryList', __('There are no diaries.'), array('title' => $title)) ?>
 <?php endif; ?>

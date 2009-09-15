@@ -1,6 +1,15 @@
 <?php use_helper('opDiary'); ?>
 
-<?php $title = __('Recently Posted Diaries') ?>
+<div id="diarySearchFormLine" class="parts searchFormLine">
+<form action="<?php echo url_for('@diary_search') ?>" method="get">
+<p class="form">
+<input id="keyword" type="text" class="input_text" name="keyword" size="30" value="<?php echo $keyword ?>" />
+<input type="submit" value="<?php echo __('Search') ?>" />
+</p>
+</form>
+</div>
+
+<?php $title = (!isset($keyword)) ? __('Recently Posted Diaries') : __('Search Results') ?>
 <?php if ($pager->getNbResults()): ?>
 <div class="dparts searchResultList"><div class="parts">
 <div class="partsHeading"><h3><?php echo $title ?></h3></div>
@@ -22,5 +31,5 @@
 <?php echo op_include_pager_navigation($pager, 'diary/list?page=%d'); ?>
 </div></div>
 <?php else: ?>
-<?php op_include_box('diaryList', __('There are no diaries'), array('title' => $title)) ?>
+<?php op_include_box('diaryList', (!isset($keyword)) ? __('There are no diaries.') : __('Your search "%1%" did not match any diaries.', array('%1%' => $keyword)), array('title' => $title)) ?>
 <?php endif; ?>

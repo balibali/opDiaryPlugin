@@ -25,6 +25,6 @@ op_include_list('diaryList', $list, $options);
 
 <?php else: ?>
 
-<?php echo __('There are no diaries') ?>
+<?php echo __('There are no diaries.') ?>
 
 <?php endif; ?>

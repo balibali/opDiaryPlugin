@@ -26,6 +26,10 @@ class opDiaryPluginRouting
         array('module' => 'diary', 'action' => 'index')
       ),
 
+      'diary_search' => new sfRoute(
+        '/diary/search',
+        array('module' => 'diary', 'action' => 'search')
+      ),
       'diary_list' => new sfRoute(
         '/diary/list',
         array('module' => 'diary', 'action' => 'list')
