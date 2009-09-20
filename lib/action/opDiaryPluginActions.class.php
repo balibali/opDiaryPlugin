@@ -50,6 +50,9 @@ class opDiaryPluginActions extends sfActions
     if ($this->getUser()->isAuthenticated())
     {
       $this->setNavigation($this->member);
+
+      // to display header navigations
+      $this->setIsSecure();
     }
 
     if ($this->pager instanceof sfPager)
@@ -64,6 +67,20 @@ class opDiaryPluginActions extends sfActions
     {
       sfConfig::set('sf_nav_type', 'friend');
       sfConfig::set('sf_nav_id', $member->getId());
+    }
+  }
+
+  protected function setIsSecure()
+  {
+    if (!$this->isSecure())
+    {
+      $security = $this->getSecurityConfiguration();
+
+      $actionName = strtolower($this->getActionName());
+
+      $security[$actionName]['is_secure'] = true;
+
+      $this->setSecurityConfiguration($security);
     }
   }
 
