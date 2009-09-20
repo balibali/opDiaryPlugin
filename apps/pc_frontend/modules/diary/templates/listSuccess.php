@@ -3,7 +3,7 @@
 <div id="diarySearchFormLine" class="parts searchFormLine">
 <form action="<?php echo url_for('@diary_search') ?>" method="get">
 <p class="form">
-<input id="keyword" type="text" class="input_text" name="keyword" size="30" value="<?php echo $keyword ?>" />
+<input id="keyword" type="text" class="input_text" name="keyword" size="30" value="<?php if (isset($keyword)) echo $keyword ?>" />
 <input type="submit" value="<?php echo __('Search') ?>" />
 </p>
 </form>

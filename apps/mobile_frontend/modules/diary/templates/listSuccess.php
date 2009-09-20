@@ -43,7 +43,7 @@ op_include_list('diaryList', $list, $options);
 
 <?php slot('diarySearchForm') ?>
 <form action="<?php echo url_for('@diary_search') ?>">
-<input type="text" name="keyword" value="<?php echo $keyword ?>">
+<input type="text" name="keyword" value="<?php if (isset($keyword)) echo $keyword ?>">
 <input type="submit" value="<?php echo __('Search') ?>">
 </form>
 <?php end_slot() ?>
