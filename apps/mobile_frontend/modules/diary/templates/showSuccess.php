@@ -25,6 +25,7 @@
 
 <?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>
 
+<?php if ($sf_user->getMemberId()): ?>
 <hr>
 <?php echo op_within_page_link('') ?>
 <?php
@@ -34,6 +35,7 @@ $options['button'] = __('Save');
 $options['isMultipart'] = true;
 op_include_form('formDiaryComment', $form, $options);
 ?>
+<?php endif; ?>
 
 <hr>
 <?php echo link_to(__('Diaries of %1%', array('%1%' => $member->getName())), 'diary_list_member', $member) ?><br>

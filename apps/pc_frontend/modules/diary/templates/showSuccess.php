@@ -52,6 +52,7 @@
 
 <?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>
 
+<?php if ($sf_user->getMemberId()): ?>
 <?php
 $form->getWidget('body')->setAttribute('rows', 8);
 $form->getWidget('body')->setAttribute('cols', 40);
@@ -65,3 +66,4 @@ $options = array(
 );
 include_box('formDiaryComment', $title, '', $options);
 ?>
+<?php endif; ?>
