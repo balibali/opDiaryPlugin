@@ -30,7 +30,7 @@ abstract class PluginDiaryTable extends Doctrine_Table
 
   public function getPublicFlags()
   {
-    if (!sfConfig::get('app_op_diary_plugin_is_open', false))
+    if (!sfConfig::get('app_op_diary_plugin_is_open', true))
     {
       unset(self::$publicFlags[self::PUBLIC_FLAG_OPEN]);
     }
@@ -198,6 +198,11 @@ abstract class PluginDiaryTable extends Doctrine_Table
     if ($forceFlag)
     {
       return $forceFlag;
+    }
+
+    if (null === $myMemberId)
+    {
+      return self::PUBLIC_FLAG_OPEN;
     }
 
     if ($memberId == $myMemberId)
