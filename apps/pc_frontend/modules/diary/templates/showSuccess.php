@@ -67,3 +67,5 @@ $options = array(
 include_box('formDiaryComment', $title, '', $options);
 ?>
 <?php endif; ?>
+
+<?php op_include_line('lineLinkToDiaryMemberList', link_to(__('Diaries of %1%', array('%1%' => $member->getName())), 'diary_list_member', $member)) ?>
