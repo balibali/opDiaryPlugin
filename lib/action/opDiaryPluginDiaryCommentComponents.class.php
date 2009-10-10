@@ -43,4 +43,10 @@ class opDiaryPluginDiaryCommentComponents extends sfComponents
 
     return $pager;
   }
+
+  public function executeHistory(sfWebRequest $request)
+  {
+    $max = ($this->gadget) ? $this->gadget->getConfig('max') : 5;
+    $this->list = Doctrine::getTable('DiaryCommentUpdate')->getList($this->getUser()->getMember(), $max);
+  }
 }

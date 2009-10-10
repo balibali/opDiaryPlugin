@@ -66,6 +66,10 @@ class opDiaryPluginRouting
         array('id' => '\d+'),
         array('model' => 'Diary', 'type' => 'object')
       ),
+      'diary_comment_history' => new sfRoute(
+        '/diary/comment/history',
+        array('module' => 'diaryComment', 'action' => 'history')
+      ),
 
       'diary_new' => new sfRoute(
         '/diary/new',

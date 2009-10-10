@@ -60,3 +60,24 @@ diaryList:
         5: 5
         7: 7
         10: 10
+
+diaryCommentHistory:
+  caption:
+    ja_JP: "日記コメント記入履歴"
+  description:
+    ja_JP: "日記コメントの更新情報を新着順に表示します。"
+  component: [diaryComment, history]
+  config:
+    max:
+      Name:      "max"
+      Caption:   "最大表示件数"
+      FormType:  "select"
+      ValueType:  "int"
+      IsRequired: true
+      Default:    5
+      Choices:
+        1: 1
+        3: 3
+        5: 5
+        7: 7
+        10: 10

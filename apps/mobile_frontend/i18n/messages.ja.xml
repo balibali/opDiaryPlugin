@@ -30,6 +30,10 @@
         <source>Profile of %1%</source>
         <target>%1%さんのﾍﾟｰｼﾞ</target>
       </trans-unit>
+      <trans-unit id="52">
+        <source>Diary Comment History</source>
+        <target>日記ｺﾒﾝﾄ記入履歴</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

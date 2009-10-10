@@ -15,6 +15,11 @@ homeSuccess:
       is_component: true
       parts:    [profileEdit]
       target:   [before]
+    diaryCommentHistory:
+      template: [diaryComment, history]
+      is_component: true
+      parts:    [profileEdit]
+      target:   [before]
 profileSuccess:
   customize:
     memberDiaryList:

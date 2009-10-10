@@ -17,6 +17,11 @@
  */
 class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
 {
+  public function executeHistory(sfWebRequest $request)
+  {
+    $this->pager = Doctrine::getTable('DiaryCommentUpdate')->getPager($this->member, $request->getParameter('page'), 20);
+  }
+
   public function executeCreate(sfWebRequest $request)
   {
     $this->forward404Unless($this->isDiaryViewable());

@@ -29,6 +29,7 @@ abstract class PluginDiaryComment extends BaseDiaryComment
     if ($this->getMemberId() !== $this->getDiary()->getMemberId())
     {
       Doctrine::getTable('DiaryCommentUnread')->register($this->getDiary());
+      Doctrine::getTable('DiaryCommentUpdate')->update($this->getDiary(), $this->getMember());
     }
   }
 

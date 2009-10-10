@@ -71,3 +71,18 @@ DiaryCommentUnread:
       onDelete: cascade
     Member:
       onDelete: cascade
+
+DiaryCommentUpdate:
+  columns:
+    diary_id: { type: integer(4), notnull: true, primary: true }
+    member_id: { type: integer(4), notnull: true, primary: true }
+    last_comment_time: { type: timestamp, notnull: true }
+    my_last_comment_time: { type: timestamp, notnull: true }
+  relations:
+    Diary:
+      onDelete: cascade
+    Member:
+      onDelete: cascade
+  indexes:
+    member_id_last_comment_time:
+      fields: [member_id, last_comment_time]

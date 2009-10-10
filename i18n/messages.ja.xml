@@ -186,6 +186,10 @@
         <source>Your search "%1%" did not match any diaries.</source>
         <target>「%1%」に一致する日記は見つかりませんでした。</target>
       </trans-unit>
+      <trans-unit id="52">
+        <source>Diary Comment History</source>
+        <target>日記コメント記入履歴</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
