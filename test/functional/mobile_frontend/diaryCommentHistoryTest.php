@@ -1,0 +1,44 @@
+<?php
+
+include dirname(__FILE__).'/../../bootstrap/functional.php';
+
+$test = new opDiaryPluginTestFunctional(new sfBrowser(), new lime_test(null, new lime_output_color()));
+$test->setMobile();
+
+include dirname(__FILE__).'/../../bootstrap/database.php';
+
+$test->login('sns1@example.com', 'password');
+$test->setCulture('en');
+
+$test->info('Diary Comment History Test')
+  ->get('/diary/comment/history')
+  ->with('request')->begin()
+    ->isParameter('module', 'diaryComment')
+    ->isParameter('action', 'history')
+  ->end()
+  ->with('response')->begin()
+    ->checkElement('center', "\n".'1 - 20 of 21')
+    ->checkElement('center a', 'Next')
+  ->end()
+
+  ->click('Next')
+  ->with('request')->begin()
+    ->isParameter('module', 'diaryComment')
+    ->isParameter('action', 'history')
+    ->isParameter('page', 2)
+  ->end()
+  ->with('response')->begin()
+    ->checkElement('center', "\n".'21 - 21 of 21')
+    ->checkElement('center a', 'Previous')
+  ->end()
+
+  ->click('Previous')
+  ->with('request')->begin()
+    ->isParameter('module', 'diaryComment')
+    ->isParameter('action', 'history')
+  ->end()
+  ->with('response')->begin()
+    ->checkElement('center', "\n".'1 - 20 of 21')
+    ->checkElement('center a', 'Next')
+  ->end()
+;

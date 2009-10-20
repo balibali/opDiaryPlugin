@@ -74,3 +74,21 @@ Diary:
     updated_at: "2009-07-<?php printf('%02d', $i) ?> 00:00:00"
     public_flag: 1
 <?php endfor; ?>
+
+DiaryComment:
+<?php for ($i = 1; $i <= 21; $i++): ?>
+  diary_comment_for_diary_<?php echo $i ?>:
+    Member: member1
+    Diary: diary_for_member4_<?php echo $i."\n" ?>
+    number: 1
+    body: "commenttttt"
+<?php endfor; ?>
+
+DiaryCommentUpdate:
+<?php for ($i = 1; $i <= 21; $i++): ?>
+  diary_comment_update_for_diary_<?php echo $i ?>:
+    Member: member1
+    Diary: diary_for_member4_<?php echo $i."\n" ?>
+#    last_comment_time:
+#    my_last_comment_time:
+<?php endfor; ?>
