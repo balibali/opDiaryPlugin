@@ -3,11 +3,18 @@ Gadget:
     type: "contents"
     name: "diaryFriendList"
     sort_order: 101
+
   diay_list:
     type: "contents"
     name: "diaryList"
     sort_order: 102
+
+  diary_comment_history:
+    type: "contents"
+    name: "diaryCommentHistory"
+    sort_order: 103
+
   diary_my_list:
     type: "contents"
     name: "diaryMyList"
-    sort_order: 103
+    sort_order: 104
