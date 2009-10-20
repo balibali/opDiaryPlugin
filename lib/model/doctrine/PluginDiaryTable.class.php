@@ -35,7 +35,14 @@ abstract class PluginDiaryTable extends Doctrine_Table
       unset(self::$publicFlags[self::PUBLIC_FLAG_OPEN]);
     }
 
-    return array_map(array(sfContext::getInstance()->getI18N(), '__'), self::$publicFlags);
+    $publicFlags = array();
+    $i18n = sfContext::getInstance()->getI18N();
+    foreach (self::$publicFlags as $key => $publicFlag)
+    {
+      $publicFlags[$key] = $i18n->__($publicFlag, array(), 'publicFlags');
+    }
+
+    return $publicFlags;
   }
 
   public function getDiaryList($limit = 5, $publicFlag = self::PUBLIC_FLAG_SNS)
