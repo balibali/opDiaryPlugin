@@ -24,7 +24,7 @@ abstract class PluginDiaryTable extends Doctrine_Table
   protected static $publicFlags = array(
     self::PUBLIC_FLAG_OPEN    => 'All Users on the Web',
     self::PUBLIC_FLAG_SNS     => 'All Members',
-    self::PUBLIC_FLAG_FRIEND  => 'My Friends',
+    self::PUBLIC_FLAG_FRIEND  => '%my_friend%',
     self::PUBLIC_FLAG_PRIVATE => 'Private',
   );
 
@@ -36,10 +36,14 @@ abstract class PluginDiaryTable extends Doctrine_Table
     }
 
     $publicFlags = array();
+
     $i18n = sfContext::getInstance()->getI18N();
+    $termMyFriend = Doctrine::getTable('SnsTerm')->get('my_friend');
+
     foreach (self::$publicFlags as $key => $publicFlag)
     {
-      $publicFlags[$key] = $i18n->__($publicFlag, array(), 'publicFlags');
+      $terms = array('%my_friend%' => $termMyFriend->pluralize()->titleize());
+      $publicFlags[$key] = $i18n->__($publicFlag, $terms, 'publicFlags');
     }
 
     return $publicFlags;

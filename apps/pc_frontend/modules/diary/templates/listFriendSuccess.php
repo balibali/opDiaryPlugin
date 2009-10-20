@@ -1,6 +1,6 @@
 <?php use_helper('opDiary'); ?>
 
-<?php $title = __('Diaries of Friends') ?>
+<?php $title = __('Diaries of %my_friend%', array('%my_friend%' => $op_term['my_friend']->pluralize()->titleize())) ?>
 <?php if ($pager->getNbResults()): ?>
 <div class="dparts recentList"><div class="parts">
 <div class="partsHeading"><h3><?php echo $title ?></h3></div>

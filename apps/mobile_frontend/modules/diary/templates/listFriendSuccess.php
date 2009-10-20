@@ -1,4 +1,4 @@
-<?php op_mobile_page_title(__('Diaries of Friends')) ?>
+<?php op_mobile_page_title(__('Diaries of %my_friend%', array('%my_friend%' => $op_term['my_friend']->pluralize()->titleize()))) ?>
 <?php use_helper('opDiary'); ?>
 
 <?php if ($pager->getNbResults()): ?>

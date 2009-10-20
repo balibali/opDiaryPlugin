@@ -14,7 +14,7 @@ foreach ($diaryList as $diary)
 $moreInfo = array();
 $moreInfo[] = link_to(__('More'), 'diary/listFriend');
 $options = array(
-  'title'  => __('Recently Posted Diaries of Friends'),
+  'title'  => __('Recently Posted Diaries of %my_friend%', array('%my_friend%' => $op_term['my_friend']->pluralize()->titleize())),
   'border' => true,
   'moreInfo' => $moreInfo,
 );

@@ -39,12 +39,12 @@
         <target>最新日記</target>
       </trans-unit>
       <trans-unit id="10">
-        <source>Recently Posted Diaries of Friends</source>
-        <target>マイフレンド最新日記</target>
+        <source>Recently Posted Diaries of %my_friend%</source>
+        <target>%my_friend%最新日記</target>
       </trans-unit>
       <trans-unit id="11">
-        <source>Diaries of Friends</source>
-        <target>マイフレンドの日記</target>
+        <source>Diaries of %my_friend%</source>
+        <target>%my_friend%の日記</target>
       </trans-unit>
       <trans-unit id="12">
         <source>Diaries of %1%</source>
@@ -69,10 +69,6 @@
       <trans-unit id="17">
         <source>Save</source>
         <target>確定</target>
-      </trans-unit>
-      <trans-unit id="18">
-        <source>Nickname</source>
-        <target>ニックネーム</target>
       </trans-unit>
       <trans-unit id="19">
         <source>Photo 1</source>

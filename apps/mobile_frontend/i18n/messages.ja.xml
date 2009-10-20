@@ -14,18 +14,6 @@
         <source>Delete</source>
         <target>削除</target>
       </trans-unit>
-      <trans-unit id="10">
-        <source>Recently Posted Diaries of Friends</source>
-        <target>ﾏｲﾌﾚﾝﾄﾞ最新日記</target>
-      </trans-unit>
-      <trans-unit id="11">
-        <source>Diaries of Friends</source>
-        <target>ﾏｲﾌﾚﾝﾄﾞの日記</target>
-      </trans-unit>
-      <trans-unit id="18">
-        <source>Nickname</source>
-        <target>ﾆｯｸﾈｰﾑ</target>
-      </trans-unit>
       <trans-unit id="23">
         <source>Comments</source>
         <target>ｺﾒﾝﾄ</target>
@@ -33,10 +21,6 @@
       <trans-unit id="24">
         <source>Post a diary comment</source>
         <target>ｺﾒﾝﾄを書く</target>
-      </trans-unit>
-      <trans-unit id="28">
-        <source>My Friends</source>
-        <target>ﾏｲﾌﾚﾝﾄﾞまで公開</target>
       </trans-unit>
       <trans-unit id="31">
         <source>[1]1 diary has new comments!|(1,Inf]%1% diaries have new comments!</source>
