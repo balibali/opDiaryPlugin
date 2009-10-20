@@ -5,25 +5,3 @@ homeSuccess:
       is_component: true
       parts:    [information]
       target:   [bottom]
-    friendDiaryList:
-      template: [diary, friendDiaryList]
-      is_component: true
-      parts:    [profileEdit]
-      target:   [before]
-    diaryList:
-      template: [diary, diaryList]
-      is_component: true
-      parts:    [profileEdit]
-      target:   [before]
-    diaryCommentHistory:
-      template: [diaryComment, history]
-      is_component: true
-      parts:    [profileEdit]
-      target:   [before]
-profileSuccess:
-  customize:
-    memberDiaryList:
-      template: [diary, memberDiaryList]
-      is_component: true
-      parts:    [communityList]
-      target:   [after]

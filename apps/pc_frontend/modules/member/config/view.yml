@@ -5,10 +5,3 @@ homeSuccess:
       is_component: true
       parts   : [information]
       target  : [bodyBottom]
-profileSuccess:
-  customize:
-    memberDiaryList:
-      template: [diary, memberDiaryList]
-      is_component: true
-      parts:    [profile]
-      target:   [after]
