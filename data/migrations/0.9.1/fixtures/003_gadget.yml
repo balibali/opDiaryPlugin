@@ -1,0 +1,35 @@
+Gadget:
+  diary_comment_history:
+    type: "contents"
+    name: "diaryCommentHistory"
+    sort_order: 103
+
+  diary_profile_list:
+    type: "profileContents"
+    name: "diaryMemberList"
+    sort_order: 101
+
+  mobile_diay_friend_list:
+    type: "mobileContents"
+    name: "diaryFriendList"
+    sort_order: 101
+
+  mobile_diay_list:
+    type: "mobileContents"
+    name: "diaryList"
+    sort_order: 102
+
+  mobile_diary_comment_history:
+    type: "mobileContents"
+    name: "diaryCommentHistory"
+    sort_order: 103
+
+  mobile_diary_my_list:
+    type: "mobileContents"
+    name: "diaryMyList"
+    sort_order: 104
+
+  mobile_diary_profile_list:
+    type: "mobileProfileContents"
+    name: "diaryMemberList"
+    sort_order: 101
