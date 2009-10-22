@@ -13,31 +13,25 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2009-10-21</date>
- <time>10:24:56</time>
+ <date>2009-10-22</date>
+ <time>04:02:32</time>
  <version>
-  <release>0.9.1</release>
-  <api>0.9.1</api>
+  <release>0.9.1.1</release>
+  <api>0.9.1.1</api>
  </version>
  <stability>
   <release>beta</release>
   <api>beta</api>
  </stability>
  <license>apache</license>
- <notes>* Added new public flag PUBLIC_FLAG_OPEN. The diaries set PUBLIC_FLAG_OPEN are viewable all users on the Web
-* Added search feature
-* Added diary comment history
-* Supported text decoration (thanks to Shogo Kawahara)
-* Supported mobile_frontend gadget
-* Supported the feature of replacing SNS terms
-* Fixed pager navigations bug</notes>
+ <notes>Fixed a opPlugin:install issue.</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="2bcec9045b32de9d9121c27fe72d4a6e" name="apps/mobile_frontend/config/app.yml" role="data" />
    <file baseinstalldir="/" md5sum="3ebd748614a5d024c6902d0492531b56" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/mobile_frontend/modules/diary/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f38308dad6aba1edebb1de78c5a44223" name="apps/mobile_frontend/modules/diary/actions/components.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="c84c7834935437e2b6d04cbe6ee36685" name="apps/mobile_frontend/modules/diary/config/security.yml" role="data" />
+   <file baseinstalldir="/" md5sum="b04c289264fa35572f0b6c178139f362" name="apps/mobile_frontend/modules/diary/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="d84ab38a3e4eeadcbdae1f268c04a3f4" name="apps/mobile_frontend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="52b033f11e63b4861c9af7c43dd844a3" name="apps/mobile_frontend/modules/diary/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="d6acdfbdd90f8ebd3f4736b87a9a7341" name="apps/mobile_frontend/modules/diary/templates/listFriendSuccess.php" role="data" />
@@ -52,7 +46,6 @@
    <file baseinstalldir="/" md5sum="8e28f8c7524d1907269c470584d18f35" name="apps/mobile_frontend/modules/diary/templates/_noticeUnreadDiaryComment.php" role="data" />
    <file baseinstalldir="/" md5sum="215388c81a68b7a8fc324dcb65bd9323" name="apps/mobile_frontend/modules/diaryComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="32d20d9c90b0e1a86b688f3a75e1848d" name="apps/mobile_frontend/modules/diaryComment/actions/components.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/mobile_frontend/modules/diaryComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="c51ac22b5ffb07112f1177e2f7ea0536" name="apps/mobile_frontend/modules/diaryComment/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3bc20c6e930d2a61f1834857931dd929" name="apps/mobile_frontend/modules/diaryComment/templates/historySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="4b7b57ab94259427a44afdb512888beb" name="apps/mobile_frontend/modules/diaryComment/templates/_history.php" role="data" />
@@ -61,7 +54,7 @@
    <file baseinstalldir="/" md5sum="681117589e093a8a5a3fdfb44a08c2d0" name="apps/pc_frontend/config/app.yml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/pc_frontend/modules/diary/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="4887c68219806c49c6fb8eddf0d16197" name="apps/pc_frontend/modules/diary/actions/components.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="c84c7834935437e2b6d04cbe6ee36685" name="apps/pc_frontend/modules/diary/config/security.yml" role="data" />
+   <file baseinstalldir="/" md5sum="b04c289264fa35572f0b6c178139f362" name="apps/pc_frontend/modules/diary/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="b854ac284198fb6cd48badcec20a6671" name="apps/pc_frontend/modules/diary/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab703d30fcdb267152536a33a594ee85" name="apps/pc_frontend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="b0e9e2127e73853bd312f284ac279bde" name="apps/pc_frontend/modules/diary/templates/editSuccess.php" role="data" />
@@ -80,7 +73,6 @@
    <file baseinstalldir="/" md5sum="d4dc5e13a356d736c6db553b259da68b" name="apps/pc_frontend/modules/diary/templates/_sidemenu.php" role="data" />
    <file baseinstalldir="/" md5sum="215388c81a68b7a8fc324dcb65bd9323" name="apps/pc_frontend/modules/diaryComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="862b275617072672dc0d31e7b73daa45" name="apps/pc_frontend/modules/diaryComment/actions/components.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="31a9b416e4603892e50fc52658028ae8" name="apps/pc_frontend/modules/diaryComment/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="b854ac284198fb6cd48badcec20a6671" name="apps/pc_frontend/modules/diaryComment/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="2ea2d5698c2632332a3cb87e76d50abe" name="apps/pc_frontend/modules/diaryComment/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="76e868e824f0545aa90275ea99562eb0" name="apps/pc_frontend/modules/diaryComment/templates/historySuccess.php" role="data" />
@@ -101,7 +93,7 @@
    <file baseinstalldir="/" md5sum="141fa8eaf6b1ed6a1f6b7270df0eb0df" name="data/migrations/0.9.1/fixtures/003_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="583b199549f8c24382710aeb4799dff5" name="i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ff14e22a0119036fe8c828b5b60979d2" name="i18n/publicFlags.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="2e071f40970d536029057c4887eafb54" name="lib/action/opDiaryPluginActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="9700d7c2caacd5fd97c74f2d90a98847" name="lib/action/opDiaryPluginActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="571e949cff97414c44532194c4d3cad0" name="lib/action/opDiaryPluginDiaryActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b477417ab715cf663ff455ae96d93564" name="lib/action/opDiaryPluginDiaryCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ca7600c716d3ec1b185cd5df954969b0" name="lib/action/opDiaryPluginDiaryCommentComponents.class.php" role="data" />
@@ -224,6 +216,19 @@
 * Supported mobile_frontend gadget
 * Supported the feature of replacing SNS terms
 * Fixed pager navigations bug</notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.1.1</release>
+    <api>0.9.1.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-10-22</date>
+   <license>apache</license>
+   <notes>Fixed a opPlugin:install issue.</notes>
   </release>
  </changelog>
 </package>
