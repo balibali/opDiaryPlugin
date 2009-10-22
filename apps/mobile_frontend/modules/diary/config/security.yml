@@ -1,7 +1,3 @@
-all:
-  is_secure: on
-  credentials: SNSMember
-
 index:
   is_secure: off
 
