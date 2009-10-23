@@ -27,10 +27,10 @@
 <?php if ($pager->hasOlderPage()): ?><?php echo link_to(__('Older'), '@diary_show?id='.$diary->getId().'&page='.$pager->getOlderPage().'&order='.$order) ?><?php endif; ?>
 <?php if ($pager->hasNewerPage()): ?> <?php echo link_to(__('Newer'), '@diary_show?id='.$diary->getId().'&page='.$pager->getNewerPage().'&order='.$order) ?><?php endif; ?>
 <br>
-<?php if (Criteria::ASC === $order): ?>
+<?php if (sfReversibleDoctrinePager::ASC === $order): ?>
   <?php echo link_to(__('View Latest'), '@diary_show?id='.$diary->getId()) ?>
 <?php else: ?>
-  <?php echo link_to(__('View Oldest First'), '@diary_show?id='.$diary->getId().'&order='.Criteria::ASC) ?>
+  <?php echo link_to(__('View Oldest First'), '@diary_show?id='.$diary->getId().'&order='.sfReversibleDoctrinePager::ASC) ?>
 <?php endif; ?>
 </center>
 <?php endif; ?>

@@ -84,6 +84,14 @@ DiaryComment:
     body: "commenttttt"
 <?php endfor; ?>
 
+<?php for ($i = 1; $i <= 21; $i++): ?>
+  diary_comment_for_diary_1_<?php echo $i ?>:
+    Member: member1
+    Diary: diary1
+    number: <?php echo $i."\n" ?>
+    body: "coooooooment"
+<?php endfor; ?>
+
 DiaryCommentUpdate:
 <?php for ($i = 1; $i <= 21; $i++): ?>
   diary_comment_update_for_diary_<?php echo $i ?>:

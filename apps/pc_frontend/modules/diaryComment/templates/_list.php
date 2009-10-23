@@ -13,10 +13,10 @@
   <?php endif; ?>
 <?php endforeach; ?>
 <?php if ($pager->haveToPaginate()): ?>
-  <?php if (Criteria::ASC === $order): ?>
+  <?php if (sfReversibleDoctrinePager::ASC === $order): ?>
     <?php echo link_to(__('View Latest'), '@diary_show?id='.$diary->getId().'&size='.$size) ?>
   <?php else: ?>
-    <?php echo link_to(__('View Oldest First'), '@diary_show?id='.$diary->getId().'&size='.$size.'&order='.Criteria::ASC) ?>
+    <?php echo link_to(__('View Oldest First'), '@diary_show?id='.$diary->getId().'&size='.$size.'&order='.sfReversibleDoctrinePager::ASC) ?>
   <?php endif; ?>
 <?php endif; ?>
 </div>
