@@ -13,18 +13,18 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2009-10-22</date>
- <time>04:02:32</time>
+ <date>2009-10-23</date>
+ <time>14:51:58</time>
  <version>
-  <release>0.9.1.1</release>
-  <api>0.9.1.1</api>
+  <release>0.9.1.2</release>
+  <api>0.9.1.2</api>
  </version>
  <stability>
   <release>beta</release>
   <api>beta</api>
  </stability>
  <license>apache</license>
- <notes>Fixed a opPlugin:install issue.</notes>
+ <notes>Fixed diary comment pager bug.</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="2bcec9045b32de9d9121c27fe72d4a6e" name="apps/mobile_frontend/config/app.yml" role="data" />
@@ -49,7 +49,7 @@
    <file baseinstalldir="/" md5sum="c51ac22b5ffb07112f1177e2f7ea0536" name="apps/mobile_frontend/modules/diaryComment/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3bc20c6e930d2a61f1834857931dd929" name="apps/mobile_frontend/modules/diaryComment/templates/historySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="4b7b57ab94259427a44afdb512888beb" name="apps/mobile_frontend/modules/diaryComment/templates/_history.php" role="data" />
-   <file baseinstalldir="/" md5sum="ebb5e3937071f08abfe14e21c4f4f88f" name="apps/mobile_frontend/modules/diaryComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="e4a30195466db7d1d5368ef32fc18283" name="apps/mobile_frontend/modules/diaryComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="db772cb44d8af4d10659745a9cd245a1" name="apps/mobile_frontend/modules/member/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="681117589e093a8a5a3fdfb44a08c2d0" name="apps/pc_frontend/config/app.yml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/pc_frontend/modules/diary/actions/actions.class.php" role="data" />
@@ -77,7 +77,7 @@
    <file baseinstalldir="/" md5sum="2ea2d5698c2632332a3cb87e76d50abe" name="apps/pc_frontend/modules/diaryComment/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="76e868e824f0545aa90275ea99562eb0" name="apps/pc_frontend/modules/diaryComment/templates/historySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="02b6935b520687bdf878b77277dea620" name="apps/pc_frontend/modules/diaryComment/templates/_history.php" role="data" />
-   <file baseinstalldir="/" md5sum="bc7bb0711cb79355b6d31634b094b4d0" name="apps/pc_frontend/modules/diaryComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="7082b7d4a21ed4081d2c74286679fa5a" name="apps/pc_frontend/modules/diaryComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="a0d588192ef01966e352863ece5c6804" name="apps/pc_frontend/modules/member/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="9244f88f77fd6998132a0104ef130731" name="config/config.php" role="data" />
    <file baseinstalldir="/" md5sum="c5d97ca6de8838c8cb09f802dd46fa30" name="config/gadget.yml" role="data" />
@@ -127,14 +127,16 @@
    <file baseinstalldir="/" md5sum="98cceaef26477f6789f4230ee47a789f" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="2089e76b9d0ae0fd4d222ee37ea68cb5" name="test/bootstrap/functional.php" role="data" />
    <file baseinstalldir="/" md5sum="b6e69bd4c5958def80bc622b1e8d15b2" name="test/bootstrap/unit.php" role="data" />
-   <file baseinstalldir="/" md5sum="d02ac087e642c5159e4887b98551d762" name="test/fixtures/diaries.yml" role="data" />
+   <file baseinstalldir="/" md5sum="573aa203cb12112b5a6747c5cc0f094a" name="test/fixtures/diaries.yml" role="data" />
    <file baseinstalldir="/" md5sum="0b6dd62ace8ac0408cfcd067756b3916" name="test/fixtures/members.yml" role="data" />
    <file baseinstalldir="/" md5sum="e0e09e449e004294f4e99be3e101c3c4" name="test/functional/mobile_frontend/diaryActionsTest.php" role="data" />
    <file baseinstalldir="/" md5sum="26df34175215d09ecf2631f02c2e97c4" name="test/functional/mobile_frontend/diaryCommentHistoryTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="28e1e68a1e14b26d11c2e3c6e4b13ef6" name="test/functional/mobile_frontend/diaryCommentPagerTest.php" role="data" />
    <file baseinstalldir="/" md5sum="8205d0529ac08fcc41b9c9770e030bc4" name="test/functional/mobile_frontend/diaryOpenTest.php" role="data" />
    <file baseinstalldir="/" md5sum="b562d2c76935e82cbbced4f4760134f5" name="test/functional/mobile_frontend/diarySearchTest.php" role="data" />
    <file baseinstalldir="/" md5sum="50b124700eb29e6f15f567f1a766b532" name="test/functional/pc_frontend/diaryActionsTest.php" role="data" />
    <file baseinstalldir="/" md5sum="749cb6b9b229f5ca344e8604219994d6" name="test/functional/pc_frontend/diaryCommentHistoryTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="ccb16abcb5d74edfd96528ded4a1e60f" name="test/functional/pc_frontend/diaryCommentPagerTest.php" role="data" />
    <file baseinstalldir="/" md5sum="77126e95fbb69ddb63ab5a67023aeff7" name="test/functional/pc_frontend/diaryOpenTest.php" role="data" />
    <file baseinstalldir="/" md5sum="603360aadaeb90e08a4ab1d426e4e653" name="test/functional/pc_frontend/diarySearchTest.php" role="data" />
    <file baseinstalldir="/" md5sum="52440ab0abcc01c98551283f1e9942e1" name="test/unit/model/SkeletonTest.php" role="data" />
@@ -229,6 +231,19 @@
    <date>2009-10-22</date>
    <license>apache</license>
    <notes>Fixed a opPlugin:install issue.</notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.1.2</release>
+    <api>0.9.1.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-10-23</date>
+   <license>apache</license>
+   <notes>Fixed diary comment pager bug.</notes>
   </release>
  </changelog>
 </package>
