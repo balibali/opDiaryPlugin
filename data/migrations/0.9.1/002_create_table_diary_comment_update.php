@@ -20,6 +20,14 @@ class opDiaryPluginMigrationVersion2 extends opMigration
 {
   public function migrate($direction)
   {
+    $conn = Doctrine_Manager::connection();
+    $list = $conn->import->listTables();
+
+    if ('up' === $direction && in_array('diary_comment_update', $list))
+    {
+      return null;
+    }
+
     $columns = array(
       'diary_id' => array('type' => 'integer', 'length' => 4, 'notnull' => true, 'primary' => true, 'default' => 0),
       'member_id' => array('type' => 'integer', 'length' => 4, 'notnull' => true, 'primary' => true, 'default' => 0),
