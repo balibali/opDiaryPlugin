@@ -190,6 +190,10 @@
         <source>Diary Comment History</source>
         <target>日記コメント記入履歴</target>
       </trans-unit>
+      <trans-unit id="53">
+        <source>remove the current photo</source>
+        <target>現在の画像を削除する</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -31,7 +31,7 @@ abstract class PluginDiaryImageForm extends BaseDiaryImageForm
         'file_src'     => '',
         'is_image'     => true,
         'with_delete'  => true,
-        'delete_label' => 'remove the current photo',
+        'delete_label' => sfContext::getInstance()->getI18N()->__('remove the current photo'),
         'label'        => false,
         'edit_mode'    => !$this->isNew(),
         );
