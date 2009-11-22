@@ -30,4 +30,10 @@ abstract class PluginDiaryCommentImage extends BaseDiaryCommentImage
     $file = $this->getFile();
     $file->setName($prefix.$file->getName());
   }
+
+  public function preDelete($event)
+  {
+    $this->getFile()->getFileBin()->delete();
+    $this->getFile()->delete();
+  }
 }

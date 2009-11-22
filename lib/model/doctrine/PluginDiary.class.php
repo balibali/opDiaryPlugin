@@ -95,4 +95,13 @@ abstract class PluginDiary extends BaseDiary
 
     return $q->execute();
   }
+
+  public function preDelete($event)
+  {
+    $images = $this->getDiaryImages();
+    foreach ($images as $image)
+    {
+      $image->delete();
+    }
+  }
 }

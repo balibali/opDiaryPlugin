@@ -46,4 +46,13 @@ abstract class PluginDiaryComment extends BaseDiaryComment
 
     return $q->execute();
   }
+
+  public function preDelete($event)
+  {
+    $images = $this->getDiaryCommentImages();
+    foreach ($images as $image)
+    {
+      $image->delete();
+    }
+  }
 }
