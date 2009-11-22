@@ -44,6 +44,7 @@ DiaryComment:
   relations:
     Diary:
       foreignAlias: DiaryComments
+      onDelete: cascade
     Member:
       foreignAlias: DiaryComments
       onDelete: cascade
