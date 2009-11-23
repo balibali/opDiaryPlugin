@@ -50,6 +50,11 @@ class opDiaryPluginActions extends sfActions
     {
       $this->member = $this->getUser()->getMember();
     }
+    elseif ($this->member->getId() !== $this->getUser()->getMemberId())
+    {
+      $relation = Doctrine::getTable('MemberRelationship')->retrieveByFromAndTo($this->member->getId(), $this->getUser()->getMemberId());
+      $this->forwardIf($relation && $relation->getIsAccessBlock(), 'default', 'error');
+    }
   }
 
   public function postExecute()
