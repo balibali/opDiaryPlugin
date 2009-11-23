@@ -17,6 +17,7 @@
 abstract class PluginDiary extends BaseDiary
 {
   protected $previous, $next;
+  protected $countDiaryComments;
 
   public function getPublicFlagLabel()
   {
@@ -103,5 +104,15 @@ abstract class PluginDiary extends BaseDiary
     {
       $image->delete();
     }
+  }
+
+  public function countDiaryComments($noCache = false)
+  {
+    if ($noCache || is_null($this->countDiaryComments))
+    {
+      $this->countDiaryComments = Doctrine::getTable('DiaryComment')->getCount($this->getId());
+    }
+
+    return $this->countDiaryComments;
   }
 }

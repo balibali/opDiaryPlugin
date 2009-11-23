@@ -8,7 +8,7 @@
 <ul class="articleList">
 <?php foreach ($list as $diaryCommentUpdate): ?>
 <?php $diary = $diaryCommentUpdate->getDiary() ?>
-<li><span class="date"><?php echo op_format_date($diaryCommentUpdate->getLastCommentTime(), 'XShortDateJa') ?></span><?php echo link_to(op_diary_get_title_and_count($diary), 'diary_show', $diary) ?> (<?php echo $diary->getMember()->getName() ?>)</li>
+<li><span class="date"><?php echo op_format_date($diaryCommentUpdate->getLastCommentTime(), 'XShortDateJa') ?></span><?php echo op_diary_link_to_show($diary, true, false) ?></li>
 <?php endforeach; ?>
 </ul>
 

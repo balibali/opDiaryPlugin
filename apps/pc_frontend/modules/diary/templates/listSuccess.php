@@ -31,7 +31,7 @@ else
 <td rowspan="4" class="photo"><a href="<?php echo url_for('diary_show', $diary) ?>"><?php echo image_tag_sf_image($diary->getMember()->getImageFilename(), array('size' => '76x76')) ?></a></td>
 <th><?php echo __('%Nickname%') ?></th><td><?php echo $diary->getMember()->getName() ?></td>
 </tr><tr>
-<th><?php echo __('Title') ?></th><td><?php echo op_diary_get_title_and_count($diary) ?><?php if ($diary->hasImages()) : ?> <?php echo image_tag('icon_camera.gif', array('alt' => 'photo')) ?><?php endif; ?></td>
+<th><?php echo __('Title') ?></th><td><?php echo op_diary_get_title_and_count($diary) ?><?php echo op_diary_image_icon($diary) ?></td>
 </tr><tr>
 <th><?php echo __('Body') ?></th><td><?php echo op_truncate(op_decoration($diary->getBody(), true), 36, '', 3) ?></td>
 </tr><tr class="operation">

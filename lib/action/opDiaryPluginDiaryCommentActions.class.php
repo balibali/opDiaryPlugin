@@ -39,7 +39,7 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
     {
       $this->form->save();
 
-      $this->redirect('@diary_show?id='.$this->diary->getId());
+      $this->redirectToDiaryShow();
     }
 
     $this->setTemplate('../../diary/templates/show');
@@ -61,7 +61,12 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
 
     $this->getUser()->setFlash('notice', 'The comment was deleted successfully.');
 
-    $this->redirect('@diary_show?id='.$this->diary->getId());
+    $this->redirectToDiaryShow();
+  }
+
+  protected function redirectToDiaryShow()
+  {
+    $this->redirect('@diary_show?id='.$this->diary->getId().'&comment_count='.$this->diary->countDiaryComments(true));
   }
 
   protected function isDiaryCommentDeletable()

@@ -9,7 +9,7 @@
 <?php $diary = $diaryCommentUpdate->getDiary() ?>
 <dl>
 <dt><?php echo op_format_date($diaryCommentUpdate->getLastCommentTime(), 'XDateTimeJa') ?></dt>
-<dd><?php echo link_to(op_diary_get_title_and_count($diary), 'diary_show', $diary) ?> (<?php echo $diary->getMember()->getName() ?>)</dd>
+<dd><?php echo op_diary_link_to_show($diary, true, false) ?></dd>
 </dl>
 <?php endforeach; ?>
 <?php echo op_include_pager_navigation($pager, 'diaryComment/history?page=%d'); ?>
