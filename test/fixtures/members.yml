@@ -37,19 +37,23 @@ MemberConfig:
 <?php endfor; ?>
 
 MemberRelationship:
-  member_relationship_1_to_2:
+  member_relationship_1_from_2:
     Member: member1
     MemberRelatedByMemberIdFrom: member2
     is_friend: true
-  member_relationship_2_to_1:
+  member_relationship_2_from_1:
     Member: member2
     MemberRelatedByMemberIdFrom: member1
     is_friend: true
-  member_relationship_1_to_3:
+  member_relationship_1_from_3:
     Member: member1
     MemberRelatedByMemberIdFrom: member3
     is_friend: true
-  member_relationship_3_to_1:
+  member_relationship_3_from_1:
     Member: member3
     MemberRelatedByMemberIdFrom: member1
     is_friend: true
+  member_relationship_4_from_1:
+    Member: member4
+    MemberRelatedByMemberIdFrom: member1
+    is_access_block: true
