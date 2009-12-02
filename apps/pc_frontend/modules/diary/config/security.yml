@@ -1,17 +1,17 @@
 index:
-  is_secure: off
+  is_secure: false
 
 list:
-  is_secure: off
+  is_secure: false
 
 search:
-  is_secure: off
+  is_secure: false
 
 list:
-  is_secure: off
+  is_secure: false
 
 listMember:
-  is_secure: off
+  is_secure: false
 
 show:
-  is_secure: off
+  is_secure: false
