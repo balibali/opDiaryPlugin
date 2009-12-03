@@ -26,9 +26,6 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
 
   public function getCount($diaryId)
   {
-    return (int)$this->createQuery()
-        ->select('COUNT(*)')
-        ->where('diary_id = ?', $diaryId)
-        ->execute(array(), Doctrine::HYDRATE_SINGLE_SCALAR);
+    return $this->createQuery()->where('diary_id = ?', $diaryId)->count();
   }
 }

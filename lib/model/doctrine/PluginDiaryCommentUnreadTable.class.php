@@ -40,10 +40,7 @@ abstract class PluginDiaryCommentUnreadTable extends Doctrine_Table
 
   public function countUnreadDiary($memberId)
   {
-    return $this->createQuery()
-      ->select('COUNT(member_id)')
-      ->where('member_id = ?', $memberId)
-      ->execute(array(), Doctrine::HYDRATE_SINGLE_SCALAR);
+    return $this->createQuery()->where('member_id = ?', $memberId)->count();
   }
 
   public function getOneDiaryIdByMemberId($memberId)
