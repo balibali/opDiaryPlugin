@@ -194,6 +194,22 @@
         <source>remove the current photo</source>
         <target>現在の画像を削除する</target>
       </trans-unit>
+      <trans-unit id="54">
+        <source>Diary List</source>
+        <target>日記リスト</target>
+      </trans-unit>
+      <trans-unit id="55">
+        <source>Diary Comment List</source>
+        <target>日記コメントリスト</target>
+      </trans-unit>
+      <trans-unit id="56">
+        <source>Diary</source>
+        <target>日記</target>
+      </trans-unit>
+      <trans-unit id="57">
+        <source>There are no diary comments.</source>
+        <target>日記コメントがありません。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

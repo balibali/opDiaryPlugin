@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+table {
+  border-collapse: collapse;
+}
+
+#diaryMonitoringList table {
+  margin: 1em 0;
+}
+
+#diaryMonitoringList table td {
+  width: 540px;
+}

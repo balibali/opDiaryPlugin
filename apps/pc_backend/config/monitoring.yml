@@ -1,0 +1,7 @@
+diaryList:
+  caption: "Diary List"
+  url: "monitoring_diary"
+
+diaryCommentList:
+  caption: "Diary Comment List"
+  url: "monitoring_diary_comment"

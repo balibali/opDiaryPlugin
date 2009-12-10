@@ -28,4 +28,15 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
   {
     return $this->createQuery()->where('diary_id = ?', $diaryId)->count();
   }
+
+  public function getDiaryCommentPager($page = 1, $size = 20)
+  {
+    $q = $this->createQuery()->orderBy('created_at DESC');
+
+    $pager = new sfDoctrinePager('DiaryComment', $size);
+    $pager->setQuery($q);
+    $pager->setPage($page);
+
+    return $pager;
+  }
 }

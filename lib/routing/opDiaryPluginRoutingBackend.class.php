@@ -19,6 +19,46 @@ class opDiaryPluginRoutingBackend
   static public function getRoutes()
   {
     return array(
+      'monitoring_diary' => new sfRoute(
+        '/monitoring/diary',
+        array('module' => 'diary', 'action' => 'list'),
+        array(),
+        array('extra_parameters_as_query_string' => true)
+      ),
+
+      'monitoring_diary_comment' => new sfRoute(
+        '/monitoring/diary/comment',
+        array('module' => 'diaryComment', 'action' => 'list'),
+        array(),
+        array('extra_parameters_as_query_string' => true)
+      ),
+
+      'monitoring_diary_delete_confirm' => new sfDoctrineRoute(
+        '/monitoring/diary/deleteConfirm/:id',
+        array('module' => 'diary', 'action' => 'deleteConfirm'),
+        array('id' => '\d+'),
+        array('model' => 'Diary', 'type' => 'object')
+      ),
+      'monitoring_diary_delete' => new sfDoctrineRoute(
+        '/monitoring/diary/delete/:id',
+        array('module' => 'diary', 'action' => 'delete'),
+        array('id' => '\d+', 'sf_method' => array('post')),
+        array('model' => 'Diary', 'type' => 'object')
+      ),
+
+      'monitoring_diary_comment_delete_confirm' => new sfDoctrineRoute(
+        '/monitoring/diary/comment/deleteConfirm/:id',
+        array('module' => 'diaryComment', 'action' => 'deleteConfirm'),
+        array('id' => '\d+'),
+        array('model' => 'DiaryComment', 'type' => 'object')
+      ),
+      'monitoring_diary_comment_delete' => new sfDoctrineRoute(
+        '/monitoring/diary/comment/delete/:id',
+        array('module' => 'diaryComment', 'action' => 'delete'),
+        array('id' => '\d+', 'sf_method' => array('post')),
+        array('model' => 'DiaryComment', 'type' => 'object')
+      ),
+
       'diary_nodefaults' => new sfRoute(
         '/diary/*',
         array('module' => 'default', 'action' => 'error')
