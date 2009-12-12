@@ -37,6 +37,10 @@ abstract class PluginDiaryForm extends BaseDiaryForm
     $this->validatorSchema['public_flag'] = new sfValidatorChoice(array(
       'choices' => array_keys(Doctrine::getTable('Diary')->getPublicFlags()),
     ));
+    if ($this->isNew() && $config = sfContext::getInstance()->getUser()->getMember()->getConfig(MemberConfigDiaryForm::PUBLIC_FLAG))
+    {
+      $this->setDefault('public_flag', $config);
+    }
 
     if (sfConfig::get('app_diary_is_upload_images', true))
     {

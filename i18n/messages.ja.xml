@@ -210,6 +210,14 @@
         <source>There are no diary comments.</source>
         <target>日記コメントがありません。</target>
       </trans-unit>
+      <trans-unit id="58">
+        <source>Diary Configuration</source>
+        <target>日記設定</target>
+      </trans-unit>
+      <trans-unit id="59">
+        <source>Default public flag for your new diaries. Past diaries are not changed.</source>
+        <target>日記を新しく書く際の公開範囲の初期値です。これまでに書かれた日記の公開範囲は変更されません。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
