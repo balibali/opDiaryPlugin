@@ -34,6 +34,14 @@
         <source>Diary Comment History</source>
         <target>日記ｺﾒﾝﾄ記入履歴</target>
       </trans-unit>
+      <trans-unit id="60">
+        <source>Post from E-mail</source>
+        <target>ﾒｰﾙで投稿する</target>
+      </trans-unit>
+      <trans-unit id="61">
+        <source>You can attach photo files to e-mail.</source>
+        <target>ﾒｰﾙには写真を添付することができます。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

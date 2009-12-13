@@ -1,0 +1,10 @@
+mail_diary_create:
+  url: d
+  class: opMailRoute
+  param: { module: diary, action: create }
+
+mail_diary_comment_create:
+  url: dc.:id
+  class: opMailRoute
+  param: { module: diaryComment, action: create }
+  required: { id: \d+ }

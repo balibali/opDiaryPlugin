@@ -218,6 +218,10 @@
         <source>Default public flag for your new diaries. Past diaries are not changed.</source>
         <target>日記を新しく書く際の公開範囲の初期値です。これまでに書かれた日記の公開範囲は変更されません。</target>
       </trans-unit>
+      <trans-unit id="60">
+        <source>Body is required.</source>
+        <target>本文を入力してください。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
