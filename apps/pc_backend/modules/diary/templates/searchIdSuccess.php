@@ -6,20 +6,8 @@
 
 <?php include_partial('searchForm') ?>
 
-<?php
-if (!isset($keyword))
-{
-  $pagerLink = 'diary/list?page=%d';
-}
-else
-{
-  $pagerLink = 'diary/search?keyword='.$keyword.'&page=%d';
-}
-?>
-<?php if ($pager->getNbResults()): ?>
+<?php if ($diary): ?>
 <div id="diaryMonitoringList">
-<p><?php echo op_include_pager_navigation($pager, $pagerLink) ?></p>
-<?php foreach ($pager->getResults() as $diary): ?>
 <table>
 <tr><th><?php echo __('ID') ?></th><td><?php echo $diary->id ?></td></tr>
 <tr><th><?php echo __('Title') ?></th><td><?php echo $diary->title ?></td></tr>
@@ -28,9 +16,7 @@ else
 <tr><th><?php echo __('Body') ?></th><td><?php echo nl2br($diary->body) ?></td></tr>
 <tr><td colspan="2"><form action="<?php echo url_for('diary/deleteConfirm?id='.$diary->id) ?>" method="get"><input type="submit" value="<?php echo __('Delete') ?>" /></form></td></tr>
 </table>
-<?php endforeach; ?>
-<p><?php echo op_include_pager_navigation($pager, $pagerLink) ?></p>
 </div>
 <?php else: ?>
-<p><?php echo !isset($keyword) ? __('There are no diaries.') : __('Your search "%1%" did not match any diaries.', array('%1%' => $keyword)) ?></p>
+<p><?php echo __('Your search "%1%" did not match any diaries.', array('%1%' => $sf_request->getParameter('id'))) ?></p>
 <?php endif; ?>

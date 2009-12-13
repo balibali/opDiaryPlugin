@@ -40,6 +40,27 @@ class diaryActions extends sfActions
     $this->pager->init();
   }
 
+  public function executeSearch(sfWebRequest $request)
+  {
+    if ($request->hasParameter('id'))
+    {
+      $this->diary = Doctrine::getTable('Diary')->find($request->getParameter('id'));
+      $this->setTemplate('searchId');
+
+      return sfView::SUCCESS;
+    }
+
+    $this->keyword = $request->getParameter('keyword');
+
+    $keywords = opDiaryPluginToolkit::parseKeyword($this->keyword);
+    $this->forwardUnless($keywords, 'diary', 'list');
+
+    $this->pager = Doctrine::getTable('Diary')->getDiarySearchPager($keywords, $request->getParameter('page'), 20, DiaryTable::PUBLIC_FLAG_PRIVATE);
+    $this->pager->init();
+
+    $this->setTemplate('list');
+  }
+
   public function executeDeleteConfirm(sfWebRequest $request)
   {
     $this->form = new sfForm();

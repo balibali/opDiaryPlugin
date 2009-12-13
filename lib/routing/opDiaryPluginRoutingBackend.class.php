@@ -25,6 +25,12 @@ class opDiaryPluginRoutingBackend
         array(),
         array('extra_parameters_as_query_string' => true)
       ),
+      'monitoring_diary_search' => new sfRoute(
+        '/monitoring/diary/search',
+        array('module' => 'diary', 'action' => 'search'),
+        array(),
+        array('extra_parameters_as_query_string' => true)
+      ),
 
       'monitoring_diary_comment' => new sfRoute(
         '/monitoring/diary/comment',
