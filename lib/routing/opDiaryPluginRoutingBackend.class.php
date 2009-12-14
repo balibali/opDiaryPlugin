@@ -38,6 +38,12 @@ class opDiaryPluginRoutingBackend
         array(),
         array('extra_parameters_as_query_string' => true)
       ),
+      'monitoring_diary_comment_search' => new sfRoute(
+        '/monitoring/diary/comment/search',
+        array('module' => 'diaryComment', 'action' => 'search'),
+        array(),
+        array('extra_parameters_as_query_string' => true)
+      ),
 
       'monitoring_diary_delete_confirm' => new sfDoctrineRoute(
         '/monitoring/diary/deleteConfirm/:id',

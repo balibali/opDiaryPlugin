@@ -222,6 +222,14 @@
         <source>Body is required.</source>
         <target>本文を入力してください。</target>
       </trans-unit>
+      <trans-unit id="61">
+        <source>Diary ID</source>
+        <target>日記ID</target>
+      </trans-unit>
+      <trans-unit id="62">
+        <source>Your search "%1%" did not match any diary comments.</source>
+        <target>「%1%」に一致する日記コメントは見つかりませんでした。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

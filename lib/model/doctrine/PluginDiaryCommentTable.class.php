@@ -31,12 +31,45 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
 
   public function getDiaryCommentPager($page = 1, $size = 20)
   {
-    $q = $this->createQuery()->orderBy('created_at DESC');
+    $q = $this->getOrderdQuery();
 
+    return $this->getPager($q, $page, $size);
+  }
+
+  public function getDiaryCommentPagerForDiary($diaryId, $page = 1, $size = 20)
+  {
+    $q = $this->getOrderdQuery()->where('diary_id = ?', $diaryId);
+
+    return $this->getPager($q, $page, $size);
+  }
+
+  public function getDiaryCommentSearchPager($keywords, $page = 1, $size = 20)
+  {
+    $q = $this->getOrderdQuery();
+    $this->addSearchKeywordQuery($q, $keywords);
+
+    return $this->getPager($q, $page, $size);
+  }
+
+  protected function getOrderdQuery()
+  {
+    return $this->createQuery()->orderBy('created_at DESC');
+  }
+
+  protected function getPager(Doctrine_Query $q, $page, $size)
+  {
     $pager = new sfDoctrinePager('DiaryComment', $size);
     $pager->setQuery($q);
     $pager->setPage($page);
 
     return $pager;
+  }
+
+  protected function addSearchKeywordQuery(Doctrine_Query $q, $keywords)
+  {
+    foreach ($keywords as $keyword)
+    {
+      $q->andWhere('body LIKE ?', array('%'.$keyword.'%'));
+    }
   }
 }
