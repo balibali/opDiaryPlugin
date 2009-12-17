@@ -21,9 +21,8 @@ abstract class PluginDiaryImageForm extends BaseDiaryImageForm
   {
     parent::setup();
 
-    unset($this['diary_id']);
-    unset($this['file_id']);
-    unset($this['number']);
+    unset($this['id']);
+    $this->useFields();
 
     $key = 'photo';
 

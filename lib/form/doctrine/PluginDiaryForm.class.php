@@ -22,10 +22,7 @@ abstract class PluginDiaryForm extends BaseDiaryForm
     parent::setup();
 
     unset($this['id']);
-    unset($this['member_id']);
-    unset($this['created_at']);
-    unset($this['updated_at']);
-    unset($this['has_images']);
+    $this->useFields(array('title', 'body', 'public_flag'));
 
     $this->widgetSchema['title'] = new sfWidgetFormInput();
     $this->widgetSchema['body']  = new opWidgetFormRichTextareaOpenPNE();

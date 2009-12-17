@@ -22,11 +22,7 @@ abstract class PluginDiaryCommentForm extends BaseDiaryCommentForm
     parent::setup();
 
     unset($this['id']);
-    unset($this['diary_id']);
-    unset($this['member_id']);
-    unset($this['number']);
-    unset($this['created_at']);
-    unset($this['updated_at']);
+    $this->useFields(array('body'));
 
     if (sfConfig::get('app_diary_comment_is_upload_images', true))
     {

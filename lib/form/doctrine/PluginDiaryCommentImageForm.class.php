@@ -21,8 +21,8 @@ abstract class PluginDiaryCommentImageForm extends BaseDiaryCommentImageForm
   {
     parent::setup();
 
-    unset($this['diary_comment_id']);
-    unset($this['file_id']);
+    unset($this['id']);
+    $this->useFields();
 
     $key = 'photo';
 
