@@ -64,7 +64,7 @@ class diaryCommentActions extends sfActions
 
   public function executeDeleteConfirm(sfWebRequest $request)
   {
-    $this->form = new sfForm();
+    $this->form = new BaseForm();
   }
 
   public function executeDelete(sfWebRequest $request)

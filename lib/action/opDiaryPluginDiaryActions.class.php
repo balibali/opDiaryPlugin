@@ -108,7 +108,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
   {
     $this->forward404Unless($this->isDiaryAuthor());
 
-    $this->form = new sfForm();
+    $this->form = new BaseForm();
   }
 
   public function executeDelete(sfWebRequest $request)
