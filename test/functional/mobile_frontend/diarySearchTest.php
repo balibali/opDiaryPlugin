@@ -2,7 +2,7 @@
 
 include dirname(__FILE__).'/../../bootstrap/functional.php';
 
-$test = new opTestFunctional(new sfBrowser(), new lime_test(null, new lime_output_color()));
+$test = new opTestFunctional(new sfBrowser());
 $test->setMobile();
 
 include dirname(__FILE__).'/../../bootstrap/database.php';
@@ -111,6 +111,6 @@ $test->info('Search Test: '.$keyword)
   ->end()
   ->with('response')->begin()
     ->checkElement('td a', 'Search Results')
-    ->contains('Your search "NoMatchingWord" did not match any diaries.')
+    ->matches('/Your search "'.$keyword.'" did not match any diaries\./')
   ->end()
 ;

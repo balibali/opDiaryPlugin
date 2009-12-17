@@ -2,7 +2,7 @@
 
 include dirname(__FILE__).'/../../bootstrap/functional.php';
 
-$test = new opTestFunctional(new sfBrowser(), new lime_test(null, new lime_output_color()));
+$test = new opTestFunctional(new sfBrowser());
 $test->setMobile();
 
 include dirname(__FILE__).'/../../bootstrap/database.php';
