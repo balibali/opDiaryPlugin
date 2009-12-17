@@ -36,26 +36,26 @@ class diaryActions extends sfActions
 
   public function executeList(sfWebRequest $request)
   {
-    $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request->getParameter('page'), 20, DiaryTable::PUBLIC_FLAG_PRIVATE);
+    $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request['page'], 20, DiaryTable::PUBLIC_FLAG_PRIVATE);
     $this->pager->init();
   }
 
   public function executeSearch(sfWebRequest $request)
   {
-    if ($request->hasParameter('id'))
+    if (isset($request['id']))
     {
-      $this->diary = Doctrine::getTable('Diary')->find($request->getParameter('id'));
+      $this->diary = Doctrine::getTable('Diary')->find($request['id']);
       $this->setTemplate('searchId');
 
       return sfView::SUCCESS;
     }
 
-    $this->keyword = $request->getParameter('keyword');
+    $this->keyword = $request['keyword'];
 
     $keywords = opDiaryPluginToolkit::parseKeyword($this->keyword);
     $this->forwardUnless($keywords, 'diary', 'list');
 
-    $this->pager = Doctrine::getTable('Diary')->getDiarySearchPager($keywords, $request->getParameter('page'), 20, DiaryTable::PUBLIC_FLAG_PRIVATE);
+    $this->pager = Doctrine::getTable('Diary')->getDiarySearchPager($keywords, $request['page'], 20, DiaryTable::PUBLIC_FLAG_PRIVATE);
     $this->pager->init();
 
     $this->setTemplate('list');

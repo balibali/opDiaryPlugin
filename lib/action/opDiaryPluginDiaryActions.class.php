@@ -26,19 +26,19 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
   {
     $publicFlag = $this->member ? PluginDiaryTable::PUBLIC_FLAG_SNS : PluginDiaryTable::PUBLIC_FLAG_OPEN;
 
-    $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request->getParameter('page'), 20, $publicFlag);
+    $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request['page'], 20, $publicFlag);
   }
 
   public function executeSearch(sfWebRequest $request)
   {
-    $this->keyword = $request->getParameter('keyword');
+    $this->keyword = $request['keyword'];
 
     $keywords = opDiaryPluginToolkit::parseKeyword($this->keyword);
     $this->forwardUnless($keywords, 'diary', 'list');
 
     $publicFlag = $this->member ? PluginDiaryTable::PUBLIC_FLAG_SNS : PluginDiaryTable::PUBLIC_FLAG_OPEN;
 
-    $this->pager = Doctrine::getTable('Diary')->getDiarySearchPager($keywords, $request->getParameter('page'), 20, $publicFlag);
+    $this->pager = Doctrine::getTable('Diary')->getDiarySearchPager($keywords, $request['page'], 20, $publicFlag);
     $this->setTemplate('list');
   }
 
@@ -46,21 +46,21 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
   {
     $this->forward404Unless($this->member);
 
-    $this->year  = (int)$request->getParameter('year');
-    $this->month = (int)$request->getParameter('month');
-    $this->day   = (int)$request->getParameter('day');
+    $this->year  = (int)$request['year'];
+    $this->month = (int)$request['month'];
+    $this->day   = (int)$request['day'];
 
     if ($this->year && $this->month)
     {
       $this->forward404Unless(checkdate($this->month, ($this->day) ? $this->day : 1, $this->year), 'Invalid date format');
     }
 
-    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->getId(), $request->getParameter('page'), 20, $this->getUser()->getMemberId(), $this->year, $this->month, $this->day);
+    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->getId(), $request['page'], 20, $this->getUser()->getMemberId(), $this->year, $this->month, $this->day);
   }
 
   public function executeListFriend(sfWebRequest $request)
   {
-    $this->pager = Doctrine::getTable('Diary')->getFriendDiaryPager($this->getUser()->getMemberId(), $request->getParameter('page'), 20);
+    $this->pager = Doctrine::getTable('Diary')->getFriendDiaryPager($this->getUser()->getMemberId(), $request['page'], 20);
   }
 
   public function executeShow(sfWebRequest $request)

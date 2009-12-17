@@ -25,7 +25,7 @@ class diaryCommentActions extends opDiaryPluginMailActions
       return sfView::NONE;
     }
 
-    $diary = Doctrine::getTable('Diary')->find($request->getParameter('id'));
+    $diary = Doctrine::getTable('Diary')->find($request['id']);
     if (!$diary || !$diary->isViewable($member->id))
     {
       return sfView::NONE;

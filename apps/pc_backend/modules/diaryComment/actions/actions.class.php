@@ -36,22 +36,22 @@ class diaryCommentActions extends sfActions
 
   public function executeList(sfWebRequest $request)
   {
-    $this->pager = Doctrine::getTable('DiaryComment')->getDiaryCommentPager($request->getParameter('page'), 20);
+    $this->pager = Doctrine::getTable('DiaryComment')->getDiaryCommentPager($request['page'], 20);
     $this->pager->init();
   }
 
   public function executeSearch(sfWebRequest $request)
   {
-    if ($request->hasParameter('diary_id'))
+    if (isset($request['diary_id']))
     {
-      $this->diaryId = $request->getParameter('diary_id');
-      $this->pager = Doctrine::getTable('DiaryComment')->getDiaryCommentPagerForDiary($this->diaryId, $request->getParameter('page'), 20);
+      $this->diaryId = $request['diary_id'];
+      $this->pager = Doctrine::getTable('DiaryComment')->getDiaryCommentPagerForDiary($this->diaryId, $request['page'], 20);
     }
-    elseif ($request->hasParameter('keyword'))
+    elseif (isset($request['keyword']))
     {
-      $this->keyword = $request->getParameter('keyword');
+      $this->keyword = $request['keyword'];
       $keywords = opDiaryPluginToolkit::parseKeyword($this->keyword);
-      $this->pager = Doctrine::getTable('DiaryComment')->getDiaryCommentSearchPager($keywords, $request->getParameter('page'), 20);
+      $this->pager = Doctrine::getTable('DiaryComment')->getDiaryCommentSearchPager($keywords, $request['page'], 20);
     }
     else
     {

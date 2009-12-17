@@ -21,7 +21,7 @@ class diaryCommentComponents extends opDiaryPluginDiaryCommentComponents
   {
     $this->sizes = array(20, 100);
 
-    $this->size = (int)$request->getParameter('size');
+    $this->size = (int)$request['size'];
     if (!in_array($this->size, $this->sizes))
     {
       $this->size = $this->sizes[0];

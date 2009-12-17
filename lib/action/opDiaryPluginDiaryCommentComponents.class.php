@@ -19,7 +19,7 @@ class opDiaryPluginDiaryCommentComponents extends sfComponents
 {
   public function executeList(sfWebRequest $request)
   {
-    $this->order = sfReversibleDoctrinePager::normalizeOrder($request->getParameter('order', sfReversibleDoctrinePager::DESC));
+    $this->order = sfReversibleDoctrinePager::normalizeOrder($request['order']);
 
     $this->pager = $this->getPager($request);
     $this->pager->init();
@@ -32,7 +32,7 @@ class opDiaryPluginDiaryCommentComponents extends sfComponents
 
     $pager = new sfReversibleDoctrinePager('DiaryComment');
     $pager->setQuery($q);
-    $pager->setPage($request->getParameter('page', 1));
+    $pager->setPage($request['page']);
     $pager->setSqlOrderColumn('id');
     $pager->setSqlOrder($this->order);
     $pager->setListOrder(sfReversibleDoctrinePager::ASC);
