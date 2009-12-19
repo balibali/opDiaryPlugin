@@ -9,14 +9,15 @@
  */
 
 /**
- * opDiaryPluginRoutingFrontend
+ * opDiaryPluginFrontendRouteCollection
  *
- * @package    OpenPNE
+ * @package    opDiaryPlugin
+ * @subpackage routing
  * @author     Rimpei Ogawa <ogawa@tejimaya.com>
  */
-class opDiaryPluginRoutingFrontend
+class opDiaryPluginFrontendRouteCollection extends opDiaryPluginBaseRouteCollection
 {
-  static public function getRoutes()
+  protected function generateRoutes()
   {
     return array(
       'diary_index' => new sfRoute(
@@ -133,15 +134,6 @@ class opDiaryPluginRoutingFrontend
         array('module' => 'diaryComment', 'action' => 'delete'),
         array('id' => '\d+', 'sf_method' => array('post')),
         array('model' => 'DiaryComment', 'type' => 'object')
-      ),
-
-      'diary_nodefaults' => new sfRoute(
-        '/diary/*',
-        array('module' => 'default', 'action' => 'error')
-      ),
-      'diary_comment_nodefaults' => new sfRoute(
-        '/diaryComment/*',
-        array('module' => 'default', 'action' => 'error')
       ),
     );
   }

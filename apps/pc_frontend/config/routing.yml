@@ -1,0 +1,3 @@
+diary:
+  class: opDiaryPluginFrontendRouteCollection
+  options: { name: diary }
