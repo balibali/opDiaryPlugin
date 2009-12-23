@@ -9,9 +9,11 @@
 
 <?php echo op_decoration(nl2br($diary->getBody())) ?><br>
 
+<?php if ($diary->has_images): ?>
 <?php foreach ($diary->getDiaryImages() as $image): ?>
 <?php echo link_to(__('View Image'), sf_image_path($image->getFile(), array('size' => '240x320', 'f' => 'jpg'))) ?><br>
 <?php endforeach; ?>
+<?php endif; ?>
 
 (<?php echo $diary->getPublicFlagLabel() ?>)<br>
 

@@ -16,9 +16,11 @@
 <?php endif; ?><br>
 <?php echo link_to($comment->getMember()->getName(), 'member/profile?id='.$comment->getMemberId()) ?><br>
 <?php echo nl2br($comment->getBody()) ?><br>
+<?php if ($comment->has_images): ?>
 <?php foreach ($comment->getDiaryCommentImages() as $image): ?>
 <?php echo link_to(__('View Image'), sf_image_path($image->getFile(), array('size' => '240x320', 'f' => 'jpg'))) ?><br>
 <?php endforeach; ?>
+<?php endif; ?>
 <?php endforeach; ?>
 
 <?php if ($pager->haveToPaginate()): ?>

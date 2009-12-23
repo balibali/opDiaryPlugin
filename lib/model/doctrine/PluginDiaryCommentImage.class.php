@@ -16,11 +16,15 @@
  */
 abstract class PluginDiaryCommentImage extends BaseDiaryCommentImage
 {
-  public function save(Doctrine_Connection $conn = null)
+  public function preSave($event)
   {
     $this->setFileNamePrefix();
+  }
 
-    return parent::save($conn);
+  public function postSave($event)
+  {
+    $this->DiaryComment->has_images = true;
+    $this->DiaryComment->save();
   }
 
   protected function setFileNamePrefix()

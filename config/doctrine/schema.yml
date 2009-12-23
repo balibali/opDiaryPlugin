@@ -51,6 +51,7 @@ DiaryComment:
     member_id: { type: integer(4), notnull: true }
     number: { type: integer(4), notnull: true }
     body: { type: string, notnull: true }
+    has_images: { type: boolean, notnull: true, default: false }
   relations:
     Diary:
       foreignAlias: DiaryComments
