@@ -38,7 +38,7 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
 
   public function getDiaryCommentPagerForDiary($diaryId, $page = 1, $size = 20)
   {
-    $q = $this->getOrderdQuery()->where('diary_id = ?', $diaryId);
+    $q = $this->where('diary_id = ?', $diaryId)->orderBy('number DESC');
 
     return $this->getPager($q, $page, $size);
   }
@@ -53,7 +53,7 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
 
   protected function getOrderdQuery()
   {
-    return $this->createQuery()->orderBy('created_at DESC');
+    return $this->createQuery()->orderBy('id DESC');
   }
 
   protected function getPager(Doctrine_Query $q, $page, $size)

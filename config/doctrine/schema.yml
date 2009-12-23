@@ -15,6 +15,15 @@ Diary:
     Member:
       foreignAlias: Diaries
       onDelete: cascade
+  indexes:
+    created_at:
+      fields: [created_at]
+    member_id_created_at:
+      fields: [member_id, created_at]
+    public_flag_craeted_at:
+      fields: [public_flag, created_at]
+    is_open_created_at:
+      fields: [is_open, created_at]
 
 DiaryImage:
   columns:
@@ -49,6 +58,9 @@ DiaryComment:
     Member:
       foreignAlias: DiaryComments
       onDelete: cascade
+  indexes:
+    diary_id_number:
+      fields: [diary_id, number]
 
 DiaryCommentImage:
   columns:

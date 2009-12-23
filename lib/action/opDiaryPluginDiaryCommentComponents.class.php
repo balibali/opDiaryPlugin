@@ -33,7 +33,7 @@ class opDiaryPluginDiaryCommentComponents extends sfComponents
     $pager = new sfReversibleDoctrinePager('DiaryComment');
     $pager->setQuery($q);
     $pager->setPage($request['page']);
-    $pager->setSqlOrderColumn('id');
+    $pager->setSqlOrderColumn('number');
     $pager->setSqlOrder($this->order);
     $pager->setListOrder(sfReversibleDoctrinePager::ASC);
     if ($this->size)
