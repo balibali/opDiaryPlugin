@@ -21,9 +21,15 @@ abstract class PluginDiary extends BaseDiary
 
   public function getPublicFlagLabel()
   {
+    $publicFlag = $this->public_flag;
+    if ($this->is_open)
+    {
+      $publicFlag = DiaryTable::PUBLIC_FLAG_OPEN;
+    }
+
     $publicFlags = $this->getTable()->getPublicFlags();
 
-    return $publicFlags[$this->getPublicFlag()];
+    return $publicFlags[$publicFlag];
   }
 
   public function getPrevious($myMemberId = null)
@@ -83,6 +89,8 @@ abstract class PluginDiary extends BaseDiary
 
   public function isViewable($memberId)
   {
+    if ($this->is_open) return true;
+
     $flags = $this->getTable()->getViewablePublicFlags($this->getTable()->getPublicFlagByMemberId($this->getMemberId(), $memberId));
 
     return in_array($this->getPublicFlag(), $flags);
@@ -97,15 +105,6 @@ abstract class PluginDiary extends BaseDiary
     return $q->execute();
   }
 
-  public function preDelete($event)
-  {
-    $images = $this->getDiaryImages();
-    foreach ($images as $image)
-    {
-      $image->delete();
-    }
-  }
-
   public function countDiaryComments($noCache = false)
   {
     if ($noCache || is_null($this->countDiaryComments))
@@ -114,5 +113,23 @@ abstract class PluginDiary extends BaseDiary
     }
 
     return $this->countDiaryComments;
+  }
+
+  public function preSave($event)
+  {
+    if (DiaryTable::PUBLIC_FLAG_OPEN == $this->public_flag)
+    {
+      $this->public_flag = DiaryTable::PUBLIC_FLAG_SNS;
+      $this->is_open = true;
+    }
+  }
+
+  public function preDelete($event)
+  {
+    $images = $this->getDiaryImages();
+    foreach ($images as $image)
+    {
+      $image->delete();
+    }
   }
 }

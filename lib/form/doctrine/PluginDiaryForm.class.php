@@ -38,6 +38,10 @@ abstract class PluginDiaryForm extends BaseDiaryForm
     {
       $this->setDefault('public_flag', $config);
     }
+    if ($this->getObject()->getIsOpen())
+    {
+      $this->getObject()->setPublicFlag(DiaryTable::PUBLIC_FLAG_OPEN);
+    }
 
     if (sfConfig::get('app_diary_is_upload_images', true))
     {

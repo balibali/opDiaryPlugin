@@ -171,19 +171,19 @@ abstract class PluginDiaryTable extends Doctrine_Table
 
   public function addPublicFlagQuery(Doctrine_Query $q, $flag)
   {
-    if ($flag === self::PUBLIC_FLAG_PRIVATE)
+    switch ($flag)
     {
-      return;
-    }
+      case self::PUBLIC_FLAG_OPEN:
+        $q->andWhere('is_open = 1');
+        break;
 
-    $flags = self::getViewablePublicFlags($flag);
-    if (1 === count($flags))
-    {
-      $q->andWhere('public_flag = ?', array_shift($flags));
-    }
-    else
-    {
-      $q->andWhereIn('public_flag', $flags);
+      case self::PUBLIC_FLAG_SNS:
+        $q->andWhere('public_flag = ?', self::PUBLIC_FLAG_SNS);
+        break;
+
+      case self::PUBLIC_FLAG_FRIEND:
+        $q->andWhereIn('public_flag', array(self::PUBLIC_FLAG_SNS, self::PUBLIC_FLAG_FRIEND));
+        break;
     }
   }
 

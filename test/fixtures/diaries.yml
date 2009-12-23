@@ -20,7 +20,8 @@ Diary:
     body: "Sample Body"
     created_at: "2009-02-01 10:00:00"
     updated_at: "2009-02-01 10:00:00"
-    public_flag: 4
+    public_flag: 1
+    is_open: 1
 
 <?php for ($i = 1; $i <= 20; $i++): ?>
   diary_for_member3_<?php echo $i ?>:
@@ -63,7 +64,8 @@ Diary:
     body: "This diary is open on the web."
     created_at: "2009-06-<?php printf('%02d', $i) ?> 00:00:00"
     updated_at: "2009-06-<?php printf('%02d', $i) ?> 00:00:00"
-    public_flag: 4
+    public_flag: 1
+    is_open: 1
 <?php endfor; ?>
 <?php for ($i = 1; $i <= 5; $i++): ?>
   diary_for_member5_2_<?php echo $i ?>:

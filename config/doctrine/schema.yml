@@ -9,6 +9,7 @@ Diary:
     title: { type: string, notnull: true }
     body: { type: string, notnull: true }
     public_flag: { type: integer(1), notnull: true, default: 1 }
+    is_open: { type: boolean, notnull: true, default: false }
     has_images: { type: boolean, notnull: true, default: false }
   relations:
     Member:
