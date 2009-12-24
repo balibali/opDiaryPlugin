@@ -157,7 +157,7 @@ abstract class PluginDiaryTable extends Doctrine_Table
 
   protected function addFriendQuery(Doctrine_Query $q, $memberId)
   {
-    $friendIds = Doctrine::getTable('MemberRelationship')->getFriendMemberIds($memberId, 5);
+    $friendIds = Doctrine::getTable('MemberRelationship')->getFriendMemberIds($memberId);
     if (!$friendIds)
     {
       $q->andWhere('1 = 0');
