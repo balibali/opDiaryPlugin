@@ -28,7 +28,7 @@ class opDiaryPluginDiaryCommentComponents extends sfComponents
   protected function getPager(sfWebRequest $request)
   {
     $q = Doctrine::getTable('DiaryComment')->createQuery()
-      ->where('diary_id = ?', $this->diary->getId());
+      ->where('diary_id = ?', $this->diary->id);
 
     $pager = new sfReversibleDoctrinePager('DiaryComment');
     $pager->setQuery($q);

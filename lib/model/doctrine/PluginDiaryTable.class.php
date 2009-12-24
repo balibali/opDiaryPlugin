@@ -254,10 +254,10 @@ abstract class PluginDiaryTable extends Doctrine_Table
   public function getPreviousDiary(Diary $diary, $myMemberId)
   {
     $q = $this->createQuery()
-      ->andWhere('member_id = ?', $diary->getMemberId())
-      ->andWhere('id < ?', $diary->getId())
+      ->andWhere('member_id = ?', $diary->member_id)
+      ->andWhere('id < ?', $diary->id)
       ->orderBy('id DESC');
-    $this->addPublicFlagQuery($q, $this->getPublicFlagByMemberId($diary->getMemberId(), $myMemberId));
+    $this->addPublicFlagQuery($q, $this->getPublicFlagByMemberId($diary->member_id, $myMemberId));
 
     return $q->fetchOne();
   }
@@ -265,10 +265,10 @@ abstract class PluginDiaryTable extends Doctrine_Table
   public function getNextDiary(Diary $diary, $myMemberId)
   {
     $q = $this->createQuery()
-      ->andWhere('member_id = ?', $diary->getMemberId())
-      ->andWhere('id > ?', $diary->getId())
+      ->andWhere('member_id = ?', $diary->member_id)
+      ->andWhere('id > ?', $diary->id)
       ->orderBy('id ASC');
-    $this->addPublicFlagQuery($q, $this->getPublicFlagByMemberId($diary->getMemberId(), $myMemberId));
+    $this->addPublicFlagQuery($q, $this->getPublicFlagByMemberId($diary->member_id, $myMemberId));
 
     return $q->fetchOne();
   }

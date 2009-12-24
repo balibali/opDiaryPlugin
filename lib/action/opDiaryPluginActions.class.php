@@ -32,13 +32,13 @@ class opDiaryPluginActions extends sfActions
       if ($object instanceof Diary)
       {
         $this->diary = $object;
-        $this->member = $this->diary->getMember();
+        $this->member = $this->diary->Member;
       }
       elseif ($object instanceof DiaryComment)
       {
         $this->diaryComment = $object;
-        $this->diary = $this->diaryComment->getDiary();
-        $this->member = $this->diary->getMember();
+        $this->diary = $this->diaryComment->Diary;
+        $this->member = $this->diary->Member;
       }
       elseif ($object instanceof Member)
       {
@@ -50,10 +50,10 @@ class opDiaryPluginActions extends sfActions
     {
       $this->member = $this->getUser()->getMember();
     }
-    elseif ($this->member->getId() !== $this->getUser()->getMemberId())
+    elseif ($this->member->id !== $this->getUser()->getMemberId())
     {
-      $relation = Doctrine::getTable('MemberRelationship')->retrieveByFromAndTo($this->member->getId(), $this->getUser()->getMemberId());
-      $this->forwardIf($relation && $relation->getIsAccessBlock(), 'default', 'error');
+      $relation = Doctrine::getTable('MemberRelationship')->retrieveByFromAndTo($this->member->id, $this->getUser()->getMemberId());
+      $this->forwardIf($relation && $relation->is_access_block, 'default', 'error');
     }
   }
 
@@ -75,10 +75,10 @@ class opDiaryPluginActions extends sfActions
 
   protected function setNavigation(Member $member)
   {
-    if ($member->getId() !== $this->getUser()->getMemberId())
+    if ($member->id !== $this->getUser()->getMemberId())
     {
       sfConfig::set('sf_nav_type', 'friend');
-      sfConfig::set('sf_nav_id', $member->getId());
+      sfConfig::set('sf_nav_id', $member->id);
     }
   }
 

@@ -10,11 +10,11 @@
 $list = array();
 foreach ($pager->getResults() as $diaryCommentUpdate)
 {
-  $diary = $diaryCommentUpdate->getDiary();
+  $diary = $diaryCommentUpdate->Diary;
   $list[] = sprintf("%s<br>%s (%s)",
-              op_format_date($diaryCommentUpdate->getLastCommentTime(), 'XDateTime'),
+              op_format_date($diaryCommentUpdate->last_comment_time, 'XDateTime'),
               link_to(op_diary_get_title_and_count($diary, false, 28), 'diary_show', $diary),
-              $diary->getMember()->getName()
+              $diary->Member->name
             );
 }
 $options = array(

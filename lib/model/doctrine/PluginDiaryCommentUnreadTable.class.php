@@ -18,21 +18,21 @@ abstract class PluginDiaryCommentUnreadTable extends Doctrine_Table
 {
   public function register(Diary $diary)
   {
-    if ($this->find($diary->getId()))
+    if ($this->find($diary->id))
     {
       return true;
     }
 
     $object = new DiaryCommentUnread();
-    $object->setDiaryId($diary->getId());
-    $object->setMemberId($diary->getMemberId());
+    $object->setDiaryId($diary->id);
+    $object->setMemberId($diary->member_id);
 
     return $object->save();
   }
 
   public function unregister(Diary $diary)
   {
-    if ($object = $this->find($diary->getId()))
+    if ($object = $this->find($diary->id))
     {
       $object->delete();
     }

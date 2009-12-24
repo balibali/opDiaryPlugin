@@ -18,39 +18,38 @@ abstract class PluginDiaryComment extends BaseDiaryComment
 {
   public function preSave($event)
   {
-    if ($this->isNew() && !$this->getNumber())
+    if ($this->isNew() && !$this->number)
     {
-      $this->setNumber($this->getTable()->getMaxNumber($this->getDiaryId()) + 1);
+      $this->setNumber($this->getTable()->getMaxNumber($this->diary_id) + 1);
     }
   }
 
   public function postSave($event)
   {
-    if ($this->getMemberId() !== $this->getDiary()->getMemberId())
+    if ($this->member_id !== $this->Diary->member_id)
     {
-      Doctrine::getTable('DiaryCommentUnread')->register($this->getDiary());
-      Doctrine::getTable('DiaryCommentUpdate')->update($this->getDiary(), $this->getMember());
+      Doctrine::getTable('DiaryCommentUnread')->register($this->Diary);
+      Doctrine::getTable('DiaryCommentUpdate')->update($this->Diary, $this->Member);
     }
   }
 
   public function isDeletable($memberId)
   {
-    return ($this->getMemberId() === $memberId || $this->getDiary()->isAuthor($memberId));
+    return (string)$this->member_id === (string)$memberId || $this->Diary->isAuthor($memberId);
   }
 
   public function getDiaryCommentImagesJoinFile()
   {
     $q = Doctrine::getTable('DiaryCommentImage')->createQuery()
       ->leftJoin('DiaryCommentImage.File')
-      ->where('diary_comment_id = ?', $this->getId());
+      ->where('diary_comment_id = ?', $this->id);
 
     return $q->execute();
   }
 
   public function preDelete($event)
   {
-    $images = $this->getDiaryCommentImages();
-    foreach ($images as $image)
+    foreach ($this->DiaryCommentImages as $image)
     {
       $image->delete();
     }

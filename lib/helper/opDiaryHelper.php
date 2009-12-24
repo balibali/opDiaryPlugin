@@ -39,7 +39,7 @@ function op_diary_get_title_and_count($diary, $space = true, $width = 36)
 function op_diary_image_icon($diary)
 {
   $html = '';
-  if ($diary->hasImages())
+  if ($diary->has_images)
   {
     $html = ' '.image_tag('icon_camera.gif', array('alt' => 'photo'));
   }

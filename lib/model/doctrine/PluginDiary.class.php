@@ -54,53 +54,49 @@ abstract class PluginDiary extends BaseDiary
 
   public function getDiaryImages()
   {
-    $images = Doctrine::getTable('DiaryImage')->findByDiaryId($this->getId());
+    $images = Doctrine::getTable('DiaryImage')->findByDiaryId($this->id);
     
     $result = array();
     foreach ($images as $image)
     {
-      $result[$image->getNumber()] = $image;
+      $result[$image->number] = $image;
     }
 
     return $result;
   }
 
-  public function hasImages()
-  {
-    return (bool)$this->getHasImages();
-  }
-
   public function updateHasImages()
   {
-    $this->clearRelated();
-    $hasImages = (bool)$this->getDiaryImages();
+    $hasImages = (bool)Doctrine::getTable('DiaryImage')->createQuery()
+      ->where('diary_id = ?', $this->id)
+      ->count();
 
-    if ($hasImages != $this->getHasImages())
+    if ($hasImages != $this->has_images)
     {
-      $this->setHasImages($hasImages);
+      $this->has_images = $hasImages;
       $this->save();
     }
   }
 
   public function isAuthor($memberId)
   {
-    return ($this->getMemberId() === $memberId);
+    return (string)$this->member_id === (string)$memberId;
   }
 
   public function isViewable($memberId)
   {
     if ($this->is_open) return true;
 
-    $flags = $this->getTable()->getViewablePublicFlags($this->getTable()->getPublicFlagByMemberId($this->getMemberId(), $memberId));
+    $flags = $this->getTable()->getViewablePublicFlags($this->getTable()->getPublicFlagByMemberId($this->member_id, $memberId));
 
-    return in_array($this->getPublicFlag(), $flags);
+    return in_array($this->public_flag, $flags);
   }
 
   public function getDiaryImagesJoinFile()
   {
     $q = Doctrine::getTable('DiaryImage')->createQuery()
       ->leftJoin('DiaryImage.File')
-      ->where('diary_id = ?', $this->getId());
+      ->where('diary_id = ?', $this->id);
 
     return $q->execute();
   }
@@ -109,7 +105,7 @@ abstract class PluginDiary extends BaseDiary
   {
     if ($noCache || is_null($this->countDiaryComments))
     {
-      $this->countDiaryComments = Doctrine::getTable('DiaryComment')->getCount($this->getId());
+      $this->countDiaryComments = Doctrine::getTable('DiaryComment')->getCount($this->id);
     }
 
     return $this->countDiaryComments;

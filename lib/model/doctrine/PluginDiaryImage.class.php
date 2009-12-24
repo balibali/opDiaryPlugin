@@ -25,15 +25,15 @@ abstract class PluginDiaryImage extends BaseDiaryImage
 
   protected function setFileNamePrefix()
   {
-    $prefix = 'd_'.$this->getDiary()->getId().'_'.$this->getNumber().'_';
+    $prefix = 'd_'.$this->diary_id.'_'.$this->number.'_';
 
-    $file = $this->getFile();
-    $file->setName($prefix.$file->getName());
+    $file = $this->File;
+    $file->setName($prefix.$file->name);
   }
 
   public function preDelete($event)
   {
-    $this->getFile()->getFileBin()->delete();
-    $this->getFile()->delete();
+    $this->File->FileBin->delete();
+    $this->File->delete();
   }
 }

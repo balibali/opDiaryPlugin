@@ -7,7 +7,7 @@
 <?php echo op_include_pager_navigation($pager, 'diary/listFriend?page=%d'); ?>
 <?php foreach ($pager->getResults() as $diary): ?>
 <dl>
-<dt><?php echo op_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></dt>
+<dt><?php echo op_format_date($diary->created_at, 'XDateTimeJa') ?></dt>
 <dd><?php echo op_diary_link_to_show($diary) ?></dd>
 </dl>
 <?php endforeach; ?>

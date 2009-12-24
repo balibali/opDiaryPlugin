@@ -28,14 +28,14 @@ else
 <div class="block">
 <?php foreach ($pager->getResults() as $diary): ?>
 <div class="ditem"><div class="item"><table><tbody><tr>
-<td rowspan="4" class="photo"><a href="<?php echo url_for('diary_show', $diary) ?>"><?php echo image_tag_sf_image($diary->getMember()->getImageFilename(), array('size' => '76x76')) ?></a></td>
-<th><?php echo __('%Nickname%') ?></th><td><?php echo $diary->getMember()->getName() ?></td>
+<td rowspan="4" class="photo"><a href="<?php echo url_for('diary_show', $diary) ?>"><?php echo image_tag_sf_image($diary->Member->getImageFilename(), array('size' => '76x76')) ?></a></td>
+<th><?php echo __('%Nickname%') ?></th><td><?php echo $diary->Member->name ?></td>
 </tr><tr>
 <th><?php echo __('Title') ?></th><td><?php echo op_diary_get_title_and_count($diary) ?><?php echo op_diary_image_icon($diary) ?></td>
 </tr><tr>
-<th><?php echo __('Body') ?></th><td><?php echo op_truncate(op_decoration($diary->getBody(), true), 36, '', 3) ?></td>
+<th><?php echo __('Body') ?></th><td><?php echo op_truncate(op_decoration($diary->body, true), 36, '', 3) ?></td>
 </tr><tr class="operation">
-<th><?php echo __('Created at') ?></th><td><span class="text"><?php echo op_format_date($diary->getCreatedAt(), 'XDateTimeJa') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), 'diary_show', $diary) ?></span></td>
+<th><?php echo __('Created at') ?></th><td><span class="text"><?php echo op_format_date($diary->created_at, 'XDateTimeJa') ?></span> <span class="moreInfo"><?php echo link_to(__('View this diary'), 'diary_show', $diary) ?></span></td>
 </tr></tbody></table></div></div>
 <?php endforeach; ?>
 </div>

@@ -4,7 +4,7 @@
 </div>
 <div class="block">
 <p><?php echo __('Do you really delete this diary?') ?></p>
-<form action="<?php echo url_for('@diary_delete?id='.$diary->getId()) ?>" method="post">
+<form action="<?php echo url_for('@diary_delete?id='.$diary->id) ?>" method="post">
 <div class="operation">
 <ul class="moreInfo button">
 <li>

@@ -18,7 +18,7 @@ class PluginDiaryCommentUpdateTable extends Doctrine_Table
 {
   public function update(Diary $diary, Member $member)
   {
-    $object = $this->find(array($diary->getId(), $member->getId()));
+    $object = $this->find(array($diary->id, $member->id));
 
     if (!$object)
     {
@@ -32,7 +32,7 @@ class PluginDiaryCommentUpdateTable extends Doctrine_Table
 
     $this->createQuery()->update()
       ->set('last_comment_time', '?', date('Y-m-d H:i:s'))
-      ->where('diary_id = ?', $diary->getId())
+      ->where('diary_id = ?', $diary->id)
       ->execute();
   }
 
@@ -58,7 +58,7 @@ class PluginDiaryCommentUpdateTable extends Doctrine_Table
   {
     return $this->createQuery()
       ->select('diary_id, last_comment_time')
-      ->where('member_id = ?', $member->getId())
+      ->where('member_id = ?', $member->id)
       ->orderBy('last_comment_time DESC');
   }
 }

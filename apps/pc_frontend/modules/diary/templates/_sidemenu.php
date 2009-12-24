@@ -1,18 +1,18 @@
 <?php use_helper('opDiary') ?>
 
 <div class="parts memberImageBox">
-<p class="photo"><?php echo link_to(image_tag_sf_image($member->getImageFileName(), array('size' => '120x120')), 'member/profile?id='.$member->getId()) ?></p>
-<p class="text"><?php echo $member->getName() ?></p>
+<p class="photo"><?php echo link_to(image_tag_sf_image($member->getImageFileName(), array('size' => '120x120')), 'member/profile?id='.$member->id) ?></p>
+<p class="text"><?php echo $member->name ?></p>
 </div>
 
 <div class="parts calendar">
 <div class="partsHeading"><h3>
 <?php if ($_m = $calendar->prevMonth('array')): ?>
-  <?php echo link_to('&lt;&lt;', '@diary_list_member_year_month?id='.$member->getId().'&year='.$_m['year'].'&month='.$_m['month']) ?>
+  <?php echo link_to('&lt;&lt;', '@diary_list_member_year_month?id='.$member->id.'&year='.$_m['year'].'&month='.$_m['month']) ?>
 <?php endif; ?>
   <?php $_m = $calendar->thisMonth('array'); echo op_format_date(sprintf('%04d-%02d-01', $_m['year'], $_m['month']), 'XCalendarMonth') ?>
 <?php if ($_m = $calendar->nextMonth('array')): ?>
-  <?php echo link_to('&gt;&gt;', '@diary_list_member_year_month?id='.$member->getId().'&year='.$_m['year'].'&month='.$_m['month']) ?>
+  <?php echo link_to('&gt;&gt;', '@diary_list_member_year_month?id='.$member->id.'&year='.$_m['year'].'&month='.$_m['month']) ?>
 <?php endif; ?>
 </h3></div>
 <table class="calendar"><tbody>
@@ -38,7 +38,7 @@ while ($day = $calendar->fetch())
   {
     if (!empty($calendarDiaryDays[$day->thisDay()]))
     {
-      echo link_to($day->thisDay(), '@diary_list_member_year_month_day?id='.$member->getId().'&year='.$year.'&month='.$month.'&day='.$day->thisDay());
+      echo link_to($day->thisDay(), '@diary_list_member_year_month_day?id='.$member->id.'&year='.$year.'&month='.$month.'&day='.$day->thisDay());
     }
     else
     {

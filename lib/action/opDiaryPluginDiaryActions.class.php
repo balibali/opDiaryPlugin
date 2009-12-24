@@ -55,7 +55,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
       $this->forward404Unless(checkdate($this->month, ($this->day) ? $this->day : 1, $this->year), 'Invalid date format');
     }
 
-    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->getId(), $request['page'], 20, $this->getUser()->getMemberId(), $this->year, $this->month, $this->day);
+    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->id, $request['page'], 20, $this->getUser()->getMemberId(), $this->year, $this->month, $this->day);
   }
 
   public function executeListFriend(sfWebRequest $request)
@@ -83,7 +83,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
   public function executeCreate(sfWebRequest $request)
   {
     $this->form = new DiaryForm();
-    $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
+    $this->form->getObject()->member_id = $this->getUser()->getMemberId();
     $this->processForm($request, $this->form);
     $this->setTemplate('new');
   }
@@ -134,7 +134,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
     {
       $diary = $form->save();
 
-      $this->redirect('@diary_show?id='.$diary->getId());
+      $this->redirect('@diary_show?id='.$diary->id);
     }
   }
 }

@@ -1,11 +1,11 @@
 <?php use_helper('opDiary', 'Text') ?>
 
 <?php decorate_with('layoutB') ?>
-<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member, 'year' => date('Y', strtotime($diary->getCreatedAt())), 'month' => date('n', strtotime($diary->getCreatedAt()))))) ?>
+<?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member, 'year' => date('Y', strtotime($diary->created_at)), 'month' => date('n', strtotime($diary->created_at))))) ?>
 
 <?php /* {{{ diaryDetailBox */ ?>
 <div class="dparts diaryDetailBox"><div class="parts">
-<div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $member->getName())) ?></h3>
+<div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $member->name)) ?></h3>
 <p class="public">(<?php echo $diary->getPublicFlagLabel() ?>)</p></div>
 
 <?php if ($diary->getPrevious($sf_user->getMemberId()) || $diary->getNext($sf_user->getMemberId())): ?>
@@ -20,25 +20,25 @@
 <?php endif; ?>
 
 <dl>
-<dt><?php echo nl2br(op_format_date($diary->getCreatedAt(), 'XDateTimeJaBr')) ?></dt>
+<dt><?php echo nl2br(op_format_date($diary->created_at, 'XDateTimeJaBr')) ?></dt>
 <dd>
 <div class="title">
-<p class="heading"><?php echo $diary->getTitle(); ?></p>
+<p class="heading"><?php echo $diary->title; ?></p>
 </div>
 <div class="body">
 <?php if ($diary->has_images): ?>
 <?php $images = $diary->getDiaryImagesJoinFile() ?>
 <ul class="photo">
 <?php foreach ($images as $image): ?>
-<li><a href="<?php echo sf_image_path($image->getFile()) ?>" target="_blank"><?php echo image_tag_sf_image($image->getFile(), array('size' => '120x120')) ?></a></li>
+<li><a href="<?php echo sf_image_path($image->File) ?>" target="_blank"><?php echo image_tag_sf_image($image->File, array('size' => '120x120')) ?></a></li>
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
-<?php echo op_url_cmd(op_decoration(nl2br($diary->getBody()))) ?>
+<?php echo op_url_cmd(op_decoration(nl2br($diary->body))) ?>
 </div>
 </dd>
 </dl>
-<?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
+<?php if ($diary->member_id === $sf_user->getMemberId()): ?>
 <div class="operation">
 <form action="<?php echo url_for('diary_edit', $diary) ?>">
 <ul class="moreInfo button">
@@ -60,7 +60,7 @@ $form->getWidget('body')->setAttribute('cols', 40);
 $title = __('Post a diary comment');
 $options = array(
   'form' => $form,
-  'url' => '@diary_comment_create?id='.$diary->getId(),
+  'url' => '@diary_comment_create?id='.$diary->id,
   'button' => __('Save'),
   'isMultipart' => true,
 );
@@ -68,4 +68,4 @@ include_box('formDiaryComment', $title, '', $options);
 ?>
 <?php endif; ?>
 
-<?php op_include_line('lineLinkToDiaryMemberList', link_to(__('Diaries of %1%', array('%1%' => $member->getName())), 'diary_list_member', $member)) ?>
+<?php op_include_line('lineLinkToDiaryMemberList', link_to(__('Diaries of %1%', array('%1%' => $member->name)), 'diary_list_member', $member)) ?>

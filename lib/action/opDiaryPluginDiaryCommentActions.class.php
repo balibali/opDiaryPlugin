@@ -27,8 +27,8 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
     $this->forward404Unless($this->isDiaryViewable());
 
     $this->form = new DiaryCommentForm();
-    $this->form->getObject()->setDiary($this->diary);
-    $this->form->getObject()->setMemberId($this->getUser()->getMemberId());
+    $this->form->getObject()->Diary = $this->diary;
+    $this->form->getObject()->member_id = $this->getUser()->getMemberId();
 
     $this->form->bind(
       $request->getParameter($this->form->getName()),
@@ -66,7 +66,7 @@ class opDiaryPluginDiaryCommentActions extends opDiaryPluginActions
 
   protected function redirectToDiaryShow()
   {
-    $this->redirect('@diary_show?id='.$this->diary->getId().'&comment_count='.$this->diary->countDiaryComments(true));
+    $this->redirect('@diary_show?id='.$this->diary->id.'&comment_count='.$this->diary->countDiaryComments(true));
   }
 
   protected function isDiaryCommentDeletable()

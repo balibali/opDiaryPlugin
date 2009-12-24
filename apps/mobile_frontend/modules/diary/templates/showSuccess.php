@@ -1,17 +1,17 @@
-<?php op_mobile_page_title(__('Diary of %1%', array('%1%' => $member->getName())), $diary->getTitle()) ?>
+<?php op_mobile_page_title(__('Diary of %1%', array('%1%' => $member->name)), $diary->title) ?>
 <?php use_helper('opDiary') ?>
 
 <?php echo op_within_page_link() ?>
-<?php echo op_format_date($diary->getCreatedAt(), 'XDateTime') ?>
-<?php if ($diary->getMemberId() === $sf_user->getMemberId()): ?>
+<?php echo op_format_date($diary->created_at, 'XDateTime') ?>
+<?php if ($diary->member_id === $sf_user->getMemberId()): ?>
 [<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary_delete_confirm', $diary) ?>]
 <?php endif; ?><br>
 
-<?php echo op_decoration(nl2br($diary->getBody())) ?><br>
+<?php echo op_decoration(nl2br($diary->body)) ?><br>
 
 <?php if ($diary->has_images): ?>
 <?php foreach ($diary->getDiaryImages() as $image): ?>
-<?php echo link_to(__('View Image'), sf_image_path($image->getFile(), array('size' => '240x320', 'f' => 'jpg'))) ?><br>
+<?php echo link_to(__('View Image'), sf_image_path($image->File, array('size' => '240x320', 'f' => 'jpg'))) ?><br>
 <?php endforeach; ?>
 <?php endif; ?>
 
@@ -45,7 +45,7 @@ op_include_form('formDiaryComment', $form, $options);
 <?php endif; ?>
 
 <hr>
-<?php echo link_to(__('Diaries of %1%', array('%1%' => $member->getName())), 'diary_list_member', $member) ?><br>
-<?php if ($diary->getMemberId() !== $sf_user->getMemberId()): ?>
-<?php echo link_to(__('Profile of %1%', array('%1%' => $member->getName())), 'member/profile?id='.$member->getId()) ?><br>
+<?php echo link_to(__('Diaries of %1%', array('%1%' => $member->name)), 'diary_list_member', $member) ?><br>
+<?php if ($diary->member_id !== $sf_user->getMemberId()): ?>
+<?php echo link_to(__('Profile of %1%', array('%1%' => $member->name)), 'member/profile?id='.$member->id) ?><br>
 <?php endif; ?>

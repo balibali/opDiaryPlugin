@@ -38,7 +38,7 @@ abstract class PluginDiaryForm extends BaseDiaryForm
     {
       $this->setDefault('public_flag', $config);
     }
-    if ($this->getObject()->getIsOpen())
+    if ($this->getObject()->is_open)
     {
       $this->getObject()->setPublicFlag(DiaryTable::PUBLIC_FLAG_OPEN);
     }

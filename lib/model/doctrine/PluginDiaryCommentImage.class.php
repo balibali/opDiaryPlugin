@@ -29,15 +29,15 @@ abstract class PluginDiaryCommentImage extends BaseDiaryCommentImage
 
   protected function setFileNamePrefix()
   {
-    $prefix = 'dc_'.$this->getDiaryComment()->getId().'_';
+    $prefix = 'dc_'.$this->diary_comment_id.'_';
 
-    $file = $this->getFile();
-    $file->setName($prefix.$file->getName());
+    $file = $this->File;
+    $file->setName($prefix.$file->name);
   }
 
   public function preDelete($event)
   {
-    $this->getFile()->getFileBin()->delete();
-    $this->getFile()->delete();
+    $this->File->FileBin->delete();
+    $this->File->delete();
   }
 }

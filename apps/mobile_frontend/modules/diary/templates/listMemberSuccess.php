@@ -1,4 +1,4 @@
-<?php op_mobile_page_title(__('Diaries of %1%', array('%1%' => $member->getName()))) ?>
+<?php op_mobile_page_title(__('Diaries of %1%', array('%1%' => $member->name))) ?>
 <?php use_helper('opDiary'); ?>
 
 <?php if ($pager->getNbResults()): ?>
@@ -11,7 +11,7 @@ $list = array();
 foreach ($pager->getResults() as $diary)
 {
   $list[] = sprintf("%s<br>%s",
-              op_format_date($diary->getCreatedAt(), 'XDateTime'),
+              op_format_date($diary->created_at, 'XDateTime'),
               link_to(op_diary_get_title_and_count($diary, false, 28), 'diary_show', $diary)
             );
 }
@@ -20,7 +20,7 @@ $options = array(
 );
 op_include_list('diaryList', $list, $options);
 ?>
-<?php echo op_include_pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->getId(), array('is_total' => false)) ?>
+<?php echo op_include_pager_navigation($pager, 'diary/listMember?page=%d&id='.$member->id, array('is_total' => false)) ?>
 
 <?php else: ?>
 
@@ -28,6 +28,6 @@ op_include_list('diaryList', $list, $options);
 
 <?php endif; ?>
 
-<?php if ($sf_user->getMemberId() === $member->getId()): ?>
+<?php if ($sf_user->getMemberId() === $member->id): ?>
 <?php echo link_to(__('Post a diary'), 'diary_new') ?>
 <?php endif; ?>

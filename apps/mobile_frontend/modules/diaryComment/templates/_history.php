@@ -5,10 +5,10 @@
 $result = array();
 foreach ($list as $diaryCommentUpdate)
 {
-  $diary = $diaryCommentUpdate->getDiary();
+  $diary = $diaryCommentUpdate->Diary;
   $result[] = sprintf("[%s] %s<br>%s",
-              op_format_date($diaryCommentUpdate->getLastCommentTime(), 'XShortDate'),
-              $diary->getMember()->getName(),
+              op_format_date($diaryCommentUpdate->last_comment_time, 'XShortDate'),
+              $diary->Member->name,
               link_to(op_diary_get_title_and_count($diary, false, 28), 'diary_show', $diary)
             );
 }

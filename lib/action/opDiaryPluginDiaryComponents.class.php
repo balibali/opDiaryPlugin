@@ -46,7 +46,7 @@ class opDiaryPluginDiaryComponents extends sfComponents
     $memberId = $this->getUser()->getMemberId();
     if ($this->count = Doctrine::getTable('DiaryCommentUnread')->countUnreadDiary($memberId))
     {
-      $this->diary = Doctrine::getTable('DiaryCommentUnread')->findOneByMemberId($memberId)->getDiary();
+      $this->diary = Doctrine::getTable('DiaryCommentUnread')->findOneByMemberId($memberId)->Diary;
     }
   }
 }
