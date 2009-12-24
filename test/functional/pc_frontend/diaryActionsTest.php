@@ -21,7 +21,7 @@ $test->get('/diary')
 ;
 
 $countPublicSNS = Doctrine::getTable('Diary')->createQuery()
-  ->andWhereIn('public_flag', array(PluginDiaryTable::PUBLIC_FLAG_OPEN, PluginDiaryTable::PUBLIC_FLAG_SNS))
+  ->andWhereIn('public_flag', array(DiaryTable::PUBLIC_FLAG_OPEN, DiaryTable::PUBLIC_FLAG_SNS))
   ->count();
 
 $test->info('Pager Test: diary/list')
