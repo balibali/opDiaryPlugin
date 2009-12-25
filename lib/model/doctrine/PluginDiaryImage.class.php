@@ -25,7 +25,7 @@ abstract class PluginDiaryImage extends BaseDiaryImage
 
   protected function setFileNamePrefix()
   {
-    $prefix = 'd_'.$this->diary_id.'_'.$this->number.'_';
+    $prefix = 'd_'.$this->Diary->id.'_'.$this->number.'_';
 
     $file = $this->File;
     $file->setName($prefix.$file->name);
