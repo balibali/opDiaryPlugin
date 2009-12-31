@@ -7,9 +7,6 @@ list:
 search:
   is_secure: false
 
-list:
-  is_secure: false
-
 listMember:
   is_secure: false
 
