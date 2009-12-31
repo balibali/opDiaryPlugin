@@ -13,23 +13,18 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2009-12-25</date>
- <time>00:12:52</time>
+ <date>2010-01-01</date>
+ <time>03:07:12</time>
  <version>
-  <release>1.1.1</release>
-  <api>1.1.1</api>
+  <release>1.1.2</release>
+  <api>1.1.2</api>
  </version>
  <stability>
   <release>beta</release>
   <api>beta</api>
  </stability>
  <license>apache</license>
- <notes>* Call MemberRelationshipTable's method with wrong parameter count in DiaryTable::addFriendQuery()
-* Move routing rules to the YAML configuration files
-* [Performance] Add indexes to database tables
-* [Performance] Add column is_open on diary table for reducing "WHERE IN" from SQL queries
-* [Performance] Add has_images column on diary_comment for reducing the number of queries
-* Use property access for Doctrine models instead of getter/setter</notes>
+ <notes>* Diary photos uploaded at create time is not displayed</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="2bcec9045b32de9d9121c27fe72d4a6e" name="apps/mobile_frontend/config/app.yml" role="data" />
@@ -37,7 +32,7 @@
    <file baseinstalldir="/" md5sum="3d126a4924850dd06ea3b423121f238a" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/mobile_frontend/modules/diary/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f38308dad6aba1edebb1de78c5a44223" name="apps/mobile_frontend/modules/diary/actions/components.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="0bc8dbb8831213e2606a1fdcd499b9ea" name="apps/mobile_frontend/modules/diary/config/security.yml" role="data" />
+   <file baseinstalldir="/" md5sum="113eea85c326854511282bf167f560fb" name="apps/mobile_frontend/modules/diary/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="d84ab38a3e4eeadcbdae1f268c04a3f4" name="apps/mobile_frontend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="52b033f11e63b4861c9af7c43dd844a3" name="apps/mobile_frontend/modules/diary/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="0f3c013dadf6cdee28779de6805cd901" name="apps/mobile_frontend/modules/diary/templates/listFriendSuccess.php" role="data" />
@@ -81,7 +76,7 @@
    <file baseinstalldir="/" md5sum="8be2234c0d15d9d84becf91000a89e4d" name="apps/pc_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/pc_frontend/modules/diary/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="4887c68219806c49c6fb8eddf0d16197" name="apps/pc_frontend/modules/diary/actions/components.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="0bc8dbb8831213e2606a1fdcd499b9ea" name="apps/pc_frontend/modules/diary/config/security.yml" role="data" />
+   <file baseinstalldir="/" md5sum="113eea85c326854511282bf167f560fb" name="apps/pc_frontend/modules/diary/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="b854ac284198fb6cd48badcec20a6671" name="apps/pc_frontend/modules/diary/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="469978187f26995f1a3159ec84e717ea" name="apps/pc_frontend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="b0e9e2127e73853bd312f284ac279bde" name="apps/pc_frontend/modules/diary/templates/editSuccess.php" role="data" />
@@ -154,7 +149,7 @@
    <file baseinstalldir="/" md5sum="6740cccce4a27c587728ba6c453dc339" name="lib/model/doctrine/PluginDiaryCommentUnreadTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="89ce962e43fefbfa4c45c9fec555ef5d" name="lib/model/doctrine/PluginDiaryCommentUpdate.class.php" role="data" />
    <file baseinstalldir="/" md5sum="7ce726dd2fd15d2e75fedd4fa2064bbc" name="lib/model/doctrine/PluginDiaryCommentUpdateTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="3f8ea59555efefd0ad4a54a35c2df16f" name="lib/model/doctrine/PluginDiaryImage.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="bef51f971b5c667e4dfd5cd824d7a7c9" name="lib/model/doctrine/PluginDiaryImage.class.php" role="data" />
    <file baseinstalldir="/" md5sum="318de69841093afc58b53814b224f078" name="lib/model/doctrine/PluginDiaryImageTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="93cda1f997af98f3241a8e701b5d6c3e" name="lib/model/doctrine/PluginDiaryTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8f6a0ebc5d2364273cbab29378fd80b1" name="lib/routing/opDiaryPluginBackendRouteCollection.class.php" role="data" />
@@ -343,12 +338,25 @@
    </stability>
    <date>2009-12-25</date>
    <license>apache</license>
-   <notes>* Call MemberRelationshipTable's method with wrong parameter count in DiaryTable::addFriendQuery()
+   <notes>* Call MemberRelationshipTable&apos;s method with wrong parameter count in DiaryTable::addFriendQuery()
 * Move routing rules to the YAML configuration files
 * [Performance] Add indexes to database tables
-* [Performance] Add column is_open on diary table for reducing "WHERE IN" from SQL queries
+* [Performance] Add column is_open on diary table for reducing &quot;WHERE IN&quot; from SQL queries
 * [Performance] Add has_images column on diary_comment for reducing the number of queries
 * Use property access for Doctrine models instead of getter/setter</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.2</release>
+    <api>1.1.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-01-01</date>
+   <license>apache</license>
+   <notes>* Diary photos uploaded at create time is not displayed</notes>
   </release>
  </changelog>
 </package>
