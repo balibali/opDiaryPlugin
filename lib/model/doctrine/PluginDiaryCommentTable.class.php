@@ -38,7 +38,7 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
 
   public function getDiaryCommentPagerForDiary($diaryId, $page = 1, $size = 20)
   {
-    $q = $this->where('diary_id = ?', $diaryId)->orderBy('number DESC');
+    $q = $this->createQuery()->where('diary_id = ?', $diaryId)->orderBy('number DESC');
 
     return $this->getPager($q, $page, $size);
   }
