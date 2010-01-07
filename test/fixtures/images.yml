@@ -1,0 +1,16 @@
+DiaryImage:
+  diary_image1:
+    id: 1
+    Diary: diary1
+    File: diary_image_file1
+    number: 1
+
+File:
+  diary_image_file1:
+    name: test1.jpg
+    type: image/jpeg
+    original_filename: original_test1.jpg
+
+FileBin:
+  diary_image_file_bin1:
+    bin: ""

@@ -31,7 +31,7 @@ abstract class PluginDiaryImage extends BaseDiaryImage
     $file->setName($prefix.$file->getName());
   }
 
-  public function preDelete($event)
+  public function postDelete($event)
   {
     $this->getFile()->getFileBin()->delete();
     $this->getFile()->delete();
