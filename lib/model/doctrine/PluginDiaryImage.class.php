@@ -33,7 +33,6 @@ abstract class PluginDiaryImage extends BaseDiaryImage
 
   public function postDelete($event)
   {
-    $this->File->FileBin->delete();
     $this->File->delete();
   }
 }
