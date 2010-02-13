@@ -24,6 +24,8 @@ abstract class PluginDiaryCommentForm extends BaseDiaryCommentForm
     unset($this['id']);
     $this->useFields(array('body'));
 
+    $this->validatorSchema['body'] = new opValidatorString(array('rtrim' => true));
+
     if (sfConfig::get('app_diary_comment_is_upload_images', true))
     {
       $max = (int)sfConfig::get('app_diary_comment_max_image_file_num', 3);
