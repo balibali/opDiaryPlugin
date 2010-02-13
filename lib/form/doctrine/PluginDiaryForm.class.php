@@ -30,6 +30,9 @@ abstract class PluginDiaryForm extends BaseDiaryForm
     $this->widgetSchema['title'] = new sfWidgetFormInput();
     $this->widgetSchema['body']  = new opWidgetFormRichTextareaOpenPNE();
 
+    $this->validatorSchema['title'] = new opValidatorString(array('trim' => true));
+    $this->validatorSchema['body']  = new opValidatorString(array('rtrim' => true));
+
     $this->widgetSchema['public_flag'] = new sfWidgetFormChoice(array(
       'choices'  => Doctrine::getTable('Diary')->getPublicFlags(),
       'expanded' => true,
