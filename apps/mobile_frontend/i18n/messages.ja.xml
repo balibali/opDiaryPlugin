@@ -42,6 +42,10 @@
         <source>You can attach photo files to e-mail.</source>
         <target>ﾒｰﾙには写真を添付することができます。</target>
       </trans-unit>
+      <trans-unit id="62">
+        <source>View Image</source>
+        <target>写真を見る</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
