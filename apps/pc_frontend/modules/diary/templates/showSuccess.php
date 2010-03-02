@@ -57,14 +57,12 @@
 $form->getWidget('body')->setAttribute('rows', 8);
 $form->getWidget('body')->setAttribute('cols', 40);
 
-$title = __('Post a diary comment');
-$options = array(
-  'form' => $form,
-  'url' => '@diary_comment_create?id='.$diary->id,
+op_include_form('formDiaryComment', $form, array(
+  'title' => __('Post a diary comment'),
+  'url' => url_for('@diary_comment_create?id='.$diary->id),
   'button' => __('Save'),
   'isMultipart' => true,
-);
-include_box('formDiaryComment', $title, '', $options);
+));
 ?>
 <?php endif; ?>
 

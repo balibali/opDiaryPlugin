@@ -16,7 +16,7 @@ else
 <?php if ($pager->getNbResults()): ?>
 
 <center>
-<?php echo pager_total($pager); ?>
+<?php op_include_pager_total($pager); ?>
 </center>
 <?php
 $list = array();
