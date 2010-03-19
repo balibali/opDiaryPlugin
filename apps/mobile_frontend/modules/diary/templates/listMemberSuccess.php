@@ -30,4 +30,6 @@ op_include_list('diaryList', $list, $options);
 
 <?php if ($sf_user->getMemberId() === $member->id): ?>
 <?php echo link_to(__('Post a diary'), 'diary_new') ?>
+<?php else: ?>
+<?php echo link_to(__('Profile of %1%', array('%1%' => $member->getName())), 'member/profile?id='.$member->getId()) ?>
 <?php endif; ?>
