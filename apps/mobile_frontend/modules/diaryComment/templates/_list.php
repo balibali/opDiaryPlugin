@@ -17,7 +17,7 @@
 <?php echo link_to($comment->Member->name, 'member/profile?id='.$comment->member_id) ?><br>
 <?php echo nl2br($comment->body) ?><br>
 <?php if ($comment->has_images): ?>
-<?php foreach ($comment->DiaryCommentImages as $image): ?>
+<?php foreach ($comment->getDiaryCommentImagesJoinFile() as $image): ?>
 <?php echo link_to(__('View Image'), sf_image_path($image->File, array('size' => '240x320', 'f' => 'jpg'))) ?><br>
 <?php endforeach; ?>
 <?php endif; ?>
