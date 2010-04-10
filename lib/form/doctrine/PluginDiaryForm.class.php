@@ -92,6 +92,13 @@ abstract class PluginDiaryForm extends BaseDiaryForm
     return $object;
   }
 
+  protected function doUpdateObject($values)
+  {
+    parent::doUpdateObject($values);
+
+    $this->getObject()->setIsOpen(DiaryTable::PUBLIC_FLAG_OPEN === $values['public_flag']);
+  }
+
   protected function doSave($con = null)
   {
     parent::doSave($con);
