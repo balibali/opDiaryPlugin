@@ -11,7 +11,5 @@ File:
     type: image/jpeg
     filesize: 0
     original_filename: original_test1.jpg
-
-FileBin:
-  diary_image_file_bin1:
-    bin: ""
+    FileBin:
+      bin: ""
