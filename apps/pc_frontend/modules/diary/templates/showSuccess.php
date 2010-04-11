@@ -62,6 +62,7 @@ op_include_form('formDiaryComment', $form, array(
   'url' => url_for('@diary_comment_create?id='.$diary->id),
   'button' => __('Save'),
   'isMultipart' => true,
+  'body' => $diary->is_open ? __('Your comment is visible to all users on the Web.') : null,
 ));
 ?>
 <?php endif; ?>

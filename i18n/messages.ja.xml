@@ -230,6 +230,10 @@
         <source>Your search "%1%" did not match any diary comments.</source>
         <target>「%1%」に一致する日記コメントは見つかりませんでした。</target>
       </trans-unit>
+      <trans-unit id="63">
+        <source>Your comment is visible to all users on the Web.</source>
+        <target>この日記へのコメントはWeb全体に公開されます。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -44,6 +44,11 @@ op_include_form('formDiaryComment', $form, $options);
 <?php endif; ?>
 <?php endif; ?>
 
+<?php if ($diary->is_open): ?>
+<br>
+<?php echo __('Your comment is visible to all users on the Web.') ?><br>
+<?php endif; ?>
+
 <hr color="<?php echo $op_color["core_color_11"] ?>">
 <?php echo link_to(__('Diaries of %1%', array('%1%' => $member->name)), 'diary_list_member', $member) ?><br>
 <?php if ($diary->member_id !== $sf_user->getMemberId()): ?>
