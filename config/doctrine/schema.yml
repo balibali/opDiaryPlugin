@@ -84,6 +84,7 @@ DiaryCommentUnread:
     Diary:
       foreignType: one
       onDelete: cascade
+      owningSide: true
     Member:
       onDelete: cascade
 
