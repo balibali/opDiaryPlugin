@@ -127,5 +127,10 @@ abstract class PluginDiary extends BaseDiary
     {
       $image->delete();
     }
+
+    if ($unread = $this->getDiaryCommentUnread())
+    {
+      $unread->delete();
+    }
   }
 }
