@@ -40,6 +40,11 @@ op_include_form('formDiaryComment', $form, $options);
 [i:106]<?php echo op_mail_to('mail_diary_comment_create', array('id' => $diary->id), __('Post from E-mail')) ?><br>
 <?php echo __('You can attach photo files to e-mail.') ?><br>
 <?php endif; ?>
+
+<?php if (DiaryTable::PUBLIC_FLAG_OPEN == $diary->getPublicFlag()): ?>
+<br>
+<?php echo __('Your comment is visible to all users on the Web.') ?><br>
+<?php endif; ?>
 <?php endif; ?>
 
 <hr>

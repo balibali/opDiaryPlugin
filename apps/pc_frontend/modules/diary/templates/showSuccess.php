@@ -64,6 +64,10 @@ $options = array(
   'button' => __('Save'),
   'isMultipart' => true,
 );
+if (DiaryTable::PUBLIC_FLAG_OPEN == $diary->getPublicFlag())
+{
+  $options['body'] = __('Your comment is visible to all users on the Web.');
+}
 include_box('formDiaryComment', $title, '', $options);
 ?>
 <?php endif; ?>

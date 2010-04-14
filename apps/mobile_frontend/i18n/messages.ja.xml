@@ -46,6 +46,10 @@
         <source>View Image</source>
         <target>写真を見る</target>
       </trans-unit>
+      <trans-unit id="63">
+        <source>Your comment is visible to all users on the Web.</source>
+        <target>この日記へのｺﾒﾝﾄはWeb全体に公開されます。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
