@@ -13,24 +13,30 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2009-12-14</date>
- <time>13:52:45</time>
+ <date>2010-04-15</date>
+ <time>00:00:24</time>
  <version>
-  <release>0.9.3</release>
-  <api>0.9.3</api>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license>apache</license>
- <notes>* added the feature of posting diary and diary comment from e-mail
-* added pc_backend monitoring pages
-* added default public flag setting for each members</notes>
+ <notes>Changes since version 0.9.3:
+* Backport #383: Call MemberRelationshipTable's method with wrong parameter count in DiaryTable::addFriendQuery()
+* Backport #447: Cannot delete diary images by application-level cascading deletion
+* Backport #850: Empty string is allowed in the Diary and DiaryComment forms
+* Backport #886: The link of comment image isn't displayed in the mobile_frontend
+* Backport #951: Japanese translation message for "View Image" does not exist
+* Backport #953: New diary comment message does not break line in mobile homepage
+* Backport #954: No information that the comments of open diaries are visible to all users on the Web
+* Backport #956: Not deleted new diary comment message in the information box when the diary is deleted directly</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="2bcec9045b32de9d9121c27fe72d4a6e" name="apps/mobile_frontend/config/app.yml" role="data" />
-   <file baseinstalldir="/" md5sum="3d126a4924850dd06ea3b423121f238a" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="ff1d50fbb8a0f22f3834e9c0c27ed3e0" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/mobile_frontend/modules/diary/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f38308dad6aba1edebb1de78c5a44223" name="apps/mobile_frontend/modules/diary/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0bc8dbb8831213e2606a1fdcd499b9ea" name="apps/mobile_frontend/modules/diary/config/security.yml" role="data" />
@@ -40,18 +46,18 @@
    <file baseinstalldir="/" md5sum="204611320fecfa96310bbc77b94ef8e8" name="apps/mobile_frontend/modules/diary/templates/listMemberSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="5ddabc2920064c20f1d345933ad30df3" name="apps/mobile_frontend/modules/diary/templates/listSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="6a5cd1896415e405b7d77f6ceed1913f" name="apps/mobile_frontend/modules/diary/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="12161e35241d8947fc3f27174ba250d3" name="apps/mobile_frontend/modules/diary/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="7daed16738ff27ddf0822c023c597758" name="apps/mobile_frontend/modules/diary/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="1f0f5df232968cffdfe18d168ba6a8a2" name="apps/mobile_frontend/modules/diary/templates/_diaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="8c8fcb454724ea5a81c94a0e121cd08a" name="apps/mobile_frontend/modules/diary/templates/_friendDiaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="950ba6c5ef951a088ad635fba0c9149e" name="apps/mobile_frontend/modules/diary/templates/_memberDiaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="e8194e5ed136a3243bf3cd6c4bdff579" name="apps/mobile_frontend/modules/diary/templates/_myDiaryList.php" role="data" />
-   <file baseinstalldir="/" md5sum="249e45a2e715a32f4b5264722babbbfa" name="apps/mobile_frontend/modules/diary/templates/_noticeUnreadDiaryComment.php" role="data" />
+   <file baseinstalldir="/" md5sum="ddcd483e217bd0215bb5d127bc6ead27" name="apps/mobile_frontend/modules/diary/templates/_noticeUnreadDiaryComment.php" role="data" />
    <file baseinstalldir="/" md5sum="215388c81a68b7a8fc324dcb65bd9323" name="apps/mobile_frontend/modules/diaryComment/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="32d20d9c90b0e1a86b688f3a75e1848d" name="apps/mobile_frontend/modules/diaryComment/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="c51ac22b5ffb07112f1177e2f7ea0536" name="apps/mobile_frontend/modules/diaryComment/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="3bc20c6e930d2a61f1834857931dd929" name="apps/mobile_frontend/modules/diaryComment/templates/historySuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="4b7b57ab94259427a44afdb512888beb" name="apps/mobile_frontend/modules/diaryComment/templates/_history.php" role="data" />
-   <file baseinstalldir="/" md5sum="e4a30195466db7d1d5368ef32fc18283" name="apps/mobile_frontend/modules/diaryComment/templates/_list.php" role="data" />
+   <file baseinstalldir="/" md5sum="754e1656e1d64951b6832af9c6959aa8" name="apps/mobile_frontend/modules/diaryComment/templates/_list.php" role="data" />
    <file baseinstalldir="/" md5sum="db772cb44d8af4d10659745a9cd245a1" name="apps/mobile_frontend/modules/member/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="4af7b179f936bd6314e25c624b5601b8" name="apps/mobile_mail_frontend/config/routing.yml" role="data" />
    <file baseinstalldir="/" md5sum="622f6a23af170b668c3e13993c323537" name="apps/mobile_mail_frontend/modules/diary/actions/actions.class.php" role="data" />
@@ -83,7 +89,7 @@
    <file baseinstalldir="/" md5sum="e5e88fbb45d4831d4500bd8bc658dd24" name="apps/pc_frontend/modules/diary/templates/listMemberSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="ef2f574e8f4598e2fd771c8eeb2e2b6e" name="apps/pc_frontend/modules/diary/templates/listSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="a5e548d3ff8807b5ea3459b26879644c" name="apps/pc_frontend/modules/diary/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="4e97cd8515ae4882da7dce1c2371ed19" name="apps/pc_frontend/modules/diary/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="6b1514848b1473becbb37c7378145341" name="apps/pc_frontend/modules/diary/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="47185aad28cc6cf226a75cea9236b660" name="apps/pc_frontend/modules/diary/templates/_diaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="b102ea1f7a86793e9d38cfc1f7943d0e" name="apps/pc_frontend/modules/diary/templates/_form.php" role="data" />
    <file baseinstalldir="/" md5sum="64346e0fd2fa85c752869e0574af8f43" name="apps/pc_frontend/modules/diary/templates/_formEditImage.php" role="data" />
@@ -107,15 +113,15 @@
    <file baseinstalldir="/" md5sum="fcc1f83b73a6e232a9f2a358307addca" name="config/mobile_profile_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="fcc1f83b73a6e232a9f2a358307addca" name="config/profile_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="e0f6c4332cb205a1a99884ade3d41e71" name="config/doctrine/schema.yml" role="data" />
+   <file baseinstalldir="/" md5sum="bd142f4ab0ff7024e72c72ef0fabcf74" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="028e92fb9cedddd26459286e35173bc2" name="data/fixtures/010_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="a151c6dae90c19590c3b33a0d571b48a" name="data/fixtures/020_gadget.yml" role="data" />
-   <file baseinstalldir="/" md5sum="bd142f4ab0ff7024e72c72ef0fabcf74" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="4ef562c4496caef9d43160e225b6aa85" name="data/migrations/0.9.0/001_doctrine.php" role="data" />
    <file baseinstalldir="/" md5sum="512761f146f13988678516d4caff50da" name="data/migrations/0.9.1/002_create_table_diary_comment_update.php" role="data" />
    <file baseinstalldir="/" md5sum="f46faffcd1350fad77a242a0a063d8e9" name="data/migrations/0.9.1/003_load_fixture_gadget.php" role="data" />
    <file baseinstalldir="/" md5sum="141fa8eaf6b1ed6a1f6b7270df0eb0df" name="data/migrations/0.9.1/fixtures/003_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="65f276268b936ed549dd4e197e2227d7" name="data/migrations/0.9.2/004_fix_cascade_diary_comment.php" role="data" />
-   <file baseinstalldir="/" md5sum="c90fe91c47963168fb4840d49e8ce7e5" name="i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="5a3791966feacf67c5f266454aa9df40" name="i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ff14e22a0119036fe8c828b5b60979d2" name="i18n/publicFlags.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="efedd7964db99d01ddd05c99f82705c6" name="lib/action/opDiaryPluginActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="bad07cef0da23d5c55a717bdb8089e57" name="lib/action/opDiaryPluginDiaryActions.class.php" role="data" />
@@ -129,15 +135,15 @@
    <file baseinstalldir="/" md5sum="194e9424eb93eb5e172fa70c80c44aab" name="lib/filter/doctrine/PluginDiaryCommentUpdateFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1030c135178603165888b6774dfcad1f" name="lib/filter/doctrine/PluginDiaryFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="039facd5a8763f0d63a98407787bbe59" name="lib/filter/doctrine/PluginDiaryImageFormFilter.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="2ddcaafeb95dcaf43007abc83b5febe0" name="lib/form/doctrine/PluginDiaryCommentForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="906dee65cb5ad6e5848ccceda787d515" name="lib/form/doctrine/PluginDiaryCommentForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="18122a0c36d3d110ffc70b413e7ffb0d" name="lib/form/doctrine/PluginDiaryCommentImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="945232795f961926fc262f7dedadb0af" name="lib/form/doctrine/PluginDiaryCommentUnreadForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="74ef3deed617a6cca8e2888c732ff751" name="lib/form/doctrine/PluginDiaryCommentUpdateForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="7c47c4bfc74cac9a849f8b2eb98ec48d" name="lib/form/doctrine/PluginDiaryForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="79a491c4ad556d6cb39f748e7e9388c5" name="lib/form/doctrine/PluginDiaryForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1e7b772126ed89fc60d681072881ceaa" name="lib/form/doctrine/PluginDiaryImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="b052303531ca7c3021320cf24e87e59d" name="lib/form/MemberConfigForm/MemberConfigDiaryForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="967eda02c015c3a1ca514a76ebc64e42" name="lib/helper/opDiaryHelper.php" role="data" />
-   <file baseinstalldir="/" md5sum="da6b8a8f620b855b8b2fe31db1a815f7" name="lib/model/doctrine/PluginDiary.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="8d0e55d9bc2c8e970518867dddb25cf8" name="lib/model/doctrine/PluginDiary.class.php" role="data" />
    <file baseinstalldir="/" md5sum="bd024ba427e582976358868243478a79" name="lib/model/doctrine/PluginDiaryComment.class.php" role="data" />
    <file baseinstalldir="/" md5sum="5498e6cc3c3cbff7c4ffd4516bfa0f1c" name="lib/model/doctrine/PluginDiaryCommentImage.class.php" role="data" />
    <file baseinstalldir="/" md5sum="7011003a80d769dcf786f9dbc955aead" name="lib/model/doctrine/PluginDiaryCommentImageTable.class.php" role="data" />
@@ -146,9 +152,9 @@
    <file baseinstalldir="/" md5sum="eaa22b17a4908df2e615e3998241c3a1" name="lib/model/doctrine/PluginDiaryCommentUnreadTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="89ce962e43fefbfa4c45c9fec555ef5d" name="lib/model/doctrine/PluginDiaryCommentUpdate.class.php" role="data" />
    <file baseinstalldir="/" md5sum="5ae50bf30e493bb5bb70e5044e7b964a" name="lib/model/doctrine/PluginDiaryCommentUpdateTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="36869604e7fe917ec6299ab5e16822b1" name="lib/model/doctrine/PluginDiaryImage.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="39a7fadf522df7da59003417f429d501" name="lib/model/doctrine/PluginDiaryImage.class.php" role="data" />
    <file baseinstalldir="/" md5sum="318de69841093afc58b53814b224f078" name="lib/model/doctrine/PluginDiaryImageTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="f3cbd8db677eba116f93b7e3b5a6c40e" name="lib/model/doctrine/PluginDiaryTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="09030bd7846a02e5451068fc496e5c7b" name="lib/model/doctrine/PluginDiaryTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3ad49d6e4b218528e1863eed73ed3c00" name="lib/routing/opDiaryPluginRouting.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8b024fc444f22f1c8cf6338189053b3d" name="lib/routing/opDiaryPluginRoutingBackend.class.php" role="data" />
    <file baseinstalldir="/" md5sum="6ceeebb013937032be1230b9d2240ce2" name="lib/routing/opDiaryPluginRoutingFrontend.class.php" role="data" />
@@ -157,7 +163,9 @@
    <file baseinstalldir="/" md5sum="2089e76b9d0ae0fd4d222ee37ea68cb5" name="test/bootstrap/functional.php" role="data" />
    <file baseinstalldir="/" md5sum="b6e69bd4c5958def80bc622b1e8d15b2" name="test/bootstrap/unit.php" role="data" />
    <file baseinstalldir="/" md5sum="573aa203cb12112b5a6747c5cc0f094a" name="test/fixtures/diaries.yml" role="data" />
+   <file baseinstalldir="/" md5sum="20bf493e782b4386e63ddc5660217ba3" name="test/fixtures/images.yml" role="data" />
    <file baseinstalldir="/" md5sum="e3eb21b84eafa3705f3958c238f19870" name="test/fixtures/members.yml" role="data" />
+   <file baseinstalldir="/" md5sum="eb9d389b56456483fd8e1e2cdd3b02d9" name="test/fixtures/mobile.yml" role="data" />
    <file baseinstalldir="/" md5sum="6e9f37dddc60db41913b0a4c58b1934b" name="test/functional/mobile_frontend/diaryAccessBlock.php" role="data" />
    <file baseinstalldir="/" md5sum="e0e09e449e004294f4e99be3e101c3c4" name="test/functional/mobile_frontend/diaryActionsTest.php" role="data" />
    <file baseinstalldir="/" md5sum="26df34175215d09ecf2631f02c2e97c4" name="test/functional/mobile_frontend/diaryCommentHistoryTest.php" role="data" />
@@ -170,7 +178,7 @@
    <file baseinstalldir="/" md5sum="ccb16abcb5d74edfd96528ded4a1e60f" name="test/functional/pc_frontend/diaryCommentPagerTest.php" role="data" />
    <file baseinstalldir="/" md5sum="77126e95fbb69ddb63ab5a67023aeff7" name="test/functional/pc_frontend/diaryOpenTest.php" role="data" />
    <file baseinstalldir="/" md5sum="603360aadaeb90e08a4ab1d426e4e653" name="test/functional/pc_frontend/diarySearchTest.php" role="data" />
-   <file baseinstalldir="/" md5sum="52440ab0abcc01c98551283f1e9942e1" name="test/unit/model/SkeletonTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="d8150e019e1be9ebcc2b3ae8c6c03642" name="test/unit/model/DiaryImageTest.php" role="data" />
    <file baseinstalldir="/" md5sum="5bbb06bb2f34a27654d2c5dda995d5d4" name="web/css/backend.css" role="data" />
    <file baseinstalldir="/" md5sum="82a8852e045e5891b538528c38559e7d" name="web/css/diary.css" role="data" />
    <file baseinstalldir="/" md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="data" />
@@ -310,6 +318,27 @@
    <notes>* added the feature of posting diary and diary comment from e-mail
 * added pc_backend monitoring pages
 * added default public flag setting for each members</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-04-15</date>
+   <license>apache</license>
+   <notes>Changes since version 0.9.3:
+* Backport #383: Call MemberRelationshipTable's method with wrong parameter count in DiaryTable::addFriendQuery()
+* Backport #447: Cannot delete diary images by application-level cascading deletion
+* Backport #850: Empty string is allowed in the Diary and DiaryComment forms
+* Backport #886: The link of comment image isn't displayed in the mobile_frontend
+* Backport #951: Japanese translation message for "View Image" does not exist
+* Backport #953: New diary comment message does not break line in mobile homepage
+* Backport #954: No information that the comments of open diaries are visible to all users on the Web
+* Backport #956: Not deleted new diary comment message in the information box when the diary is deleted directly</notes>
   </release>
  </changelog>
 </package>
