@@ -14,7 +14,7 @@
   <active>yes</active>
  </lead>
  <date>2010-05-21</date>
- <time>12:59:44</time>
+ <time>13:06:21</time>
  <version>
   <release>1.3.0</release>
   <api>1.3.0</api>
@@ -38,7 +38,7 @@ version1.3.0
    <file baseinstalldir="/" md5sum="d84ab38a3e4eeadcbdae1f268c04a3f4" name="apps/mobile_frontend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="52b033f11e63b4861c9af7c43dd844a3" name="apps/mobile_frontend/modules/diary/templates/editSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="cc4bcb5fe17a2c1dacbc501fae31c1b1" name="apps/mobile_frontend/modules/diary/templates/listFriendSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="0b153202ac0e8d2deaa55c5dd842ada8" name="apps/mobile_frontend/modules/diary/templates/listMemberSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="395870060cad856eb77ce0944fa0b9cf" name="apps/mobile_frontend/modules/diary/templates/listMemberSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="c91bedae585433e1350c90a63af92262" name="apps/mobile_frontend/modules/diary/templates/listSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="6a5cd1896415e405b7d77f6ceed1913f" name="apps/mobile_frontend/modules/diary/templates/newSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="fafc914f3627b36bf7c4f538d3c1a135" name="apps/mobile_frontend/modules/diary/templates/showSuccess.php" role="data" />
