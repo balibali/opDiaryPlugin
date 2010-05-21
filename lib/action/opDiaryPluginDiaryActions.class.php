@@ -24,7 +24,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeList(sfWebRequest $request)
   {
-    $publicFlag = $this->member ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
+    $publicFlag = $this->getUser()->hasCredential('SNSMember') ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
 
     $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request['page'], 20, $publicFlag);
   }
@@ -36,7 +36,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
     $keywords = opDiaryPluginToolkit::parseKeyword($this->keyword);
     $this->forwardUnless($keywords, 'diary', 'list');
 
-    $publicFlag = $this->member ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
+    $publicFlag = $this->getUser()->hasCredential('SNSMember') ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
 
     $this->pager = Doctrine::getTable('Diary')->getDiarySearchPager($keywords, $request['page'], 20, $publicFlag);
     $this->setTemplate('list');
@@ -44,7 +44,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeListMember(sfWebRequest $request)
   {
-    $this->forward404Unless($this->member);
+    $this->forward404Unless($this->member && $this->member->id);
 
     $this->year  = (int)$request['year'];
     $this->month = (int)$request['month'];
