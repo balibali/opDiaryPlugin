@@ -14,10 +14,10 @@
   <active>yes</active>
  </lead>
  <date>2010-05-21</date>
- <time>13:06:21</time>
+ <time>13:15:50</time>
  <version>
-  <release>1.3.0</release>
-  <api>1.3.0</api>
+  <release>1.3.0.1</release>
+  <api>1.3.0.1</api>
  </version>
  <stability>
   <release>beta</release>
@@ -25,7 +25,9 @@
  </stability>
  <license>apache</license>
  <notes>
-version1.3.0
+* Bug #429: Not deleted new diary comment message in the information box when the diary is deleted directly
+* Bug #1094: Diary list displays closed posts for anonymous users (OpenPNE 3.5.0 or higher)
+* Enhancement #879: Add link to the author's profile page at moblie diary/listMember
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -383,8 +385,8 @@ supports OpenPNE-3.3.x
   </release>
   <release>
    <version>
-    <release>1.3.0</release>
-    <api>1.3.0</api>
+    <release>1.3.0.1</release>
+    <api>1.3.0.1</api>
    </version>
    <stability>
     <release>beta</release>
@@ -393,7 +395,9 @@ supports OpenPNE-3.3.x
    <date>2010-05-21</date>
    <license>apache</license>
    <notes>
-version1.3.0
+* Bug #429: Not deleted new diary comment message in the information box when the diary is deleted directly
+* Bug #1094: Diary list displays closed posts for anonymous users (OpenPNE 3.5.0 or higher)
+* Enhancement #879: Add link to the author's profile page at moblie diary/listMember
    </notes>
   </release>
  </changelog>
