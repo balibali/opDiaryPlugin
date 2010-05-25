@@ -22,6 +22,22 @@ Diary:
     updated_at: "2009-02-01 10:00:00"
     public_flag: 1
     is_open: 1
+  diary4:
+    id: 4
+    Member: member1
+    title: "Sample Title"
+    body: "Sample Body"
+    created_at: "2009-01-01 11:00:00"
+    updated_at: "2009-01-01 11:00:00"
+    public_flag: 2
+  diary5:
+    id: 5
+    Member: member1
+    title: "Sample Title"
+    body: "Sample Body"
+    created_at: "2009-01-01 12:00:00"
+    updated_at: "2009-01-01 12:00:00"
+    public_flag: 3
 
 <?php for ($i = 1; $i <= 20; $i++): ?>
   diary_for_member3_<?php echo $i ?>:
@@ -78,6 +94,13 @@ Diary:
 <?php endfor; ?>
 
 DiaryComment:
+  diary_comment1:
+    id: 1
+    Member: member1
+    Diary: diary2
+    number: 1
+    body: "Now testing"
+
 <?php for ($i = 1; $i <= 21; $i++): ?>
   diary_comment_for_diary_<?php echo $i ?>:
     Member: member1

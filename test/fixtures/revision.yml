@@ -1,4 +1,4 @@
 SnsConfig:
   op_diary_plugin_current_test_revision:
     name: "opDiaryPlugin_test_revision"
-    value: 1
+    value: 2

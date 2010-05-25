@@ -16,7 +16,7 @@ new sfDatabaseManager($configuration);
 
 try
 {
-  if (1 > (int)Doctrine::getTable('SnsConfig')->get('opDiaryPlugin_test_revision'))
+  if (2 > (int)Doctrine::getTable('SnsConfig')->get('opDiaryPlugin_test_revision'))
   {
     throw new Exception();
   }

@@ -5,9 +5,22 @@ DiaryImage:
     File: diary_image_file1
     number: 1
 
+DiaryCommentImage:
+  diary_comment_image1:
+    id: 1
+    DiaryComment: diary_comment1
+    File: diary_comment_image_file1
+
 File:
   diary_image_file1:
     name: test1.jpg
+    type: image/jpeg
+    filesize: 0
+    original_filename: original_test1.jpg
+    FileBin:
+      bin: ""
+  diary_comment_image_file1:
+    name: comment_test1.jpg
     type: image/jpeg
     filesize: 0
     original_filename: original_test1.jpg
