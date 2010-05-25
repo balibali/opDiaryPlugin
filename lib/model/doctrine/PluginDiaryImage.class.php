@@ -16,11 +16,9 @@
  */
 abstract class PluginDiaryImage extends BaseDiaryImage
 {
-  public function save(Doctrine_Connection $conn = null)
+  public function preInsert($event)
   {
     $this->setFileNamePrefix();
-
-    return parent::save($conn);
   }
 
   protected function setFileNamePrefix()

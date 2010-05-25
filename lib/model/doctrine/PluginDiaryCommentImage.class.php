@@ -16,7 +16,7 @@
  */
 abstract class PluginDiaryCommentImage extends BaseDiaryCommentImage
 {
-  public function preSave($event)
+  public function preInsert($event)
   {
     $this->setFileNamePrefix();
   }
