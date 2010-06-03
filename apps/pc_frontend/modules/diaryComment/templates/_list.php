@@ -36,7 +36,7 @@
 <dd>
 <div class="title">
 <p class="heading"><strong><?php echo $comment->number ?></strong>:
-<?php if ($_member = $comment->Member): ?> <?php echo link_to($_member->name, 'member/profile?id='.$_member->id) ?><?php endif; ?>
+<?php if ($_member = $comment->Member): ?> <?php echo link_to($_member->name, '@obj_member_profile?id='.$_member->id) ?><?php endif; ?>
 <?php if ($diary->member_id === $sf_user->getMemberId() || $comment->member_id === $sf_user->getMemberId()): ?>
  <?php echo link_to(__('Delete'), 'diary_comment_delete_confirm', $comment) ?>
 <?php endif; ?>

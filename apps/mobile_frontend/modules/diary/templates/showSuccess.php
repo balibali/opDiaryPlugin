@@ -52,5 +52,5 @@ op_include_form('formDiaryComment', $form, $options);
 <hr color="<?php echo $op_color["core_color_11"] ?>">
 <?php echo link_to(__('Diaries of %1%', array('%1%' => $member->name)), 'diary_list_member', $member) ?><br>
 <?php if ($diary->member_id !== $sf_user->getMemberId()): ?>
-<?php echo link_to(__('Profile of %1%', array('%1%' => $member->name)), 'member/profile?id='.$member->id) ?><br>
+<?php echo link_to(__('Profile of %1%', array('%1%' => $member->name)), '@obj_member_profile?id='.$member->id) ?><br>
 <?php endif; ?>

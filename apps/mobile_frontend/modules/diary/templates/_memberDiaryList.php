@@ -11,7 +11,7 @@ foreach ($diaryList as $diary)
             );
 }
 $moreInfo = array();
-$moreInfo[] = link_to(__('More'), 'diary/listMember?id='.$memberId);
+$moreInfo[] = link_to(__('More'), '@diary_list_member?id='.$memberId);
 $options = array(
   'title'  => __('Recently Posted Diaries'),
   'border' => true,

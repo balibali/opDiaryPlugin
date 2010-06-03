@@ -10,7 +10,7 @@
 <div id="diaryMonitoringList">
 <table>
 <?php include_partial('diary', array('diary' => $diary)) ?>
-<tr><td colspan="2"><form action="<?php echo url_for('diary/deleteConfirm?id='.$diary->id) ?>" method="get"><input type="submit" value="<?php echo __('Delete') ?>" /></form></td></tr>
+<tr><td colspan="2"><form action="<?php echo url_for('@monitoring_diary_delete_confirm?id='.$diary->id) ?>" method="get"><input type="submit" value="<?php echo __('Delete') ?>" /></form></td></tr>
 </table>
 </div>
 <?php else: ?>

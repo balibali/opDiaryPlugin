@@ -14,7 +14,7 @@ foreach ($diaryList as $diary)
 $options = array(
   'title'  => __('Recently Posted Diaries of All'),
   'border' => true,
-  'moreInfo' => array(link_to(__('More'), 'diary/list')),
+  'moreInfo' => array(link_to(__('More'), '@diary_list')),
 );
 op_include_list('diaryList', $list, $options);
 ?>

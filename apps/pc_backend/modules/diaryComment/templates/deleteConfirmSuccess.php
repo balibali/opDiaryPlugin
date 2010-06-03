@@ -9,7 +9,7 @@
 <table>
 <?php include_partial('diaryComment', array('diaryComment' => $diaryComment)) ?>
 <tr><td colspan="2">
-<form action="<?php echo url_for('diaryComment/delete?id='.$diaryComment->id) ?>" method="post">
+<form action="<?php echo url_for('@monitoring_diary_comment_delete?id='.$diaryComment->id) ?>" method="post">
 <?php echo $form[$form->getCSRFFieldName()] ?>
 <input class="input_submit" type="submit" value="<?php echo __('Delete') ?>" />
 </form>

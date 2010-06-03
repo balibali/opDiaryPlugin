@@ -9,11 +9,11 @@
 <?php
 if (!isset($keyword))
 {
-  $pagerLink = 'diary/list?page=%d';
+  $pagerLink = '@monitoring_diary?page=%d';
 }
 else
 {
-  $pagerLink = 'diary/search?keyword='.$keyword.'&page=%d';
+  $pagerLink = '@monitoring_diary_search?keyword='.$keyword.'&page=%d';
 }
 ?>
 <?php if ($pager->getNbResults()): ?>
@@ -22,7 +22,7 @@ else
 <?php foreach ($pager->getResults() as $diary): ?>
 <table>
 <?php include_partial('diary', array('diary' => $diary)) ?>
-<tr><td colspan="2"><form action="<?php echo url_for('diary/deleteConfirm?id='.$diary->id) ?>" method="get"><input type="submit" value="<?php echo __('Delete') ?>" /></form></td></tr>
+<tr><td colspan="2"><form action="<?php echo url_for('@monitoring_diary_delete_confirm?id='.$diary->id) ?>" method="get"><input type="submit" value="<?php echo __('Delete') ?>" /></form></td></tr>
 </table>
 <?php endforeach; ?>
 <p><?php echo op_include_pager_navigation($pager, $pagerLink) ?></p>

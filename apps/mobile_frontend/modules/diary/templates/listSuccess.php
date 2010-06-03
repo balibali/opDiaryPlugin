@@ -2,12 +2,12 @@
 if (!isset($keyword))
 {
   $title = __('Recently Posted Diaries');
-  $pagerLink = 'diary/list?page=%d';
+  $pagerLink = '@diary_list?page=%d';
 }
 else
 {
   $title = __('Search Results');
-  $pagerLink = 'diary/search?keyword='.mb_convert_encoding($keyword, 'SJIS-win', 'UTF-8').'&page=%d';
+  $pagerLink = '@diary_search?keyword='.mb_convert_encoding($keyword, 'SJIS-win', 'UTF-8').'&page=%d';
 }
 ?>
 <?php op_mobile_page_title($title) ?>

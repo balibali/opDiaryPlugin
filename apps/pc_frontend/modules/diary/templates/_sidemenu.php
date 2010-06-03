@@ -1,7 +1,7 @@
 <?php use_helper('opDiary') ?>
 
 <div class="parts memberImageBox">
-<p class="photo"><?php echo link_to(image_tag_sf_image($member->getImageFileName(), array('size' => '120x120')), 'member/profile?id='.$member->id) ?></p>
+<p class="photo"><?php echo link_to(image_tag_sf_image($member->getImageFileName(), array('size' => '120x120')), '@obj_member_profile?id='.$member->id) ?></p>
 <p class="text"><?php echo $member->name ?></p>
 </div>
 

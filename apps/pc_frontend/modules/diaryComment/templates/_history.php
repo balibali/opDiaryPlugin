@@ -14,7 +14,7 @@
 
 <div class="moreInfo">
 <ul class="moreInfo">
-<li><?php echo link_to(__('More'), 'diaryComment/history') ?></li>
+<li><?php echo link_to(__('More'), '@diary_comment_history') ?></li>
 </ul>
 </div>
 

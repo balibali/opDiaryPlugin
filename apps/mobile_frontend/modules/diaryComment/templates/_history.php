@@ -13,7 +13,7 @@ foreach ($list as $diaryCommentUpdate)
             );
 }
 $moreInfo = array();
-$moreInfo[] = link_to(__('More'), 'diaryComment/history');
+$moreInfo[] = link_to(__('More'), '@diary_comment_history');
 $options = array(
   'title'  => __('Diary Comment History'),
   'border' => true,

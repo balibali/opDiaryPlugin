@@ -13,12 +13,12 @@
 if (!isset($keyword))
 {
   $title = __('Recently Posted Diaries');
-  $pagerLink = 'diary/list?page=%d';
+  $pagerLink = '@diary_list?page=%d';
 }
 else
 {
   $title = __('Search Results');
-  $pagerLink = 'diary/search?keyword='.$keyword.'&page=%d';
+  $pagerLink = '@diary_search?keyword='.$keyword.'&page=%d';
 }
 ?>
 <?php if ($pager->getNbResults()): ?>

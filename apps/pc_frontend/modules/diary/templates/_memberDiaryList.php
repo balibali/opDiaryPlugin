@@ -13,7 +13,7 @@
 
 <div class="moreInfo">
 <ul class="moreInfo">
-<li><?php echo link_to(__('More'), 'diary/listMember?id='.$memberId) ?></li>
+<li><?php echo link_to(__('More'), '@diary_list_member?id='.$memberId) ?></li>
 </ul>
 </div>
 
