@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="">
+        <source>Diary Plugin Configuration</source>
+        <target>日記プラグイン設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Use email post</source>
+        <target>メール投稿使用設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Use</source>
+        <target>使用する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Not use</source>
+        <target>使用しない</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>If this is used, "Post via E-mail" link is shown on the mobile pages.</source>
+        <target>使用するに設定した場合、携帯の画面に「メール投稿」のリンクを表示します。</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

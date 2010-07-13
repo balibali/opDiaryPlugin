@@ -38,8 +38,8 @@ $options['isMultipart'] = true;
 op_include_form('formDiaryComment', $form, $options);
 ?>
 
-<?php if ('example.com' !== sfConfig::get('op_mail_domain')): ?>
-[i:106]<?php echo op_mail_to('mail_diary_comment_create', array('id' => $diary->id), __('Post from E-mail')) ?><br>
+<?php if (Doctrine::getTable('SnsConfig')->get('op_diary_plugin_use_email_post', true)): ?>
+[i:106]<?php echo op_mail_to('mail_diary_comment_create', array('id' => $diary->id), __('Post via E-mail')) ?><br>
 <?php echo __('You can attach photo files to e-mail.') ?><br>
 <?php endif; ?>
 
