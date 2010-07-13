@@ -4,7 +4,7 @@
 [<?php echo link_to(__('Delete'), 'diary_comment_delete_confirm', $comment) ?>]
 <?php endif; ?><br>
 <?php echo link_to($comment->Member->name, 'member/profile?id='.$comment->member_id) ?><br>
-<?php echo nl2br($comment->body) ?><br>
+<?php echo op_auto_link_text_for_mobile(nl2br($comment->body)) ?><br>
 <?php if ($comment->has_images): ?>
 <?php foreach ($comment->getDiaryCommentImagesJoinFile() as $image): ?>
 <?php echo link_to(__('View Image'), sf_image_path($image->File, array('size' => '240x320', 'f' => 'jpg'))) ?><br>

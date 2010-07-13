@@ -7,7 +7,7 @@
 [<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary_delete_confirm', $diary) ?>]
 <?php endif; ?><br>
 
-<?php echo op_decoration(nl2br($diary->body)) ?><br>
+<?php echo op_auto_link_text_for_mobile(op_decoration(nl2br($diary->body))) ?><br>
 
 <?php if ($diary->has_images): ?>
 <?php foreach ($diary->getDiaryImages() as $image): ?>
