@@ -19,6 +19,11 @@ class diaryCommentActions extends opDiaryPluginMailActions
 {
   public function executeCreate(opMailRequest $request)
   {
+    if (!Doctrine::getTable('SnsConfig')->get('op_diary_plugin_use_email_post', true))
+    {
+      return sfView::NONE;
+    }
+
     $member = $this->getRoute()->getMember();
     if (!$member)
     {
