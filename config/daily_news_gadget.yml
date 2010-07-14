@@ -1,0 +1,21 @@
+dailyNewsDiary:
+  caption:
+    ja_JP: "フレンド最新日記"
+  description:
+    ja_JP: "デイリーニュースにフレンドの最新日記を表示します"
+  viewable_privilege: 4
+  component: [diary, dailyNews]
+  config:
+    max:
+      Name:      "max"
+      Caption:   "最大表示件数"
+      FormType:  "select"
+      ValueType:  "int"
+      IsRequired: true
+      Default:    5
+      Choices:
+        1: 1
+        3: 3
+        5: 5
+        7: 7
+        10: 10

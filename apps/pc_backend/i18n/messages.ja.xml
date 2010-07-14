@@ -30,6 +30,10 @@
         <source>If this is used, activity message is updated automatically by posting a diary. To show the activity list, see "Appearance" > "ガジェット設定".</source>
         <target>使用するに設定した場合、日記が投稿された際にアクティビティが自動更新されます。アクティビティリストの表示設定は、「デザイン設定」>「ガジェット設定」から行ってください。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Friend diaries for daily news</source>
+        <target>デイリーニュース用フレンド日記</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

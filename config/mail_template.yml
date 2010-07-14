@@ -1,0 +1,41 @@
+pc:
+  diaryGagdet:
+    caption: "Friend diaries for daily news"
+    configurable: false
+    sample:
+      ja_JP:
+        - "タイトル領域は使っていません"
+        - |
+          フレンド日記最新{{ count }}件をお知らせします。
+          
+          {% for diary in diaries %}
+          ニックネーム：{{ diary.Member.name }}さん
+          タイトル　　：{{ diary.title }}
+          日記を見る　：{{ sf_config.op_base_url }}/diary/{{ diary.id }}
+          
+          {% endfor %}
+    variables:
+      "sf_config.op_base_url": "ベースの URL"
+      diaries: "フレンドの日記の配列"
+      count: "表示する日記の総数"
+
+mobile:
+  diaryGagdet:
+    caption: "Friend diaries for daily news"
+    configurable: false
+    sample:
+      ja_JP:
+        - "タイトル領域は使っていません"
+        - |
+          フレンド日記最新{{ count }}件をお知らせします。
+          
+          {% for diary in diaries %}
+          ニックネーム：{{ diary.Member.name }}さん
+          タイトル　　：{{ diary.title }}
+          日記を見る　：{{ sf_config.op_base_url }}/diary/{{ diary.id }}
+          
+          {% endfor %}
+    variables:
+      "sf_config.op_base_url": "ベースの URL"
+      diaries: "フレンドの日記の配列"
+      count: "表示する日記の総数"
