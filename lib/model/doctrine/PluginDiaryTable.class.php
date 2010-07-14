@@ -75,7 +75,11 @@ abstract class PluginDiaryTable extends Doctrine_Table
     $this->addPublicFlagQuery($q, $publicFlag);
     $this->addSearchKeywordQuery($q, $keywords);
 
-    return $this->getPager($q, $page, $size);
+    $pager = new opNonCountQueryPager('Diary', $size);
+    $pager->setQuery($q);
+    $pager->setPage($page);
+
+    return $pager;
   }
 
   public function getMemberDiaryList($memberId, $limit = 5, $myMemberId = null)
