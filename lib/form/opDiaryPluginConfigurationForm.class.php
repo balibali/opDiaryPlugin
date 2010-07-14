@@ -26,11 +26,21 @@ class opDiaryPluginConfigurationForm extends BaseForm
     $this->setDefault('use_email_post', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_use_email_post', '1'));
     $this->widgetSchema->setHelp('use_email_post', 'If this is used, "Post via E-mail" link is shown on the mobile pages.');
 
+    $this->setWidget('update_activity', new sfWidgetFormSelectRadio(array('choices' => $choices)));
+    $this->setValidator('update_activity', new sfValidatorChoice(array('choices' => array_keys($choices))));
+    $this->setDefault('update_activity', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_update_activity', '0'));
+    $this->widgetSchema->setHelp('update_activity', 'If this is used, activity message is updated automatically by posting a diary. To show the activity list, see "Appearance" > "ガジェット設定".');
+
     $this->widgetSchema->setNameFormat('op_diary_plugin[%s]');
   }
 
   public function save()
   {
-    Doctrine::getTable('SnsConfig')->set('op_diary_plugin_use_email_post', $this->getValue('use_email_post'));
+    $names = array('use_email_post', 'update_activity');
+
+    foreach ($names as $name)
+    {
+      Doctrine::getTable('SnsConfig')->set('op_diary_plugin_'.$name, $this->getValue($name));
+    }
   }
 }

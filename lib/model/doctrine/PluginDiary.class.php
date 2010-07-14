@@ -128,4 +128,20 @@ abstract class PluginDiary extends BaseDiary
       $image->delete();
     }
   }
+
+  public function postInsert($event)
+  {
+    if (Doctrine::getTable('SnsConfig')->get('op_diary_plugin_update_activity', false))
+    {
+      $body = '[Diary] '.$this->title;
+      $options = array(
+        'public_flag' => sfConfig::get('op_activity_is_open', false) && $this->is_open ? 0 : $this->public_flag,
+        'uri' => '@diary_show?id='.$this->id,
+        'source' => 'Diary',
+        'template' => 'diary',
+        'template_param' => array('%1%' => $this->title),
+      );
+      Doctrine::getTable('ActivityData')->updateActivity($this->member_id, $body, $options);
+    }
+  }
 }

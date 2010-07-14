@@ -22,6 +22,14 @@
         <source>If this is used, "Post via E-mail" link is shown on the mobile pages.</source>
         <target>使用するに設定した場合、携帯の画面に「メール投稿」のリンクを表示します。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Update activity</source>
+        <target>アクティビティ更新設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>If this is used, activity message is updated automatically by posting a diary. To show the activity list, see "Appearance" > "ガジェット設定".</source>
+        <target>使用するに設定した場合、日記が投稿された際にアクティビティが自動更新されます。アクティビティリストの表示設定は、「デザイン設定」>「ガジェット設定」から行ってください。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
