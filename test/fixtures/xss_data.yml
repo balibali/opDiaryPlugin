@@ -1,0 +1,33 @@
+Member:
+  html_member_1:
+    id: 1055 # it means "XSS (X-55)"
+    name: "<&\"'>Member.name ESCAPING HTML TEST DATA"
+    is_active: 1
+
+MemberConfig:
+  html_member_1_pc_address:
+    name: "pc_address"
+    value: "html1@example.com"
+    Member: html_member_1
+  html_member_1_password:
+    name: "password"
+    value: <?php echo md5('password') . "\n"; ?>
+    Member: html_member_1
+
+Diary:
+  html_diary_1:
+    id: 1055
+    Member: html_member_1
+    title: "<&\"'>Diary.title ESCAPING HTML TEST DATA"
+    body: "<&\"'>Diary.body ESCAPING HTML TEST DATA"
+    created_at: "2009-01-01 10:00:00"
+    updated_at: "2009-01-01 10:00:00"
+
+DiaryComment:
+  html_diary_comment_1:
+    id: 1055
+    Member: html_member_1
+    Diary: html_diary_1
+    number: 1
+    body: "<&\"'>DiaryComment.body ESCAPING HTML TEST DATA"
+
