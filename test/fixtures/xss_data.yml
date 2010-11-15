@@ -4,6 +4,11 @@ Member:
     name: "<&\"'>Member.name ESCAPING HTML TEST DATA"
     is_active: 1
 
+  html_member_2:
+    id: 1056
+    name: "<&\"'>Member.name ESCAPING HTML TEST DATA"
+    is_active: 1
+
 MemberConfig:
   html_member_1_pc_address:
     name: "pc_address"
@@ -20,8 +25,16 @@ Diary:
     Member: html_member_1
     title: "<&\"'>Diary.title ESCAPING HTML TEST DATA"
     body: "<&\"'>Diary.body ESCAPING HTML TEST DATA"
-    created_at: "2009-01-01 10:00:00"
-    updated_at: "2009-01-01 10:00:00"
+    created_at: "<?php echo date('Y-m-d H:i:s', strtotime('tomorrow')) ?>"
+    updated_at: "<?php echo date('Y-m-d H:i:s', strtotime('tomorrow')) ?>"
+
+  html_diary_2:
+    id: 1056
+    Member: html_member_2
+    title: "<&\"'>Diary.title ESCAPING HTML TEST DATA"
+    body: "<&\"'>Diary.body ESCAPING HTML TEST DATA"
+    created_at: "<?php echo date('Y-m-d H:i:s', strtotime('tomorrow')) ?>"
+    updated_at: "<?php echo date('Y-m-d H:i:s', strtotime('tomorrow')) ?>"
 
 DiaryComment:
   html_diary_comment_1:
@@ -31,3 +44,71 @@ DiaryComment:
     number: 1
     body: "<&\"'>DiaryComment.body ESCAPING HTML TEST DATA"
 
+DiaryCommentUpdate:
+  html_diary_comment_1:
+    Member: html_member_1
+    Diary: html_diary_1
+    last_comment_time: "<?php echo date('Y-m-d H:i:s', strtotime('tomorrow')) ?>"
+    my_last_comment_time: "<?php echo date('Y-m-d H:i:s', strtotime('tomorrow')) ?>"
+
+MemberRelationship:
+  html_member_relationship_1_from_2:
+    Member: html_member_1
+    MemberRelatedByMemberIdFrom: html_member_2
+    is_friend: true
+
+  html_member_relationship_2_from_1:
+    Member: html_member_2
+    MemberRelatedByMemberIdFrom: html_member_1
+    is_friend: true
+
+Gadget:
+  diay_friend_list:
+    type: "contents"
+    name: "diaryFriendList"
+    sort_order: 101
+
+  diay_list:
+    type: "contents"
+    name: "diaryList"
+    sort_order: 102
+
+  diary_comment_history:
+    type: "contents"
+    name: "diaryCommentHistory"
+    sort_order: 103
+
+  diary_my_list:
+    type: "contents"
+    name: "diaryMyList"
+    sort_order: 104
+
+  diary_profile_list:
+    type: "profileContents"
+    name: "diaryMemberList"
+    sort_order: 101
+
+  mobile_diay_friend_list:
+    type: "mobileContents"
+    name: "diaryFriendList"
+    sort_order: 101
+
+  mobile_diay_list:
+    type: "mobileContents"
+    name: "diaryList"
+    sort_order: 102
+
+  mobile_diary_comment_history:
+    type: "mobileContents"
+    name: "diaryCommentHistory"
+    sort_order: 103
+
+  mobile_diary_my_list:
+    type: "mobileContents"
+    name: "diaryMyList"
+    sort_order: 104
+
+  mobile_diary_profile_list:
+    type: "mobileProfileContents"
+    name: "diaryMemberList"
+    sort_order: 101
