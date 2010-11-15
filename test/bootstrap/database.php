@@ -16,7 +16,7 @@ new sfDatabaseManager($configuration);
 
 try
 {
-  if (2 > (int)Doctrine::getTable('SnsConfig')->get('opDiaryPlugin_test_revision'))
+  if (3 > (int)Doctrine::getTable('SnsConfig')->get('opDiaryPlugin_test_revision'))
   {
     throw new Exception();
   }
@@ -28,12 +28,15 @@ catch (Exception $e)
   $task->run(array(), array(
     'no-confirmation' => true,
     'db'              => true,
-    'and-load'        => true,
+    'and-load'        => false,
     'application'     => $_app,
     'env'             => $_env,
   ));
 
   $task = new sfDoctrineDataLoadTask($configuration->getEventDispatcher(), new sfFormatter());
   $task->setConfiguration($configuration);
-  $task->run(dirname(__FILE__).'/../fixtures');
+  $task->run(array(
+    dirname(__FILE__).'/../../../../data/fixtures/010_import_sns_terms.yml',
+    dirname(__FILE__).'/../fixtures',
+  ));
 }
