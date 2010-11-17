@@ -8,7 +8,10 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-$_app = 'pc_frontend';
+if (empty($_app))
+{
+  $_app = 'pc_frontend';
+}
 $_env = 'test';
 
 $configuration = ProjectConfiguration::getApplicationConfiguration($_app, $_env, true);
@@ -16,7 +19,7 @@ new sfDatabaseManager($configuration);
 
 try
 {
-  if (3 > (int)Doctrine::getTable('SnsConfig')->get('opDiaryPlugin_test_revision'))
+  if (4 > (int)Doctrine::getTable('SnsConfig')->get('opDiaryPlugin_test_revision'))
   {
     throw new Exception();
   }
@@ -37,6 +40,7 @@ catch (Exception $e)
   $task->setConfiguration($configuration);
   $task->run(array(
     dirname(__FILE__).'/../../../../data/fixtures/010_import_sns_terms.yml',
+    dirname(__FILE__).'/../../../../data/fixtures/003_import_admin_user.yml',
     dirname(__FILE__).'/../fixtures',
   ));
 }
