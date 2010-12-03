@@ -65,6 +65,11 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeShow(sfWebRequest $request)
   {
+    if (!$this->diary->is_open && !$this->getUser()->hasCredential('SNSMember'))
+    {
+      $this->forward(sfConfig::get('sf_login_module'), sfConfig::get('sf_login_action'));
+    }
+
     $this->forward404Unless($this->isDiaryViewable());
 
     if ($this->isDiaryAuthor())

@@ -8,6 +8,8 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
+ini_set('memory_limit', '256M');
+
 // guess current application
 if (!isset($app))
 {
