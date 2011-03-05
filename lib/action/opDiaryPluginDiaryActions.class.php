@@ -24,7 +24,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeList(sfWebRequest $request)
   {
-    $publicFlag = $this->member ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
+    $publicFlag = $this->isSnsMember() ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
 
     $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request['page'], 20, $publicFlag);
   }
@@ -36,7 +36,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
     $keywords = opDiaryPluginToolkit::parseKeyword($this->keyword);
     $this->forwardUnless($keywords, 'diary', 'list');
 
-    $publicFlag = $this->member ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
+    $publicFlag = $this->isSnsMember() ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
 
     $this->pager = Doctrine::getTable('Diary')->getDiarySearchPager($keywords, $request['page'], 20, $publicFlag);
     $this->setTemplate('list');
@@ -55,7 +55,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
       $this->forward404Unless(checkdate($this->month, ($this->day) ? $this->day : 1, $this->year), 'Invalid date format');
     }
 
-    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->id, $request['page'], 20, $this->getUser()->getMemberId(), $this->year, $this->month, $this->day);
+    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->id, $request['page'], 20, $this->myMemberId, $this->year, $this->month, $this->day);
   }
 
   public function executeListFriend(sfWebRequest $request)
@@ -65,6 +65,11 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeShow(sfWebRequest $request)
   {
+    if (!$this->diary->is_open && !$this->isSnsMember())
+    {
+      $this->forward(sfConfig::get('sf_login_module'), sfConfig::get('sf_login_action'));
+    }
+
     $this->forward404Unless($this->isDiaryViewable());
 
     if ($this->isDiaryAuthor())

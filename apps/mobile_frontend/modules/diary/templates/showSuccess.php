@@ -3,7 +3,7 @@
 
 <?php echo op_within_page_link() ?>
 <?php echo op_format_date($diary->created_at, 'XDateTime') ?>
-<?php if ($diary->member_id === $sf_user->getMemberId()): ?>
+<?php if ($diary->member_id === $myMemberId): ?>
 [<?php echo link_to(__('Edit'), 'diary_edit', $diary) ?>][<?php echo link_to(__('Delete'), 'diary_delete_confirm', $diary) ?>]
 <?php endif; ?><br>
 
@@ -17,17 +17,17 @@
 
 (<?php echo $diary->getPublicFlagLabel() ?>)<br>
 
-<?php if ($diary->getPrevious($sf_user->getMemberId()) || $diary->getNext($sf_user->getMemberId())): ?>
+<?php if ($diary->getPrevious($myMemberId) || $diary->getNext($myMemberId)): ?>
 <hr color="<?php echo $op_color["core_color_11"] ?>">
 <center>
-<?php if ($diary->getPrevious($sf_user->getMemberId())): ?> <?php echo link_to(__('Previous Diary'), 'diary_show', $diary->getPrevious($sf_user->getMemberId())) ?><?php endif; ?>
-<?php if ($diary->getNext($sf_user->getMemberId())): ?> <?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext($sf_user->getMemberId())) ?><?php endif; ?>
+<?php if ($diary->getPrevious($myMemberId)): ?> <?php echo link_to(__('Previous Diary'), 'diary_show', $diary->getPrevious($myMemberId)) ?><?php endif; ?>
+<?php if ($diary->getNext($myMemberId)): ?> <?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext($myMemberId)) ?><?php endif; ?>
 </center>
 <?php endif; ?>
 
 <?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>
 
-<?php if ($sf_user->getMemberId()): ?>
+<?php if ($myMemberId): ?>
 <hr color="<?php echo $op_color["core_color_11"] ?>">
 <?php echo op_within_page_link('') ?>
 <?php
@@ -51,6 +51,6 @@ op_include_form('formDiaryComment', $form, $options);
 
 <hr color="<?php echo $op_color["core_color_11"] ?>">
 <?php echo link_to(__('Diaries of %1%', array('%1%' => $member->name)), 'diary_list_member', $member) ?><br>
-<?php if ($diary->member_id !== $sf_user->getMemberId()): ?>
+<?php if ($myMemberId && $diary->member_id !== $myMemberId): ?>
 <?php echo link_to(__('Profile of %1%', array('%1%' => $member->name)), 'member/profile?id='.$member->id) ?><br>
 <?php endif; ?>

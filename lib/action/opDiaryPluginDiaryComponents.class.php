@@ -49,4 +49,14 @@ class opDiaryPluginDiaryComponents extends sfComponents
       $this->diary = Doctrine::getTable('DiaryCommentUnread')->findOneByMemberId($memberId)->Diary;
     }
   }
+
+  protected function isSnsMember()
+  {
+    return $this->getUser()->isAuthenticated() && $this->getUser()->hasCredential('SNSMember');
+  }
+
+  protected function getSnsMemberId()
+  {
+    return $this->isSnsMember() ? $this->getUser()->getMemberId() : null;
+  }
 }

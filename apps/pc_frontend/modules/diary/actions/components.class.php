@@ -31,9 +31,9 @@ class diaryComponents extends opDiaryPluginDiaryComponents
     $this->calendar = new Calendar_Month_Weekdays($this->year, $this->month, 0);
     $this->calendar->build();
 
-    $this->calendarDiaryDays = Doctrine::getTable('Diary')->getMemberDiaryDays($this->member->getId(), $this->getUser()->getMemberId(), $this->year, $this->month);
+    $this->calendarDiaryDays = Doctrine::getTable('Diary')->getMemberDiaryDays($this->member->getId(), $this->getSnsMemberId(), $this->year, $this->month);
 
     // Recent Diary List
-    $this->recentDiaryList = Doctrine::getTable('Diary')->getMemberDiaryList($this->member->getId(), 5, $this->getUser()->getMemberId());
+    $this->recentDiaryList = Doctrine::getTable('Diary')->getMemberDiaryList($this->member->getId(), 5, $this->getSnsMemberId());
   }
 }
