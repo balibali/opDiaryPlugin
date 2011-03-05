@@ -55,11 +55,13 @@ class opDiaryPluginActions extends sfActions
       $relation = Doctrine::getTable('MemberRelationship')->retrieveByFromAndTo($this->member->getId(), $this->getUser()->getMemberId());
       $this->forwardIf($relation && $relation->getIsAccessBlock(), 'default', 'error');
     }
+
+    $this->myMemberId = $this->getSnsMemberId();
   }
 
   public function postExecute()
   {
-    if ($this->getUser()->isAuthenticated())
+    if ($this->isSnsMember())
     {
       $this->setNavigation($this->member);
 
@@ -104,5 +106,15 @@ class opDiaryPluginActions extends sfActions
   protected function isDiaryViewable()
   {
     return $this->diary->isViewable($this->getUser()->getMemberId());
+  }
+
+  protected function isSnsMember()
+  {
+    return $this->getUser()->isAuthenticated() && $this->getUser()->hasCredential('SNSMember');
+  }
+
+  protected function getSnsMemberId()
+  {
+    return $this->isSnsMember() ? $this->getUser()->getMemberId() : null;
   }
 }
