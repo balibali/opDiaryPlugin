@@ -1,38 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
  <name>opDiaryPlugin</name>
  <channel>plugins.openpne.jp</channel>
  <summary>opDiaryPlugin</summary>
- <description>opDiaryPlugin</description>
+ <description>日記機能を追加するプラグインです。</description>
  <lead>
   <name>Rimpei Ogawa</name>
   <user>ogawa</user>
   <email />
   <active>yes</active>
  </lead>
- <date>2010-04-15</date>
- <time>00:00:24</time>
+ <date>2011-04-09</date>
+ <time>04:14:38</time>
  <version>
-  <release>1.0.0</release>
-  <api>1.0.0</api>
+  <release>1.0.0.1</release>
+  <api>1.0.0.1</api>
  </version>
  <stability>
   <release>stable</release>
   <api>stable</api>
  </stability>
  <license>apache</license>
- <notes>Changes since version 0.9.3:
-* Backport #383: Call MemberRelationshipTable's method with wrong parameter count in DiaryTable::addFriendQuery()
-* Backport #447: Cannot delete diary images by application-level cascading deletion
-* Backport #850: Empty string is allowed in the Diary and DiaryComment forms
-* Backport #886: The link of comment image isn't displayed in the mobile_frontend
-* Backport #951: Japanese translation message for "View Image" does not exist
-* Backport #953: New diary comment message does not break line in mobile homepage
-* Backport #954: No information that the comments of open diaries are visible to all users on the Web
-* Backport #956: Not deleted new diary comment message in the information box when the diary is deleted directly</notes>
+ <notes>
+fixed missing SNSMember credential checking
+ </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="2bcec9045b32de9d9121c27fe72d4a6e" name="apps/mobile_frontend/config/app.yml" role="data" />
@@ -46,7 +40,7 @@
    <file baseinstalldir="/" md5sum="204611320fecfa96310bbc77b94ef8e8" name="apps/mobile_frontend/modules/diary/templates/listMemberSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="5ddabc2920064c20f1d345933ad30df3" name="apps/mobile_frontend/modules/diary/templates/listSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="6a5cd1896415e405b7d77f6ceed1913f" name="apps/mobile_frontend/modules/diary/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="7daed16738ff27ddf0822c023c597758" name="apps/mobile_frontend/modules/diary/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="976d92571786634289e5ce10bf0aa298" name="apps/mobile_frontend/modules/diary/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="1f0f5df232968cffdfe18d168ba6a8a2" name="apps/mobile_frontend/modules/diary/templates/_diaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="8c8fcb454724ea5a81c94a0e121cd08a" name="apps/mobile_frontend/modules/diary/templates/_friendDiaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="950ba6c5ef951a088ad635fba0c9149e" name="apps/mobile_frontend/modules/diary/templates/_memberDiaryList.php" role="data" />
@@ -80,7 +74,7 @@
    <file baseinstalldir="/" md5sum="3cb6fb1b991b5755385121e80bab66a6" name="apps/pc_backend/modules/diaryComment/templates/_searchForm.php" role="data" />
    <file baseinstalldir="/" md5sum="681117589e093a8a5a3fdfb44a08c2d0" name="apps/pc_frontend/config/app.yml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/pc_frontend/modules/diary/actions/actions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="4887c68219806c49c6fb8eddf0d16197" name="apps/pc_frontend/modules/diary/actions/components.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="4d7f0c4c548596ca97258b0cc39f47f1" name="apps/pc_frontend/modules/diary/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0bc8dbb8831213e2606a1fdcd499b9ea" name="apps/pc_frontend/modules/diary/config/security.yml" role="data" />
    <file baseinstalldir="/" md5sum="b854ac284198fb6cd48badcec20a6671" name="apps/pc_frontend/modules/diary/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="ab703d30fcdb267152536a33a594ee85" name="apps/pc_frontend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
@@ -89,7 +83,7 @@
    <file baseinstalldir="/" md5sum="e5e88fbb45d4831d4500bd8bc658dd24" name="apps/pc_frontend/modules/diary/templates/listMemberSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="ef2f574e8f4598e2fd771c8eeb2e2b6e" name="apps/pc_frontend/modules/diary/templates/listSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="a5e548d3ff8807b5ea3459b26879644c" name="apps/pc_frontend/modules/diary/templates/newSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="6b1514848b1473becbb37c7378145341" name="apps/pc_frontend/modules/diary/templates/showSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="fb8e25c560e3292e0de7ac4d6f3d5e3e" name="apps/pc_frontend/modules/diary/templates/showSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="47185aad28cc6cf226a75cea9236b660" name="apps/pc_frontend/modules/diary/templates/_diaryList.php" role="data" />
    <file baseinstalldir="/" md5sum="b102ea1f7a86793e9d38cfc1f7943d0e" name="apps/pc_frontend/modules/diary/templates/_form.php" role="data" />
    <file baseinstalldir="/" md5sum="64346e0fd2fa85c752869e0574af8f43" name="apps/pc_frontend/modules/diary/templates/_formEditImage.php" role="data" />
@@ -123,11 +117,11 @@
    <file baseinstalldir="/" md5sum="65f276268b936ed549dd4e197e2227d7" name="data/migrations/0.9.2/004_fix_cascade_diary_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="5a3791966feacf67c5f266454aa9df40" name="i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ff14e22a0119036fe8c828b5b60979d2" name="i18n/publicFlags.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="efedd7964db99d01ddd05c99f82705c6" name="lib/action/opDiaryPluginActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="bad07cef0da23d5c55a717bdb8089e57" name="lib/action/opDiaryPluginDiaryActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="7e0ba46f14a811e4d995dcf2616cf687" name="lib/action/opDiaryPluginActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="80b6f2337c3fe80eb851ebc69bb6a17e" name="lib/action/opDiaryPluginDiaryActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a0ec0f442d4918b6139724f6c817e3b3" name="lib/action/opDiaryPluginDiaryCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ca7600c716d3ec1b185cd5df954969b0" name="lib/action/opDiaryPluginDiaryCommentComponents.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="0672cd062039acb208cb87b6cb13739e" name="lib/action/opDiaryPluginDiaryComponents.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="5497a228ad1b916bf4ac8617d9e83bc7" name="lib/action/opDiaryPluginDiaryComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="e62d6d2d404c29785b9d8aff0257a4fe" name="lib/action/opDiaryPluginMailActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="cc527065e80393302c5d6628ee481ac6" name="lib/filter/doctrine/PluginDiaryCommentFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0c5a4a5398f332074535ab48fc16b143" name="lib/filter/doctrine/PluginDiaryCommentImageFormFilter.class.php" role="data" />
@@ -192,11 +186,6 @@
    <pearinstaller>
     <min>1.4.0</min>
    </pearinstaller>
-   <package>
-    <name>symfony</name>
-    <channel>pear.symfony-project.com</channel>
-    <min>1.2.0</min>
-   </package>
   </required>
  </dependencies>
  <phprelease />
@@ -212,7 +201,9 @@
    </stability>
    <date>2009-02-05</date>
    <license>Apache</license>
-   <notes>The first beta release of the opDiaryPlugin.</notes>
+   <notes>
+The first beta release of the opDiaryPlugin.
+   </notes>
   </release>
   <release>
    <version>
@@ -225,7 +216,9 @@
    </stability>
    <date>2009-02-08</date>
    <license>Apache</license>
-   <notes>Fixed some bugs.</notes>
+   <notes>
+Fixed some bugs.
+   </notes>
   </release>
   <release>
    <version>
@@ -238,7 +231,9 @@
    </stability>
    <date>2009-05-24</date>
    <license>apache</license>
-   <notes>This version is compatible with Doctrine and OpenPNE 3.1.0 or higher.</notes>
+   <notes>
+This version is compatible with Doctrine and OpenPNE 3.1.0 or higher.
+   </notes>
   </release>
   <release>
    <version>
@@ -251,13 +246,15 @@
    </stability>
    <date>2009-10-21</date>
    <license>apache</license>
-   <notes>* Added new public flag PUBLIC_FLAG_OPEN. The diaries set PUBLIC_FLAG_OPEN are viewable all users on the Web
+   <notes>
+* Added new public flag PUBLIC_FLAG_OPEN. The diaries set PUBLIC_FLAG_OPEN are viewable all users on the Web
 * Added search feature
 * Added diary comment history
 * Supported text decoration (thanks to Shogo Kawahara)
 * Supported mobile_frontend gadget
 * Supported the feature of replacing SNS terms
-* Fixed pager navigations bug</notes>
+* Fixed pager navigations bug
+   </notes>
   </release>
   <release>
    <version>
@@ -270,7 +267,9 @@
    </stability>
    <date>2009-10-22</date>
    <license>apache</license>
-   <notes>Fixed a opPlugin:install issue.</notes>
+   <notes>
+Fixed a opPlugin:install issue.
+   </notes>
   </release>
   <release>
    <version>
@@ -283,7 +282,9 @@
    </stability>
    <date>2009-10-23</date>
    <license>apache</license>
-   <notes>Fixed diary comment pager bug.</notes>
+   <notes>
+Fixed diary comment pager bug.
+   </notes>
   </release>
   <release>
    <version>
@@ -296,13 +297,15 @@
    </stability>
    <date>2009-11-23</date>
    <license>apache</license>
-   <notes>* Fixed the feature of access block to work correctly
+   <notes>
+* Fixed the feature of access block to work correctly
 * Fixed a bug for deleting commented diaries
 * Fixed migration scripts and added a migrate revision to setup fixtures
 * Fixed a bug for remaining file_bin records when diary/diary_comment was deleted
 * Fixed an I18N bug for DiaryImageForm, the delete label &quot;remove the current photo&quot; was not translated
 * Striped op tags in the list pages
-* Added the feature of changing diary_show link urls by posting comments in home gadgets and list pages</notes>
+* Added the feature of changing diary_show link urls by posting comments in home gadgets and list pages
+   </notes>
   </release>
   <release>
    <version>
@@ -315,9 +318,11 @@
    </stability>
    <date>2009-12-14</date>
    <license>apache</license>
-   <notes>* added the feature of posting diary and diary comment from e-mail
+   <notes>
+* added the feature of posting diary and diary comment from e-mail
 * added pc_backend monitoring pages
-* added default public flag setting for each members</notes>
+* added default public flag setting for each members
+   </notes>
   </release>
   <release>
    <version>
@@ -330,15 +335,32 @@
    </stability>
    <date>2010-04-15</date>
    <license>apache</license>
-   <notes>Changes since version 0.9.3:
-* Backport #383: Call MemberRelationshipTable's method with wrong parameter count in DiaryTable::addFriendQuery()
+   <notes>
+Changes since version 0.9.3:
+* Backport #383: Call MemberRelationshipTable&apos;s method with wrong parameter count in DiaryTable::addFriendQuery()
 * Backport #447: Cannot delete diary images by application-level cascading deletion
 * Backport #850: Empty string is allowed in the Diary and DiaryComment forms
-* Backport #886: The link of comment image isn't displayed in the mobile_frontend
-* Backport #951: Japanese translation message for "View Image" does not exist
+* Backport #886: The link of comment image isn&apos;t displayed in the mobile_frontend
+* Backport #951: Japanese translation message for &quot;View Image&quot; does not exist
 * Backport #953: New diary comment message does not break line in mobile homepage
 * Backport #954: No information that the comments of open diaries are visible to all users on the Web
-* Backport #956: Not deleted new diary comment message in the information box when the diary is deleted directly</notes>
+* Backport #956: Not deleted new diary comment message in the information box when the diary is deleted directly
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0.1</release>
+    <api>1.0.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-04-09</date>
+   <license>apache</license>
+   <notes>
+fixed missing SNSMember credential checking
+   </notes>
   </release>
  </changelog>
 </package>
