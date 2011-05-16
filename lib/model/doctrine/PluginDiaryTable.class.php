@@ -30,7 +30,8 @@ abstract class PluginDiaryTable extends Doctrine_Table
 
   public function getPublicFlags()
   {
-    if (!sfConfig::get('app_op_diary_plugin_is_open', true))
+    if (!Doctrine::getTable('SnsConfig')->get('op_diary_plugin_use_open_diary', true)
+        || !sfConfig::get('app_op_diary_plugin_is_open', true))
     {
       unset(self::$publicFlags[self::PUBLIC_FLAG_OPEN]);
     }

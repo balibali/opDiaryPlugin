@@ -58,6 +58,14 @@
         <source>Please input the number of days that reflects to the diary search.</source>
         <target>検索に反映する日数を入力してください。</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Use open diary</source>
+        <target>Web全体に公開機能使用設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>If this is used, members can select the "All Users on the Web" public flag. If not used, anonymous users can't view any diary pages.</source>
+        <target>使用するに設定した場合、メンバーは「Web全体に公開」の日記を作成することができます。使用しないに設定した場合、すべての日記関連ページに非ログイン状態ではアクセスできないようになります。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

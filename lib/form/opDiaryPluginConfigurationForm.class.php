@@ -21,6 +21,11 @@ class opDiaryPluginConfigurationForm extends BaseForm
   {
     $choices = array('1' => 'Use', '0' => 'Not use');
 
+    $this->setWidget('use_open_diary', new sfWidgetFormSelectRadio(array('choices' => $choices)));
+    $this->setValidator('use_open_diary', new sfValidatorChoice(array('choices' => array_keys($choices))));
+    $this->setDefault('use_open_diary', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_use_open_diary', '1'));
+    $this->widgetSchema->setHelp('use_open_diary', 'If this is used, members can select the "All Users on the Web" public flag. If not used, anonymous users can\'t view any diary pages.');
+
     $this->setWidget('use_email_post', new sfWidgetFormSelectRadio(array('choices' => $choices)));
     $this->setValidator('use_email_post', new sfValidatorChoice(array('choices' => array_keys($choices))));
     $this->setDefault('use_email_post', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_use_email_post', '1'));
@@ -51,7 +56,7 @@ class opDiaryPluginConfigurationForm extends BaseForm
 
   public function save()
   {
-    $names = array('use_email_post', 'update_activity', 'search_enable', 'search_period_enable', 'search_period');
+    $names = array('use_open_diary', 'use_email_post', 'update_activity', 'search_enable', 'search_period_enable', 'search_period');
 
     foreach ($names as $name)
     {
