@@ -8,20 +8,6 @@ include dirname(__FILE__).'/../../bootstrap/database.php';
 
 $test->setCulture('en');
 
-$test->info('Unauthenticated User Test')
-  ->get('/diary/listMember/1/2009/3/1')
-  ->isForwardedTo('diary', 'listMember')
-
-  ->get('/diary/listMember/1/2009/3')
-  ->isForwardedTo('diary', 'listMember')
-
-  ->get('/diary/listMember/1')
-  ->isForwardedTo('diary', 'listMember')
-
-  ->get('/diary/3')
-  ->isForwardedTo('diary', 'show')
-;
-
 $test->login('sns4@example.com', 'password');
 $test->info('AccessBlocked Member Test')
   ->get('/diary/listMember/1/2009/3/1')
