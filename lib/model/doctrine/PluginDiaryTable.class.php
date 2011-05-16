@@ -291,4 +291,14 @@ abstract class PluginDiaryTable extends Doctrine_Table
       $q->andWhere('title LIKE ? OR body LIKE ?', array('%'.$keyword.'%', '%'.$keyword.'%'));
     }
   }
+
+  public function hasOpenDiary($memberId)
+  {
+    return (bool)$this->createQuery()
+      ->select('id')
+      ->andWhere('member_id = ?', $memberId)
+      ->andWhere('is_open = 1')
+      ->limit(1)
+      ->execute(array(), Doctrine::HYDRATE_NONE);
+  }
 }

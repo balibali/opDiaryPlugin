@@ -19,6 +19,14 @@ Member:
     id: 5
     name: "Ebio"
     is_active: true
+  member6:
+    id: 6
+    name: "Frederick"
+    is_active: true
+  member7:
+    id: 7
+    name: "George"
+    is_active: true
 
 MemberConfig:
 <?php for ($i = 1; $i <= 5; $i++): ?>

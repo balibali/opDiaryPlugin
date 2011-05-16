@@ -38,6 +38,15 @@ Diary:
     created_at: "2009-01-01 12:00:00"
     updated_at: "2009-01-01 12:00:00"
     public_flag: 3
+  diary6:
+    id: 6
+    Member: member6
+    title: "Sample Title"
+    body: "Sample Body"
+    created_at: "2009-01-01 13:00:00"
+    updated_at: "2009-01-01 13:00:00"
+    public_flag: 1
+    is_open: 0
 
 <?php for ($i = 1; $i <= 20; $i++): ?>
   diary_for_member3_<?php echo $i ?>:
