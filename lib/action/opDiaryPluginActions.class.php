@@ -28,7 +28,18 @@ class opDiaryPluginActions extends sfActions
   {
     if (is_callable(array($this->getRoute(), 'getObject')))
     {
-      $object = $this->getRoute()->getObject();
+      try
+      {
+        $object = $this->getRoute()->getObject();
+      }
+      catch (sfError404Exception $e)
+      {
+        $this->forwardUnless($this->getUser()->isSNSMember(),
+            sfConfig::get('sf_login_module'), sfConfig::get('sf_login_action'));
+
+        throw $e;
+      }
+
       if ($object instanceof Diary)
       {
         $this->diary = $object;
