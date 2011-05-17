@@ -19,6 +19,11 @@ class opDiaryPluginRoutingBackend
   static public function getRoutes()
   {
     return array(
+      'opDiaryPlugin' => new sfRoute(
+        '/opDiaryPlugin',
+        array('module' => 'opDiaryPlugin', 'action' => 'index')
+      ),
+
       'monitoring_diary' => new sfRoute(
         '/monitoring/diary',
         array('module' => 'diary', 'action' => 'list'),

@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="">
+        <source>Diary Plugin Configuration</source>
+        <target>日記プラグイン設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Use</source>
+        <target>使用する</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Not use</source>
+        <target>使用しない</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Use open diary</source>
+        <target>Web全体に公開機能使用設定</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>If this is used, members can select the "All Users on the Web" public flag. If not used, anonymous users can't view any diary pages.</source>
+        <target>使用するに設定した場合、メンバーは「Web全体に公開」の日記を作成することができます。使用しないに設定した場合、すべての日記関連ページに非ログイン状態ではアクセスできないようになります。</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
