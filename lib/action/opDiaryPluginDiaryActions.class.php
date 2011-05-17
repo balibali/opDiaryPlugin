@@ -44,7 +44,11 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeListMember(sfWebRequest $request)
   {
-    $this->forward404Unless($this->member);
+    if (!$this->isSNSMember())
+    {
+      $this->forwardUnless($this->member && Doctrine::getTable('Diary')->hasOpenDiary($this->member->id),
+          sfConfig::get('sf_login_module'), sfConfig::get('sf_login_action'));
+    }
 
     $this->year  = (int)$request['year'];
     $this->month = (int)$request['month'];
