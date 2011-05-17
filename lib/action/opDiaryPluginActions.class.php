@@ -21,6 +21,11 @@ class opDiaryPluginActions extends sfActions
   {
     parent::initialize($context, $moduleName, $actionName);
 
+    if (!Doctrine::getTable('SnsConfig')->get('op_diary_plugin_use_open_diary', true))
+    {
+      $this->security = array();
+    }
+
     $this->security['all'] = array('is_secure' => true, 'credentials' => 'SNSMember');
   }
 
