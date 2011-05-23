@@ -41,7 +41,7 @@ op_include_list('diaryList', $list, $options);
 
 <?php endif; ?>
 
-<?php if(!$isSearchDisable): ?>
+<?php if (!$isSearchDisable): ?>
 <?php slot('diarySearchForm') ?>
 <form action="<?php echo url_for('@diary_search') ?>">
 <input type="text" name="keyword" value="<?php if (isset($keyword)) echo $keyword ?>">

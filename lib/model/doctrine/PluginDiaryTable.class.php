@@ -73,10 +73,9 @@ abstract class PluginDiaryTable extends Doctrine_Table
   {
     $q = $this->getOrderdQuery();
 
-    if(sfConfig::get('app_diary_search_period_enable'))
+    if (sfConfig::get('app_diary_search_period_enable'))
     {
-      $now = date('Y-m-d');
-      $lower = date('Y-m-d 00:00:00', strtotime($now.' -'.sfConfig::get('app_diary_search_period')));
+      $lower = date('Y-m-d 00:00:00', strtotime('-'.sfConfig::get('app_diary_search_period')));
       $q->where('created_at >= ?', $lower);
     }
 

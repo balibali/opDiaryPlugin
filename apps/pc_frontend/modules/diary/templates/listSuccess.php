@@ -1,6 +1,6 @@
 <?php use_helper('opDiary'); ?>
 
-<?php if(!$isSearchDisable): ?>
+<?php if (!$isSearchDisable): ?>
 <div id="diarySearchFormLine" class="parts searchFormLine">
 <form action="<?php echo url_for('@diary_search') ?>" method="get">
 <p class="form">
