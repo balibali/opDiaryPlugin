@@ -26,14 +26,15 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
   {
     $publicFlag = $this->getUser()->isSNSMember() ? DiaryTable::PUBLIC_FLAG_SNS : DiaryTable::PUBLIC_FLAG_OPEN;
 
-    $this->isSearchDisable = sfConfig::get('app_diary_search_disable');
+    $this->isSearchEnable =  Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_enable');
 
     $this->pager = Doctrine::getTable('Diary')->getDiaryPager($request['page'], 20, $publicFlag);
   }
 
   public function executeSearch(sfWebRequest $request)
   {
-    $this->forward404If(sfConfig::get('app_diary_search_disable'));
+    $this->isSearchEnable =  Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_enable');
+    $this->forward404Unless($this->isSearchEnable);
 
     $this->keyword = $request['keyword'];
 
