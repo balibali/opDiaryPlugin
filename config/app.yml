@@ -1,0 +1,4 @@
+all:
+  diary_search_disable: false
+  diary_search_period_enable: false
+  diary_search_period: "30 days"

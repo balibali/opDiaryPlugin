@@ -72,6 +72,14 @@ abstract class PluginDiaryTable extends Doctrine_Table
   public function getDiarySearchPager($keywords, $page = 1, $size = 20, $publicFlag = self::PUBLIC_FLAG_SNS)
   {
     $q = $this->getOrderdQuery();
+
+    if(sfConfig::get('app_diary_search_period_enable'))
+    {
+      $now = date('Y-m-d');
+      $lower = date('Y-m-d 00:00:00', strtotime($now.' -'.sfConfig::get('app_diary_search_period')));
+      $q->where('created_at >= ?', $lower);
+    }
+
     $this->addPublicFlagQuery($q, $publicFlag);
     $this->addSearchKeywordQuery($q, $keywords);
 
