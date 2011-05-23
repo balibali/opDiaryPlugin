@@ -33,7 +33,7 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
 
   public function executeSearch(sfWebRequest $request)
   {
-    $this->forward404Unless(!sfConfig::get('app_diary_search_disable'));
+    $this->forward404If(sfConfig::get('app_diary_search_disable'));
 
     $this->keyword = $request['keyword'];
 
