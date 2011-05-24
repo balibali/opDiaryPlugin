@@ -1,6 +1,7 @@
 <?php op_mobile_page_title(__('Diary of %1%', array('%1%' => $member->name)), $diary->title) ?>
 <?php use_helper('opDiary') ?>
 
+<?php slot('diaryDetailBox'); ?>
 <?php echo op_within_page_link() ?>
 <?php echo op_format_date($diary->created_at, 'XDateTime') ?>
 <?php if ($diary->member_id === $myMemberId): ?>
@@ -24,6 +25,8 @@
 <?php if ($diary->getNext($myMemberId)): ?> <?php echo link_to(__('Next Diary'), 'diary_show', $diary->getNext($myMemberId)) ?><?php endif; ?>
 </center>
 <?php endif; ?>
+<?php end_slot(); ?>
+<?php op_include_box('diaryDetailBox', get_slot('diaryDetailBox'), array()); ?>
 
 <?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>
 
