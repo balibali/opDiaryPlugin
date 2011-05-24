@@ -4,10 +4,11 @@
 <?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member, 'year' => date('Y', strtotime($diary->created_at)), 'month' => date('n', strtotime($diary->created_at))))) ?>
 
 <?php /* {{{ diaryDetailBox */ ?>
-<div class="dparts diaryDetailBox"><div class="parts">
-<div class="partsHeading"><h3><?php echo __('Diary of %1%', array('%1%' => $member->name)) ?></h3>
-<p class="public">(<?php echo $diary->getPublicFlagLabel() ?>)</p></div>
 
+
+
+<?php slot('diaryDetailBox'); ?>
+<p class="public">(<?php echo $diary->getPublicFlagLabel() ?>)</p>
 <?php if ($diary->getPrevious($myMemberId) || $diary->getNext($myMemberId)): ?>
 <div class="block prevNextLinkLine">
 <?php if ($diary->getPrevious($myMemberId)): ?>
@@ -47,7 +48,11 @@
 </form>
 </div>
 <?php endif; ?>
-</div></div>
+
+<?php end_slot(); ?>
+<?php op_include_box('diaryDetailBox', get_slot('diaryDetailBox'), array('title'=>__('Diary of %1%', array('%1%' => $member->name)), 'class'=>'diaryDetailBox')); ?>
+
+
 <?php /* }}} */ ?>
 
 <?php include_component('diaryComment', 'list', array('diary' => $diary)) ?>

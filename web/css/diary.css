@@ -40,9 +40,7 @@
   width: 66%;
 }
 
-.diaryDetailBox .partsHeading p.public {
-  float: right;
-  width: 33%;
+.diaryDetailBox p.public {
   margin: 0;
   text-align: right;
 }
