@@ -77,4 +77,9 @@ class opDiaryPluginDiaryComponents extends sfComponents
 
     $this->value = $valueTpl->render($params);
   }
+
+  protected function getSnsMemberId()
+  {
+    return $this->getUser()->isSNSMember() ? $this->getUser()->getMemberId() : null;
+  }
 }
