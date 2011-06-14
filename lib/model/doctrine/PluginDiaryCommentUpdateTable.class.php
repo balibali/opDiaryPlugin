@@ -27,12 +27,14 @@ class PluginDiaryCommentUpdateTable extends Doctrine_Table
       $object->setMember($member);
     }
 
-    $object->setMyLastCommentTime(date('Y-m-d H:i:s'));
-    $object->setLastCommentTime(date('Y-m-d H:i:s'));
+    $now = date('Y-m-d H:i:s');
+
+    $object->setMyLastCommentTime($now);
+    $object->setLastCommentTime($now);
     $object->save();
 
     $this->createQuery()->update()
-      ->set('last_comment_time', '?', date('Y-m-d H:i:s'))
+      ->set('last_comment_time', '?', $now)
       ->where('diary_id = ?', $diary->id)
       ->execute();
   }
