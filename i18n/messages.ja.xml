@@ -238,6 +238,10 @@
         <source>[Diary] %1%</source>
         <target>[日記] %1%</target>
       </trans-unit>
+      <trans-unit id="65">
+        <source>Read diary</source>
+        <target>日記を読む</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
