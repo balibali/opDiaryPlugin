@@ -24,7 +24,7 @@ else
 <?php if ($pager->getNbResults()): ?>
 <div class="dparts searchResultList"><div class="parts">
 <div class="partsHeading"><h3><?php echo $title ?></h3></div>
-<?php echo op_include_pager_navigation($pager, $pagerLink); ?>
+<?php op_include_pager_navigation($pager, $pagerLink); ?>
 <div class="block">
 <?php foreach ($pager->getResults() as $diary): ?>
 <div class="ditem"><div class="item"><table><tbody><tr>
@@ -39,7 +39,7 @@ else
 </tr></tbody></table></div></div>
 <?php endforeach; ?>
 </div>
-<?php echo op_include_pager_navigation($pager, $pagerLink); ?>
+<?php op_include_pager_navigation($pager, $pagerLink); ?>
 </div></div>
 <?php else: ?>
 <?php op_include_box('diaryList', (!isset($keyword)) ? __('There are no diaries.') : __('Your search "%1%" did not match any diaries.', array('%1%' => $keyword)), array('title' => $title)) ?>

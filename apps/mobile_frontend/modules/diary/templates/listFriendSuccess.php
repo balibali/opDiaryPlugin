@@ -21,7 +21,7 @@ $options = array(
 );
 op_include_list('diaryList', $list, $options);
 ?>
-<?php echo op_include_pager_navigation($pager, '@diary_list_friend?page=%d', array('is_total' => false)) ?>
+<?php op_include_pager_navigation($pager, '@diary_list_friend?page=%d', array('is_total' => false)) ?>
 
 <?php else: ?>
 
