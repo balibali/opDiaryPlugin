@@ -103,8 +103,8 @@
         <target>日記を削除しました。</target>
       </trans-unit>
       <trans-unit id="31">
-        <source>[1]1 diary has new comments!|(1,Inf]%1% diaries have new comments!</source>
-        <target>[1,Inf]%1%件の日記に新着コメントがあります！</target>
+        <source>[1]1 diary has new comments|(1,Inf]%1% diaries have new comments</source>
+        <target>[1,Inf]%1% 件の日記に新着コメントがあります</target>
       </trans-unit>
       <trans-unit id="32">
         <source>View %1% per page</source>
@@ -238,9 +238,9 @@
         <source>[Diary] %1%</source>
         <target>[日記] %1%</target>
       </trans-unit>
-      <trans-unit id="65">
-        <source>Read diary</source>
-        <target>日記を読む</target>
+      <trans-unit id="66">
+        <source>Read comment</source>
+        <target>コメントを読む</target>
       </trans-unit>
     </body>
   </file>

@@ -23,8 +23,8 @@
         <target>ｺﾒﾝﾄを書く</target>
       </trans-unit>
       <trans-unit id="31">
-        <source>[1]1 diary has new comments!|(1,Inf]%1% diaries have new comments!</source>
-        <target>[1,Inf]%1%件の日記に新着ｺﾒﾝﾄがあります!</target>
+        <source>[1]1 diary has new comments|(1,Inf]%1% diaries have new comments</source>
+        <target>[1,Inf]%1% 件の日記に新着ｺﾒﾝﾄがあります!</target>
       </trans-unit>
       <trans-unit id="38">
         <source>Profile of %1%</source>
@@ -49,6 +49,10 @@
       <trans-unit id="63">
         <source>Your comment is visible to all users on the Web.</source>
         <target>この日記へのｺﾒﾝﾄはWeb全体に公開されます。</target>
+      </trans-unit>
+      <trans-unit id="66">
+        <source>Read comment</source>
+        <target>ｺﾒﾝﾄを読む</target>
       </trans-unit>
     </body>
   </file>
