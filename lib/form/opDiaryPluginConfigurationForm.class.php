@@ -21,11 +21,6 @@ class opDiaryPluginConfigurationForm extends BaseForm
   {
     $choices = array('1' => 'Use', '0' => 'Not use');
 
-    $this->setWidget('search_enable', new sfWidgetFormSelectRadio(array('choices' => $choices)));
-    $this->setValidator('search_enable', new sfValidatorChoice(array('choices' => array_keys($choices))));
-    $this->setDefault('search_enable', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_enable', '1'));
-    $this->widgetSchema->setHelp('search_enable', 'If this is used, diaries could search.');
-
     $this->setWidget('use_email_post', new sfWidgetFormSelectRadio(array('choices' => $choices)));
     $this->setValidator('use_email_post', new sfValidatorChoice(array('choices' => array_keys($choices))));
     $this->setDefault('use_email_post', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_use_email_post', '1'));
@@ -36,22 +31,27 @@ class opDiaryPluginConfigurationForm extends BaseForm
     $this->setDefault('update_activity', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_update_activity', '0'));
     $this->widgetSchema->setHelp('update_activity', 'If this is used, activity message is updated automatically by posting a diary. To show the activity list, see "Appearance" > "ガジェット設定".');
 
+    $this->setWidget('search_enable', new sfWidgetFormSelectRadio(array('choices' => $choices)));
+    $this->setValidator('search_enable', new sfValidatorChoice(array('choices' => array_keys($choices))));
+    $this->setDefault('search_enable', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_enable', '1'));
+    $this->widgetSchema->setHelp('search_enable', 'If this is used, diary search is enable.');
+
     $this->setWidget('search_period_enable', new sfWidgetFormSelectRadio(array('choices' => $choices)));
     $this->setValidator('search_period_enable', new sfValidatorChoice(array('choices' => array_keys($choices))));
     $this->setDefault('search_period_enable', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_period_enable', '0'));
-    $this->widgetSchema->setHelp('search_period_enable', 'If this is used, diaries could search only within the previous days set.');
+    $this->widgetSchema->setHelp('search_period_enable', 'If this is used, diary search is enable only within the previous days set.');
 
     $this->setWidget('search_period', new sfWidgetFormInput());
     $this->setValidator('search_period', new sfValidatorNumber());
     $this->setDefault('search_period', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_period', '30'));
-    $this->widgetSchema->setHelp('search_period', 'Please input the number of days that diaries could search within previous.');
+    $this->widgetSchema->setHelp('search_period', 'Please input the number of days that diary search is enable within previous.');
 
     $this->widgetSchema->setNameFormat('op_diary_plugin[%s]');
   }
 
   public function save()
   {
-    $names = array('search_enable', 'use_email_post', 'update_activity', 'search_period_enable', 'search_period');
+    $names = array('use_email_post', 'update_activity', 'search_enable', 'search_period_enable', 'search_period');
 
     foreach ($names as $name)
     {
