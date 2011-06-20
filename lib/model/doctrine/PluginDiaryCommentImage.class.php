@@ -16,9 +16,12 @@
  */
 abstract class PluginDiaryCommentImage extends BaseDiaryCommentImage
 {
-  public function preInsert($event)
+  public function preSave($event)
   {
-    $this->setFileNamePrefix();
+    if ($this->File->isNew())
+    {
+      $this->setFileNamePrefix();
+    }
   }
 
   public function postSave($event)
@@ -29,7 +32,7 @@ abstract class PluginDiaryCommentImage extends BaseDiaryCommentImage
 
   protected function setFileNamePrefix()
   {
-    $prefix = 'dc_'.$this->diary_comment_id.'_';
+    $prefix = 'dc_'.$this->DiaryComment->id.'_';
 
     $file = $this->File;
     $file->setName($prefix.$file->name);

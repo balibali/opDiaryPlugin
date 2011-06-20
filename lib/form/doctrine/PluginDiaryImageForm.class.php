@@ -48,26 +48,40 @@ abstract class PluginDiaryImageForm extends BaseDiaryImageForm
 
   public function updateObject($values = null)
   {
+    $image = $this->getObject();
+
     if ($values['photo'] instanceof sfValidatedFile)
     {
       if (!$this->isNew())
       {
-        unset($this->getObject()->File);
+        unset($image->File);
       }
 
       $file = new File();
       $file->setFromValidatedFile($values['photo']);
 
-      $this->getObject()->setFile($file);
+      $image->setFile($file);
     }
     else
     {
       if (!$this->isNew() && !empty($values['photo_delete']))
       {
-        $this->getObject()->getFile()->delete();
-      }
+        $image->File->delete();
+        $image->setFile(null);
 
-      $this->getObject()->setFile(null);
+        // todo: generally not model name but alias name for the parent table
+        $this->getParentObject()->unlink($this->getModelName(), $image->id);
+      }
     }
+  }
+
+  public function getParentModelName()
+  {
+    return 'Diary';
+  }
+
+  public function getParentObject()
+  {
+    return $this->getObject()->get($this->getParentModelName());
   }
 }

@@ -16,9 +16,12 @@
  */
 abstract class PluginDiaryImage extends BaseDiaryImage
 {
-  public function preInsert($event)
+  public function preSave($event)
   {
-    $this->setFileNamePrefix();
+    if ($this->File->isNew())
+    {
+      $this->setFileNamePrefix();
+    }
   }
 
   protected function setFileNamePrefix()
