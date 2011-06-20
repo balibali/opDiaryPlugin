@@ -23,16 +23,6 @@ class opDiaryPluginConfiguration extends sfPluginConfiguration
 
   public function filterPluginOnlyTestFiles(sfEvent $event, $files)
   {
-    $files = $this->filterTestFiles($event, $files);
-
-    foreach ($files as $key => $file)
-    {
-      if (false === strpos($file, $this->rootDir))
-      {
-        unset($files[$key]);
-      }
-    }
-
-    return $files;
+    return $this->filterTestFiles($event, array());
   }
 }
