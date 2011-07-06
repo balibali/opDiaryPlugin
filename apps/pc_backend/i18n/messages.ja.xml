@@ -47,16 +47,16 @@
         <target>検索対象期間</target>
       </trans-unit>
       <trans-unit id="">
-        <source>If this is used, diary search is enable.</source>
+        <source>If this is used, diary search is enabled.</source>
         <target>使用するに設定した場合、日記を検索できるようになります。</target>
       </trans-unit>
       <trans-unit id="">
-        <source>If this is used, diary search is enable only within the previous days set.</source>
+        <source>If this is used, diary search is enabled only within the days set.</source>
         <target>使用するに設定した場合、設定された日数以内の日記だけを検索します。</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Please input the number of days that diary search is enable within previous.</source>
-        <target>検索に反映したい日数を入力してください。</target>
+        <source>Please input the number of days that reflects to the diary search.</source>
+        <target>検索に反映する日数を入力してください。</target>
       </trans-unit>
     </body>
   </file>

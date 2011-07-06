@@ -34,17 +34,17 @@ class opDiaryPluginConfigurationForm extends BaseForm
     $this->setWidget('search_enable', new sfWidgetFormSelectRadio(array('choices' => $choices)));
     $this->setValidator('search_enable', new sfValidatorChoice(array('choices' => array_keys($choices))));
     $this->setDefault('search_enable', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_enable', '1'));
-    $this->widgetSchema->setHelp('search_enable', 'If this is used, diary search is enable.');
+    $this->widgetSchema->setHelp('search_enable', 'If this is used, diary search is enabled.');
 
     $this->setWidget('search_period_enable', new sfWidgetFormSelectRadio(array('choices' => $choices)));
     $this->setValidator('search_period_enable', new sfValidatorChoice(array('choices' => array_keys($choices))));
     $this->setDefault('search_period_enable', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_period_enable', '0'));
-    $this->widgetSchema->setHelp('search_period_enable', 'If this is used, diary search is enable only within the previous days set.');
+    $this->widgetSchema->setHelp('search_period_enable', 'If this is used, diary search is enabled only within the days set.');
 
     $this->setWidget('search_period', new sfWidgetFormInput());
     $this->setValidator('search_period', new sfValidatorNumber());
     $this->setDefault('search_period', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_period', '30'));
-    $this->widgetSchema->setHelp('search_period', 'Please input the number of days that diary search is enable within previous.');
+    $this->widgetSchema->setHelp('search_period', 'Please input the number of days that reflects to the diary search.');
 
     $this->widgetSchema->setNameFormat('op_diary_plugin[%s]');
   }
