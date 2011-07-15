@@ -41,7 +41,7 @@ class opDiaryPluginDiaryComponents extends sfComponents
     $this->diaryList = Doctrine::getTable('Diary')->getMemberDiaryList($this->memberId, 5, $this->getUser()->getMemberId());
   }
 
-  public function executeNoticeUnreadDiaryComment(sfWebRequest $request)
+  public function executeCautionUnreadDiaryComment(sfWebRequest $request)
   {
     $memberId = $this->getUser()->getMemberId();
     if ($this->count = Doctrine::getTable('DiaryCommentUnread')->countUnreadDiary($memberId))
