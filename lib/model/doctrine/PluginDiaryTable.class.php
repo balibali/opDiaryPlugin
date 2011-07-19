@@ -75,7 +75,7 @@ abstract class PluginDiaryTable extends Doctrine_Table
 
     if (Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_period_enable'))
     {
-      $lower = date('Y-m-d 00:00:00', strtotime('-'.Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_period').' days'));
+      $lower = date('Y-m-d 00:00:00', strtotime('-'.Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_period', '30').' days'));
       $q->where('created_at >= ?', $lower);
     }
 
