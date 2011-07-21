@@ -243,7 +243,7 @@
         <target>コメントを読む</target>
       </trans-unit>
       <trans-unit id="67">
-        <source>Please input more than 0.</source>
+        <source>Please input 0 or greater.</source>
         <target>0以上の数字を入力してください。</target>
       </trans-unit>
     </body>

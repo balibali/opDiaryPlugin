@@ -42,7 +42,7 @@ class opDiaryPluginConfigurationForm extends BaseForm
     $this->widgetSchema->setHelp('search_period_enable', 'If this is used, diary search is enabled only within the days set.');
 
     $this->setWidget('search_period', new sfWidgetFormInput());
-    $this->setValidator('search_period', new sfValidatorNumber(array('min' => 0), array('min' => 'Please input more than 0.')));
+    $this->setValidator('search_period', new sfValidatorInteger(array('min' => 0), array('min' => 'Please input 0 or greater.')));
     $this->setDefault('search_period', Doctrine::getTable('SnsConfig')->get('op_diary_plugin_search_period', '30'));
     $this->widgetSchema->setHelp('search_period', 'Please input the number of days that reflects to the diary search.');
 
