@@ -54,13 +54,16 @@ class opDiaryPluginDiaryActions extends opDiaryPluginActions
     $this->year  = (int)$request['year'];
     $this->month = (int)$request['month'];
     $this->day   = (int)$request['day'];
+    $this->keyword = $request['keyword'];
+
+    $keywords = opDiaryPluginToolkit::parseKeyword($this->keyword);
 
     if ($this->year && $this->month)
     {
       $this->forward404Unless(checkdate($this->month, ($this->day) ? $this->day : 1, $this->year), 'Invalid date format');
     }
 
-    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->id, $request['page'], 20, $this->myMemberId, $this->year, $this->month, $this->day);
+    $this->pager = Doctrine::getTable('Diary')->getMemberDiaryPager($this->member->id, $request['page'], 20, $this->myMemberId, $this->year, $this->month, $this->day, $keywords);
   }
 
   public function executeListFriend(sfWebRequest $request)
