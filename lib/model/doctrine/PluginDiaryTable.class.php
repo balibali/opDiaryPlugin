@@ -288,7 +288,7 @@ abstract class PluginDiaryTable extends Doctrine_Table
   {
     foreach ($keywords as $keyword)
     {
-      $q->andWhere('title LIKE ? OR body LIKE ?', array('%'.$keyword.'%', '%'.$keyword.'%'));
+      $q->andWhere('title LIKE ? OR body LIKE ?', array('%'.Doctrine_Manager::connection()->formatter->escapePattern($keyword).'%', '%'.Doctrine_Manager::connection()->formatter->escapePattern($keyword).'%'));
     }
   }
 }

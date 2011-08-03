@@ -69,7 +69,7 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
   {
     foreach ($keywords as $keyword)
     {
-      $q->andWhere('body LIKE ?', array('%'.$keyword.'%'));
+      $q->andWhere('body LIKE ?', array('%'.Doctrine_Manager::connection()->formatter->escapePattern($keyword).'%'));
     }
   }
 }
