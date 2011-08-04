@@ -278,6 +278,11 @@ abstract class PluginDiaryTable extends Doctrine_Table
   {
     foreach ($keywords as $keyword)
     {
+      if (defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta13-dev', '>='))
+      {
+        $keyword = Doctrine_Manager::connection()->formatter->escapePattern($keyword);
+      }
+
       $q->andWhere('title LIKE ? OR body LIKE ?', array('%'.$keyword.'%', '%'.$keyword.'%'));
     }
   }
