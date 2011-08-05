@@ -69,12 +69,14 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
   {
     foreach ($keywords as $keyword)
     {
-      if (defined('OPENPNE_VERSION') && version_compare(OPENPNE_VERSION, '3.6beta13-dev', '>='))
+      if (method_exists($q, 'andWhereLike'))
       {
-        $keyword = Doctrine_Manager::connection()->formatter->escapePattern($keyword);
+        $q->andWhereLike('body', array($keyword));
       }
-
-      $q->andWhere('body LIKE ?', array('%'.$keyword.'%'));
+      else
+      {
+        $q->andWhere('body LIKE ?', array('%'.$keyword.'%'));
+      }
     }
   }
 }
