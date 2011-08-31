@@ -48,7 +48,7 @@ DiaryComment:
   columns:
     id: { type: integer(4), primary: true, autoincrement: true }
     diary_id: { type: integer(4), notnull: true }
-    member_id: { type: integer(4), notnull: true }
+    member_id: { type: integer(4), notnull: false }
     number: { type: integer(4), notnull: true }
     body: { type: string, notnull: true }
     has_images: { type: boolean, notnull: true, default: false }
@@ -58,7 +58,7 @@ DiaryComment:
       onDelete: cascade
     Member:
       foreignAlias: DiaryComments
-      onDelete: cascade
+      onDelete: set null
   indexes:
     diary_id_number:
       fields: [diary_id, number]
