@@ -19,11 +19,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2011-07-21</date>
- <time>22:21:18</time>
+ <date>2011-08-31</date>
+ <time>12:00:00</time>
  <version>
-  <release>1.3.2</release>
-  <api>1.3.2</api>
+  <release>1.3.2.1</release>
+  <api>1.3.2.1</api>
  </version>
  <stability>
   <release>beta</release>
@@ -31,13 +31,7 @@
  </stability>
  <license>apache</license>
  <notes>
-* Bug（バグ） #1776: インフォメーションに表示される新着コメントお知らせが赤字になっていない [仕様バグ]
-* Bug（バグ） #1779: 日記のデータ量が多いSNSで日記検索を行うとサーバが高負荷状態になる [仕様バグ]
-* Bug（バグ） #1837: op_include_pager_navigation に不要な echo が付いている
-* Bug（バグ） #1869: テスト用タスクで無駄な処理がある
-* Bug（バグ） #2001: DBMSにSQLiteを使用すると、他人の日記にコメントを書き込む時にエラーが発生する
-* Bug（バグ） #2221: 携帯メールアドレス未登録状態でもメール投稿用のメールアドレスへのリンクが表示される
-* Enhancement（機能追加・改善） #1875: XSS 脆弱性、 CSRF 脆弱性のテストを完備できるように体制を整える
+OPSA-2011-003
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -75,7 +69,7 @@
    <file baseinstalldir="/" md5sum="f0476ca9b8a5921444f2d3c1b5f22280" name="apps/mobile_mail_frontend/modules/diaryComment/templates/createError.php" role="data" />
    <file baseinstalldir="/" md5sum="fbfabc44326c4bc274204bce214e09f5" name="apps/pc_backend/config/monitoring.yml" role="data" />
    <file baseinstalldir="/" md5sum="9b9eeff5e596285fbb5bb9b725da6446" name="apps/pc_backend/config/routing.yml" role="data" />
-   <file baseinstalldir="/" md5sum="e39e03f54742be478f4b4e94d51e98c0" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="71d6c6fed1821911a4d497beefb59a06" name="apps/pc_backend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="6e762689cce538a02716d6be6f4154c0" name="apps/pc_backend/modules/diary/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="7a21fff8dc1220c15b1a1abe4673d200" name="apps/pc_backend/modules/diary/config/view.yml" role="data" />
    <file baseinstalldir="/" md5sum="aea37e30346de9bf33e45382731a37b0" name="apps/pc_backend/modules/diary/templates/deleteConfirmSuccess.php" role="data" />
@@ -146,8 +140,8 @@
    <file baseinstalldir="/" md5sum="528e95888ff0a9995f53e62422ae5bc6" name="data/migrations/1.3.0/008_add_foreign_key_on_diary_comment_unread.php" role="data" />
    <file baseinstalldir="/" md5sum="9576bcf95d6c7e92e9b1452984087e2d" name="i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ff14e22a0119036fe8c828b5b60979d2" name="i18n/publicFlags.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="198ddae29848df153de8f0cbf3e4827c" name="lib/action/opDiaryPluginActions.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="675c57c91e0841e83befd5a86bbfc386" name="lib/action/opDiaryPluginDiaryActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="5e5b6ce5f306ae71411e7058a9169f1a" name="lib/action/opDiaryPluginActions.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="2edeb3c94257423ae6744d96a1e9035e" name="lib/action/opDiaryPluginDiaryActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="4bcadc5925092df6a99359b6b1783428" name="lib/action/opDiaryPluginDiaryCommentActions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8181f35f291692673ef6e847a4300392" name="lib/action/opDiaryPluginDiaryCommentComponents.class.php" role="data" />
    <file baseinstalldir="/" md5sum="e547beec50293f678e01f76bb16694e2" name="lib/action/opDiaryPluginDiaryComponents.class.php" role="data" />
@@ -158,7 +152,7 @@
    <file baseinstalldir="/" md5sum="194e9424eb93eb5e172fa70c80c44aab" name="lib/filter/doctrine/PluginDiaryCommentUpdateFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="1030c135178603165888b6774dfcad1f" name="lib/filter/doctrine/PluginDiaryFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="039facd5a8763f0d63a98407787bbe59" name="lib/filter/doctrine/PluginDiaryImageFormFilter.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="df142f1f10d075351d4073dd46bee2d8" name="lib/form/opDiaryPluginConfigurationForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="6eeac71e3aa420bcd701a9020a8d652a" name="lib/form/opDiaryPluginConfigurationForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="35ffe24c401409c21666e8e68684685c" name="lib/form/doctrine/PluginDiaryCommentForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="590f249f78ca978ca45a67deeef638d9" name="lib/form/doctrine/PluginDiaryCommentImageForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="945232795f961926fc262f7dedadb0af" name="lib/form/doctrine/PluginDiaryCommentUnreadForm.class.php" role="data" />
@@ -178,7 +172,7 @@
    <file baseinstalldir="/" md5sum="cb59c8c11a3be18bf9133dbe497e1b7a" name="lib/model/doctrine/PluginDiaryCommentUpdateTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ee15f9b3b6aa76cb4d2e6e28582928d1" name="lib/model/doctrine/PluginDiaryImage.class.php" role="data" />
    <file baseinstalldir="/" md5sum="318de69841093afc58b53814b224f078" name="lib/model/doctrine/PluginDiaryImageTable.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="17751168ec669b634efff55fb72b669d" name="lib/model/doctrine/PluginDiaryTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="fbf1d9c9e2493f6d317cc14588e1e265" name="lib/model/doctrine/PluginDiaryTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="9270ed1b9a2b79b98b41ad945ef68753" name="lib/routing/opDiaryPluginBackendRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="e65d8482c9fa26f5b93065b863c5f083" name="lib/routing/opDiaryPluginBaseRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="a3e934bf7cf2a1f8653b6fef84f33b41" name="lib/routing/opDiaryPluginFrontendRouteCollection.class.php" role="data" />
@@ -187,30 +181,32 @@
    <file baseinstalldir="/" md5sum="4158c4fb40c0abed2c1e303c6ff066ad" name="lib/task/opDiaryTestFunctionalTask.class.php" role="data" />
    <file baseinstalldir="/" md5sum="0e534aeb0247e885c3bc5d05e0572f7e" name="lib/task/opDiaryTestUnitTask.class.php" role="data" />
    <file baseinstalldir="/" md5sum="57ce431261902a7aa2731108a8c565d6" name="lib/util/opDiaryPluginToolkit.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="8be25427e6324c104e6d3f5770a80636" name="test/bootstrap/database.php" role="data" />
+   <file baseinstalldir="/" md5sum="3ac15ce6a784d7e7e826f8d4ca9ef26d" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="d3426e14c52e951ff023e344296aab06" name="test/bootstrap/functional.php" role="data" />
    <file baseinstalldir="/" md5sum="b6e69bd4c5958def80bc622b1e8d15b2" name="test/bootstrap/unit.php" role="data" />
-   <file baseinstalldir="/" md5sum="e811c346e9b4268ac24eb9b8ba0be5f0" name="test/fixtures/diaries.yml" role="data" />
+   <file baseinstalldir="/" md5sum="aa8a041a984d152f3910660fb4420ffd" name="test/fixtures/diaries.yml" role="data" />
    <file baseinstalldir="/" md5sum="5d348aca5a5d0153089cbcce9999fbe9" name="test/fixtures/images.yml" role="data" />
-   <file baseinstalldir="/" md5sum="e3eb21b84eafa3705f3958c238f19870" name="test/fixtures/members.yml" role="data" />
+   <file baseinstalldir="/" md5sum="85ceaf275fa972e86b21d53c76d914ba" name="test/fixtures/members.yml" role="data" />
    <file baseinstalldir="/" md5sum="eb9d389b56456483fd8e1e2cdd3b02d9" name="test/fixtures/mobile.yml" role="data" />
-   <file baseinstalldir="/" md5sum="cc6c5c9f1519d82889761e87a2ba385f" name="test/fixtures/revision.yml" role="data" />
+   <file baseinstalldir="/" md5sum="b87453a8f56411f187530db0099adcff" name="test/fixtures/revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="ca4239cd3e5d507cfd776bedd2492f37" name="test/fixtures/xss_data.yml" role="data" />
-   <file baseinstalldir="/" md5sum="52ef75481eb24cc7b50af27f6d38e250" name="test/functional/mobile_frontend/diaryAccessBlock.php" role="data" />
+   <file baseinstalldir="/" md5sum="6a1b159c8a915ada2d848b480da78f2f" name="test/functional/mobile_frontend/diaryAccessBlock.php" role="data" />
    <file baseinstalldir="/" md5sum="ef9f4c3d6f744e94d6c4b2dcdc1058ff" name="test/functional/mobile_frontend/diaryActionsTest.php" role="data" />
    <file baseinstalldir="/" md5sum="5444eee65bee7051b19ab576bac80c9c" name="test/functional/mobile_frontend/diaryCommentHistoryTest.php" role="data" />
    <file baseinstalldir="/" md5sum="dc97ee7afce8af2234fb81ea5b947327" name="test/functional/mobile_frontend/diaryCommentPagerTest.php" role="data" />
-   <file baseinstalldir="/" md5sum="f6b654335245abd939b01c13b91e10b3" name="test/functional/mobile_frontend/diaryOpenTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="a74798084ea546383ff1d8afa07641bc" name="test/functional/mobile_frontend/diaryOpenTest.php" role="data" />
    <file baseinstalldir="/" md5sum="8ac4f95fcca03e08160e29fc246a91ee" name="test/functional/mobile_frontend/diarySearchTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="ba138e22ed69c8c0326afb0efdbc41d0" name="test/functional/mobile_frontend/diaryUseOpenTest.php" role="data" />
    <file baseinstalldir="/" md5sum="b594a2ef9d0b4f6c0b7a75dcf3f8ad75" name="test/functional/pc_backend/diaryActionsTest.php" role="data" />
    <file baseinstalldir="/" md5sum="aaebd451399d0870348ef634c1c875cd" name="test/functional/pc_backend/opDiaryPluginActionsTest.php" role="data" />
-   <file baseinstalldir="/" md5sum="0a13e13b0411b4de24ab23524e0d6a58" name="test/functional/pc_frontend/diaryAccessBlock.php" role="data" />
+   <file baseinstalldir="/" md5sum="dde887bae7347af3ddc9a166c2aab40d" name="test/functional/pc_frontend/diaryAccessBlock.php" role="data" />
    <file baseinstalldir="/" md5sum="84648745857a2ac8a63d1b0760f60542" name="test/functional/pc_frontend/diaryActionsTest.php" role="data" />
    <file baseinstalldir="/" md5sum="81fef00fceb484dd218f346b13766788" name="test/functional/pc_frontend/diaryCommentHistoryTest.php" role="data" />
    <file baseinstalldir="/" md5sum="6590b05c761b2e8519c5fc726fbc11f2" name="test/functional/pc_frontend/diaryCommentPagerTest.php" role="data" />
-   <file baseinstalldir="/" md5sum="97f9a2703bbb40dfd00e1f134f1276bc" name="test/functional/pc_frontend/diaryOpenTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="f0dcf328b015e8e4cb8404f03863d4cd" name="test/functional/pc_frontend/diaryOpenTest.php" role="data" />
    <file baseinstalldir="/" md5sum="d9ca1d9081ac0c681724ff101ac26cde" name="test/functional/pc_frontend/diarySearchTest.php" role="data" />
    <file baseinstalldir="/" md5sum="97df878e67ecb44cc9ab4d9d472a9610" name="test/functional/pc_frontend/diarySecurityTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="f2a0cae26eb6ddd14303566ce4ff4e1f" name="test/functional/pc_frontend/diaryUseOpenTest.php" role="data" />
    <file baseinstalldir="/" md5sum="57e497c89caeb1e6ea24d55165faa23c" name="test/unit/model/DiaryCommentImageTest.php" role="data" />
    <file baseinstalldir="/" md5sum="5577635b7fef5bb744996e8d8876d5cc" name="test/unit/model/DiaryCommentTest.php" role="data" />
    <file baseinstalldir="/" md5sum="87086bbdacb350fc971721647979353a" name="test/unit/model/DiaryCommentUnreadTableTest.php" role="data" />
@@ -501,6 +497,21 @@ fixed missing SNSMember credential checking
 * Bug（バグ） #2001: DBMSにSQLiteを使用すると、他人の日記にコメントを書き込む時にエラーが発生する
 * Bug（バグ） #2221: 携帯メールアドレス未登録状態でもメール投稿用のメールアドレスへのリンクが表示される
 * Enhancement（機能追加・改善） #1875: XSS 脆弱性、 CSRF 脆弱性のテストを完備できるように体制を整える
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.2.1</release>
+    <api>1.3.2.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-08-31</date>
+   <license>apache</license>
+   <notes>
+OPSA-2011-003
    </notes>
   </release>
  </changelog>
