@@ -50,34 +50,6 @@ class opDiaryPluginDiaryComponents extends sfComponents
     }
   }
 
-  public function executeDailyNews()
-  {
-    $env = 'mobile_frontend' == sfConfig::get('sf_app') ? 'mobile' : 'pc';
-    $twigEnvironment = new Twig_Environment(new Twig_Loader_String());
-    $valueTpl = $twigEnvironment->loadTemplate(opDiaryPluginToolkit::getMailTemplate($env, 'diaryGagdet'));
-    $diaries = Doctrine::getTable('Diary')->getFriendDiaryList($member['id'], 5);
-
-    if (!count($diaries))
-    {
-      return sfView::NONE;
-    }
-
-    $result = array();
-    foreach ($diaries as $key => $diary)
-    {
-      $result[$key]['Member'] = $diary->Member;
-      $result[$key]['title'] = $diary->title;
-      $result[$key]['id'] = $diary->id;
-    }
-    $params = array(
-      'diaries'   => $result,
-      'count'     => count($diaries),
-      'sf_config' => sfConfig::getAll(),
-    );
-
-    $this->value = $valueTpl->render($params);
-  }
-
   protected function getSnsMemberId()
   {
     return $this->getUser()->isSNSMember() ? $this->getUser()->getMemberId() : null;
