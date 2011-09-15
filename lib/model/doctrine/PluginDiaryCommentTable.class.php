@@ -69,7 +69,14 @@ abstract class PluginDiaryCommentTable extends Doctrine_Table
   {
     foreach ($keywords as $keyword)
     {
-      $q->andWhere('body LIKE ?', array('%'.$keyword.'%'));
+      if (method_exists($q, 'andWhereLike'))
+      {
+        $q->andWhereLike('body', array($keyword));
+      }
+      else
+      {
+        $q->andWhere('body LIKE ?', array('%'.$keyword.'%'));
+      }
     }
   }
 }
