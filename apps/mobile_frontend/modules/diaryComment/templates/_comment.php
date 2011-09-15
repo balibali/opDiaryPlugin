@@ -3,7 +3,7 @@
 <?php if ($diary->member_id === $sf_user->getMemberId() || $comment->member_id === $sf_user->getMemberId()): ?>
 [<?php echo link_to(__('Delete'), 'diary_comment_delete_confirm', $comment) ?>]
 <?php endif; ?><br>
-<?php echo link_to($comment->Member->name, '@obj_member_profile?id='.$comment->member_id) ?><br>
+<?php echo op_link_to_member($comment->Member); ?><br>
 <?php echo op_auto_link_text_for_mobile(nl2br($comment->body)) ?><br>
 <?php if ($comment->has_images): ?>
 <?php foreach ($comment->getDiaryCommentImagesJoinFile() as $image): ?>

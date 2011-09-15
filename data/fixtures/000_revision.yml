@@ -1,4 +1,4 @@
 SnsConfig:
   op_diary_plugin_current_revision:
     name: "opDiaryPlugin_revision"
-    value: 8
+    value: 9
