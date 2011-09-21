@@ -32,8 +32,8 @@
   <api>1.4.0</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license>apache</license>
  <notes>
@@ -524,8 +524,8 @@ OPSA-2011-003
     <api>1.4.0</api>
    </version>
    <stability>
-    <release>beta</release>
-    <api>beta</api>
+    <release>stable</release>
+    <api>stable</api>
    </stability>
    <date>2011-09-21</date>
    <license>apache</license>
