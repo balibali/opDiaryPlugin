@@ -25,11 +25,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2011-09-21</date>
- <time>16:15:11</time>
+ <date>2011-09-30</date>
+ <time>22:45:12</time>
  <version>
-  <release>1.4.0</release>
-  <api>1.4.0</api>
+  <release>1.4.0.1</release>
+  <api>1.4.0.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -37,9 +37,7 @@
  </stability>
  <license>apache</license>
  <notes>
-*  Bug（バグ） #2337: 部分一致検索を行う箇所でワイルドカード検索ができてしまう
-*  Bug（バグ） #2346: 退会時にそのメンバーが書いた日記コメントも削除されてしまう
-*  Bug（バグ） #2354: デイリーニュース用のフレンド最新日記ガジェットが動作していない
+*  Bug（バグ） #2439: 1.4.0 で追加されたマイグレートスクリプト (リビジョン番号 9) の実行に失敗することがある
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -141,7 +139,7 @@
    <file baseinstalldir="/" md5sum="67023fcbba9e3f687603955faa31368a" name="data/migrations/1.1.1/006_add_indexes.php" role="data" />
    <file baseinstalldir="/" md5sum="09366042ccf1c96822368dc1bbd195c5" name="data/migrations/1.1.1/007_add_column_has_images_on_diary_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="528e95888ff0a9995f53e62422ae5bc6" name="data/migrations/1.3.0/008_add_foreign_key_on_diary_comment_unread.php" role="data" />
-   <file baseinstalldir="/" md5sum="f99a20e9734b076ea46e57cab5f408b3" name="data/migrations/1.3.3/009_change_cascade_diary_comment.php" role="data" />
+   <file baseinstalldir="/" md5sum="68434953352c6b6ef50b2902ad887099" name="data/migrations/1.3.3/009_change_cascade_diary_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="9576bcf95d6c7e92e9b1452984087e2d" name="i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ff14e22a0119036fe8c828b5b60979d2" name="i18n/publicFlags.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="5e5b6ce5f306ae71411e7058a9169f1a" name="lib/action/opDiaryPluginActions.class.php" role="data" />
@@ -533,6 +531,21 @@ OPSA-2011-003
 *  Bug（バグ） #2337: 部分一致検索を行う箇所でワイルドカード検索ができてしまう
 *  Bug（バグ） #2346: 退会時にそのメンバーが書いた日記コメントも削除されてしまう
 *  Bug（バグ） #2354: デイリーニュース用のフレンド最新日記ガジェットが動作していない
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.0.1</release>
+    <api>1.4.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-09-30</date>
+   <license>apache</license>
+   <notes>
+*  Bug（バグ） #2439: 1.4.0 で追加されたマイグレートスクリプト (リビジョン番号 9) の実行に失敗することがある
    </notes>
   </release>
  </changelog>
