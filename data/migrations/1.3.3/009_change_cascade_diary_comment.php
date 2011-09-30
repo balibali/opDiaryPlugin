@@ -22,7 +22,7 @@ class opDiaryPluginMigrationVersion9 extends opMigration
   {
     Doctrine::getTable('DiaryComment')->createQuery()->update()
       ->set('DiaryComment.member_id', 'NULL')
-      ->where('DiaryComment.member_id NOT IN (select member.id from member)')
+      ->where('DiaryComment.member_id NOT IN (SELECT Member.id FROM Member)')
       ->execute();
   }
 
@@ -30,7 +30,7 @@ class opDiaryPluginMigrationVersion9 extends opMigration
   {
     Doctrine::getTable('DiaryComment')->createQuery()->update()
       ->set('DiaryComment.member_id', 'NULL')
-      ->where('DiaryComment.member_id NOT IN (SELECT member.id FROM member)')
+      ->where('DiaryComment.member_id NOT IN (SELECT Member.id FROM Member)')
       ->execute();
   }
 
