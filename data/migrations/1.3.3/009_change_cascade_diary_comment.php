@@ -20,18 +20,12 @@ class opDiaryPluginMigrationVersion9 extends opMigration
 {
   public function preUp()
   {
-    Doctrine::getTable('DiaryComment')->createQuery()->update()
-      ->set('DiaryComment.member_id', 'NULL')
-      ->where('DiaryComment.member_id NOT IN (SELECT Member.id FROM Member)')
-      ->execute();
+    $this->getConnection()->execute('UPDATE diary_comment SET diary_comment.member_id=NULL WHERE diary_comment.member_id NOT IN (SELECT member.id FROM member)');
   }
 
   public function preDown()
   {
-    Doctrine::getTable('DiaryComment')->createQuery()->update()
-      ->set('DiaryComment.member_id', 'NULL')
-      ->where('DiaryComment.member_id NOT IN (SELECT Member.id FROM Member)')
-      ->execute();
+    $this->getConnection()->execute('UPDATE diary_comment SET diary_comment.member_id=NULL WHERE diary_comment.member_id NOT IN (SELECT member.id FROM member)');
   }
 
   public function up()
