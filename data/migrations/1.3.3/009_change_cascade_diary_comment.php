@@ -18,49 +18,36 @@
  */
 class opDiaryPluginMigrationVersion9 extends opMigration
 {
-  public function preUp()
-  {
-    $this->getConnection()->execute('UPDATE diary_comment SET diary_comment.member_id=NULL WHERE diary_comment.member_id NOT IN (SELECT member.id FROM member)');
-  }
-
-  public function preDown()
-  {
-    $this->getConnection()->execute('UPDATE diary_comment SET diary_comment.member_id=NULL WHERE diary_comment.member_id NOT IN (SELECT member.id FROM member)');
-  }
-
   public function up()
   {
+    $conn = $this->getConnection();
     $option = array(
       'notnull' => false,
     );
-    $this->changeColumn('diary_comment', 'member_id', 'integer', '4', $option);
 
-    $this->dropForeignKey('diary_comment', 'diary_comment_member_id_member_id');
+    $conn->export->alterTable('diary_comment',
+      array(
+        'change' => array(
+          'member_id' => array(
+            'length' => 4,
+            'definition' => array(
+              'type' => 'integer',
+              'length' => 4,
+            ),
+          ),
+        )
+      ));
+
+    $conn->export->dropForeignKey('diary_comment', 'diary_comment_member_id_member_id');
+    $conn->execute('UPDATE diary_comment SET diary_comment.member_id=NULL WHERE diary_comment.member_id NOT IN (SELECT member.id FROM member)');
 
     $definition = array(
+        'name'         => 'diary_comment_member_id_member_id',
         'local'        => 'member_id',
         'foreign'      => 'id',
         'foreignTable' => 'member',
         'onDelete'     => 'SET NULL',
         );
-    $this->createForeignKey('diary_comment', 'diary_comment_member_id_member_id', $definition);
-  }
-
-  public function down()
-  {
-    $option = array(
-      'notnull' => true,
-    );
-    $this->changeColumn('diary_comment', 'member_id', 'integer', '4', $option);
-
-    $this->dropForeignKey('diary_comment', 'diary_comment_member_id_member_id');
-
-    $definition = array(
-        'local'        => 'member_id',
-        'foreign'      => 'id',
-        'foreignTable' => 'member',
-        'onDelete'     => 'CASCADE',
-        );
-    $this->createForeignKey('diary_comment', 'diary_comment_member_id_member_id', $definition);
+    $conn->export->createForeignKey('diary_comment', $definition);
   }
 }
