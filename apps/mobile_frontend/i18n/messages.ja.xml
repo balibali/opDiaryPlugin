@@ -30,6 +30,18 @@
         <source>Profile of %1%</source>
         <target>%1%さんのﾍﾟｰｼﾞ</target>
       </trans-unit>
+      <trans-unit id="43">
+        <source>Delete the comment</source>
+        <target>ｺﾒﾝﾄ削除</target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>Do you really delete this comment?</source>
+        <target>本当にこのｺﾒﾝﾄを削除しますか？</target>
+      </trans-unit>
+      <trans-unit id="46">
+        <source>The comment was deleted successfully.</source>
+        <target>ｺﾒﾝﾄを削除しました。</target>
+      </trans-unit>
       <trans-unit id="52">
         <source>Diary Comment History</source>
         <target>日記ｺﾒﾝﾄ記入履歴</target>
