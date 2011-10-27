@@ -58,6 +58,10 @@
         <source>Read comment</source>
         <target>ｺﾒﾝﾄを読む</target>
       </trans-unit>
+      <trans-unit id="">
+        <source>Delete the comment</source>
+        <target>ｺﾒﾝﾄ削除</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
