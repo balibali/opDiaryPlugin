@@ -50,6 +50,10 @@
         <source>Your comment is visible to all users on the Web.</source>
         <target>この日記へのｺﾒﾝﾄはWeb全体に公開されます。</target>
       </trans-unit>
+      <trans-unit id="65">
+        <source>To attach a photo file, please register your mobile address.</source>
+        <target>携帯ﾒｰﾙｱﾄﾞﾚｽを登録すると、写真つき日記を投稿することができます。</target>
+      </trans-unit>
       <trans-unit id="66">
         <source>Read comment</source>
         <target>ｺﾒﾝﾄを読む</target>
