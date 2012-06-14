@@ -25,11 +25,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2011-09-30</date>
- <time>22:45:12</time>
+ <date>2012-06-14</date>
+ <time>22:01:23</time>
  <version>
-  <release>1.4.0.1</release>
-  <api>1.4.0.1</api>
+  <release>1.4.1</release>
+  <api>1.4.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -37,13 +37,15 @@
  </stability>
  <license>apache</license>
  <notes>
-*  Bug（バグ） #2439: 1.4.0 で追加されたマイグレートスクリプト (リビジョン番号 9) の実行に失敗することがある
+Bug（バグ） #2284: 携帯版においてDiaryPluginに関連する文言のみの半角カタカナに対応していない
+Bug（バグ） #3070: OpenPNE2系からOpenPNE 3.6.4 より前のバージョンへコンバートした環境で日記コメントが書き込めない現象が発生する場合がある
+Bug（バグ） #3071: OpenPNE2系からOpenPNE 3.6.4 より前のバージョンへコンバートした環境で日記コメントに添付した画像が表示されない現象が発生する場合がある
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="2bcec9045b32de9d9121c27fe72d4a6e" name="apps/mobile_frontend/config/app.yml" role="data" />
    <file baseinstalldir="/" md5sum="8be2234c0d15d9d84becf91000a89e4d" name="apps/mobile_frontend/config/routing.yml" role="data" />
-   <file baseinstalldir="/" md5sum="ea47174adf90d122b715473290b63b41" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="2015d0e843f1b8b18fa6dd2bebe84627" name="apps/mobile_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ed2868c1bfb5f2321168cd48e3903f15" name="apps/mobile_frontend/modules/diary/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="f38308dad6aba1edebb1de78c5a44223" name="apps/mobile_frontend/modules/diary/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="113eea85c326854511282bf167f560fb" name="apps/mobile_frontend/modules/diary/config/security.yml" role="data" />
@@ -127,7 +129,7 @@
    <file baseinstalldir="/" md5sum="9128cc9bed45d1af336601db1e29eef5" name="config/opDiaryPluginConfiguration.class.php" role="data" />
    <file baseinstalldir="/" md5sum="fcc1f83b73a6e232a9f2a358307addca" name="config/profile_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="d54a4cf552696a3f93892dede3d6d96b" name="config/doctrine/schema.yml" role="data" />
-   <file baseinstalldir="/" md5sum="2e4a50ab17ea6fcce06c5265ea18cc6d" name="data/fixtures/000_revision.yml" role="data" />
+   <file baseinstalldir="/" md5sum="1435922a3bbc58f6a4412ceb6bd79856" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="028e92fb9cedddd26459286e35173bc2" name="data/fixtures/010_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="a151c6dae90c19590c3b33a0d571b48a" name="data/fixtures/020_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="4ef562c4496caef9d43160e225b6aa85" name="data/migrations/0.9.0/001_doctrine.php" role="data" />
@@ -140,6 +142,8 @@
    <file baseinstalldir="/" md5sum="09366042ccf1c96822368dc1bbd195c5" name="data/migrations/1.1.1/007_add_column_has_images_on_diary_comment.php" role="data" />
    <file baseinstalldir="/" md5sum="528e95888ff0a9995f53e62422ae5bc6" name="data/migrations/1.3.0/008_add_foreign_key_on_diary_comment_unread.php" role="data" />
    <file baseinstalldir="/" md5sum="68434953352c6b6ef50b2902ad887099" name="data/migrations/1.3.3/009_change_cascade_diary_comment.php" role="data" />
+   <file baseinstalldir="/" md5sum="6dacde2e9b615f99c515c8e4c6e74974" name="data/migrations/1.4.1/010_remove_invalid_diary_comment_update.php" role="data" />
+   <file baseinstalldir="/" md5sum="44996083329ceb403b4c5a4445b47b8f" name="data/migrations/1.4.1/011_fix_diary_comment_has_images.php" role="data" />
    <file baseinstalldir="/" md5sum="9576bcf95d6c7e92e9b1452984087e2d" name="i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="ff14e22a0119036fe8c828b5b60979d2" name="i18n/publicFlags.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="5e5b6ce5f306ae71411e7058a9169f1a" name="lib/action/opDiaryPluginActions.class.php" role="data" />
@@ -546,6 +550,23 @@ OPSA-2011-003
    <license>apache</license>
    <notes>
 *  Bug（バグ） #2439: 1.4.0 で追加されたマイグレートスクリプト (リビジョン番号 9) の実行に失敗することがある
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.1</release>
+    <api>1.4.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-06-14</date>
+   <license>apache</license>
+   <notes>
+Bug（バグ） #2284: 携帯版においてDiaryPluginに関連する文言のみの半角カタカナに対応していない
+Bug（バグ） #3070: OpenPNE2系からOpenPNE 3.6.4 より前のバージョンへコンバートした環境で日記コメントが書き込めない現象が発生する場合がある
+Bug（バグ） #3071: OpenPNE2系からOpenPNE 3.6.4 より前のバージョンへコンバートした環境で日記コメントに添付した画像が表示されない現象が発生する場合がある
    </notes>
   </release>
  </changelog>
