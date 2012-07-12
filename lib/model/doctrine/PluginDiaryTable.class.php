@@ -99,7 +99,7 @@ abstract class PluginDiaryTable extends Doctrine_Table
     return $q->execute();
   }
 
-  public function getMemberDiaryPager($memberId, $page = 1, $size = 20, $myMemberId = null, $year = null, $month = null, $day = null)
+  public function getMemberDiaryPager($memberId, $page = 1, $size = 20, $myMemberId = null, $year = null, $month = null, $day = null, $keywords = null)
   {
     $q = $this->getOrderdQuery();
     $this->addMemberQuery($q, $memberId, $myMemberId);
@@ -107,6 +107,10 @@ abstract class PluginDiaryTable extends Doctrine_Table
     if ($year && $month)
     {
       $this->addDateQuery($q, $year, $month, $day);
+    }
+    if ($keywords)
+    {
+      $this->addSearchKeywordQuery($q, $keywords);
     }
 
     return $this->getPager($q, $page, $size);

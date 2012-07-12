@@ -3,6 +3,15 @@
 <?php decorate_with('layoutB') ?>
 <?php slot('op_sidemenu', get_component('diary', 'sidemenu', array('member' => $member, 'year' => $year, 'month' => $month))) ?>
 
+<div id="diarySearchFormLine" class="parts searchFormLine">
+<form action="<?php echo url_for('@diary_list_member?id='.$member->id) ?>" method="get">
+<p class="form">
+<input id="keyword" type="text" class="input_text" name="keyword" size="30" value="<?php if (isset($keyword)) echo $keyword ?>" />
+<input type="submit" value="<?php echo __('Search') ?>" />
+</p>
+</form>
+</div>
+
 <?php if ($sf_user->getMemberId() === $member->id): ?>
 <?php op_include_box('newDiaryLink', link_to(__('Post a diary'), 'diary_new'), array('title' => __('Post a diary'))) ?>
 <?php endif; ?>
